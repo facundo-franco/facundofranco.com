@@ -4,809 +4,730 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Facundo Franco — Agent Operator</title>
-<link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=DM+Mono:wght@300;400;500&family=Syne:wght@400;600;700;800&display=swap" rel="stylesheet">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Syne:wght@400;500;600;700;800&family=DM+Mono:wght@300;400;500&display=swap" rel="stylesheet">
 <style>
   :root {
-    --red: #e8380d;
-    --bg: #080808;
-    --surface: #0f0f0f;
-    --border: #1a1a1a;
-    --text: #f0f0f0;
-    --muted: #666;
-    --dim: #333;
+    --black: #080808;
+    --navy: #0B1220;
+    --gold: #C9A84C;
+    --white: #F5F5F0;
+    --muted: #555560;
+    --border: #1A1A2A;
   }
-
+ 
   * { margin: 0; padding: 0; box-sizing: border-box; }
-
+ 
   html { scroll-behavior: smooth; }
-
+ 
   body {
-    background: var(--bg);
-    color: var(--text);
+    background: var(--black);
+    color: var(--white);
     font-family: 'DM Mono', monospace;
     font-size: 14px;
     line-height: 1.7;
     overflow-x: hidden;
   }
-
-  /* NOISE OVERLAY */
-  body::before {
-    content: '';
-    position: fixed;
-    inset: 0;
-    background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)' opacity='0.03'/%3E%3C/svg%3E");
-    pointer-events: none;
-    z-index: 999;
-    opacity: 0.4;
-  }
-
+ 
+  a { color: inherit; text-decoration: none; }
+ 
   /* NAV */
   nav {
     position: fixed;
-    top: 0;
-    left: 0;
-    right: 0;
+    top: 0; left: 0; right: 0;
     z-index: 100;
-    padding: 20px 48px;
     display: flex;
     justify-content: space-between;
     align-items: center;
+    padding: 24px 48px;
     border-bottom: 1px solid var(--border);
-    background: rgba(8,8,8,0.92);
-    backdrop-filter: blur(12px);
+    background: rgba(8,8,8,0.95);
+    backdrop-filter: blur(8px);
   }
-
+ 
   .nav-logo {
-    font-family: 'Bebas Neue', sans-serif;
-    font-size: 20px;
-    letter-spacing: 0.08em;
-    color: var(--text);
+    font-family: 'Syne', sans-serif;
+    font-weight: 800;
+    font-size: 18px;
+    letter-spacing: 2px;
+    color: var(--white);
   }
-
-  .nav-logo span { color: var(--red); }
-
+ 
   .nav-links {
     display: flex;
     gap: 32px;
     list-style: none;
   }
-
+ 
   .nav-links a {
     font-size: 11px;
-    letter-spacing: 0.15em;
-    text-transform: uppercase;
+    letter-spacing: 2px;
     color: var(--muted);
-    text-decoration: none;
+    text-transform: uppercase;
     transition: color 0.2s;
   }
-
-  .nav-links a:hover { color: var(--text); }
-
+ 
+  .nav-links a:hover { color: var(--white); }
+ 
+  .nav-cta {
+    font-size: 11px;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    border: 1px solid var(--gold);
+    color: var(--gold);
+    padding: 8px 20px;
+    transition: all 0.2s;
+  }
+ 
+  .nav-cta:hover {
+    background: var(--gold);
+    color: var(--black);
+  }
+ 
   /* HERO */
   .hero {
     min-height: 100vh;
     display: flex;
     flex-direction: column;
     justify-content: center;
-    padding: 120px 48px 80px;
+    padding: 140px 48px 80px;
     position: relative;
+    border-bottom: 1px solid var(--border);
     overflow: hidden;
   }
-
-  .hero::before {
-    content: '';
+ 
+  .hero-bg-text {
     position: absolute;
-    top: 0; left: 0; right: 0; bottom: 0;
-    background-image:
-      linear-gradient(var(--border) 1px, transparent 1px),
-      linear-gradient(90deg, var(--border) 1px, transparent 1px);
-    background-size: 64px 64px;
-    opacity: 0.4;
+    bottom: -40px;
+    right: -20px;
+    font-family: 'Syne', sans-serif;
+    font-size: clamp(100px, 15vw, 220px);
+    font-weight: 800;
+    color: rgba(255,255,255,0.025);
+    letter-spacing: -8px;
     pointer-events: none;
+    white-space: nowrap;
+    z-index: 0;
   }
-
-  .hero-tag {
+ 
+  .hero > *:not(.hero-bg-text) { position: relative; z-index: 1; }
+ 
+  .hero-label {
     font-size: 11px;
-    letter-spacing: 0.2em;
+    letter-spacing: 4px;
+    color: var(--gold);
     text-transform: uppercase;
-    color: var(--red);
-    margin-bottom: 24px;
-    animation: fadeUp 0.6s ease both;
-  }
-
-  .hero-title {
-    font-family: 'Bebas Neue', sans-serif;
-    font-size: clamp(72px, 10vw, 140px);
-    line-height: 0.92;
-    letter-spacing: 0.01em;
     margin-bottom: 32px;
-    animation: fadeUp 0.6s ease 0.1s both;
   }
-
-  .hero-title .outline {
-    -webkit-text-stroke: 1px var(--text);
-    color: transparent;
+ 
+  .hero-name {
+    font-family: 'Syne', sans-serif;
+    font-size: clamp(56px, 8vw, 120px);
+    font-weight: 800;
+    line-height: 0.95;
+    letter-spacing: -3px;
+    margin-bottom: 40px;
   }
-
-  .hero-title .accent { color: var(--red); }
-
-  .hero-sub {
+ 
+  .hero-name span { color: var(--muted); }
+ 
+  .hero-desc {
     max-width: 560px;
     color: var(--muted);
-    font-size: 14px;
+    font-size: 15px;
     line-height: 1.8;
     margin-bottom: 48px;
-    animation: fadeUp 0.6s ease 0.2s both;
   }
-
-  .hero-sub strong { color: var(--text); font-weight: 500; }
-
-  .hero-cta {
+ 
+  .hero-desc strong { color: var(--white); font-weight: 500; }
+ 
+  .hero-actions {
     display: flex;
     gap: 16px;
-    flex-wrap: wrap;
-    animation: fadeUp 0.6s ease 0.3s both;
+    align-items: center;
   }
-
-  .btn {
-    padding: 12px 28px;
+ 
+  .btn-primary {
     font-family: 'DM Mono', monospace;
     font-size: 11px;
-    letter-spacing: 0.15em;
+    letter-spacing: 2px;
     text-transform: uppercase;
-    text-decoration: none;
-    border: 1px solid;
-    transition: all 0.2s;
-    cursor: pointer;
+    background: var(--gold);
+    color: var(--black);
+    padding: 14px 32px;
+    font-weight: 500;
+    transition: opacity 0.2s;
   }
-
-  .btn-primary {
-    background: var(--red);
-    color: #fff;
-    border-color: var(--red);
-  }
-
-  .btn-primary:hover { background: transparent; color: var(--red); }
-
-  .btn-ghost {
-    background: transparent;
+ 
+  .btn-primary:hover { opacity: 0.85; }
+ 
+  .btn-secondary {
+    font-family: 'DM Mono', monospace;
+    font-size: 11px;
+    letter-spacing: 2px;
+    text-transform: uppercase;
     color: var(--muted);
-    border-color: var(--dim);
+    padding: 14px 0;
+    border-bottom: 1px solid var(--border);
+    transition: color 0.2s, border-color 0.2s;
   }
-
-  .btn-ghost:hover { color: var(--text); border-color: var(--text); }
-
-  /* SECTIONS */
+ 
+  .btn-secondary:hover { color: var(--white); border-color: var(--white); }
+ 
+  /* SECTION */
   section {
-    padding: 96px 48px;
-    border-top: 1px solid var(--border);
-    max-width: 1100px;
-    margin: 0 auto;
+    padding: 100px 48px;
+    border-bottom: 1px solid var(--border);
   }
-
-  .section-tag {
+ 
+  .section-label {
     font-size: 10px;
-    letter-spacing: 0.2em;
+    letter-spacing: 4px;
+    color: var(--gold);
     text-transform: uppercase;
-    color: var(--red);
     margin-bottom: 16px;
   }
-
+ 
   .section-title {
-    font-family: 'Bebas Neue', sans-serif;
-    font-size: clamp(40px, 5vw, 64px);
+    font-family: 'Syne', sans-serif;
+    font-size: clamp(36px, 5vw, 64px);
+    font-weight: 800;
     line-height: 1;
-    margin-bottom: 48px;
-    letter-spacing: 0.02em;
+    letter-spacing: -2px;
+    margin-bottom: 64px;
   }
-
+ 
   /* THESIS */
-  .thesis-block {
-    background: var(--surface);
-    border: 1px solid var(--border);
-    border-left: 3px solid var(--red);
-    padding: 40px 48px;
-    margin-bottom: 32px;
-  }
-
-  .thesis-block p {
-    font-size: 16px;
-    line-height: 1.9;
-    color: #ccc;
-  }
-
-  .thesis-block p + p { margin-top: 20px; }
-
-  .thesis-block strong { color: var(--text); font-weight: 500; }
-
-  .thesis-compare {
+  .thesis-grid {
     display: grid;
     grid-template-columns: 1fr 1fr;
-    gap: 1px;
-    background: var(--border);
-    margin-top: 32px;
+    gap: 2px;
+    margin-top: 48px;
   }
-
-  .compare-col {
-    background: var(--surface);
-    padding: 32px;
+ 
+  .thesis-col {
+    padding: 40px;
+    border: 1px solid var(--border);
   }
-
-  .compare-label {
+ 
+  .thesis-col.active { background: var(--navy); }
+ 
+  .thesis-col-label {
     font-size: 10px;
-    letter-spacing: 0.2em;
+    letter-spacing: 3px;
     text-transform: uppercase;
-    margin-bottom: 16px;
+    color: var(--muted);
+    margin-bottom: 24px;
   }
-
-  .compare-label.old { color: var(--muted); }
-  .compare-label.new { color: var(--red); }
-
-  .compare-item {
+ 
+  .thesis-col.active .thesis-col-label { color: var(--gold); }
+ 
+  .thesis-item {
+    display: flex;
+    align-items: flex-start;
+    gap: 12px;
+    margin-bottom: 16px;
     font-size: 13px;
     color: var(--muted);
-    padding: 8px 0;
-    border-bottom: 1px solid var(--border);
-    display: flex;
-    align-items: center;
-    gap: 10px;
   }
-
-  .compare-item.active { color: var(--text); }
-
-  .compare-item::before {
-    content: '→';
-    color: var(--dim);
-    font-size: 11px;
+ 
+  .thesis-col.active .thesis-item { color: var(--white); }
+ 
+  .thesis-dot {
+    width: 4px;
+    height: 4px;
+    background: var(--muted);
+    border-radius: 50%;
+    margin-top: 8px;
     flex-shrink: 0;
   }
-
-  .compare-item.active::before { color: var(--red); }
-
-  /* BACKGROUND */
-  .bg-grid {
+ 
+  .thesis-col.active .thesis-dot { background: var(--gold); }
+ 
+  /* PROJECTS */
+  .projects-grid {
     display: grid;
-    grid-template-columns: 1fr 1fr;
-    gap: 1px;
-    background: var(--border);
+    grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+    gap: 2px;
   }
-
-  .bg-card {
-    background: var(--surface);
-    padding: 32px;
+ 
+  .project-card {
+    border: 1px solid var(--border);
+    padding: 40px;
+    transition: border-color 0.2s, background 0.2s;
+    position: relative;
   }
-
-  .bg-card-label {
+ 
+  .project-card:hover {
+    border-color: var(--gold);
+    background: var(--navy);
+  }
+ 
+  .project-status {
     font-size: 10px;
-    letter-spacing: 0.15em;
+    letter-spacing: 3px;
     text-transform: uppercase;
-    color: var(--red);
-    margin-bottom: 12px;
+    margin-bottom: 24px;
   }
-
-  .bg-card-title {
+ 
+  .status-live { color: #4CAF50; }
+  .status-building { color: var(--gold); }
+  .status-active { color: #64B5F6; }
+ 
+  .project-title {
     font-family: 'Syne', sans-serif;
-    font-size: 18px;
+    font-size: 22px;
     font-weight: 700;
-    margin-bottom: 8px;
-    color: var(--text);
+    margin-bottom: 12px;
+    letter-spacing: -0.5px;
   }
-
-  .bg-card-sub {
-    font-size: 12px;
+ 
+  .project-desc {
     color: var(--muted);
+    font-size: 13px;
     line-height: 1.7;
+    margin-bottom: 24px;
   }
-
-  .bg-card-tags {
+ 
+  .project-tags {
     display: flex;
     flex-wrap: wrap;
     gap: 8px;
-    margin-top: 16px;
+    margin-bottom: 24px;
   }
-
+ 
   .tag {
     font-size: 10px;
-    letter-spacing: 0.1em;
-    padding: 4px 10px;
-    border: 1px solid var(--dim);
-    color: var(--muted);
+    letter-spacing: 1px;
     text-transform: uppercase;
+    border: 1px solid var(--border);
+    padding: 4px 10px;
+    color: var(--muted);
   }
-
+ 
+  .project-link {
+    font-size: 11px;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    color: var(--gold);
+    border-bottom: 1px solid var(--gold);
+    padding-bottom: 2px;
+    display: inline-block;
+    transition: opacity 0.2s;
+  }
+ 
+  .project-link:hover { opacity: 0.7; }
+ 
   /* SKILLS */
   .skills-grid {
     display: grid;
-    grid-template-columns: repeat(3, 1fr);
-    gap: 1px;
-    background: var(--border);
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 2px;
   }
-
-  .skill-block {
-    background: var(--surface);
-    padding: 28px 32px;
-    transition: background 0.2s;
+ 
+  .skill-item {
+    border: 1px solid var(--border);
+    padding: 32px 40px;
   }
-
-  .skill-block:hover { background: #141414; }
-
+ 
   .skill-num {
-    font-family: 'Bebas Neue', sans-serif;
-    font-size: 48px;
-    color: var(--dim);
-    line-height: 1;
-    margin-bottom: 8px;
+    font-size: 10px;
+    letter-spacing: 2px;
+    color: var(--gold);
+    margin-bottom: 12px;
   }
-
+ 
   .skill-name {
     font-family: 'Syne', sans-serif;
-    font-size: 14px;
+    font-size: 16px;
     font-weight: 700;
-    color: var(--text);
     margin-bottom: 8px;
   }
-
+ 
   .skill-desc {
     font-size: 12px;
     color: var(--muted);
     line-height: 1.6;
   }
-
-  /* PROJECTS */
-  .project-list {
-    display: flex;
-    flex-direction: column;
-    gap: 1px;
-    background: var(--border);
-  }
-
-  .project-item {
-    background: var(--surface);
-    padding: 32px;
-    display: grid;
-    grid-template-columns: 1fr auto;
-    gap: 24px;
-    align-items: start;
-    transition: background 0.2s;
-  }
-
-  .project-item:hover { background: #141414; }
-
-  .project-name {
-    font-family: 'Syne', sans-serif;
-    font-size: 18px;
-    font-weight: 700;
-    margin-bottom: 8px;
-    color: var(--text);
-  }
-
-  .project-desc {
-    font-size: 13px;
-    color: var(--muted);
-    line-height: 1.7;
-    max-width: 600px;
-  }
-
-  .project-status {
-    font-size: 10px;
-    letter-spacing: 0.15em;
-    text-transform: uppercase;
-    padding: 6px 14px;
-    border: 1px solid;
-    white-space: nowrap;
-  }
-
-  .status-live { color: #4ade80; border-color: #4ade8033; }
-  .status-building { color: var(--red); border-color: #e8380d33; }
-
-  /* TARGET */
-  .target-grid {
-    display: grid;
-    grid-template-columns: 1fr 1fr 1fr;
-    gap: 1px;
-    background: var(--border);
-    margin-bottom: 32px;
-  }
-
-  .target-block {
-    background: var(--surface);
-    padding: 28px 32px;
-  }
-
-  .target-label {
-    font-size: 10px;
-    letter-spacing: 0.15em;
-    text-transform: uppercase;
-    color: var(--red);
-    margin-bottom: 12px;
-  }
-
-  .target-value {
-    font-family: 'Syne', sans-serif;
-    font-size: 15px;
-    font-weight: 700;
-    color: var(--text);
-    line-height: 1.5;
-  }
-
-  /* CONTACT */
-  .contact-block {
-    background: var(--surface);
+ 
+  /* HARNESS */
+  .harness-banner {
     border: 1px solid var(--border);
     padding: 48px;
-    display: grid;
-    grid-template-columns: 1fr auto;
-    gap: 48px;
+    background: var(--navy);
+    display: flex;
+    justify-content: space-between;
     align-items: center;
+    gap: 32px;
   }
-
-  .contact-title {
-    font-family: 'Bebas Neue', sans-serif;
-    font-size: 48px;
-    line-height: 1;
-    margin-bottom: 12px;
+ 
+  .harness-left { flex: 1; }
+ 
+  .harness-title {
+    font-family: 'Syne', sans-serif;
+    font-size: 36px;
+    font-weight: 800;
+    letter-spacing: 6px;
+    margin-bottom: 8px;
   }
-
-  .contact-sub {
-    font-size: 13px;
+ 
+  .harness-tagline {
     color: var(--muted);
+    font-size: 13px;
+    letter-spacing: 1px;
   }
-
+ 
+  .harness-link {
+    font-size: 11px;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    background: var(--gold);
+    color: var(--black);
+    padding: 12px 28px;
+    font-weight: 500;
+    white-space: nowrap;
+    transition: opacity 0.2s;
+  }
+ 
+  .harness-link:hover { opacity: 0.85; }
+ 
+  /* CONTACT */
+  .contact-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 2px;
+  }
+ 
+  .contact-left {
+    border: 1px solid var(--border);
+    padding: 64px 48px;
+  }
+ 
+  .contact-title {
+    font-family: 'Syne', sans-serif;
+    font-size: clamp(32px, 4vw, 56px);
+    font-weight: 800;
+    line-height: 1;
+    letter-spacing: -2px;
+    margin-bottom: 24px;
+  }
+ 
+  .contact-desc {
+    color: var(--muted);
+    font-size: 13px;
+    line-height: 1.8;
+    margin-bottom: 40px;
+    max-width: 360px;
+  }
+ 
   .contact-links {
     display: flex;
     flex-direction: column;
     gap: 12px;
   }
-
+ 
   .contact-link {
-    display: flex;
-    align-items: center;
-    gap: 12px;
+    font-size: 11px;
+    letter-spacing: 2px;
+    text-transform: uppercase;
     color: var(--muted);
-    text-decoration: none;
-    font-size: 13px;
-    transition: color 0.2s;
-  }
-
-  .contact-link:hover { color: var(--text); }
-
-  .contact-link-dot {
-    width: 6px;
-    height: 6px;
-    background: var(--red);
-    flex-shrink: 0;
-  }
-
-  /* FOOTER */
-  footer {
-    border-top: 1px solid var(--border);
-    padding: 24px 48px;
+    border-bottom: 1px solid var(--border);
+    padding: 12px 0;
     display: flex;
     justify-content: space-between;
     align-items: center;
-    max-width: 100%;
+    transition: color 0.2s, border-color 0.2s;
   }
-
-  .footer-text {
+ 
+  .contact-link:hover { color: var(--white); border-color: var(--white); }
+ 
+  .contact-right {
+    border: 1px solid var(--border);
+    padding: 64px 48px;
+    background: var(--navy);
+  }
+ 
+  .available-label {
+    font-size: 10px;
+    letter-spacing: 4px;
+    color: var(--gold);
+    text-transform: uppercase;
+    margin-bottom: 32px;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+  }
+ 
+  .available-dot {
+    width: 6px;
+    height: 6px;
+    background: #4CAF50;
+    border-radius: 50%;
+    animation: pulse 2s infinite;
+  }
+ 
+  @keyframes pulse {
+    0%, 100% { opacity: 1; }
+    50% { opacity: 0.3; }
+  }
+ 
+  .available-items {
+    display: flex;
+    flex-direction: column;
+    gap: 2px;
+  }
+ 
+  .available-item {
+    border: 1px solid var(--border);
+    padding: 20px 24px;
+    display: flex;
+    justify-content: space-between;
+    font-size: 12px;
+  }
+ 
+  .available-item-label { color: var(--muted); letter-spacing: 1px; }
+  .available-item-value { color: var(--white); }
+ 
+  /* FOOTER */
+  footer {
+    padding: 32px 48px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
     font-size: 11px;
-    color: var(--dim);
-    letter-spacing: 0.1em;
+    letter-spacing: 1px;
+    color: var(--muted);
   }
-
-  .footer-handle {
-    font-size: 11px;
-    color: var(--dim);
-    letter-spacing: 0.1em;
-  }
-
-  /* ANIMATIONS */
-  @keyframes fadeUp {
-    from { opacity: 0; transform: translateY(20px); }
-    to { opacity: 1; transform: translateY(0); }
-  }
-
+ 
   /* RESPONSIVE */
   @media (max-width: 768px) {
-    nav { padding: 16px 24px; }
+    nav { padding: 20px 24px; }
+    .nav-links { display: none; }
     .hero { padding: 100px 24px 60px; }
     section { padding: 64px 24px; }
-    .thesis-compare { grid-template-columns: 1fr; }
-    .bg-grid { grid-template-columns: 1fr; }
-    .skills-grid { grid-template-columns: 1fr 1fr; }
-    .target-grid { grid-template-columns: 1fr; }
-    .contact-block { grid-template-columns: 1fr; }
-    footer { padding: 20px 24px; flex-direction: column; gap: 8px; text-align: center; }
-    .project-item { grid-template-columns: 1fr; }
+    .thesis-grid { grid-template-columns: 1fr; }
+    .contact-grid { grid-template-columns: 1fr; }
+    .harness-banner { flex-direction: column; align-items: flex-start; }
+    footer { padding: 24px; flex-direction: column; gap: 12px; text-align: center; }
   }
 </style>
 </head>
 <body>
-
-<!-- NAV -->
+ 
 <nav>
-  <div class="nav-logo">FF<span>.</span></div>
+  <div class="nav-logo">FF.</div>
   <ul class="nav-links">
     <li><a href="#thesis">Thesis</a></li>
-    <li><a href="#background">Background</a></li>
-    <li><a href="#skills">Skills</a></li>
     <li><a href="#projects">Projects</a></li>
+    <li><a href="#skills">Skills</a></li>
+    <li><a href="#harness">Harness</a></li>
     <li><a href="#contact">Contact</a></li>
   </ul>
+  <a href="#contact" class="nav-cta">Hire Me</a>
 </nav>
-
-<!-- HERO -->
-<div class="hero">
-  <div class="hero-tag">// Agent Operator — Available for Remote Roles</div>
-  <h1 class="hero-title">
-    Facundo<br>
-    <span class="outline">Franco</span><span class="accent">.</span>
-  </h1>
-  <p class="hero-sub">
-    I run business functions using <strong>AI agents as the execution layer</strong>.<br>
-    Not an engineer. Not a generalist. An operator who understands both<br>
-    <strong>how a business works</strong> and <strong>how to make agents run it</strong>.
+ 
+<section class="hero">
+  <div class="hero-bg-text">OPERATOR</div>
+  <div class="hero-label">// Agent Operator — Available for Remote Roles</div>
+  <h1 class="hero-name">Facundo<br><span>Franco.</span></h1>
+  <p class="hero-desc">
+    I run business functions using <strong>AI agents as the execution layer.</strong><br>
+    Not an engineer. Not a generalist. An operator who understands both
+    <strong>how a business works</strong> and <strong>how to make agents run it.</strong>
   </p>
-  <div class="hero-cta">
-    <a href="#contact" class="btn btn-primary">Hire Me</a>
-    <a href="#thesis" class="btn btn-ghost">Read the Thesis</a>
+  <div class="hero-actions">
+    <a href="#contact" class="btn-primary">Hire Me</a>
+    <a href="#thesis" class="btn-secondary">Read the Thesis</a>
   </div>
-</div>
-
-<!-- THESIS -->
+</section>
+ 
 <section id="thesis">
-  <div class="section-tag">// 01 — The Thesis</div>
+  <div class="section-label">// 01 — The Thesis</div>
   <h2 class="section-title">What is an<br>Agent Operator?</h2>
-
-  <div class="thesis-block">
-    <p>
-      Most companies are about to face the same problem: they need to redesign their workflows for agents, not for people. But they don't have anyone who understands both the <strong>business function</strong> and the <strong>AI layer</strong> well enough to make that transition work.
-    </p>
-    <p>
-      The agent operator fills that gap. They walk into a function — marketing, ops, growth, retention — map how it works, and build the agent stack that runs it. <strong>No engineering degree required. Business judgment + AI execution.</strong>
-    </p>
-    <p>
-      Harry Stebbings, Jason Calacanis, Aaron Levie, and Greg Isenberg have all pointed to this role as one of the most in-demand positions of the next five years. <strong>500K–1M jobs being created.</strong> The window to get in early is now.
-    </p>
-  </div>
-
-  <div class="thesis-compare">
-    <div class="compare-col">
-      <div class="compare-label old">Old Operator</div>
-      <div class="compare-item">Runs functions manually</div>
-      <div class="compare-item">Execution eats all time</div>
-      <div class="compare-item">Scales by hiring more people</div>
-      <div class="compare-item">Bottleneck: bandwidth</div>
-      <div class="compare-item">Output limited by hours</div>
+  <p style="max-width:640px; color:var(--muted); font-size:14px; line-height:1.9; margin-bottom: 16px;">
+    Most companies are about to face the same problem: they need to redesign their workflows for agents, not for people. But they don't have anyone who understands both the <strong style="color:var(--white)">business function</strong> and the <strong style="color:var(--white)">AI layer</strong> well enough to make that transition work.
+  </p>
+  <p style="max-width:640px; color:var(--muted); font-size:14px; line-height:1.9;">
+    The agent operator fills that gap. They walk into a function, map how it works, and build the agent stack that runs it. <strong style="color:var(--white)">No engineering degree required. Business judgment + AI execution.</strong>
+  </p>
+  <div class="thesis-grid">
+    <div class="thesis-col">
+      <div class="thesis-col-label">Old Operator</div>
+      <div class="thesis-item"><div class="thesis-dot"></div>Runs functions manually</div>
+      <div class="thesis-item"><div class="thesis-dot"></div>Execution eats all time</div>
+      <div class="thesis-item"><div class="thesis-dot"></div>Scales by hiring more people</div>
+      <div class="thesis-item"><div class="thesis-dot"></div>Bottleneck: bandwidth</div>
+      <div class="thesis-item"><div class="thesis-dot"></div>Output limited by hours</div>
     </div>
-    <div class="compare-col">
-      <div class="compare-label new">Agent Operator</div>
-      <div class="compare-item active">Directs agents to run functions</div>
-      <div class="compare-item active">Execution runs itself</div>
-      <div class="compare-item active">Scales by improving systems</div>
-      <div class="compare-item active">Bottleneck: judgment</div>
-      <div class="compare-item active">Output limited by imagination</div>
+    <div class="thesis-col active">
+      <div class="thesis-col-label">Agent Operator</div>
+      <div class="thesis-item"><div class="thesis-dot"></div>Directs agents to run functions</div>
+      <div class="thesis-item"><div class="thesis-dot"></div>Execution runs itself</div>
+      <div class="thesis-item"><div class="thesis-dot"></div>Scales by improving systems</div>
+      <div class="thesis-item"><div class="thesis-dot"></div>Bottleneck: judgment</div>
+      <div class="thesis-item"><div class="thesis-dot"></div>Output limited by imagination</div>
     </div>
   </div>
 </section>
-
-<!-- BACKGROUND -->
-<section id="background">
-  <div class="section-tag">// 02 — Background</div>
-  <h2 class="section-title">Where I come<br>from.</h2>
-
-  <div class="bg-grid">
-    <div class="bg-card">
-      <div class="bg-card-label">Experience</div>
-      <div class="bg-card-title">Growth & Operations Manager</div>
-      <div class="bg-card-sub">Pagani Shop · 2024–2026 · 1.5 years<br><br>
-        Ran the full commercial engine of an e-commerce business solo. Owned every function end-to-end — no team, no playbook, just outcomes.
+ 
+<section id="projects">
+  <div class="section-label">// 02 — Projects</div>
+  <h2 class="section-title">Proof of<br>work.</h2>
+  <div class="projects-grid">
+ 
+    <div class="project-card">
+      <div class="project-status status-live">● Live</div>
+      <div class="project-title">WhatsApp Sales Agent</div>
+      <p class="project-desc">Production-ready AI sales assistant for e-commerce. Handles product discovery, recommendations, and purchase flow over WhatsApp. 4-6 hour deployment per store.</p>
+      <div class="project-tags">
+        <span class="tag">Node.js</span>
+        <span class="tag">Express</span>
+        <span class="tag">Multi-tenant</span>
+        <span class="tag">E-commerce</span>
       </div>
-      <div class="bg-card-tags">
-        <span class="tag">Shopify</span>
-        <span class="tag">Meta Ads</span>
-        <span class="tag">Klaviyo</span>
-        <span class="tag">MercadoLibre</span>
-        <span class="tag">100+ weekly orders</span>
+      <a href="https://whatsapp-sales.vercel.app" target="_blank" class="project-link">View Live →</a>
+    </div>
+ 
+    <div class="project-card">
+      <div class="project-status status-live">● Live</div>
+      <div class="project-title">Composio Dependency Graph</div>
+      <p class="project-desc">Interactive visualization of Composio's tool dependency graph. Built to map how tools connect across the agent layer. 100+ Google integrations charted.</p>
+      <div class="project-tags">
+        <span class="tag">Agent Tooling</span>
+        <span class="tag">Visualization</span>
+        <span class="tag">Composio</span>
+      </div>
+      <a href="https://composio-dep-graph.vercel.app" target="_blank" class="project-link">View Live →</a>
+    </div>
+ 
+    <div class="project-card">
+      <div class="project-status status-active">● Active</div>
+      <div class="project-title">Operator Vault</div>
+      <p class="project-desc">Personal knowledge OS built in Obsidian, managed via Claude Code and MCP. The operator's equivalent of a codebase — every function documented, repeatable, and improvable.</p>
+      <div class="project-tags">
+        <span class="tag">Obsidian</span>
+        <span class="tag">Claude Code</span>
+        <span class="tag">MCP</span>
+        <span class="tag">gstack</span>
       </div>
     </div>
-    <div class="bg-card">
-      <div class="bg-card-label">Functions Owned</div>
-      <div class="bg-card-title">Full Commercial Stack</div>
-      <div class="bg-card-sub">Every layer of the business, operated simultaneously. This is what makes the transition to agent operator natural — I already know what each function needs.
-      </div>
-      <div class="bg-card-tags">
-        <span class="tag">Paid Acquisition</span>
-        <span class="tag">Retention / CRM</span>
-        <span class="tag">Operations</span>
-        <span class="tag">Copywriting</span>
-        <span class="tag">Analytics</span>
-        <span class="tag">Marketplace Ops</span>
-      </div>
-    </div>
-    <div class="bg-card">
-      <div class="bg-card-label">Now</div>
-      <div class="bg-card-title">Building in Public</div>
-      <div class="bg-card-sub">Repositioning as an Agent Operator. Building real systems, posting the process, and targeting remote roles at Series A/B startups globally.
-      </div>
-      <div class="bg-card-tags">
-        <span class="tag">Uruguay → Everywhere</span>
-        <span class="tag">Remote First</span>
-        <span class="tag">Open to Hire</span>
-      </div>
-    </div>
-    <div class="bg-card">
-      <div class="bg-card-label">Location</div>
-      <div class="bg-card-title">Montevideo, Uruguay</div>
-      <div class="bg-card-sub">Based in Montevideo. Operating globally. UTC-3. Available for async-first remote roles anywhere in the world.
-      </div>
-      <div class="bg-card-tags">
-        <span class="tag">GMT-3</span>
-        <span class="tag">Async Ready</span>
-        <span class="tag">Remote Only</span>
-      </div>
-    </div>
+ 
   </div>
 </section>
-
-<!-- SKILLS -->
+ 
 <section id="skills">
-  <div class="section-tag">// 03 — Skills</div>
+  <div class="section-label">// 03 — Skills</div>
   <h2 class="section-title">The stack.</h2>
-
   <div class="skills-grid">
-    <div class="skill-block">
+    <div class="skill-item">
       <div class="skill-num">01</div>
       <div class="skill-name">Agent Architecture</div>
-      <div class="skill-desc">Building multi-agent systems that run business functions. Prompt stacks, tool use, MCP integrations, workflow design.</div>
+      <p class="skill-desc">Multi-agent systems that run business functions. Prompt stacks, tool use, MCP integrations, workflow design.</p>
     </div>
-    <div class="skill-block">
+    <div class="skill-item">
       <div class="skill-num">02</div>
-      <div class="skill-name">Paid Acquisition</div>
-      <div class="skill-desc">Meta Ads end-to-end. Campaign structure, creative testing, audience strategy, ROAS optimization.</div>
-    </div>
-    <div class="skill-block">
-      <div class="skill-num">03</div>
-      <div class="skill-name">Retention & CRM</div>
-      <div class="skill-desc">Klaviyo flows, post-purchase sequences, LTV optimization, churn reduction. Email as a system, not a broadcast.</div>
-    </div>
-    <div class="skill-block">
-      <div class="skill-num">04</div>
-      <div class="skill-name">E-com Operations</div>
-      <div class="skill-desc">Shopify, MercadoLibre, marketplace ops, inventory coordination, order management at scale.</div>
-    </div>
-    <div class="skill-block">
-      <div class="skill-num">05</div>
       <div class="skill-name">Claude Code / CLI</div>
-      <div class="skill-desc">Daily user. Vault management, agent deployment, system building. Operator-level fluency — no engineering required.</div>
+      <p class="skill-desc">Daily user. Vault management, agent deployment, system building. Operator-level fluency — no engineering required.</p>
     </div>
-    <div class="skill-block">
+    <div class="skill-item">
+      <div class="skill-num">03</div>
+      <div class="skill-name">Paid Acquisition</div>
+      <p class="skill-desc">Meta Ads end-to-end. Campaign structure, creative testing, audience strategy, ROAS optimization.</p>
+    </div>
+    <div class="skill-item">
+      <div class="skill-num">04</div>
+      <div class="skill-name">Retention & CRM</div>
+      <p class="skill-desc">Klaviyo flows, post-purchase sequences, LTV optimization, churn reduction. Email as a system, not a broadcast.</p>
+    </div>
+    <div class="skill-item">
+      <div class="skill-num">05</div>
+      <div class="skill-name">E-com Operations</div>
+      <p class="skill-desc">Shopify, MercadoLibre, marketplace ops, inventory coordination, order management at scale.</p>
+    </div>
+    <div class="skill-item">
       <div class="skill-num">06</div>
       <div class="skill-name">Systems Thinking</div>
-      <div class="skill-desc">Obsidian-based knowledge management. Every function documented, repeatable, and improvable. The operator OS.</div>
+      <p class="skill-desc">Obsidian-based knowledge management. Every function documented, repeatable, and improvable. The operator OS.</p>
     </div>
   </div>
 </section>
-
-<!-- PROJECTS -->
-<section id="projects">
-  <div class="section-tag">// 04 — Projects</div>
-  <h2 class="section-title">Proof of work.</h2>
-
-  <div class="project-list">
-    <div class="project-item">
-      <div>
-        <div class="project-name">AI Sales Assistant</div>
-        <div class="project-desc">
-          Production-ready AI sales assistant architected for rapid client onboarding. Built in Node.js/Express with a four-layer architecture — conversation engine, store data loader, product matcher, and per-store config. Designed for e-commerce clients with 4–6 hour deployment per store. All conversation logic consolidated server-side.
+ 
+<section id="harness" style="padding: 80px 48px;">
+  <div class="section-label">// 04 — Media</div>
+  <div class="harness-banner">
+    <div class="harness-left">
+      <div class="harness-title">HARNESS</div>
+      <div class="harness-tagline">Signal for the agent layer. Operator-focused coverage of AI infrastructure, MCP, production systems, and what actually runs.</div>
+    </div>
+    <a href="https://x.com/harnessoperator" target="_blank" class="harness-link">Follow @harnessoperator →</a>
+  </div>
+</section>
+ 
+<section id="contact" style="padding: 80px 48px 100px;">
+  <div class="section-label">// 05 — Contact</div>
+  <div class="contact-grid">
+    <div class="contact-left">
+      <h2 class="contact-title">Let's work<br>together.</h2>
+      <p class="contact-desc">Open to remote operator roles and consulting engagements. If you're building something and need someone who can run functions with AI — let's talk.</p>
+      <div class="contact-links">
+        <a href="https://x.com/facundofranco_" target="_blank" class="contact-link">
+          <span>X / Twitter</span>
+          <span>@facundofranco_</span>
+        </a>
+        <a href="https://linkedin.com/in/facundo-franco" target="_blank" class="contact-link">
+          <span>LinkedIn</span>
+          <span>facundo-franco</span>
+        </a>
+        <a href="https://wellfound.com/u/facundo-franco-2" target="_blank" class="contact-link">
+          <span>Wellfound</span>
+          <span>facundo-franco-2</span>
+        </a>
+        <a href="https://linktr.ee/facundofranco" target="_blank" class="contact-link">
+          <span>Linktree</span>
+          <span>facundofranco</span>
+        </a>
+      </div>
+    </div>
+    <div class="contact-right">
+      <div class="available-label">
+        <div class="available-dot"></div>
+        Available Now
+      </div>
+      <div class="available-items">
+        <div class="available-item">
+          <span class="available-item-label">Role Type</span>
+          <span class="available-item-value">Agent Operator / FDE</span>
         </div>
-        <div class="bg-card-tags" style="margin-top: 16px;">
-          <span class="tag">Node.js</span>
-          <span class="tag">Express</span>
-          <span class="tag">Multi-tenant</span>
-          <span class="tag">E-commerce</span>
+        <div class="available-item">
+          <span class="available-item-label">Location</span>
+          <span class="available-item-value">Remote — Global</span>
+        </div>
+        <div class="available-item">
+          <span class="available-item-label">Stage</span>
+          <span class="available-item-value">Startup / Founder</span>
+        </div>
+        <div class="available-item">
+          <span class="available-item-label">Functions</span>
+          <span class="available-item-value">Growth · Ops · Revenue</span>
+        </div>
+        <div class="available-item">
+          <span class="available-item-label">Availability</span>
+          <span class="available-item-value">Immediate</span>
+        </div>
+        <div class="available-item">
+          <span class="available-item-label">Stack</span>
+          <span class="available-item-value">MCP · Claude Code · gstack</span>
         </div>
       </div>
-      <span class="project-status status-live">Production</span>
-    </div>
-    <div class="project-item">
-      <div>
-        <div class="project-name">NYCScout</div>
-        <div class="project-desc">
-          Location scouting tool for NYC with an agency and B2B workflow context. Early stage. Built around the insight that location data is fragmented and the research process is entirely manual — a perfect function for an agent stack.
-        </div>
-        <div class="bg-card-tags" style="margin-top: 16px;">
-          <span class="tag">B2B</span>
-          <span class="tag">Agency Workflow</span>
-          <span class="tag">NYC</span>
-        </div>
-      </div>
-      <span class="project-status status-building">Building</span>
-    </div>
-    <div class="project-item">
-      <div>
-        <div class="project-name">Operator Vault</div>
-        <div class="project-desc">
-          Personal knowledge OS built in Obsidian, managed via Claude Code. Organized across /me /vision /market /building /execution /system. A living system that compounds — the operator's equivalent of a codebase.
-        </div>
-        <div class="bg-card-tags" style="margin-top: 16px;">
-          <span class="tag">Obsidian</span>
-          <span class="tag">Claude Code</span>
-          <span class="tag">Systems</span>
-          <span class="tag">Knowledge Management</span>
-        </div>
-      </div>
-      <span class="project-status status-live">Active</span>
     </div>
   </div>
 </section>
-
-<!-- TARGET -->
-<section id="target">
-  <div class="section-tag">// 05 — Target Role</div>
-  <h2 class="section-title">What I'm<br>looking for.</h2>
-
-  <div class="target-grid">
-    <div class="target-block">
-      <div class="target-label">Stage</div>
-      <div class="target-value">Series A / B<br>Startup</div>
-    </div>
-    <div class="target-block">
-      <div class="target-label">Role Type</div>
-      <div class="target-value">Growth & Operations<br>Agent Operator</div>
-    </div>
-    <div class="target-block">
-      <div class="target-label">Location</div>
-      <div class="target-value">Remote — Global<br>Async First</div>
-    </div>
-    <div class="target-block">
-      <div class="target-label">Functions</div>
-      <div class="target-value">Growth · Ops · Marketing<br>Retention · Revenue</div>
-    </div>
-    <div class="target-block">
-      <div class="target-label">Availability</div>
-      <div class="target-value">Immediate<br>Open to Interview</div>
-    </div>
-    <div class="target-block">
-      <div class="target-label">What I Bring</div>
-      <div class="target-value">Full function ownership<br>+ agent execution layer</div>
-    </div>
-  </div>
-</section>
-
-<!-- CONTACT -->
-<section id="contact">
-  <div class="section-tag">// 06 — Contact</div>
-  <div class="contact-block">
-    <div>
-      <div class="contact-title">Let's work<br>together.</div>
-      <div class="contact-sub">Open to remote operator roles at Series A/B startups.<br>If you're building something and need someone who can run functions with AI — let's talk.</div>
-    </div>
-    <div class="contact-links">
-      <a href="https://x.com/facundofranco_" target="_blank" class="contact-link">
-        <div class="contact-link-dot"></div>
-        X / Twitter
-      </a>
-      <a href="https://linkedin.com/in/facundo-franco" target="_blank" class="contact-link">
-        <div class="contact-link-dot"></div>
-        LinkedIn
-      </a>
-      <a href="https://wellfound.com/u/facundo-franco-2" target="_blank" class="contact-link">
-        <div class="contact-link-dot"></div>
-        Wellfound
-      </a>
-      <a href="https://linktr.ee/facundofranco" target="_blank" class="contact-link">
-        <div class="contact-link-dot"></div>
-        Linktree
-      </a>
-    </div>
-  </div>
-</section>
-
-<!-- FOOTER -->
+ 
 <footer>
-  <div class="footer-text">© 2026 Facundo Franco — Agent Operator</div>
-  <div class="footer-handle">@facundofranco_</div>
+  <span>© 2026 Facundo Franco — Agent Operator</span>
+  <span>Montevideo, Uruguay → Everywhere</span>
+  <span>@facundofranco_</span>
 </footer>
-
+ 
 </body>
 </html>
