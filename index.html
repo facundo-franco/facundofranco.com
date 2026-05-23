@@ -5,33 +5,32 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Facundo Franco — Agent Operator</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
-<link href="https://fonts.googleapis.com/css2?family=Syne:wght@400;500;600;700;800&family=DM+Mono:wght@300;400;500&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Syne:wght@400;600;700;800&family=DM+Mono:wght@300;400;500&display=swap" rel="stylesheet">
 <style>
   :root {
-    --black: #0a0d1a;
-    --navy: #0f1628;
-    --gold: #b8963e;
-    --white: #F5F5F0;
-    --muted: #4a4a5a;
-    --border: #181e35;
+    --bg:     #0a0d1a;
+    --gold:   #b8963e;
+    --white:  #edecea;
+    --muted:  #58586e;
+    --dim:    #181d32;
   }
 
   * { margin: 0; padding: 0; box-sizing: border-box; }
-
   html { scroll-behavior: smooth; }
 
   body {
-    background: var(--black);
+    background: var(--bg);
     color: var(--white);
     font-family: 'DM Mono', monospace;
     font-size: 14px;
     line-height: 1.7;
     overflow-x: hidden;
+    -webkit-font-smoothing: antialiased;
   }
 
   a { color: inherit; text-decoration: none; }
 
-  /* NAV */
+  /* ─── NAV ─── */
   nav {
     position: fixed;
     top: 0; left: 0; right: 0;
@@ -39,29 +38,29 @@
     display: flex;
     justify-content: space-between;
     align-items: center;
-    padding: 24px 48px;
-    border-bottom: 1px solid var(--border);
-    background: rgba(10,13,26,0.96);
-    backdrop-filter: blur(8px);
+    padding: 28px 80px;
+    background: rgba(10,13,26,0.7);
+    backdrop-filter: blur(12px);
+    -webkit-backdrop-filter: blur(12px);
   }
 
   .nav-logo {
     font-family: 'Syne', sans-serif;
     font-weight: 800;
-    font-size: 18px;
-    letter-spacing: 2px;
-    color: var(--white);
+    font-size: 20px;
+    letter-spacing: 1px;
+    color: var(--gold);
   }
 
   .nav-links {
     display: flex;
-    gap: 32px;
+    gap: 40px;
     list-style: none;
   }
 
   .nav-links a {
-    font-size: 11px;
-    letter-spacing: 2px;
+    font-size: 10px;
+    letter-spacing: 2.5px;
     color: var(--muted);
     text-transform: uppercase;
     transition: color 0.2s;
@@ -70,50 +69,36 @@
   .nav-links a:hover { color: var(--white); }
 
   .nav-cta {
-    font-size: 11px;
-    letter-spacing: 2px;
+    font-size: 10px;
+    letter-spacing: 2.5px;
     text-transform: uppercase;
-    border: 1px solid var(--gold);
     color: var(--gold);
-    padding: 8px 20px;
-    transition: all 0.2s;
+    transition: opacity 0.2s;
   }
 
-  .nav-cta:hover {
-    background: var(--gold);
-    color: var(--black);
-  }
+  .nav-cta:hover { opacity: 0.65; }
 
-  /* HERO */
+  /* ─── HERO ─── */
   .hero {
-    min-height: 100vh;
+    height: 100vh;
+    min-height: 640px;
     display: flex;
     flex-direction: column;
     justify-content: center;
-    padding: 140px 48px 100px;
+    padding: 0 80px;
     position: relative;
-    border-bottom: 1px solid var(--border);
     overflow: hidden;
   }
 
-  .hero-bg-text {
-    position: absolute;
-    bottom: -40px;
-    right: -20px;
-    font-family: 'Syne', sans-serif;
-    font-size: clamp(100px, 15vw, 220px);
-    font-weight: 800;
-    color: rgba(255,255,255,0.02);
-    letter-spacing: -8px;
-    pointer-events: none;
-    white-space: nowrap;
-    z-index: 0;
+  .hero-line {
+    width: 48px;
+    height: 1px;
+    background: var(--gold);
+    margin-bottom: 40px;
   }
 
-  .hero > *:not(.hero-bg-text) { position: relative; z-index: 1; }
-
   .hero-label {
-    font-size: 11px;
+    font-size: 10px;
     letter-spacing: 4px;
     color: var(--gold);
     text-transform: uppercase;
@@ -122,38 +107,38 @@
 
   .hero-name {
     font-family: 'Syne', sans-serif;
-    font-size: clamp(56px, 8vw, 120px);
+    font-size: clamp(72px, 11vw, 168px);
     font-weight: 800;
-    line-height: 0.95;
-    letter-spacing: -3px;
-    margin-bottom: 48px;
+    line-height: 0.9;
+    letter-spacing: -4px;
+    margin-bottom: 64px;
   }
 
-  .hero-name span { color: var(--muted); }
+  .hero-name .dim { color: var(--muted); }
 
   .hero-desc {
-    max-width: 520px;
+    max-width: 440px;
     color: var(--muted);
-    font-size: 14px;
-    line-height: 1.9;
-    margin-bottom: 56px;
+    font-size: 13px;
+    line-height: 2;
+    margin-bottom: 64px;
   }
 
-  .hero-desc strong { color: var(--white); font-weight: 500; }
+  .hero-desc strong { color: var(--white); font-weight: 400; }
 
   .hero-actions {
     display: flex;
-    gap: 24px;
+    gap: 40px;
     align-items: center;
   }
 
   .btn-primary {
     font-family: 'DM Mono', monospace;
-    font-size: 11px;
-    letter-spacing: 2px;
+    font-size: 10px;
+    letter-spacing: 2.5px;
     text-transform: uppercase;
     background: var(--gold);
-    color: var(--black);
+    color: var(--bg);
     padding: 14px 32px;
     font-weight: 500;
     transition: opacity 0.2s;
@@ -162,22 +147,18 @@
   .btn-primary:hover { opacity: 0.85; }
 
   .btn-secondary {
-    font-family: 'DM Mono', monospace;
-    font-size: 11px;
-    letter-spacing: 2px;
+    font-size: 10px;
+    letter-spacing: 2.5px;
     text-transform: uppercase;
     color: var(--muted);
-    padding: 14px 0;
-    border-bottom: 1px solid var(--border);
-    transition: color 0.2s, border-color 0.2s;
+    transition: color 0.2s;
   }
 
-  .btn-secondary:hover { color: var(--white); border-color: var(--white); }
+  .btn-secondary:hover { color: var(--white); }
 
-  /* SECTION */
+  /* ─── SECTION SHELL ─── */
   section {
-    padding: 100px 48px;
-    border-bottom: 1px solid var(--border);
+    padding: 140px 80px;
   }
 
   .section-label {
@@ -185,238 +166,237 @@
     letter-spacing: 4px;
     color: var(--gold);
     text-transform: uppercase;
-    margin-bottom: 16px;
+    margin-bottom: 20px;
   }
 
   .section-title {
     font-family: 'Syne', sans-serif;
-    font-size: clamp(36px, 5vw, 64px);
+    font-size: clamp(40px, 5.5vw, 80px);
     font-weight: 800;
-    line-height: 1;
-    letter-spacing: -2px;
-    margin-bottom: 64px;
+    line-height: 0.92;
+    letter-spacing: -3px;
+    margin-bottom: 88px;
   }
 
-  /* THESIS */
+  /* ─── THESIS ─── */
+  .thesis-intro {
+    max-width: 560px;
+    color: var(--muted);
+    font-size: 14px;
+    line-height: 2;
+    margin-bottom: 80px;
+  }
+
+  .thesis-intro strong { color: var(--white); font-weight: 400; }
+
   .thesis-grid {
     display: grid;
     grid-template-columns: 1fr 1fr;
-    gap: 2px;
-    margin-top: 64px;
+    gap: 0;
   }
 
   .thesis-col {
-    padding: 48px;
-    border: 1px solid var(--border);
+    padding-right: 64px;
   }
 
-  .thesis-col.active { background: var(--navy); }
+  .thesis-col.active {
+    padding-right: 0;
+    padding-left: 64px;
+    border-left: 1px solid var(--dim);
+  }
 
   .thesis-col-label {
     font-size: 10px;
     letter-spacing: 3px;
     text-transform: uppercase;
     color: var(--muted);
-    margin-bottom: 32px;
+    margin-bottom: 40px;
   }
 
   .thesis-col.active .thesis-col-label { color: var(--gold); }
 
   .thesis-item {
     display: flex;
-    align-items: flex-start;
-    gap: 12px;
-    margin-bottom: 20px;
+    align-items: baseline;
+    gap: 20px;
+    padding: 18px 0;
+    border-bottom: 1px solid var(--dim);
     font-size: 13px;
     color: var(--muted);
   }
 
+  .thesis-item:first-of-type { border-top: 1px solid var(--dim); }
+
   .thesis-col.active .thesis-item { color: var(--white); }
 
-  .thesis-dot {
-    width: 4px;
-    height: 4px;
-    background: var(--muted);
-    border-radius: 50%;
-    margin-top: 8px;
+  .thesis-num {
+    font-size: 10px;
+    color: var(--muted);
+    letter-spacing: 1px;
     flex-shrink: 0;
   }
 
-  .thesis-col.active .thesis-dot { background: var(--gold); }
+  .thesis-col.active .thesis-num { color: var(--gold); }
 
-  /* PROJECTS */
-  .projects-grid {
+  /* ─── PROJECTS ─── */
+  .project-row {
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
-    gap: 2px;
+    grid-template-columns: 48px 1fr auto;
+    gap: 48px;
+    align-items: start;
+    padding: 52px 0;
+    border-top: 1px solid var(--dim);
   }
 
-  .project-card {
-    border: 1px solid var(--border);
-    padding: 48px 40px;
-    transition: border-color 0.2s, background 0.2s;
-  }
+  .project-row:last-child { border-bottom: 1px solid var(--dim); }
 
-  .project-card:hover {
-    border-color: var(--gold);
-    background: var(--navy);
+  .project-num {
+    font-size: 10px;
+    letter-spacing: 2px;
+    color: var(--gold);
+    padding-top: 5px;
   }
 
   .project-status {
     font-size: 10px;
-    letter-spacing: 3px;
+    letter-spacing: 2px;
     text-transform: uppercase;
-    margin-bottom: 28px;
+    margin-bottom: 16px;
   }
 
-  .status-live { color: #4CAF50; }
-  .status-building { color: var(--gold); }
-  .status-active { color: #64B5F6; }
+  .status-live    { color: #4caf50; }
+  .status-active  { color: #64b5f6; }
+  .status-building{ color: var(--gold); }
 
   .project-title {
     font-family: 'Syne', sans-serif;
     font-size: 24px;
     font-weight: 700;
-    margin-bottom: 16px;
     letter-spacing: -0.5px;
+    margin-bottom: 12px;
   }
 
   .project-desc {
     color: var(--muted);
     font-size: 13px;
-    line-height: 1.8;
-    margin-bottom: 32px;
+    line-height: 1.85;
+    margin-bottom: 20px;
+    max-width: 560px;
   }
 
   .project-tags {
     display: flex;
     flex-wrap: wrap;
-    gap: 8px;
-    margin-bottom: 32px;
+    gap: 20px;
   }
 
   .tag {
     font-size: 10px;
     letter-spacing: 1px;
     text-transform: uppercase;
-    border: 1px solid var(--border);
-    padding: 4px 10px;
     color: var(--muted);
   }
 
   .project-link {
-    font-size: 11px;
-    letter-spacing: 2px;
+    font-size: 10px;
+    letter-spacing: 2.5px;
     text-transform: uppercase;
     color: var(--gold);
-    border-bottom: 1px solid var(--gold);
-    padding-bottom: 2px;
-    display: inline-block;
+    white-space: nowrap;
+    padding-top: 5px;
     transition: opacity 0.2s;
   }
 
-  .project-link:hover { opacity: 0.7; }
+  .project-link:hover { opacity: 0.65; }
 
-  /* SKILLS */
-  .skills-grid {
+  /* ─── SKILLS ─── */
+  .skill-row {
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-    gap: 2px;
+    grid-template-columns: 48px 220px 1fr;
+    gap: 48px;
+    align-items: baseline;
+    padding: 40px 0;
+    border-top: 1px solid var(--dim);
   }
 
-  .skill-item {
-    border: 1px solid var(--border);
-    padding: 40px;
-  }
+  .skill-row:last-child { border-bottom: 1px solid var(--dim); }
 
   .skill-num {
     font-size: 10px;
     letter-spacing: 2px;
     color: var(--gold);
-    margin-bottom: 16px;
   }
 
   .skill-name {
     font-family: 'Syne', sans-serif;
     font-size: 16px;
-    font-weight: 700;
-    margin-bottom: 10px;
+    font-weight: 600;
+    letter-spacing: -0.3px;
   }
 
   .skill-desc {
-    font-size: 12px;
+    font-size: 13px;
     color: var(--muted);
-    line-height: 1.7;
+    line-height: 1.75;
   }
 
-  /* BUILDING */
+  /* ─── BUILDING ─── */
   .building-grid {
     display: grid;
-    grid-template-columns: 1fr 1fr;
-    gap: 2px;
+    grid-template-columns: 1fr 1px 1fr;
+    gap: 0;
+    align-items: start;
   }
 
-  .building-card {
-    border: 1px solid var(--border);
-    padding: 56px 48px;
-    background: var(--navy);
-    display: flex;
-    flex-direction: column;
-    justify-content: space-between;
-    gap: 32px;
-    transition: border-color 0.2s;
+  .building-divider { background: var(--dim); align-self: stretch; }
+
+  .building-item {
+    padding-right: 64px;
   }
 
-  .building-card:hover { border-color: var(--gold); }
-
-  .building-card-top {}
+  .building-item + .building-divider + .building-item {
+    padding-right: 0;
+    padding-left: 64px;
+  }
 
   .building-name {
     font-family: 'Syne', sans-serif;
-    font-size: 32px;
+    font-size: 36px;
     font-weight: 800;
-    letter-spacing: 4px;
-    margin-bottom: 12px;
+    letter-spacing: 6px;
+    margin-bottom: 20px;
   }
 
   .building-tagline {
     color: var(--muted);
     font-size: 13px;
-    line-height: 1.7;
-    max-width: 380px;
+    line-height: 1.85;
+    margin-bottom: 36px;
+    max-width: 340px;
   }
 
   .building-link {
-    font-size: 11px;
-    letter-spacing: 2px;
+    font-size: 10px;
+    letter-spacing: 2.5px;
     text-transform: uppercase;
     color: var(--gold);
-    border-bottom: 1px solid var(--gold);
-    padding-bottom: 2px;
-    display: inline-block;
     transition: opacity 0.2s;
-    align-self: flex-start;
   }
 
-  .building-link:hover { opacity: 0.7; }
+  .building-link:hover { opacity: 0.65; }
 
-  /* CONTACT */
+  /* ─── CONTACT ─── */
   .contact-grid {
     display: grid;
     grid-template-columns: 1fr 1fr;
-    gap: 2px;
-  }
-
-  .contact-left {
-    border: 1px solid var(--border);
-    padding: 64px 48px;
+    gap: 80px;
   }
 
   .contact-title {
     font-family: 'Syne', sans-serif;
-    font-size: clamp(32px, 4vw, 56px);
+    font-size: clamp(36px, 4.5vw, 64px);
     font-weight: 800;
-    line-height: 1;
+    line-height: 0.92;
     letter-spacing: -2px;
     margin-bottom: 28px;
   }
@@ -424,105 +404,112 @@
   .contact-desc {
     color: var(--muted);
     font-size: 13px;
-    line-height: 1.8;
-    margin-bottom: 48px;
-    max-width: 360px;
-  }
-
-  .contact-links {
-    display: flex;
-    flex-direction: column;
-    gap: 0;
+    line-height: 1.9;
+    margin-bottom: 56px;
+    max-width: 340px;
   }
 
   .contact-link {
-    font-size: 11px;
+    font-size: 10px;
     letter-spacing: 2px;
     text-transform: uppercase;
     color: var(--muted);
-    border-bottom: 1px solid var(--border);
-    padding: 16px 0;
+    border-bottom: 1px solid var(--dim);
+    padding: 18px 0;
     display: flex;
     justify-content: space-between;
     align-items: center;
-    transition: color 0.2s, border-color 0.2s;
+    transition: color 0.2s;
   }
 
-  .contact-link:hover { color: var(--white); border-color: var(--white); }
-
-  .contact-right {
-    border: 1px solid var(--border);
-    padding: 64px 48px;
-    background: var(--navy);
-  }
+  .contact-link:first-of-type { border-top: 1px solid var(--dim); }
+  .contact-link:hover { color: var(--white); }
 
   .available-label {
     font-size: 10px;
     letter-spacing: 4px;
     color: var(--gold);
     text-transform: uppercase;
-    margin-bottom: 40px;
+    margin-bottom: 48px;
     display: flex;
     align-items: center;
-    gap: 8px;
+    gap: 10px;
   }
 
   .available-dot {
     width: 6px;
     height: 6px;
-    background: #4CAF50;
+    background: #4caf50;
     border-radius: 50%;
     animation: pulse 2s infinite;
+    flex-shrink: 0;
   }
 
   @keyframes pulse {
     0%, 100% { opacity: 1; }
-    50% { opacity: 0.3; }
-  }
-
-  .available-items {
-    display: flex;
-    flex-direction: column;
-    gap: 2px;
+    50%       { opacity: 0.3; }
   }
 
   .available-item {
-    border: 1px solid var(--border);
-    padding: 20px 24px;
+    padding: 18px 0;
+    border-bottom: 1px solid var(--dim);
     display: flex;
     justify-content: space-between;
     font-size: 12px;
   }
 
+  .available-item:first-of-type { border-top: 1px solid var(--dim); }
+
   .available-item-label { color: var(--muted); letter-spacing: 1px; }
   .available-item-value { color: var(--white); }
 
-  /* FOOTER */
+  /* ─── FOOTER ─── */
   footer {
-    padding: 32px 48px;
+    padding: 32px 80px;
     display: flex;
     justify-content: space-between;
     align-items: center;
-    font-size: 11px;
-    letter-spacing: 1px;
+    font-size: 10px;
+    letter-spacing: 1.5px;
     color: var(--muted);
+    border-top: 1px solid var(--dim);
   }
 
-  /* RESPONSIVE */
-  @media (max-width: 768px) {
-    nav { padding: 20px 24px; }
+  /* ─── RESPONSIVE ─── */
+  @media (max-width: 900px) {
+    nav { padding: 24px 28px; }
     .nav-links { display: none; }
-    .hero { padding: 100px 24px 60px; }
-    section { padding: 64px 24px; }
-    .thesis-grid { grid-template-columns: 1fr; }
+    .nav-cta { display: none; }
+
+    .hero { padding: 0 28px; }
+    .hero-name { font-size: clamp(56px, 14vw, 120px); letter-spacing: -2px; }
+
+    section { padding: 96px 28px; }
+
+    .thesis-grid { grid-template-columns: 1fr; gap: 0; }
+    .thesis-col { padding-right: 0; margin-bottom: 56px; }
+    .thesis-col.active { padding-left: 0; border-left: none; border-top: 1px solid var(--dim); padding-top: 56px; margin-bottom: 0; }
+
+    .project-row { grid-template-columns: 36px 1fr; gap: 20px; }
+    .project-row > .project-link { display: none; }
+
+    .skill-row { grid-template-columns: 36px 1fr; gap: 20px; }
+    .skill-row > .skill-desc { display: none; }
+
     .building-grid { grid-template-columns: 1fr; }
-    .contact-grid { grid-template-columns: 1fr; }
-    footer { padding: 24px; flex-direction: column; gap: 12px; text-align: center; }
+    .building-divider { display: none; }
+    .building-item { padding-right: 0; margin-bottom: 56px; }
+    .building-item + .building-divider + .building-item { padding-left: 0; margin-bottom: 0; }
+
+    .contact-grid { grid-template-columns: 1fr; gap: 64px; }
+
+    footer { padding: 28px; flex-direction: column; gap: 12px; text-align: center; }
   }
 </style>
 </head>
 <body>
 
+<!-- NAV -->
 <nav>
   <div class="nav-logo">FF.</div>
   <ul class="nav-links">
@@ -535,10 +522,11 @@
   <a href="#contact" class="nav-cta">Work Together</a>
 </nav>
 
+<!-- HERO -->
 <section class="hero">
-  <div class="hero-bg-text">OPERATOR</div>
+  <div class="hero-line"></div>
   <div class="hero-label">// Building the operator layer.</div>
-  <h1 class="hero-name">Facundo<br><span>Franco.</span></h1>
+  <h1 class="hero-name">Facundo<br><span class="dim">Franco.</span></h1>
   <p class="hero-desc">
     I run business functions using <strong>AI agents as the execution layer.</strong><br>
     An operator who understands both <strong>how a business works</strong> and <strong>how to make agents run it.</strong>
@@ -549,38 +537,41 @@
   </div>
 </section>
 
+<!-- THESIS -->
 <section id="thesis">
   <div class="section-label">// 01 — The Thesis</div>
   <h2 class="section-title">What is an<br>Agent Operator?</h2>
-  <p style="max-width:560px; color:var(--muted); font-size:14px; line-height:1.9;">
-    Most companies need to redesign their workflows for agents — but don't have anyone who understands both the <strong style="color:var(--white)">business function</strong> and the <strong style="color:var(--white)">AI layer</strong>. The agent operator fills that gap.
+  <p class="thesis-intro">
+    Most companies need to redesign their workflows for agents — but don't have anyone who understands both the <strong>business function</strong> and the <strong>AI layer</strong>. The agent operator fills that gap.
   </p>
   <div class="thesis-grid">
     <div class="thesis-col">
       <div class="thesis-col-label">Old Operator</div>
-      <div class="thesis-item"><div class="thesis-dot"></div>Runs functions manually</div>
-      <div class="thesis-item"><div class="thesis-dot"></div>Execution eats all time</div>
-      <div class="thesis-item"><div class="thesis-dot"></div>Scales by hiring</div>
-      <div class="thesis-item"><div class="thesis-dot"></div>Bottleneck: bandwidth</div>
-      <div class="thesis-item"><div class="thesis-dot"></div>Output limited by hours</div>
+      <div class="thesis-item"><span class="thesis-num">—</span>Runs functions manually</div>
+      <div class="thesis-item"><span class="thesis-num">—</span>Execution eats all time</div>
+      <div class="thesis-item"><span class="thesis-num">—</span>Scales by hiring</div>
+      <div class="thesis-item"><span class="thesis-num">—</span>Bottleneck: bandwidth</div>
+      <div class="thesis-item"><span class="thesis-num">—</span>Output limited by hours</div>
     </div>
     <div class="thesis-col active">
       <div class="thesis-col-label">Agent Operator</div>
-      <div class="thesis-item"><div class="thesis-dot"></div>Directs agents to run functions</div>
-      <div class="thesis-item"><div class="thesis-dot"></div>Execution runs itself</div>
-      <div class="thesis-item"><div class="thesis-dot"></div>Scales by improving systems</div>
-      <div class="thesis-item"><div class="thesis-dot"></div>Bottleneck: judgment</div>
-      <div class="thesis-item"><div class="thesis-dot"></div>Output limited by imagination</div>
+      <div class="thesis-item"><span class="thesis-num">→</span>Directs agents to run functions</div>
+      <div class="thesis-item"><span class="thesis-num">→</span>Execution runs itself</div>
+      <div class="thesis-item"><span class="thesis-num">→</span>Scales by improving systems</div>
+      <div class="thesis-item"><span class="thesis-num">→</span>Bottleneck: judgment</div>
+      <div class="thesis-item"><span class="thesis-num">→</span>Output limited by imagination</div>
     </div>
   </div>
 </section>
 
+<!-- PROJECTS -->
 <section id="projects">
   <div class="section-label">// 02 — Projects</div>
   <h2 class="section-title">Proof of<br>work.</h2>
-  <div class="projects-grid">
 
-    <div class="project-card">
+  <div class="project-row">
+    <div class="project-num">01</div>
+    <div class="project-body">
       <div class="project-status status-live">● Live</div>
       <div class="project-title">Sella</div>
       <p class="project-desc">AI agent that converts conversations into sales. Handles product discovery, qualification, and purchase flow over WhatsApp. Deploys in hours, not weeks.</p>
@@ -590,10 +581,13 @@
         <span class="tag">WhatsApp</span>
         <span class="tag">E-commerce</span>
       </div>
-      <a href="https://whatsapp-sales.vercel.app" target="_blank" class="project-link">View Live →</a>
     </div>
+    <a href="https://whatsapp-sales.vercel.app" target="_blank" class="project-link">View Live →</a>
+  </div>
 
-    <div class="project-card">
+  <div class="project-row">
+    <div class="project-num">02</div>
+    <div class="project-body">
       <div class="project-status status-live">● Live</div>
       <div class="project-title">Composio Dependency Graph</div>
       <p class="project-desc">Interactive visualization of Composio's tool dependency graph. Maps how tools connect across the agent layer. 100+ Google integrations charted.</p>
@@ -602,10 +596,13 @@
         <span class="tag">Visualization</span>
         <span class="tag">Composio</span>
       </div>
-      <a href="https://composio-dep-graph.vercel.app" target="_blank" class="project-link">View Live →</a>
     </div>
+    <a href="https://composio-dep-graph.vercel.app" target="_blank" class="project-link">View Live →</a>
+  </div>
 
-    <div class="project-card">
+  <div class="project-row">
+    <div class="project-num">03</div>
+    <div class="project-body">
       <div class="project-status status-active">● Active</div>
       <div class="project-title">Operator Vault</div>
       <p class="project-desc">Personal knowledge OS built in Obsidian, managed via Claude Code and MCP. Every function documented, repeatable, and improvable.</p>
@@ -616,123 +613,120 @@
         <span class="tag">gstack</span>
       </div>
     </div>
-
+    <div></div>
   </div>
+
 </section>
 
+<!-- SKILLS -->
 <section id="skills">
   <div class="section-label">// 03 — Skills</div>
   <h2 class="section-title">The stack.</h2>
-  <div class="skills-grid">
-    <div class="skill-item">
-      <div class="skill-num">01</div>
-      <div class="skill-name">Agent Architecture</div>
-      <p class="skill-desc">Multi-agent systems that run business functions. Prompt stacks, tool use, MCP integrations, workflow design.</p>
-    </div>
-    <div class="skill-item">
-      <div class="skill-num">02</div>
-      <div class="skill-name">Claude Code / CLI</div>
-      <p class="skill-desc">Daily user. Vault management, agent deployment, system building. Operator-level fluency.</p>
-    </div>
-    <div class="skill-item">
-      <div class="skill-num">03</div>
-      <div class="skill-name">Paid Acquisition</div>
-      <p class="skill-desc">Meta Ads end-to-end. Campaign structure, creative testing, audience strategy, ROAS optimization.</p>
-    </div>
-    <div class="skill-item">
-      <div class="skill-num">04</div>
-      <div class="skill-name">Retention & CRM</div>
-      <p class="skill-desc">Klaviyo flows, post-purchase sequences, LTV optimization. Email as a system, not a broadcast.</p>
-    </div>
-    <div class="skill-item">
-      <div class="skill-num">05</div>
-      <div class="skill-name">E-com Operations</div>
-      <p class="skill-desc">Shopify, MercadoLibre, marketplace ops, inventory coordination, order management at scale.</p>
-    </div>
-    <div class="skill-item">
-      <div class="skill-num">06</div>
-      <div class="skill-name">Systems Thinking</div>
-      <p class="skill-desc">Obsidian-based knowledge management. Every function documented, repeatable, and improvable.</p>
-    </div>
+
+  <div class="skill-row">
+    <div class="skill-num">01</div>
+    <div class="skill-name">Agent Architecture</div>
+    <p class="skill-desc">Multi-agent systems that run business functions. Prompt stacks, tool use, MCP integrations, workflow design.</p>
   </div>
+  <div class="skill-row">
+    <div class="skill-num">02</div>
+    <div class="skill-name">Claude Code / CLI</div>
+    <p class="skill-desc">Daily user. Vault management, agent deployment, system building. Operator-level fluency.</p>
+  </div>
+  <div class="skill-row">
+    <div class="skill-num">03</div>
+    <div class="skill-name">Paid Acquisition</div>
+    <p class="skill-desc">Meta Ads end-to-end. Campaign structure, creative testing, audience strategy, ROAS optimization.</p>
+  </div>
+  <div class="skill-row">
+    <div class="skill-num">04</div>
+    <div class="skill-name">Retention &amp; CRM</div>
+    <p class="skill-desc">Klaviyo flows, post-purchase sequences, LTV optimization. Email as a system, not a broadcast.</p>
+  </div>
+  <div class="skill-row">
+    <div class="skill-num">05</div>
+    <div class="skill-name">E-com Operations</div>
+    <p class="skill-desc">Shopify, MercadoLibre, marketplace ops, inventory coordination, order management at scale.</p>
+  </div>
+  <div class="skill-row">
+    <div class="skill-num">06</div>
+    <div class="skill-name">Systems Thinking</div>
+    <p class="skill-desc">Obsidian-based knowledge management. Every function documented, repeatable, and improvable.</p>
+  </div>
+
 </section>
 
-<section id="building" style="padding: 100px 48px;">
+<!-- BUILDING -->
+<section id="building">
   <div class="section-label">// 04 — Building</div>
   <h2 class="section-title">Companies.</h2>
   <div class="building-grid">
-    <div class="building-card">
-      <div class="building-card-top">
-        <div class="building-name">SELLA</div>
-        <p class="building-tagline">AI agent that converts conversations into sales. Built for e-commerce operators who want revenue, not more headcount.</p>
-      </div>
+    <div class="building-item">
+      <div class="building-name">SELLA</div>
+      <p class="building-tagline">AI agent that converts conversations into sales. Built for e-commerce operators who want revenue, not more headcount.</p>
       <a href="https://whatsapp-sales.vercel.app" target="_blank" class="building-link">Visit Sella →</a>
     </div>
-    <div class="building-card">
-      <div class="building-card-top">
-        <div class="building-name">HARNESS</div>
-        <p class="building-tagline">Signal for the agent layer. Operator-focused coverage of AI infrastructure, MCP, production systems, and what actually runs.</p>
-      </div>
+    <div class="building-divider"></div>
+    <div class="building-item">
+      <div class="building-name">HARNESS</div>
+      <p class="building-tagline">Signal for the agent layer. Operator-focused coverage of AI infrastructure, MCP, production systems, and what actually runs.</p>
       <a href="https://x.com/harnessoperator" target="_blank" class="building-link">Follow @harnessoperator →</a>
     </div>
   </div>
 </section>
 
-<section id="contact" style="padding: 80px 48px 100px;">
+<!-- CONTACT -->
+<section id="contact">
   <div class="section-label">// 05 — Contact</div>
   <div class="contact-grid">
-    <div class="contact-left">
+    <div>
       <h2 class="contact-title">Let's work<br>together.</h2>
       <p class="contact-desc">Open to remote operator roles and consulting engagements. Building something and need someone who can run functions with AI — let's talk.</p>
-      <div class="contact-links">
-        <a href="https://x.com/facundofranco_" target="_blank" class="contact-link">
-          <span>X / Twitter</span>
-          <span>@facundofranco_</span>
-        </a>
-        <a href="https://linkedin.com/in/facundo-franco" target="_blank" class="contact-link">
-          <span>LinkedIn</span>
-          <span>facundo-franco</span>
-        </a>
-        <a href="https://wellfound.com/u/facundo-franco-2" target="_blank" class="contact-link">
-          <span>Wellfound</span>
-          <span>facundo-franco-2</span>
-        </a>
-        <a href="https://linktr.ee/facundofranco" target="_blank" class="contact-link">
-          <span>Linktree</span>
-          <span>facundofranco</span>
-        </a>
-      </div>
+      <a href="https://x.com/facundofranco_" target="_blank" class="contact-link">
+        <span>X / Twitter</span>
+        <span>@facundofranco_</span>
+      </a>
+      <a href="https://linkedin.com/in/facundo-franco" target="_blank" class="contact-link">
+        <span>LinkedIn</span>
+        <span>facundo-franco</span>
+      </a>
+      <a href="https://wellfound.com/u/facundo-franco-2" target="_blank" class="contact-link">
+        <span>Wellfound</span>
+        <span>facundo-franco-2</span>
+      </a>
+      <a href="https://linktr.ee/facundofranco" target="_blank" class="contact-link">
+        <span>Linktree</span>
+        <span>facundofranco</span>
+      </a>
     </div>
-    <div class="contact-right">
+    <div>
       <div class="available-label">
         <div class="available-dot"></div>
         Available Now
       </div>
-      <div class="available-items">
-        <div class="available-item">
-          <span class="available-item-label">Role Type</span>
-          <span class="available-item-value">Agent Operator / FDE</span>
-        </div>
-        <div class="available-item">
-          <span class="available-item-label">Location</span>
-          <span class="available-item-value">Remote — Global</span>
-        </div>
-        <div class="available-item">
-          <span class="available-item-label">Stage</span>
-          <span class="available-item-value">Startup / Founder</span>
-        </div>
-        <div class="available-item">
-          <span class="available-item-label">Functions</span>
-          <span class="available-item-value">Growth · Ops · Revenue</span>
-        </div>
-        <div class="available-item">
-          <span class="available-item-label">Availability</span>
-          <span class="available-item-value">Immediate</span>
-        </div>
-        <div class="available-item">
-          <span class="available-item-label">Stack</span>
-          <span class="available-item-value">MCP · Claude Code · gstack</span>
-        </div>
+      <div class="available-item">
+        <span class="available-item-label">Role Type</span>
+        <span class="available-item-value">Agent Operator / FDE</span>
+      </div>
+      <div class="available-item">
+        <span class="available-item-label">Location</span>
+        <span class="available-item-value">Remote — Global</span>
+      </div>
+      <div class="available-item">
+        <span class="available-item-label">Stage</span>
+        <span class="available-item-value">Startup / Founder</span>
+      </div>
+      <div class="available-item">
+        <span class="available-item-label">Functions</span>
+        <span class="available-item-value">Growth · Ops · Revenue</span>
+      </div>
+      <div class="available-item">
+        <span class="available-item-label">Availability</span>
+        <span class="available-item-value">Immediate</span>
+      </div>
+      <div class="available-item">
+        <span class="available-item-label">Stack</span>
+        <span class="available-item-value">MCP · Claude Code · gstack</span>
       </div>
     </div>
   </div>
