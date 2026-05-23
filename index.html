@@ -8,18 +8,18 @@
 <link href="https://fonts.googleapis.com/css2?family=Syne:wght@400;500;600;700;800&family=DM+Mono:wght@300;400;500&display=swap" rel="stylesheet">
 <style>
   :root {
-    --black: #080808;
-    --navy: #0B1220;
-    --gold: #C9A84C;
+    --black: #0a0d1a;
+    --navy: #0f1628;
+    --gold: #b8963e;
     --white: #F5F5F0;
-    --muted: #555560;
-    --border: #1A1A2A;
+    --muted: #4a4a5a;
+    --border: #181e35;
   }
- 
+
   * { margin: 0; padding: 0; box-sizing: border-box; }
- 
+
   html { scroll-behavior: smooth; }
- 
+
   body {
     background: var(--black);
     color: var(--white);
@@ -28,9 +28,9 @@
     line-height: 1.7;
     overflow-x: hidden;
   }
- 
+
   a { color: inherit; text-decoration: none; }
- 
+
   /* NAV */
   nav {
     position: fixed;
@@ -41,10 +41,10 @@
     align-items: center;
     padding: 24px 48px;
     border-bottom: 1px solid var(--border);
-    background: rgba(8,8,8,0.95);
+    background: rgba(10,13,26,0.96);
     backdrop-filter: blur(8px);
   }
- 
+
   .nav-logo {
     font-family: 'Syne', sans-serif;
     font-weight: 800;
@@ -52,13 +52,13 @@
     letter-spacing: 2px;
     color: var(--white);
   }
- 
+
   .nav-links {
     display: flex;
     gap: 32px;
     list-style: none;
   }
- 
+
   .nav-links a {
     font-size: 11px;
     letter-spacing: 2px;
@@ -66,9 +66,9 @@
     text-transform: uppercase;
     transition: color 0.2s;
   }
- 
+
   .nav-links a:hover { color: var(--white); }
- 
+
   .nav-cta {
     font-size: 11px;
     letter-spacing: 2px;
@@ -78,24 +78,24 @@
     padding: 8px 20px;
     transition: all 0.2s;
   }
- 
+
   .nav-cta:hover {
     background: var(--gold);
     color: var(--black);
   }
- 
+
   /* HERO */
   .hero {
     min-height: 100vh;
     display: flex;
     flex-direction: column;
     justify-content: center;
-    padding: 140px 48px 80px;
+    padding: 140px 48px 100px;
     position: relative;
     border-bottom: 1px solid var(--border);
     overflow: hidden;
   }
- 
+
   .hero-bg-text {
     position: absolute;
     bottom: -40px;
@@ -103,50 +103,50 @@
     font-family: 'Syne', sans-serif;
     font-size: clamp(100px, 15vw, 220px);
     font-weight: 800;
-    color: rgba(255,255,255,0.025);
+    color: rgba(255,255,255,0.02);
     letter-spacing: -8px;
     pointer-events: none;
     white-space: nowrap;
     z-index: 0;
   }
- 
+
   .hero > *:not(.hero-bg-text) { position: relative; z-index: 1; }
- 
+
   .hero-label {
     font-size: 11px;
     letter-spacing: 4px;
     color: var(--gold);
     text-transform: uppercase;
-    margin-bottom: 32px;
+    margin-bottom: 40px;
   }
- 
+
   .hero-name {
     font-family: 'Syne', sans-serif;
     font-size: clamp(56px, 8vw, 120px);
     font-weight: 800;
     line-height: 0.95;
     letter-spacing: -3px;
-    margin-bottom: 40px;
-  }
- 
-  .hero-name span { color: var(--muted); }
- 
-  .hero-desc {
-    max-width: 560px;
-    color: var(--muted);
-    font-size: 15px;
-    line-height: 1.8;
     margin-bottom: 48px;
   }
- 
+
+  .hero-name span { color: var(--muted); }
+
+  .hero-desc {
+    max-width: 520px;
+    color: var(--muted);
+    font-size: 14px;
+    line-height: 1.9;
+    margin-bottom: 56px;
+  }
+
   .hero-desc strong { color: var(--white); font-weight: 500; }
- 
+
   .hero-actions {
     display: flex;
-    gap: 16px;
+    gap: 24px;
     align-items: center;
   }
- 
+
   .btn-primary {
     font-family: 'DM Mono', monospace;
     font-size: 11px;
@@ -158,9 +158,9 @@
     font-weight: 500;
     transition: opacity 0.2s;
   }
- 
+
   .btn-primary:hover { opacity: 0.85; }
- 
+
   .btn-secondary {
     font-family: 'DM Mono', monospace;
     font-size: 11px;
@@ -171,15 +171,15 @@
     border-bottom: 1px solid var(--border);
     transition: color 0.2s, border-color 0.2s;
   }
- 
+
   .btn-secondary:hover { color: var(--white); border-color: var(--white); }
- 
+
   /* SECTION */
   section {
     padding: 100px 48px;
     border-bottom: 1px solid var(--border);
   }
- 
+
   .section-label {
     font-size: 10px;
     letter-spacing: 4px;
@@ -187,7 +187,7 @@
     text-transform: uppercase;
     margin-bottom: 16px;
   }
- 
+
   .section-title {
     font-family: 'Syne', sans-serif;
     font-size: clamp(36px, 5vw, 64px);
@@ -196,43 +196,43 @@
     letter-spacing: -2px;
     margin-bottom: 64px;
   }
- 
+
   /* THESIS */
   .thesis-grid {
     display: grid;
     grid-template-columns: 1fr 1fr;
     gap: 2px;
-    margin-top: 48px;
+    margin-top: 64px;
   }
- 
+
   .thesis-col {
-    padding: 40px;
+    padding: 48px;
     border: 1px solid var(--border);
   }
- 
+
   .thesis-col.active { background: var(--navy); }
- 
+
   .thesis-col-label {
     font-size: 10px;
     letter-spacing: 3px;
     text-transform: uppercase;
     color: var(--muted);
-    margin-bottom: 24px;
+    margin-bottom: 32px;
   }
- 
+
   .thesis-col.active .thesis-col-label { color: var(--gold); }
- 
+
   .thesis-item {
     display: flex;
     align-items: flex-start;
     gap: 12px;
-    margin-bottom: 16px;
+    margin-bottom: 20px;
     font-size: 13px;
     color: var(--muted);
   }
- 
+
   .thesis-col.active .thesis-item { color: var(--white); }
- 
+
   .thesis-dot {
     width: 4px;
     height: 4px;
@@ -241,61 +241,60 @@
     margin-top: 8px;
     flex-shrink: 0;
   }
- 
+
   .thesis-col.active .thesis-dot { background: var(--gold); }
- 
+
   /* PROJECTS */
   .projects-grid {
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
     gap: 2px;
   }
- 
+
   .project-card {
     border: 1px solid var(--border);
-    padding: 40px;
+    padding: 48px 40px;
     transition: border-color 0.2s, background 0.2s;
-    position: relative;
   }
- 
+
   .project-card:hover {
     border-color: var(--gold);
     background: var(--navy);
   }
- 
+
   .project-status {
     font-size: 10px;
     letter-spacing: 3px;
     text-transform: uppercase;
-    margin-bottom: 24px;
+    margin-bottom: 28px;
   }
- 
+
   .status-live { color: #4CAF50; }
   .status-building { color: var(--gold); }
   .status-active { color: #64B5F6; }
- 
+
   .project-title {
     font-family: 'Syne', sans-serif;
-    font-size: 22px;
+    font-size: 24px;
     font-weight: 700;
-    margin-bottom: 12px;
+    margin-bottom: 16px;
     letter-spacing: -0.5px;
   }
- 
+
   .project-desc {
     color: var(--muted);
     font-size: 13px;
-    line-height: 1.7;
-    margin-bottom: 24px;
+    line-height: 1.8;
+    margin-bottom: 32px;
   }
- 
+
   .project-tags {
     display: flex;
     flex-wrap: wrap;
     gap: 8px;
-    margin-bottom: 24px;
+    margin-bottom: 32px;
   }
- 
+
   .tag {
     font-size: 10px;
     letter-spacing: 1px;
@@ -304,7 +303,7 @@
     padding: 4px 10px;
     color: var(--muted);
   }
- 
+
   .project-link {
     font-size: 11px;
     letter-spacing: 2px;
@@ -315,149 +314,159 @@
     display: inline-block;
     transition: opacity 0.2s;
   }
- 
+
   .project-link:hover { opacity: 0.7; }
- 
+
   /* SKILLS */
   .skills-grid {
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
     gap: 2px;
   }
- 
+
   .skill-item {
     border: 1px solid var(--border);
-    padding: 32px 40px;
+    padding: 40px;
   }
- 
+
   .skill-num {
     font-size: 10px;
     letter-spacing: 2px;
     color: var(--gold);
-    margin-bottom: 12px;
+    margin-bottom: 16px;
   }
- 
+
   .skill-name {
     font-family: 'Syne', sans-serif;
     font-size: 16px;
     font-weight: 700;
-    margin-bottom: 8px;
+    margin-bottom: 10px;
   }
- 
+
   .skill-desc {
     font-size: 12px;
     color: var(--muted);
-    line-height: 1.6;
+    line-height: 1.7;
   }
- 
-  /* HARNESS */
-  .harness-banner {
+
+  /* BUILDING */
+  .building-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 2px;
+  }
+
+  .building-card {
     border: 1px solid var(--border);
-    padding: 48px;
+    padding: 56px 48px;
     background: var(--navy);
     display: flex;
+    flex-direction: column;
     justify-content: space-between;
-    align-items: center;
     gap: 32px;
+    transition: border-color 0.2s;
   }
- 
-  .harness-left { flex: 1; }
- 
-  .harness-title {
+
+  .building-card:hover { border-color: var(--gold); }
+
+  .building-card-top {}
+
+  .building-name {
     font-family: 'Syne', sans-serif;
-    font-size: 36px;
+    font-size: 32px;
     font-weight: 800;
-    letter-spacing: 6px;
-    margin-bottom: 8px;
+    letter-spacing: 4px;
+    margin-bottom: 12px;
   }
- 
-  .harness-tagline {
+
+  .building-tagline {
     color: var(--muted);
     font-size: 13px;
-    letter-spacing: 1px;
+    line-height: 1.7;
+    max-width: 380px;
   }
- 
-  .harness-link {
+
+  .building-link {
     font-size: 11px;
     letter-spacing: 2px;
     text-transform: uppercase;
-    background: var(--gold);
-    color: var(--black);
-    padding: 12px 28px;
-    font-weight: 500;
-    white-space: nowrap;
+    color: var(--gold);
+    border-bottom: 1px solid var(--gold);
+    padding-bottom: 2px;
+    display: inline-block;
     transition: opacity 0.2s;
+    align-self: flex-start;
   }
- 
-  .harness-link:hover { opacity: 0.85; }
- 
+
+  .building-link:hover { opacity: 0.7; }
+
   /* CONTACT */
   .contact-grid {
     display: grid;
     grid-template-columns: 1fr 1fr;
     gap: 2px;
   }
- 
+
   .contact-left {
     border: 1px solid var(--border);
     padding: 64px 48px;
   }
- 
+
   .contact-title {
     font-family: 'Syne', sans-serif;
     font-size: clamp(32px, 4vw, 56px);
     font-weight: 800;
     line-height: 1;
     letter-spacing: -2px;
-    margin-bottom: 24px;
+    margin-bottom: 28px;
   }
- 
+
   .contact-desc {
     color: var(--muted);
     font-size: 13px;
     line-height: 1.8;
-    margin-bottom: 40px;
+    margin-bottom: 48px;
     max-width: 360px;
   }
- 
+
   .contact-links {
     display: flex;
     flex-direction: column;
-    gap: 12px;
+    gap: 0;
   }
- 
+
   .contact-link {
     font-size: 11px;
     letter-spacing: 2px;
     text-transform: uppercase;
     color: var(--muted);
     border-bottom: 1px solid var(--border);
-    padding: 12px 0;
+    padding: 16px 0;
     display: flex;
     justify-content: space-between;
     align-items: center;
     transition: color 0.2s, border-color 0.2s;
   }
- 
+
   .contact-link:hover { color: var(--white); border-color: var(--white); }
- 
+
   .contact-right {
     border: 1px solid var(--border);
     padding: 64px 48px;
     background: var(--navy);
   }
- 
+
   .available-label {
     font-size: 10px;
     letter-spacing: 4px;
     color: var(--gold);
     text-transform: uppercase;
-    margin-bottom: 32px;
+    margin-bottom: 40px;
     display: flex;
     align-items: center;
     gap: 8px;
   }
- 
+
   .available-dot {
     width: 6px;
     height: 6px;
@@ -465,18 +474,18 @@
     border-radius: 50%;
     animation: pulse 2s infinite;
   }
- 
+
   @keyframes pulse {
     0%, 100% { opacity: 1; }
     50% { opacity: 0.3; }
   }
- 
+
   .available-items {
     display: flex;
     flex-direction: column;
     gap: 2px;
   }
- 
+
   .available-item {
     border: 1px solid var(--border);
     padding: 20px 24px;
@@ -484,10 +493,10 @@
     justify-content: space-between;
     font-size: 12px;
   }
- 
+
   .available-item-label { color: var(--muted); letter-spacing: 1px; }
   .available-item-value { color: var(--white); }
- 
+
   /* FOOTER */
   footer {
     padding: 32px 48px;
@@ -498,7 +507,7 @@
     letter-spacing: 1px;
     color: var(--muted);
   }
- 
+
   /* RESPONSIVE */
   @media (max-width: 768px) {
     nav { padding: 20px 24px; }
@@ -506,56 +515,52 @@
     .hero { padding: 100px 24px 60px; }
     section { padding: 64px 24px; }
     .thesis-grid { grid-template-columns: 1fr; }
+    .building-grid { grid-template-columns: 1fr; }
     .contact-grid { grid-template-columns: 1fr; }
-    .harness-banner { flex-direction: column; align-items: flex-start; }
     footer { padding: 24px; flex-direction: column; gap: 12px; text-align: center; }
   }
 </style>
 </head>
 <body>
- 
+
 <nav>
   <div class="nav-logo">FF.</div>
   <ul class="nav-links">
     <li><a href="#thesis">Thesis</a></li>
     <li><a href="#projects">Projects</a></li>
     <li><a href="#skills">Skills</a></li>
-    <li><a href="#harness">Harness</a></li>
+    <li><a href="#building">Building</a></li>
     <li><a href="#contact">Contact</a></li>
   </ul>
-  <a href="#contact" class="nav-cta">Hire Me</a>
+  <a href="#contact" class="nav-cta">Work Together</a>
 </nav>
- 
+
 <section class="hero">
   <div class="hero-bg-text">OPERATOR</div>
-  <div class="hero-label">// Agent Operator — Available for Remote Roles</div>
+  <div class="hero-label">// Building the operator layer.</div>
   <h1 class="hero-name">Facundo<br><span>Franco.</span></h1>
   <p class="hero-desc">
     I run business functions using <strong>AI agents as the execution layer.</strong><br>
-    Not an engineer. Not a generalist. An operator who understands both
-    <strong>how a business works</strong> and <strong>how to make agents run it.</strong>
+    An operator who understands both <strong>how a business works</strong> and <strong>how to make agents run it.</strong>
   </p>
   <div class="hero-actions">
-    <a href="#contact" class="btn-primary">Hire Me</a>
+    <a href="#contact" class="btn-primary">Work Together</a>
     <a href="#thesis" class="btn-secondary">Read the Thesis</a>
   </div>
 </section>
- 
+
 <section id="thesis">
   <div class="section-label">// 01 — The Thesis</div>
   <h2 class="section-title">What is an<br>Agent Operator?</h2>
-  <p style="max-width:640px; color:var(--muted); font-size:14px; line-height:1.9; margin-bottom: 16px;">
-    Most companies are about to face the same problem: they need to redesign their workflows for agents, not for people. But they don't have anyone who understands both the <strong style="color:var(--white)">business function</strong> and the <strong style="color:var(--white)">AI layer</strong> well enough to make that transition work.
-  </p>
-  <p style="max-width:640px; color:var(--muted); font-size:14px; line-height:1.9;">
-    The agent operator fills that gap. They walk into a function, map how it works, and build the agent stack that runs it. <strong style="color:var(--white)">No engineering degree required. Business judgment + AI execution.</strong>
+  <p style="max-width:560px; color:var(--muted); font-size:14px; line-height:1.9;">
+    Most companies need to redesign their workflows for agents — but don't have anyone who understands both the <strong style="color:var(--white)">business function</strong> and the <strong style="color:var(--white)">AI layer</strong>. The agent operator fills that gap.
   </p>
   <div class="thesis-grid">
     <div class="thesis-col">
       <div class="thesis-col-label">Old Operator</div>
       <div class="thesis-item"><div class="thesis-dot"></div>Runs functions manually</div>
       <div class="thesis-item"><div class="thesis-dot"></div>Execution eats all time</div>
-      <div class="thesis-item"><div class="thesis-dot"></div>Scales by hiring more people</div>
+      <div class="thesis-item"><div class="thesis-dot"></div>Scales by hiring</div>
       <div class="thesis-item"><div class="thesis-dot"></div>Bottleneck: bandwidth</div>
       <div class="thesis-item"><div class="thesis-dot"></div>Output limited by hours</div>
     </div>
@@ -569,29 +574,29 @@
     </div>
   </div>
 </section>
- 
+
 <section id="projects">
   <div class="section-label">// 02 — Projects</div>
   <h2 class="section-title">Proof of<br>work.</h2>
   <div class="projects-grid">
- 
+
     <div class="project-card">
       <div class="project-status status-live">● Live</div>
-      <div class="project-title">WhatsApp Sales Agent</div>
-      <p class="project-desc">Production-ready AI sales assistant for e-commerce. Handles product discovery, recommendations, and purchase flow over WhatsApp. 4-6 hour deployment per store.</p>
+      <div class="project-title">Sella</div>
+      <p class="project-desc">AI agent that converts conversations into sales. Handles product discovery, qualification, and purchase flow over WhatsApp. Deploys in hours, not weeks.</p>
       <div class="project-tags">
-        <span class="tag">Node.js</span>
-        <span class="tag">Express</span>
-        <span class="tag">Multi-tenant</span>
+        <span class="tag">Agent</span>
+        <span class="tag">Sales</span>
+        <span class="tag">WhatsApp</span>
         <span class="tag">E-commerce</span>
       </div>
       <a href="https://whatsapp-sales.vercel.app" target="_blank" class="project-link">View Live →</a>
     </div>
- 
+
     <div class="project-card">
       <div class="project-status status-live">● Live</div>
       <div class="project-title">Composio Dependency Graph</div>
-      <p class="project-desc">Interactive visualization of Composio's tool dependency graph. Built to map how tools connect across the agent layer. 100+ Google integrations charted.</p>
+      <p class="project-desc">Interactive visualization of Composio's tool dependency graph. Maps how tools connect across the agent layer. 100+ Google integrations charted.</p>
       <div class="project-tags">
         <span class="tag">Agent Tooling</span>
         <span class="tag">Visualization</span>
@@ -599,11 +604,11 @@
       </div>
       <a href="https://composio-dep-graph.vercel.app" target="_blank" class="project-link">View Live →</a>
     </div>
- 
+
     <div class="project-card">
       <div class="project-status status-active">● Active</div>
       <div class="project-title">Operator Vault</div>
-      <p class="project-desc">Personal knowledge OS built in Obsidian, managed via Claude Code and MCP. The operator's equivalent of a codebase — every function documented, repeatable, and improvable.</p>
+      <p class="project-desc">Personal knowledge OS built in Obsidian, managed via Claude Code and MCP. Every function documented, repeatable, and improvable.</p>
       <div class="project-tags">
         <span class="tag">Obsidian</span>
         <span class="tag">Claude Code</span>
@@ -611,10 +616,10 @@
         <span class="tag">gstack</span>
       </div>
     </div>
- 
+
   </div>
 </section>
- 
+
 <section id="skills">
   <div class="section-label">// 03 — Skills</div>
   <h2 class="section-title">The stack.</h2>
@@ -627,7 +632,7 @@
     <div class="skill-item">
       <div class="skill-num">02</div>
       <div class="skill-name">Claude Code / CLI</div>
-      <p class="skill-desc">Daily user. Vault management, agent deployment, system building. Operator-level fluency — no engineering required.</p>
+      <p class="skill-desc">Daily user. Vault management, agent deployment, system building. Operator-level fluency.</p>
     </div>
     <div class="skill-item">
       <div class="skill-num">03</div>
@@ -637,7 +642,7 @@
     <div class="skill-item">
       <div class="skill-num">04</div>
       <div class="skill-name">Retention & CRM</div>
-      <p class="skill-desc">Klaviyo flows, post-purchase sequences, LTV optimization, churn reduction. Email as a system, not a broadcast.</p>
+      <p class="skill-desc">Klaviyo flows, post-purchase sequences, LTV optimization. Email as a system, not a broadcast.</p>
     </div>
     <div class="skill-item">
       <div class="skill-num">05</div>
@@ -647,28 +652,38 @@
     <div class="skill-item">
       <div class="skill-num">06</div>
       <div class="skill-name">Systems Thinking</div>
-      <p class="skill-desc">Obsidian-based knowledge management. Every function documented, repeatable, and improvable. The operator OS.</p>
+      <p class="skill-desc">Obsidian-based knowledge management. Every function documented, repeatable, and improvable.</p>
     </div>
   </div>
 </section>
- 
-<section id="harness" style="padding: 80px 48px;">
-  <div class="section-label">// 04 — Media</div>
-  <div class="harness-banner">
-    <div class="harness-left">
-      <div class="harness-title">HARNESS</div>
-      <div class="harness-tagline">Signal for the agent layer. Operator-focused coverage of AI infrastructure, MCP, production systems, and what actually runs.</div>
+
+<section id="building" style="padding: 100px 48px;">
+  <div class="section-label">// 04 — Building</div>
+  <h2 class="section-title">Companies.</h2>
+  <div class="building-grid">
+    <div class="building-card">
+      <div class="building-card-top">
+        <div class="building-name">SELLA</div>
+        <p class="building-tagline">AI agent that converts conversations into sales. Built for e-commerce operators who want revenue, not more headcount.</p>
+      </div>
+      <a href="https://whatsapp-sales.vercel.app" target="_blank" class="building-link">Visit Sella →</a>
     </div>
-    <a href="https://x.com/harnessoperator" target="_blank" class="harness-link">Follow @harnessoperator →</a>
+    <div class="building-card">
+      <div class="building-card-top">
+        <div class="building-name">HARNESS</div>
+        <p class="building-tagline">Signal for the agent layer. Operator-focused coverage of AI infrastructure, MCP, production systems, and what actually runs.</p>
+      </div>
+      <a href="https://x.com/harnessoperator" target="_blank" class="building-link">Follow @harnessoperator →</a>
+    </div>
   </div>
 </section>
- 
+
 <section id="contact" style="padding: 80px 48px 100px;">
   <div class="section-label">// 05 — Contact</div>
   <div class="contact-grid">
     <div class="contact-left">
       <h2 class="contact-title">Let's work<br>together.</h2>
-      <p class="contact-desc">Open to remote operator roles and consulting engagements. If you're building something and need someone who can run functions with AI — let's talk.</p>
+      <p class="contact-desc">Open to remote operator roles and consulting engagements. Building something and need someone who can run functions with AI — let's talk.</p>
       <div class="contact-links">
         <a href="https://x.com/facundofranco_" target="_blank" class="contact-link">
           <span>X / Twitter</span>
@@ -722,12 +737,12 @@
     </div>
   </div>
 </section>
- 
+
 <footer>
   <span>© 2026 Facundo Franco — Agent Operator</span>
-  <span>Montevideo, Uruguay → Everywhere</span>
+  <span>Remote — Global</span>
   <span>@facundofranco_</span>
 </footer>
- 
+
 </body>
 </html>
