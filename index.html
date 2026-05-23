@@ -47,9 +47,22 @@
   .nav-logo {
     font-family: 'Syne', sans-serif;
     font-weight: 800;
-    font-size: 20px;
+    font-size: 24px;
     letter-spacing: 1px;
     color: var(--gold);
+    position: relative;
+    display: inline-block;
+  }
+
+  .nav-logo::after {
+    content: '';
+    position: absolute;
+    bottom: -4px;
+    left: 0;
+    width: 100%;
+    height: 1px;
+    background: var(--gold);
+    opacity: 0.45;
   }
 
   .nav-links {
@@ -95,6 +108,10 @@
     height: 1px;
     background: var(--gold);
     margin-bottom: 40px;
+    box-shadow:
+      0 0 6px rgba(184, 150, 62, 0.6),
+      0 0 18px rgba(184, 150, 62, 0.2),
+      0 0 40px rgba(184, 150, 62, 0.08);
   }
 
   .hero-label {
@@ -132,6 +149,7 @@
     align-items: center;
   }
 
+  /* ─── BUTTONS / CTAS ─── */
   .btn-primary {
     font-family: 'DM Mono', monospace;
     font-size: 10px;
@@ -141,24 +159,41 @@
     color: var(--bg);
     padding: 14px 32px;
     font-weight: 500;
-    transition: opacity 0.2s;
+    border: 1px solid var(--gold);
+    transition: background 0.22s ease, color 0.22s ease;
   }
 
-  .btn-primary:hover { opacity: 0.85; }
+  .btn-primary:hover {
+    background: transparent;
+    color: var(--gold);
+  }
 
   .btn-secondary {
     font-size: 10px;
     letter-spacing: 2.5px;
     text-transform: uppercase;
     color: var(--muted);
+    position: relative;
     transition: color 0.2s;
   }
 
+  .btn-secondary::after {
+    content: '';
+    position: absolute;
+    bottom: -2px;
+    left: 0;
+    width: 0;
+    height: 1px;
+    background: var(--white);
+    transition: width 0.25s ease;
+  }
+
   .btn-secondary:hover { color: var(--white); }
+  .btn-secondary:hover::after { width: 100%; }
 
   /* ─── SECTION SHELL ─── */
   section {
-    padding: 140px 80px;
+    padding: 180px 80px;
   }
 
   .section-label {
@@ -304,10 +339,31 @@
     color: var(--gold);
     white-space: nowrap;
     padding-top: 5px;
-    transition: opacity 0.2s;
+    position: relative;
+    display: inline-block;
+    transition: color 0.2s, transform 0.2s;
   }
 
-  .project-link:hover { opacity: 0.65; }
+  .project-link::after {
+    content: '';
+    position: absolute;
+    bottom: -3px;
+    left: 0;
+    width: 0;
+    height: 1px;
+    background: var(--gold);
+    transition: width 0.25s ease;
+  }
+
+  .project-link:hover {
+    color: var(--white);
+    transform: translateX(3px);
+  }
+
+  .project-link:hover::after {
+    width: 100%;
+    background: var(--white);
+  }
 
   /* ─── SKILLS ─── */
   .skill-row {
@@ -380,10 +436,31 @@
     letter-spacing: 2.5px;
     text-transform: uppercase;
     color: var(--gold);
-    transition: opacity 0.2s;
+    display: inline-block;
+    position: relative;
+    transition: color 0.2s, transform 0.2s;
   }
 
-  .building-link:hover { opacity: 0.65; }
+  .building-link::after {
+    content: '';
+    position: absolute;
+    bottom: -3px;
+    left: 0;
+    width: 0;
+    height: 1px;
+    background: var(--gold);
+    transition: width 0.25s ease;
+  }
+
+  .building-link:hover {
+    color: var(--white);
+    transform: translateX(3px);
+  }
+
+  .building-link:hover::after {
+    width: 100%;
+    background: var(--white);
+  }
 
   /* ─── CONTACT ─── */
   .contact-grid {
@@ -419,11 +496,19 @@
     display: flex;
     justify-content: space-between;
     align-items: center;
-    transition: color 0.2s;
+    transition: color 0.2s, border-color 0.2s;
   }
 
   .contact-link:first-of-type { border-top: 1px solid var(--dim); }
-  .contact-link:hover { color: var(--white); }
+
+  .contact-link:hover {
+    color: var(--white);
+    border-bottom-color: rgba(184, 150, 62, 0.3);
+  }
+
+  .contact-link:hover span:last-child {
+    color: var(--gold);
+  }
 
   .available-label {
     font-size: 10px;
@@ -460,8 +545,25 @@
 
   .available-item:first-of-type { border-top: 1px solid var(--dim); }
 
-  .available-item-label { color: var(--muted); letter-spacing: 1px; }
-  .available-item-value { color: var(--white); }
+  .available-item-label {
+    color: var(--muted);
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    font-size: 10px;
+  }
+
+  .available-item-label::before {
+    content: '> ';
+    color: var(--gold);
+    opacity: 0.5;
+  }
+
+  .available-item-value {
+    color: var(--gold);
+    font-family: 'DM Mono', monospace;
+    font-size: 11px;
+    letter-spacing: 0.5px;
+  }
 
   /* ─── FOOTER ─── */
   footer {
@@ -475,6 +577,24 @@
     border-top: 1px solid var(--dim);
   }
 
+  /* ─── SCROLL FADE-IN ─── */
+  .fade-in {
+    opacity: 0;
+    transform: translateY(18px);
+    transition: opacity 0.55s ease, transform 0.55s ease;
+  }
+
+  .fade-in.visible {
+    opacity: 1;
+    transform: translateY(0);
+  }
+
+  .fade-in:nth-child(2) { transition-delay: 0.08s; }
+  .fade-in:nth-child(3) { transition-delay: 0.16s; }
+  .fade-in:nth-child(4) { transition-delay: 0.22s; }
+  .fade-in:nth-child(5) { transition-delay: 0.28s; }
+  .fade-in:nth-child(6) { transition-delay: 0.34s; }
+
   /* ─── RESPONSIVE ─── */
   @media (max-width: 900px) {
     nav { padding: 24px 28px; }
@@ -484,7 +604,7 @@
     .hero { padding: 0 28px; }
     .hero-name { font-size: clamp(56px, 14vw, 120px); letter-spacing: -2px; }
 
-    section { padding: 96px 28px; }
+    section { padding: 112px 28px; }
 
     .thesis-grid { grid-template-columns: 1fr; gap: 0; }
     .thesis-col { padding-right: 0; margin-bottom: 56px; }
@@ -539,12 +659,12 @@
 
 <!-- THESIS -->
 <section id="thesis">
-  <div class="section-label">// 01 — The Thesis</div>
-  <h2 class="section-title">What is an<br>Agent Operator?</h2>
-  <p class="thesis-intro">
+  <div class="section-label fade-in">// 01 — The Thesis</div>
+  <h2 class="section-title fade-in">What is an<br>Agent Operator?</h2>
+  <p class="thesis-intro fade-in">
     Most companies need to redesign their workflows for agents — but don't have anyone who understands both the <strong>business function</strong> and the <strong>AI layer</strong>. The agent operator fills that gap.
   </p>
-  <div class="thesis-grid">
+  <div class="thesis-grid fade-in">
     <div class="thesis-col">
       <div class="thesis-col-label">Old Operator</div>
       <div class="thesis-item"><span class="thesis-num">—</span>Runs functions manually</div>
@@ -566,10 +686,10 @@
 
 <!-- PROJECTS -->
 <section id="projects">
-  <div class="section-label">// 02 — Projects</div>
-  <h2 class="section-title">Proof of<br>work.</h2>
+  <div class="section-label fade-in">// 02 — Projects</div>
+  <h2 class="section-title fade-in">Proof of<br>work.</h2>
 
-  <div class="project-row">
+  <div class="project-row fade-in">
     <div class="project-num">01</div>
     <div class="project-body">
       <div class="project-status status-live">● Live</div>
@@ -585,7 +705,7 @@
     <a href="https://whatsapp-sales.vercel.app" target="_blank" class="project-link">View Live →</a>
   </div>
 
-  <div class="project-row">
+  <div class="project-row fade-in">
     <div class="project-num">02</div>
     <div class="project-body">
       <div class="project-status status-live">● Live</div>
@@ -600,7 +720,7 @@
     <a href="https://composio-dep-graph.vercel.app" target="_blank" class="project-link">View Live →</a>
   </div>
 
-  <div class="project-row">
+  <div class="project-row fade-in">
     <div class="project-num">03</div>
     <div class="project-body">
       <div class="project-status status-active">● Active</div>
@@ -620,35 +740,35 @@
 
 <!-- SKILLS -->
 <section id="skills">
-  <div class="section-label">// 03 — Skills</div>
-  <h2 class="section-title">The stack.</h2>
+  <div class="section-label fade-in">// 03 — Skills</div>
+  <h2 class="section-title fade-in">The stack.</h2>
 
-  <div class="skill-row">
+  <div class="skill-row fade-in">
     <div class="skill-num">01</div>
     <div class="skill-name">Agent Architecture</div>
     <p class="skill-desc">Multi-agent systems that run business functions. Prompt stacks, tool use, MCP integrations, workflow design.</p>
   </div>
-  <div class="skill-row">
+  <div class="skill-row fade-in">
     <div class="skill-num">02</div>
     <div class="skill-name">Claude Code / CLI</div>
     <p class="skill-desc">Daily user. Vault management, agent deployment, system building. Operator-level fluency.</p>
   </div>
-  <div class="skill-row">
+  <div class="skill-row fade-in">
     <div class="skill-num">03</div>
     <div class="skill-name">Paid Acquisition</div>
     <p class="skill-desc">Meta Ads end-to-end. Campaign structure, creative testing, audience strategy, ROAS optimization.</p>
   </div>
-  <div class="skill-row">
+  <div class="skill-row fade-in">
     <div class="skill-num">04</div>
     <div class="skill-name">Retention &amp; CRM</div>
     <p class="skill-desc">Klaviyo flows, post-purchase sequences, LTV optimization. Email as a system, not a broadcast.</p>
   </div>
-  <div class="skill-row">
+  <div class="skill-row fade-in">
     <div class="skill-num">05</div>
     <div class="skill-name">E-com Operations</div>
     <p class="skill-desc">Shopify, MercadoLibre, marketplace ops, inventory coordination, order management at scale.</p>
   </div>
-  <div class="skill-row">
+  <div class="skill-row fade-in">
     <div class="skill-num">06</div>
     <div class="skill-name">Systems Thinking</div>
     <p class="skill-desc">Obsidian-based knowledge management. Every function documented, repeatable, and improvable.</p>
@@ -658,9 +778,9 @@
 
 <!-- BUILDING -->
 <section id="building">
-  <div class="section-label">// 04 — Building</div>
-  <h2 class="section-title">Companies.</h2>
-  <div class="building-grid">
+  <div class="section-label fade-in">// 04 — Building</div>
+  <h2 class="section-title fade-in">Companies.</h2>
+  <div class="building-grid fade-in">
     <div class="building-item">
       <div class="building-name">SELLA</div>
       <p class="building-tagline">AI agent that converts conversations into sales. Built for e-commerce operators who want revenue, not more headcount.</p>
@@ -677,8 +797,8 @@
 
 <!-- CONTACT -->
 <section id="contact">
-  <div class="section-label">// 05 — Contact</div>
-  <div class="contact-grid">
+  <div class="section-label fade-in">// 05 — Contact</div>
+  <div class="contact-grid fade-in">
     <div>
       <h2 class="contact-title">Let's work<br>together.</h2>
       <p class="contact-desc">Open to remote operator roles and consulting engagements. Building something and need someone who can run functions with AI — let's talk.</p>
@@ -738,5 +858,17 @@
   <span>@facundofranco_</span>
 </footer>
 
+<script>
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) {
+        entry.target.classList.add('visible');
+        observer.unobserve(entry.target);
+      }
+    });
+  }, { threshold: 0.08, rootMargin: '0px 0px -32px 0px' });
+
+  document.querySelectorAll('.fade-in').forEach(el => observer.observe(el));
+</script>
 </body>
 </html>
