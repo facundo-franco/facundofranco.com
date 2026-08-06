@@ -27,6 +27,11 @@
     href="https://facundofranco.com/"
   >
 
+  <link
+    rel="icon"
+    href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><rect width=%22100%22 height=%22100%22 fill=%22%23111111%22/><text x=%2250%22 y=%2262%22 text-anchor=%22middle%22 font-family=%22Arial%22 font-size=%2240%22 font-weight=%22700%22 fill=%22white%22>FF</text></svg>"
+  >
+
   <!-- Open Graph -->
   <meta
     property="og:title"
@@ -35,7 +40,7 @@
 
   <meta
     property="og:description"
-    content="Building ScoutHalo, an AI-powered location intelligence platform for production teams and creative agencies."
+    content="Building ScoutHalo, the AI-powered location intelligence platform for production teams and creative agencies."
   >
 
   <meta
@@ -53,10 +58,20 @@
     content="Facundo Franco"
   >
 
+  <meta
+    property="og:image"
+    content="https://facundofranco.com/facundo-franco-founder-scouthalo.png"
+  >
+
+  <meta
+    property="og:image:alt"
+    content="Facundo Franco, Founder and CEO of ScoutHalo"
+  >
+
   <!-- X / Twitter -->
   <meta
     name="twitter:card"
-    content="summary"
+    content="summary_large_image"
   >
 
   <meta
@@ -66,7 +81,12 @@
 
   <meta
     name="twitter:description"
-    content="Building the location intelligence layer for creative production."
+    content="Building ScoutHalo, the location intelligence platform for creative production."
+  >
+
+  <meta
+    name="twitter:image"
+    content="https://facundofranco.com/facundo-franco-founder-scouthalo.png"
   >
 
   <!-- Fonts -->
@@ -79,11 +99,11 @@
   >
 
   <link
-    href="https://fonts.googleapis.com/css2?family=DM+Mono:wght@400;500&family=Inter:wght@400;500;600&display=swap"
+    href="https://fonts.googleapis.com/css2?family=DM+Mono:wght@400;500&family=Manrope:wght@400;500;600;700;800&display=swap"
     rel="stylesheet"
   >
 
-  <!-- Person / Founder structured data -->
+  <!-- Structured data -->
   <script type="application/ld+json">
   {
     "@context": "https://schema.org",
@@ -99,6 +119,7 @@
       "givenName": "Facundo",
       "familyName": "Franco",
       "url": "https://facundofranco.com/",
+      "image": "https://facundofranco.com/facundo-franco-founder-scouthalo.png",
       "jobTitle": "Founder and CEO",
       "description": "Founder and CEO of ScoutHalo, an AI-powered location intelligence platform for production teams and creative agencies.",
       "worksFor": {
@@ -115,15 +136,16 @@
       },
       "sameAs": [
         "https://www.linkedin.com/in/facundo-franco",
-        "https://x.com/facundofranco_"
+        "https://x.com/facundofranco_",
+        "https://www.youtube.com/@ScoutHalo"
       ],
       "knowsAbout": [
         "Artificial Intelligence",
         "Location Intelligence",
-        "Location Scouting",
-        "Creative Production",
+        "Production Location Scouting",
         "Search and Retrieval",
-        "B2B Software"
+        "Creative Production Software",
+        "B2B SaaS"
       ],
       "homeLocation": {
         "@type": "Country",
@@ -135,20 +157,20 @@
 
   <style>
     :root {
-      --background: #0a0a0a;
-      --surface: #111111;
-      --surface-hover: #151515;
-      --border: #242424;
-      --border-strong: #353535;
-
-      --text: #f4f4f1;
-      --muted: #9a9a96;
-      --subtle: #62625f;
-
-      --accent: #ff4d1c;
-      --accent-soft: rgba(255, 77, 28, 0.12);
-
-      --max-width: 1180px;
+      --paper: #f2f1ec;
+      --paper-deep: #e6e4dd;
+      --ink: #111111;
+      --ink-soft: #282828;
+      --muted: #6c6b66;
+      --line: rgba(17, 17, 17, 0.16);
+      --line-strong: rgba(17, 17, 17, 0.38);
+      --white: #ffffff;
+      --blue: #1547ff;
+      --blue-dark: #0f35cc;
+      --night: #0c0d10;
+      --night-soft: #17181d;
+      --max-width: 1440px;
+      --page-padding: clamp(20px, 4vw, 64px);
     }
 
     * {
@@ -163,34 +185,17 @@
     }
 
     body {
-      background: var(--background);
-      color: var(--text);
-
-      font-family: "Inter", sans-serif;
+      background: var(--paper);
+      color: var(--ink);
+      font-family: "Manrope", sans-serif;
       font-size: 16px;
       line-height: 1.6;
-
-      -webkit-font-smoothing: antialiased;
       overflow-x: hidden;
+      -webkit-font-smoothing: antialiased;
     }
 
-    body::before {
-      content: "";
-      position: fixed;
-      inset: 0;
-      z-index: -2;
-
-      background:
-        radial-gradient(
-          circle at 80% 10%,
-          rgba(255, 77, 28, 0.08),
-          transparent 32%
-        ),
-        radial-gradient(
-          circle at 10% 70%,
-          rgba(255, 255, 255, 0.025),
-          transparent 35%
-        );
+    body.menu-open {
+      overflow: hidden;
     }
 
     a {
@@ -198,371 +203,607 @@
     }
 
     img {
-      max-width: 100%;
       display: block;
+      max-width: 100%;
+    }
+
+    button,
+    input,
+    textarea {
+      font: inherit;
+    }
+
+    ::selection {
+      background: var(--blue);
+      color: var(--white);
     }
 
     .container {
-      width: min(calc(100% - 48px), var(--max-width));
+      width: min(
+        calc(100% - (var(--page-padding) * 2)),
+        var(--max-width)
+      );
       margin: 0 auto;
     }
 
+    .mono {
+      font-family: "DM Mono", monospace;
+    }
+
     .eyebrow {
-      font-family: "DM Mono", monospace;
-      font-size: 11px;
-      font-weight: 500;
-      letter-spacing: 0.12em;
-      text-transform: uppercase;
-      color: var(--accent);
-    }
-
-    .muted {
-      color: var(--muted);
-    }
-
-    /* Navigation */
-
-    .site-header {
-      position: fixed;
-      top: 0;
-      left: 0;
-      right: 0;
-      z-index: 100;
-
-      border-bottom: 1px solid rgba(255, 255, 255, 0.07);
-
-      background: rgba(10, 10, 10, 0.84);
-      backdrop-filter: blur(16px);
-      -webkit-backdrop-filter: blur(16px);
-    }
-
-    .nav {
-      height: 72px;
-
       display: flex;
       align-items: center;
-      justify-content: space-between;
-    }
-
-    .brand {
-      display: flex;
-      align-items: center;
-      gap: 11px;
-
-      color: var(--text);
-      text-decoration: none;
-      font-weight: 600;
-      letter-spacing: -0.02em;
-    }
-
-    .brand-mark {
-      width: 31px;
-      height: 31px;
-
-      display: grid;
-      place-items: center;
-
-      border: 1px solid var(--border-strong);
-      background: var(--surface);
-
-      font-family: "DM Mono", monospace;
-      font-size: 11px;
-      color: var(--accent);
-    }
-
-    .nav-links {
-      display: flex;
-      align-items: center;
-      gap: 30px;
-
-      list-style: none;
-    }
-
-    .nav-links a {
-      color: var(--muted);
-      text-decoration: none;
-
-      font-family: "DM Mono", monospace;
-      font-size: 11px;
-      text-transform: uppercase;
-      letter-spacing: 0.08em;
-
-      transition: color 160ms ease;
-    }
-
-    .nav-links a:hover {
-      color: var(--text);
-    }
-
-    .nav-cta {
-      padding: 9px 15px;
-
-      border: 1px solid var(--border-strong);
-      background: var(--surface);
-
-      color: var(--text) !important;
-    }
-
-    .nav-cta:hover {
-      border-color: var(--accent);
-    }
-
-    /* Hero */
-
-    .hero {
-      min-height: 100vh;
-
-      display: flex;
-      align-items: center;
-
-      padding: 150px 0 100px;
-
-      border-bottom: 1px solid var(--border);
-    }
-
-    .hero-grid {
-      display: grid;
-      grid-template-columns: minmax(0, 1.35fr) minmax(280px, 0.65fr);
-      gap: 90px;
-      align-items: center;
-    }
-
-    .hero h1 {
-      max-width: 880px;
-
-      margin-top: 22px;
-
-      font-size: clamp(58px, 8.2vw, 118px);
-      line-height: 0.92;
-      letter-spacing: -0.065em;
-      font-weight: 600;
-    }
-
-    .hero h1 span {
-      color: var(--muted);
-    }
-
-    .hero-description {
-      max-width: 680px;
-
-      margin-top: 32px;
-
-      color: var(--muted);
-      font-size: clamp(17px, 1.6vw, 21px);
-      line-height: 1.65;
-      letter-spacing: -0.015em;
-    }
-
-    .hero-description strong {
-      color: var(--text);
-      font-weight: 500;
-    }
-
-    .hero-actions {
-      display: flex;
-      flex-wrap: wrap;
       gap: 12px;
 
-      margin-top: 38px;
+      font-family: "DM Mono", monospace;
+      font-size: 11px;
+      font-weight: 500;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+    }
+
+    .eyebrow::before {
+      content: "";
+      width: 28px;
+      height: 2px;
+      background: currentColor;
+    }
+
+    .section {
+      border-top: 1px solid var(--line);
+      padding: clamp(88px, 10vw, 160px) 0;
+    }
+
+    .section-grid {
+      display: grid;
+      grid-template-columns: minmax(180px, 0.3fr) minmax(0, 1fr);
+      gap: clamp(40px, 8vw, 130px);
+    }
+
+    .section-heading {
+      max-width: 1080px;
+      font-size: clamp(48px, 7vw, 112px);
+      font-weight: 600;
+      line-height: 0.95;
+      letter-spacing: -0.065em;
+    }
+
+    .section-description {
+      max-width: 780px;
+      margin-top: 32px;
+      color: var(--muted);
+      font-size: clamp(17px, 1.45vw, 22px);
+      line-height: 1.7;
+      letter-spacing: -0.018em;
     }
 
     .button {
-      min-height: 48px;
-
+      min-height: 52px;
       display: inline-flex;
       align-items: center;
       justify-content: center;
-      gap: 9px;
+      gap: 12px;
 
       padding: 0 22px;
-
       border: 1px solid transparent;
-
-      text-decoration: none;
 
       font-family: "DM Mono", monospace;
       font-size: 11px;
       font-weight: 500;
-      letter-spacing: 0.07em;
+      letter-spacing: 0.08em;
       text-transform: uppercase;
+      text-decoration: none;
 
       transition:
-        transform 160ms ease,
-        color 160ms ease,
-        background 160ms ease,
-        border-color 160ms ease;
+        background-color 180ms ease,
+        color 180ms ease,
+        border-color 180ms ease,
+        transform 180ms ease;
     }
 
     .button:hover {
       transform: translateY(-2px);
     }
 
-    .button-primary {
-      background: var(--accent);
-      color: #ffffff;
-      border-color: var(--accent);
+    .button-dark {
+      background: var(--ink);
+      color: var(--white);
+      border-color: var(--ink);
     }
 
-    .button-primary:hover {
+    .button-dark:hover {
       background: transparent;
-      color: var(--accent);
+      color: var(--ink);
     }
 
-    .button-secondary {
-      background: var(--surface);
-      color: var(--text);
-      border-color: var(--border-strong);
+    .button-blue {
+      background: var(--blue);
+      color: var(--white);
+      border-color: var(--blue);
     }
 
-    .button-secondary:hover {
-      border-color: var(--text);
+    .button-blue:hover {
+      background: var(--blue-dark);
+      border-color: var(--blue-dark);
     }
 
-    .founder-card {
+    .button-outline {
+      background: transparent;
+      color: var(--ink);
+      border-color: var(--line-strong);
+    }
+
+    .button-outline:hover {
+      border-color: var(--ink);
+    }
+
+    .button-light {
+      color: var(--white);
+      border-color: rgba(255, 255, 255, 0.28);
+      background: transparent;
+    }
+
+    .button-light:hover {
+      background: var(--white);
+      color: var(--ink);
+      border-color: var(--white);
+    }
+
+    .arrow {
+      font-size: 16px;
+      line-height: 1;
+    }
+
+    /* Header */
+
+    .site-header {
+      position: fixed;
+      inset: 0 0 auto;
+      z-index: 100;
+
+      border-bottom: 1px solid var(--line);
+      background: rgba(242, 241, 236, 0.87);
+      backdrop-filter: blur(18px);
+      -webkit-backdrop-filter: blur(18px);
+    }
+
+    .nav {
+      height: 78px;
+      display: grid;
+      grid-template-columns: 1fr auto 1fr;
+      align-items: center;
+    }
+
+    .brand {
+      display: inline-flex;
+      align-items: center;
+      gap: 12px;
+      width: fit-content;
+
+      color: var(--ink);
+      font-size: 15px;
+      font-weight: 700;
+      letter-spacing: -0.03em;
+      text-decoration: none;
+    }
+
+    .brand-mark {
+      width: 34px;
+      height: 34px;
+      display: grid;
+      place-items: center;
+
+      background: var(--ink);
+      color: var(--white);
+
+      font-family: "DM Mono", monospace;
+      font-size: 10px;
+      letter-spacing: 0.02em;
+    }
+
+    .nav-links {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 34px;
+      list-style: none;
+    }
+
+    .nav-links a,
+    .header-status {
+      color: var(--muted);
+      font-family: "DM Mono", monospace;
+      font-size: 10px;
+      font-weight: 500;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      text-decoration: none;
+    }
+
+    .nav-links a {
+      transition: color 160ms ease;
+    }
+
+    .nav-links a:hover {
+      color: var(--ink);
+    }
+
+    .header-status {
+      display: flex;
+      align-items: center;
+      justify-content: flex-end;
+      gap: 9px;
+    }
+
+    .status-dot {
+      width: 7px;
+      height: 7px;
+      border-radius: 50%;
+      background: var(--blue);
+      box-shadow: 0 0 0 5px rgba(21, 71, 255, 0.1);
+    }
+
+    .mobile-menu-button {
+      display: none;
+      border: 0;
+      background: transparent;
+      color: var(--ink);
+      cursor: pointer;
+    }
+
+    /* Hero */
+
+    .hero {
+      min-height: 100vh;
+      padding: 78px 0 0;
+      border-bottom: 1px solid var(--line);
+    }
+
+    .hero-grid {
+      min-height: calc(100vh - 78px);
+      display: grid;
+      grid-template-columns: minmax(0, 1.05fr) minmax(420px, 0.95fr);
+    }
+
+    .hero-copy {
       position: relative;
+      z-index: 2;
 
-      border: 1px solid var(--border);
-      background: var(--surface);
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
 
-      padding: 28px;
+      padding:
+        clamp(54px, 7vw, 100px)
+        clamp(32px, 6vw, 92px)
+        clamp(42px, 5vw, 72px)
+        0;
     }
 
-    .founder-card::before {
-      content: "";
-      position: absolute;
-      top: -1px;
-      left: -1px;
-
-      width: 70px;
-      height: 3px;
-
-      background: var(--accent);
+    .hero-top {
+      max-width: 850px;
     }
 
-    .founder-card-label {
-      margin-bottom: 28px;
+    .hero-kicker {
+      color: var(--blue);
     }
 
-    .founder-card-name {
-      font-size: 24px;
-      line-height: 1.2;
-      letter-spacing: -0.035em;
+    .hero-title {
+      margin-top: clamp(28px, 5vw, 70px);
+
+      font-size: clamp(80px, 10.4vw, 164px);
+      font-weight: 600;
+      line-height: 0.78;
+      letter-spacing: -0.082em;
+    }
+
+    .hero-title span {
+      display: block;
+    }
+
+    .hero-title .outline {
+      color: transparent;
+      -webkit-text-stroke: 1.5px var(--ink);
+    }
+
+    .hero-statement {
+      max-width: 760px;
+      margin-top: clamp(40px, 5vw, 72px);
+
+      color: var(--ink-soft);
+      font-size: clamp(18px, 1.6vw, 24px);
+      line-height: 1.58;
+      letter-spacing: -0.025em;
+    }
+
+    .hero-statement strong {
+      color: var(--ink);
       font-weight: 600;
     }
 
-    .founder-card-role {
-      margin-top: 7px;
-      color: var(--muted);
-      font-size: 14px;
-    }
-
-    .founder-meta {
-      margin-top: 30px;
-      padding-top: 24px;
-
-      border-top: 1px solid var(--border);
-
-      display: grid;
-      gap: 17px;
-    }
-
-    .meta-row {
+    .hero-actions {
       display: flex;
-      justify-content: space-between;
-      gap: 20px;
+      flex-wrap: wrap;
+      gap: 12px;
+      margin-top: 38px;
+    }
 
+    .hero-bottom {
+      display: grid;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      gap: 1px;
+      margin-top: 70px;
+      background: var(--line);
+      border: 1px solid var(--line);
+    }
+
+    .hero-stat {
+      background: var(--paper);
+      padding: 18px;
+    }
+
+    .hero-stat-label {
+      color: var(--muted);
       font-family: "DM Mono", monospace;
-      font-size: 11px;
-      line-height: 1.5;
-    }
-
-    .meta-label {
-      color: var(--subtle);
+      font-size: 9px;
+      letter-spacing: 0.1em;
       text-transform: uppercase;
-      letter-spacing: 0.08em;
     }
 
-    .meta-value {
-      color: var(--text);
+    .hero-stat-value {
+      margin-top: 8px;
+      font-size: 13px;
+      font-weight: 600;
+      line-height: 1.45;
+      letter-spacing: -0.02em;
+    }
+
+    .portrait-panel {
+      position: relative;
+      min-height: 650px;
+      overflow: hidden;
+      background: #c6c4be;
+    }
+
+    .portrait-panel::before {
+      content: "";
+      position: absolute;
+      inset: 0;
+      z-index: 2;
+      pointer-events: none;
+
+      background:
+        linear-gradient(
+          to top,
+          rgba(8, 10, 14, 0.68) 0%,
+          rgba(8, 10, 14, 0.08) 38%,
+          transparent 66%
+        );
+    }
+
+    .portrait-panel img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      object-position: center 22%;
+      filter: saturate(0.82) contrast(1.04);
+      transform: scale(1.015);
+    }
+
+    .portrait-label {
+      position: absolute;
+      left: 34px;
+      right: 34px;
+      bottom: 30px;
+      z-index: 3;
+
+      display: flex;
+      align-items: flex-end;
+      justify-content: space-between;
+      gap: 30px;
+
+      color: var(--white);
+    }
+
+    .portrait-role {
+      font-size: clamp(26px, 3vw, 48px);
+      font-weight: 600;
+      line-height: 1;
+      letter-spacing: -0.05em;
+    }
+
+    .portrait-location {
+      max-width: 190px;
+      font-family: "DM Mono", monospace;
+      font-size: 10px;
+      line-height: 1.6;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
       text-align: right;
     }
 
-    /* Sections */
+    .portrait-index {
+      position: absolute;
+      top: 28px;
+      right: 28px;
+      z-index: 3;
 
-    .section {
-      padding: 110px 0;
-      border-bottom: 1px solid var(--border);
-    }
-
-    .section-header {
+      width: 52px;
+      height: 52px;
       display: grid;
-      grid-template-columns: 220px 1fr;
-      gap: 50px;
+      place-items: center;
 
-      margin-bottom: 60px;
+      border: 1px solid rgba(255, 255, 255, 0.45);
+      color: var(--white);
+
+      font-family: "DM Mono", monospace;
+      font-size: 10px;
     }
 
-    .section-title {
-      max-width: 800px;
+    /* Manifesto */
 
-      font-size: clamp(38px, 5vw, 68px);
-      line-height: 1.02;
-      letter-spacing: -0.05em;
-      font-weight: 600;
+    .manifesto {
+      background: var(--blue);
+      color: var(--white);
     }
 
-    .section-intro {
-      max-width: 750px;
-      margin-top: 22px;
+    .manifesto .section-grid {
+      align-items: start;
+    }
 
-      color: var(--muted);
-      font-size: 18px;
-      line-height: 1.7;
+    .manifesto-copy {
+      max-width: 1160px;
+      font-size: clamp(44px, 6.8vw, 104px);
+      line-height: 0.98;
+      letter-spacing: -0.065em;
+      font-weight: 500;
+    }
+
+    .manifesto-copy span {
+      color: rgba(255, 255, 255, 0.48);
     }
 
     /* ScoutHalo */
 
-    .scouthalo-panel {
+    .company-intro {
       display: grid;
-      grid-template-columns: 1.05fr 0.95fr;
-
-      border: 1px solid var(--border);
-      background: var(--surface);
+      grid-template-columns: minmax(0, 1.1fr) minmax(320px, 0.9fr);
+      gap: clamp(50px, 9vw, 140px);
+      align-items: end;
     }
 
-    .scouthalo-copy {
-      padding: 52px;
-    }
-
-    .scouthalo-copy h3 {
-      font-size: clamp(30px, 4vw, 48px);
-      line-height: 1.06;
-      letter-spacing: -0.045em;
+    .company-title {
+      font-size: clamp(58px, 8vw, 124px);
+      line-height: 0.9;
+      letter-spacing: -0.07em;
       font-weight: 600;
     }
 
-    .scouthalo-copy p {
-      max-width: 650px;
-
-      margin-top: 22px;
-
+    .company-description {
       color: var(--muted);
-      font-size: 16px;
-      line-height: 1.75;
+      font-size: clamp(18px, 1.6vw, 23px);
+      line-height: 1.7;
+      letter-spacing: -0.022em;
     }
 
-    .scouthalo-copy p strong {
-      color: var(--text);
-      font-weight: 500;
+    .company-description strong {
+      color: var(--ink);
+      font-weight: 600;
     }
 
-    .scouthalo-interface {
-      min-height: 520px;
-      padding: 28px;
+    .fragmented-list {
+      display: grid;
+      grid-template-columns: repeat(6, 1fr);
+      gap: 1px;
 
-      border-left: 1px solid var(--border);
+      margin-top: clamp(60px, 8vw, 120px);
+      background: var(--line);
+      border: 1px solid var(--line);
+    }
+
+    .fragmented-item {
+      min-height: 170px;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      padding: 22px;
+      background: var(--paper);
+    }
+
+    .fragmented-index {
+      color: var(--blue);
+      font-family: "DM Mono", monospace;
+      font-size: 10px;
+    }
+
+    .fragmented-name {
+      font-size: 14px;
+      font-weight: 600;
+      letter-spacing: -0.025em;
+    }
+
+    .fragmented-close {
+      margin-top: 38px;
+      padding: 40px 0 0;
+      border-top: 1px solid var(--line);
+
+      display: flex;
+      justify-content: space-between;
+      gap: 50px;
+      align-items: flex-end;
+    }
+
+    .fragmented-close p {
+      max-width: 850px;
+      font-size: clamp(28px, 3.2vw, 52px);
+      line-height: 1.15;
+      letter-spacing: -0.045em;
+    }
+
+    /* Product visual */
+
+    .product-section {
+      background: var(--night);
+      color: var(--white);
+    }
+
+    .product-section .eyebrow {
+      color: #8ea5ff;
+    }
+
+    .product-section .section-description {
+      color: rgba(255, 255, 255, 0.58);
+    }
+
+    .product-frame {
+      margin-top: 72px;
+      border: 1px solid rgba(255, 255, 255, 0.15);
+      background: var(--night-soft);
+      box-shadow: 0 40px 120px rgba(0, 0, 0, 0.42);
+    }
+
+    .product-toolbar {
+      height: 58px;
+      padding: 0 20px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+
+      border-bottom: 1px solid rgba(255, 255, 255, 0.12);
+      font-family: "DM Mono", monospace;
+      font-size: 9px;
+      letter-spacing: 0.09em;
+      text-transform: uppercase;
+      color: rgba(255, 255, 255, 0.55);
+    }
+
+    .toolbar-left,
+    .toolbar-right {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+    }
+
+    .toolbar-dot {
+      width: 7px;
+      height: 7px;
+      border-radius: 50%;
+      background: #7557ff;
+      box-shadow: 0 0 0 5px rgba(117, 87, 255, 0.1);
+    }
+
+    .product-canvas {
+      min-height: 650px;
+      padding: clamp(28px, 5vw, 70px);
+      display: grid;
+      place-items: center;
 
       background:
+        radial-gradient(
+          circle at center,
+          rgba(92, 65, 255, 0.14),
+          transparent 42%
+        ),
         linear-gradient(
           rgba(255, 255, 255, 0.025) 1px,
           transparent 1px
@@ -572,466 +813,699 @@
           rgba(255, 255, 255, 0.025) 1px,
           transparent 1px
         );
-
-      background-size: 42px 42px;
+      background-size: auto, 50px 50px, 50px 50px;
     }
 
-    .interface-window {
-      height: 100%;
+    .search-demo {
+      width: min(100%, 920px);
+    }
 
-      border: 1px solid var(--border-strong);
-      background: rgba(10, 10, 10, 0.92);
+    .search-demo-label {
+      color: rgba(255, 255, 255, 0.44);
+      font-family: "DM Mono", monospace;
+      font-size: 10px;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+    }
 
-      padding: 22px;
+    .search-demo-query {
+      margin-top: 14px;
+      padding: 28px 30px;
+
+      border: 1px solid rgba(255, 255, 255, 0.18);
+      background: rgba(11, 12, 17, 0.88);
+
+      font-size: clamp(18px, 2vw, 27px);
+      line-height: 1.5;
+      letter-spacing: -0.03em;
+    }
+
+    .search-demo-results {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 12px;
+      margin-top: 18px;
+    }
+
+    .result-card {
+      min-height: 190px;
+      padding: 20px;
 
       display: flex;
       flex-direction: column;
+      justify-content: space-between;
+
+      border: 1px solid rgba(255, 255, 255, 0.13);
+      background: rgba(255, 255, 255, 0.035);
     }
 
-    .window-top {
+    .result-top {
       display: flex;
       justify-content: space-between;
-      align-items: center;
+      gap: 20px;
 
-      padding-bottom: 18px;
-      border-bottom: 1px solid var(--border);
-    }
-
-    .window-brand {
+      color: rgba(255, 255, 255, 0.46);
       font-family: "DM Mono", monospace;
-      font-size: 11px;
-      letter-spacing: 0.1em;
+      font-size: 9px;
+      letter-spacing: 0.08em;
       text-transform: uppercase;
     }
 
-    .window-status {
+    .result-title {
+      margin-top: 30px;
+      font-size: 17px;
+      font-weight: 600;
+      line-height: 1.25;
+      letter-spacing: -0.03em;
+    }
+
+    .result-tags {
       display: flex;
-      align-items: center;
-      gap: 8px;
+      flex-wrap: wrap;
+      gap: 6px;
+      margin-top: 20px;
+    }
 
-      color: var(--muted);
+    .result-tag {
+      padding: 5px 7px;
+      border: 1px solid rgba(255, 255, 255, 0.14);
 
+      color: rgba(255, 255, 255, 0.52);
       font-family: "DM Mono", monospace;
-      font-size: 10px;
+      font-size: 8px;
+      letter-spacing: 0.06em;
       text-transform: uppercase;
-      letter-spacing: 0.08em;
     }
 
-    .status-dot {
-      width: 6px;
-      height: 6px;
-      border-radius: 50%;
-      background: var(--accent);
+    .product-cta {
+      display: flex;
+      justify-content: flex-end;
+      margin-top: 26px;
     }
 
-    .search-example {
-      margin-top: 45px;
-    }
+    /* Product outcomes */
 
-    .search-label {
-      color: var(--subtle);
-
-      font-family: "DM Mono", monospace;
-      font-size: 10px;
-      text-transform: uppercase;
-      letter-spacing: 0.08em;
-    }
-
-    .search-query {
-      margin-top: 12px;
-
-      padding: 20px;
-
-      border: 1px solid var(--border-strong);
-      background: var(--surface);
-
-      color: var(--text);
-      font-size: 15px;
-      line-height: 1.6;
-    }
-
-    .result-list {
-      display: grid;
-      gap: 10px;
-      margin-top: 24px;
-    }
-
-    .result-item {
-      display: grid;
-      grid-template-columns: auto 1fr auto;
-      gap: 13px;
-      align-items: center;
-
-      padding: 15px;
-
-      border: 1px solid var(--border);
-      background: rgba(255, 255, 255, 0.015);
-    }
-
-    .result-number {
-      color: var(--accent);
-
-      font-family: "DM Mono", monospace;
-      font-size: 10px;
-    }
-
-    .result-name {
-      font-size: 12px;
-    }
-
-    .result-score {
-      color: var(--muted);
-
-      font-family: "DM Mono", monospace;
-      font-size: 10px;
-    }
-
-    /* Workflow */
-
-    .workflow-grid {
+    .outcome-grid {
       display: grid;
       grid-template-columns: repeat(3, 1fr);
 
-      border-top: 1px solid var(--border);
-      border-left: 1px solid var(--border);
+      margin-top: 74px;
+      border-top: 1px solid var(--line);
+      border-left: 1px solid var(--line);
     }
 
-    .workflow-card {
-      min-height: 270px;
+    .outcome-card {
+      min-height: 390px;
+      padding: 28px;
 
-      padding: 32px;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
 
-      border-right: 1px solid var(--border);
-      border-bottom: 1px solid var(--border);
+      border-right: 1px solid var(--line);
+      border-bottom: 1px solid var(--line);
 
-      background: var(--surface);
-
-      transition: background 160ms ease;
+      transition:
+        background-color 180ms ease,
+        color 180ms ease;
     }
 
-    .workflow-card:hover {
-      background: var(--surface-hover);
+    .outcome-card:hover {
+      background: var(--ink);
+      color: var(--white);
     }
 
-    .workflow-number {
-      color: var(--accent);
-
+    .outcome-number {
+      color: var(--blue);
       font-family: "DM Mono", monospace;
       font-size: 11px;
-      letter-spacing: 0.1em;
     }
 
-    .workflow-card h3 {
-      margin-top: 54px;
-
-      font-size: 20px;
-      line-height: 1.2;
-      letter-spacing: -0.03em;
+    .outcome-content h3 {
+      font-size: clamp(34px, 4vw, 62px);
+      line-height: 0.95;
+      letter-spacing: -0.055em;
       font-weight: 600;
     }
 
-    .workflow-card p {
-      margin-top: 13px;
-
+    .outcome-content p {
+      max-width: 350px;
+      margin-top: 20px;
       color: var(--muted);
       font-size: 14px;
       line-height: 1.7;
     }
 
-    /* About */
-
-    .about-grid {
-      display: grid;
-      grid-template-columns: 1.2fr 0.8fr;
-      gap: 90px;
+    .outcome-card:hover .outcome-content p {
+      color: rgba(255, 255, 255, 0.58);
     }
 
-    .about-copy {
+    /* Founder */
+
+    .founder-section {
+      padding: 0;
+      background: var(--paper-deep);
+    }
+
+    .founder-grid {
+      display: grid;
+      grid-template-columns: minmax(380px, 0.85fr) minmax(0, 1.15fr);
+      min-height: 900px;
+    }
+
+    .founder-image {
+      position: relative;
+      overflow: hidden;
+      min-height: 700px;
+    }
+
+    .founder-image::after {
+      content: "";
+      position: absolute;
+      inset: 0;
+      background:
+        linear-gradient(
+          to top,
+          rgba(12, 13, 16, 0.28),
+          transparent 45%
+        );
+      pointer-events: none;
+    }
+
+    .founder-image img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      object-position: center 18%;
+      filter: grayscale(1) contrast(1.08);
+      transition:
+        filter 500ms ease,
+        transform 700ms ease;
+    }
+
+    .founder-image:hover img {
+      filter: grayscale(0.2) contrast(1.03);
+      transform: scale(1.015);
+    }
+
+    .founder-copy {
+      padding:
+        clamp(60px, 9vw, 140px)
+        var(--page-padding);
+
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+    }
+
+    .founder-heading {
+      max-width: 770px;
+      margin-top: 42px;
+
+      font-size: clamp(62px, 8vw, 124px);
+      line-height: 0.88;
+      letter-spacing: -0.075em;
+      font-weight: 600;
+    }
+
+    .founder-bio {
+      max-width: 690px;
+      margin-top: 50px;
+
       color: var(--muted);
-      font-size: 18px;
-      line-height: 1.85;
+      font-size: clamp(17px, 1.5vw, 22px);
+      line-height: 1.75;
+      letter-spacing: -0.02em;
     }
 
-    .about-copy p + p {
-      margin-top: 24px;
+    .founder-bio strong {
+      color: var(--ink);
+      font-weight: 600;
     }
 
-    .about-copy strong {
-      color: var(--text);
-      font-weight: 500;
+    .founder-meta {
+      margin-top: 80px;
+      border-top: 1px solid var(--line-strong);
     }
 
-    .about-facts {
-      border-top: 1px solid var(--border);
-    }
-
-    .fact {
+    .founder-meta-row {
       display: grid;
-      grid-template-columns: 120px 1fr;
-      gap: 24px;
-
-      padding: 19px 0;
-
-      border-bottom: 1px solid var(--border);
-    }
-
-    .fact-label {
-      color: var(--subtle);
-
-      font-family: "DM Mono", monospace;
-      font-size: 10px;
-      text-transform: uppercase;
-      letter-spacing: 0.08em;
-    }
-
-    .fact-value {
-      color: var(--text);
-      font-size: 13px;
-      line-height: 1.55;
-    }
-
-    /* Focus */
-
-    .focus-list {
-      border-top: 1px solid var(--border);
-    }
-
-    .focus-item {
-      display: grid;
-      grid-template-columns: 70px 0.7fr 1fr;
+      grid-template-columns: 160px 1fr;
       gap: 30px;
-      align-items: start;
-
-      padding: 28px 0;
-
-      border-bottom: 1px solid var(--border);
+      padding: 17px 0;
+      border-bottom: 1px solid var(--line);
     }
 
-    .focus-number {
-      color: var(--accent);
+    .founder-meta-label {
+      color: var(--muted);
+      font-family: "DM Mono", monospace;
+      font-size: 9px;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+    }
 
+    .founder-meta-value {
+      font-size: 13px;
+      font-weight: 600;
+      letter-spacing: -0.02em;
+    }
+
+    /* Evolution */
+
+    .evolution-list {
+      margin-top: 74px;
+      border-top: 1px solid var(--line-strong);
+    }
+
+    .evolution-item {
+      display: grid;
+      grid-template-columns: 120px 1fr auto;
+      gap: 40px;
+      align-items: center;
+
+      padding: clamp(28px, 4vw, 50px) 0;
+      border-bottom: 1px solid var(--line);
+
+      transition: padding-left 180ms ease;
+    }
+
+    .evolution-item:hover {
+      padding-left: 14px;
+    }
+
+    .evolution-year {
+      color: var(--blue);
       font-family: "DM Mono", monospace;
       font-size: 11px;
     }
 
-    .focus-name {
-      font-size: 17px;
-      font-weight: 500;
-      letter-spacing: -0.025em;
+    .evolution-title {
+      font-size: clamp(29px, 4vw, 58px);
+      line-height: 1;
+      letter-spacing: -0.05em;
+      font-weight: 600;
     }
 
-    .focus-description {
+    .evolution-description {
+      max-width: 310px;
       color: var(--muted);
+      font-size: 13px;
+      line-height: 1.65;
+      text-align: right;
+    }
+
+    /* Priorities */
+
+    .priorities-section {
+      background: var(--ink);
+      color: var(--white);
+    }
+
+    .priorities-section .section-description {
+      color: rgba(255, 255, 255, 0.55);
+    }
+
+    .priority-list {
+      margin-top: 72px;
+      border-top: 1px solid rgba(255, 255, 255, 0.26);
+    }
+
+    .priority-item {
+      display: grid;
+      grid-template-columns: 80px minmax(260px, 0.75fr) 1fr;
+      gap: 35px;
+
+      padding: 33px 0;
+      border-bottom: 1px solid rgba(255, 255, 255, 0.14);
+    }
+
+    .priority-index {
+      color: #8098ff;
+      font-family: "DM Mono", monospace;
+      font-size: 10px;
+    }
+
+    .priority-title {
+      font-size: clamp(22px, 2.4vw, 38px);
+      font-weight: 600;
+      line-height: 1.1;
+      letter-spacing: -0.04em;
+    }
+
+    .priority-description {
+      max-width: 650px;
+      color: rgba(255, 255, 255, 0.52);
       font-size: 14px;
-      line-height: 1.7;
+      line-height: 1.75;
+    }
+
+    /* Notes */
+
+    .notes-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 1px;
+
+      margin-top: 72px;
+      background: var(--line);
+      border: 1px solid var(--line);
+    }
+
+    .note-card {
+      min-height: 360px;
+      padding: 28px;
+
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+
+      background: var(--paper);
+      color: var(--ink);
+      text-decoration: none;
+
+      transition:
+        background-color 180ms ease,
+        color 180ms ease;
+    }
+
+    .note-card:hover {
+      background: var(--blue);
+      color: var(--white);
+    }
+
+    .note-meta {
+      display: flex;
+      justify-content: space-between;
+      gap: 20px;
+
+      font-family: "DM Mono", monospace;
+      font-size: 9px;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      color: var(--muted);
+    }
+
+    .note-card:hover .note-meta {
+      color: rgba(255, 255, 255, 0.65);
+    }
+
+    .note-title {
+      font-size: clamp(27px, 3vw, 43px);
+      line-height: 1.05;
+      letter-spacing: -0.05em;
+      font-weight: 600;
+    }
+
+    .note-description {
+      margin-top: 18px;
+      color: var(--muted);
+      font-size: 13px;
+      line-height: 1.65;
+    }
+
+    .note-card:hover .note-description {
+      color: rgba(255, 255, 255, 0.7);
+    }
+
+    .note-arrow {
+      font-size: 24px;
     }
 
     /* Contact */
 
-    .contact-section {
-      padding: 120px 0;
-    }
-
-    .contact-panel {
+    .contact {
       position: relative;
       overflow: hidden;
 
-      border: 1px solid var(--border);
-      background: var(--surface);
-
-      padding: 70px;
+      padding: clamp(100px, 14vw, 220px) 0;
+      background: var(--blue);
+      color: var(--white);
     }
 
-    .contact-panel::after {
+    .contact::after {
       content: "FF";
       position: absolute;
-      right: -15px;
-      bottom: -100px;
+      right: -0.04em;
+      bottom: -0.25em;
 
-      color: rgba(255, 255, 255, 0.02);
-
-      font-size: 300px;
-      line-height: 1;
-      font-weight: 600;
-      letter-spacing: -0.1em;
+      color: rgba(255, 255, 255, 0.07);
+      font-size: clamp(260px, 40vw, 650px);
+      font-weight: 800;
+      line-height: 0.75;
+      letter-spacing: -0.12em;
 
       pointer-events: none;
     }
 
-    .contact-panel h2 {
+    .contact-content {
       position: relative;
-      z-index: 1;
-
-      max-width: 850px;
-
-      font-size: clamp(46px, 7vw, 88px);
-      line-height: 0.98;
-      letter-spacing: -0.06em;
-      font-weight: 600;
+      z-index: 2;
+      max-width: 1140px;
     }
 
-    .contact-panel p {
-      position: relative;
-      z-index: 1;
+    .contact-title {
+      margin-top: 36px;
 
-      max-width: 680px;
+      font-size: clamp(64px, 10vw, 160px);
+      font-weight: 600;
+      line-height: 0.82;
+      letter-spacing: -0.08em;
+    }
 
-      margin-top: 25px;
+    .contact-description {
+      max-width: 720px;
+      margin-top: 42px;
 
-      color: var(--muted);
-      font-size: 17px;
+      color: rgba(255, 255, 255, 0.73);
+      font-size: clamp(17px, 1.5vw, 22px);
       line-height: 1.7;
     }
 
     .contact-actions {
-      position: relative;
-      z-index: 1;
-
       display: flex;
       flex-wrap: wrap;
       gap: 12px;
-
-      margin-top: 35px;
+      margin-top: 42px;
     }
 
     /* Footer */
 
     .footer {
-      border-top: 1px solid var(--border);
+      background: var(--night);
+      color: var(--white);
     }
 
-    .footer-inner {
-      min-height: 92px;
+    .footer-main {
+      min-height: 250px;
+      padding: 55px 0;
 
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      gap: 30px;
+      display: grid;
+      grid-template-columns: 1fr auto;
+      gap: 60px;
+      align-items: end;
+    }
 
-      color: var(--subtle);
+    .footer-brand {
+      font-size: clamp(36px, 4vw, 60px);
+      font-weight: 600;
+      line-height: 1;
+      letter-spacing: -0.05em;
+    }
 
+    .footer-role {
+      margin-top: 13px;
+      color: rgba(255, 255, 255, 0.46);
       font-family: "DM Mono", monospace;
       font-size: 10px;
-      letter-spacing: 0.06em;
+      letter-spacing: 0.08em;
       text-transform: uppercase;
     }
 
     .footer-links {
       display: flex;
-      gap: 22px;
+      flex-wrap: wrap;
+      justify-content: flex-end;
+      gap: 12px 26px;
+      list-style: none;
     }
 
     .footer-links a {
-      color: var(--subtle);
+      color: rgba(255, 255, 255, 0.62);
+      font-family: "DM Mono", monospace;
+      font-size: 10px;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
       text-decoration: none;
     }
 
     .footer-links a:hover {
-      color: var(--text);
+      color: var(--white);
+    }
+
+    .footer-bottom {
+      padding: 20px 0;
+      border-top: 1px solid rgba(255, 255, 255, 0.13);
+
+      display: flex;
+      justify-content: space-between;
+      gap: 30px;
+
+      color: rgba(255, 255, 255, 0.33);
+      font-family: "DM Mono", monospace;
+      font-size: 9px;
+      letter-spacing: 0.07em;
+      text-transform: uppercase;
+    }
+
+    /* Motion */
+
+    .reveal {
+      opacity: 0;
+      transform: translateY(28px);
+      transition:
+        opacity 700ms ease,
+        transform 700ms ease;
+    }
+
+    .reveal.visible {
+      opacity: 1;
+      transform: translateY(0);
+    }
+
+    @media (prefers-reduced-motion: reduce) {
+      html {
+        scroll-behavior: auto;
+      }
+
+      *,
+      *::before,
+      *::after {
+        animation-duration: 0.01ms !important;
+        animation-iteration-count: 1 !important;
+        transition-duration: 0.01ms !important;
+      }
+
+      .reveal {
+        opacity: 1;
+        transform: none;
+      }
     }
 
     /* Responsive */
 
-    @media (max-width: 960px) {
-      .hero-grid,
-      .scouthalo-panel,
-      .about-grid {
-        grid-template-columns: 1fr;
-      }
-
+    @media (max-width: 1180px) {
       .hero-grid {
-        gap: 55px;
+        grid-template-columns: 1fr 0.82fr;
       }
 
-      .founder-card {
-        max-width: 500px;
+      .fragmented-list {
+        grid-template-columns: repeat(3, 1fr);
       }
 
-      .section-header {
-        grid-template-columns: 1fr;
-        gap: 18px;
-      }
-
-      .scouthalo-interface {
-        border-left: 0;
-        border-top: 1px solid var(--border);
-      }
-
-      .workflow-grid {
-        grid-template-columns: 1fr 1fr;
-      }
-
-      .about-grid {
-        gap: 55px;
+      .founder-grid {
+        grid-template-columns: 0.8fr 1.2fr;
       }
     }
 
-    @media (max-width: 720px) {
-      .container {
-        width: min(calc(100% - 32px), var(--max-width));
-      }
-
+    @media (max-width: 900px) {
       .nav {
-        height: 64px;
+        grid-template-columns: 1fr auto;
       }
 
-      .nav-links li:not(:last-child) {
+      .nav-links,
+      .header-status {
         display: none;
       }
 
-      .hero {
-        min-height: auto;
-        padding: 125px 0 80px;
+      .mobile-menu-button {
+        display: block;
       }
 
-      .hero h1 {
-        font-size: clamp(58px, 19vw, 82px);
-      }
-
-      .hero-description {
-        font-size: 17px;
-      }
-
-      .section {
-        padding: 80px 0;
-      }
-
-      .section-title {
-        font-size: 44px;
-      }
-
-      .scouthalo-copy {
-        padding: 32px 25px;
-      }
-
-      .scouthalo-interface {
-        min-height: auto;
-        padding: 16px;
-      }
-
-      .workflow-grid {
+      .hero-grid,
+      .company-intro,
+      .founder-grid {
         grid-template-columns: 1fr;
       }
 
-      .workflow-card {
-        min-height: 230px;
+      .hero-copy {
+        min-height: auto;
+        padding-right: 0;
       }
 
-      .focus-item {
-        grid-template-columns: 45px 1fr;
-        gap: 16px;
+      .portrait-panel {
+        min-height: 780px;
       }
 
-      .focus-description {
+      .section-grid {
+        grid-template-columns: 1fr;
+        gap: 34px;
+      }
+
+      .search-demo-results,
+      .outcome-grid,
+      .notes-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .outcome-card {
+        min-height: 300px;
+      }
+
+      .founder-image {
+        min-height: 800px;
+      }
+
+      .founder-copy {
+        min-height: 750px;
+      }
+
+      .priority-item {
+        grid-template-columns: 50px 1fr;
+      }
+
+      .priority-description {
         grid-column: 2;
       }
 
-      .contact-panel {
-        padding: 42px 25px;
+      .footer-main {
+        grid-template-columns: 1fr;
+        align-items: start;
       }
 
-      .contact-panel h2 {
-        font-size: 50px;
+      .footer-links {
+        justify-content: flex-start;
+      }
+    }
+
+    @media (max-width: 680px) {
+      .site-header {
+        background: rgba(242, 241, 236, 0.94);
+      }
+
+      .nav {
+        height: 66px;
+      }
+
+      .hero {
+        padding-top: 66px;
+      }
+
+      .hero-grid {
+        min-height: auto;
+      }
+
+      .hero-copy {
+        padding-top: 58px;
+        padding-bottom: 58px;
+      }
+
+      .hero-title {
+        font-size: clamp(72px, 24vw, 112px);
+        line-height: 0.81;
+      }
+
+      .hero-statement {
+        font-size: 17px;
       }
 
       .hero-actions,
@@ -1043,11 +1517,109 @@
         width: 100%;
       }
 
-      .footer-inner {
-        padding: 24px 0;
+      .hero-bottom {
+        grid-template-columns: 1fr;
+      }
 
+      .portrait-panel {
+        min-height: 600px;
+      }
+
+      .portrait-label {
+        left: 20px;
+        right: 20px;
+        bottom: 20px;
+        display: block;
+      }
+
+      .portrait-location {
+        margin-top: 13px;
+        text-align: left;
+      }
+
+      .manifesto-copy {
+        font-size: 45px;
+      }
+
+      .fragmented-list {
+        grid-template-columns: 1fr 1fr;
+      }
+
+      .fragmented-item {
+        min-height: 135px;
+      }
+
+      .fragmented-close {
+        display: block;
+      }
+
+      .fragmented-close .button {
+        margin-top: 28px;
+      }
+
+      .product-canvas {
+        min-height: auto;
+        padding: 22px;
+      }
+
+      .search-demo-query {
+        padding: 20px;
+        font-size: 16px;
+      }
+
+      .result-card {
+        min-height: 165px;
+      }
+
+      .founder-image {
+        min-height: 600px;
+      }
+
+      .founder-copy {
+        min-height: auto;
+      }
+
+      .founder-heading {
+        font-size: 68px;
+      }
+
+      .founder-meta-row {
+        grid-template-columns: 1fr;
+        gap: 6px;
+      }
+
+      .evolution-item {
+        grid-template-columns: 70px 1fr;
+        gap: 18px;
+      }
+
+      .evolution-description {
+        grid-column: 2;
+        text-align: left;
+      }
+
+      .priority-item {
+        grid-template-columns: 38px 1fr;
+        gap: 16px;
+      }
+
+      .notes-grid {
+        background: transparent;
+        border: 0;
+        gap: 12px;
+      }
+
+      .note-card {
+        border: 1px solid var(--line);
+      }
+
+      .contact-title {
+        font-size: 70px;
+      }
+
+      .footer-bottom {
         flex-direction: column;
-        align-items: flex-start;
+        gap: 8px;
       }
     }
   </style>
@@ -1055,7 +1627,7 @@
 
 <body>
 
-  <!-- Navigation -->
+  <!-- Header -->
   <header class="site-header">
     <nav class="nav container" aria-label="Main navigation">
 
@@ -1069,29 +1641,26 @@
       </a>
 
       <ul class="nav-links">
-        <li>
-          <a href="#scouthalo">ScoutHalo</a>
-        </li>
-
-        <li>
-          <a href="#about">About</a>
-        </li>
-
-        <li>
-          <a href="#focus">Focus</a>
-        </li>
-
-        <li>
-          <a
-            href="https://scouthalo.com"
-            target="_blank"
-            rel="noopener noreferrer"
-            class="nav-cta"
-          >
-            Visit ScoutHalo ↗
-          </a>
-        </li>
+        <li><a href="#scouthalo">ScoutHalo</a></li>
+        <li><a href="#founder">Founder</a></li>
+        <li><a href="#evolution">Evolution</a></li>
+        <li><a href="#priorities">Priorities</a></li>
+        <li><a href="#notes">Notes</a></li>
       </ul>
+
+      <div class="header-status">
+        <span class="status-dot"></span>
+        Relocating to Miami
+      </div>
+
+      <button
+        type="button"
+        class="mobile-menu-button"
+        aria-label="Open navigation menu"
+        aria-expanded="false"
+      >
+        Menu
+      </button>
 
     </nav>
   </header>
@@ -1103,85 +1672,117 @@
     <section class="hero" id="top">
       <div class="container hero-grid">
 
-        <div>
-          <p class="eyebrow">
-            Founder & CEO of ScoutHalo
-          </p>
+        <div class="hero-copy">
 
-          <h1>
-            Facundo<br>
-            <span>Franco.</span>
-          </h1>
+          <div class="hero-top">
 
-          <p class="hero-description">
-            Facundo Franco is the founder and CEO of
-            <strong>ScoutHalo</strong>, an AI-powered location intelligence
-            platform for production teams and creative agencies.
-          </p>
+            <p class="eyebrow hero-kicker">
+              Founder & CEO · ScoutHalo
+            </p>
 
-          <div class="hero-actions">
-            <a
-              href="https://scouthalo.com"
-              target="_blank"
-              rel="noopener noreferrer"
-              class="button button-primary"
-            >
-              Explore ScoutHalo
-              <span aria-hidden="true">↗</span>
-            </a>
+            <h1 class="hero-title">
+              <span>Facundo</span>
+              <span class="outline">Franco.</span>
+            </h1>
 
-            <a
-              href="https://www.linkedin.com/in/facundo-franco"
-              target="_blank"
-              rel="noopener noreferrer"
-              class="button button-secondary"
-            >
-              Connect on LinkedIn
-              <span aria-hidden="true">↗</span>
-            </a>
+            <p class="hero-statement">
+              Building <strong>ScoutHalo</strong>, the AI-powered location
+              intelligence platform for production teams and creative agencies.
+            </p>
+
+            <div class="hero-actions">
+
+              <a
+                href="https://scouthalo.com"
+                target="_blank"
+                rel="noopener noreferrer"
+                class="button button-blue"
+              >
+                Explore ScoutHalo
+                <span class="arrow" aria-hidden="true">↗</span>
+              </a>
+
+              <a
+                href="https://www.linkedin.com/in/facundo-franco"
+                target="_blank"
+                rel="noopener noreferrer"
+                class="button button-outline"
+              >
+                LinkedIn
+                <span class="arrow" aria-hidden="true">↗</span>
+              </a>
+
+            </div>
+
           </div>
+
+
+          <div class="hero-bottom">
+
+            <div class="hero-stat">
+              <p class="hero-stat-label">Company</p>
+              <p class="hero-stat-value">ScoutHalo</p>
+            </div>
+
+            <div class="hero-stat">
+              <p class="hero-stat-label">Category</p>
+              <p class="hero-stat-value">Production location intelligence</p>
+            </div>
+
+            <div class="hero-stat">
+              <p class="hero-stat-label">Next</p>
+              <p class="hero-stat-value">Relocating to Miami, Florida</p>
+            </div>
+
+          </div>
+
         </div>
 
 
-        <aside class="founder-card">
+        <figure class="portrait-panel">
 
-          <p class="eyebrow founder-card-label">
-            Founder profile
-          </p>
+          <img
+            src="./facundo-franco-founder-scouthalo.png"
+            alt="Facundo Franco, Founder and CEO of ScoutHalo"
+            width="1280"
+            height="1280"
+          >
 
-          <h2 class="founder-card-name">
-            Facundo Franco
-          </h2>
+          <span class="portrait-index">01</span>
 
-          <p class="founder-card-role">
-            Founder & CEO, ScoutHalo
-          </p>
+          <figcaption class="portrait-label">
 
-          <div class="founder-meta">
+            <p class="portrait-role">
+              Building the<br>
+              category.
+            </p>
 
-            <div class="meta-row">
-              <span class="meta-label">Company</span>
-              <span class="meta-value">ScoutHalo</span>
-            </div>
+            <p class="portrait-location">
+              Currently Uruguay<br>
+              Relocating to Miami<br>
+              Building globally
+            </p>
 
-            <div class="meta-row">
-              <span class="meta-label">Category</span>
-              <span class="meta-value">Location intelligence</span>
-            </div>
+          </figcaption>
 
-            <div class="meta-row">
-              <span class="meta-label">Users</span>
-              <span class="meta-value">Production teams<br>Creative agencies</span>
-            </div>
+        </figure>
 
-            <div class="meta-row">
-              <span class="meta-label">Based</span>
-              <span class="meta-value">Uruguay<br>Building globally</span>
-            </div>
+      </div>
+    </section>
 
-          </div>
 
-        </aside>
+    <!-- Manifesto -->
+    <section class="section manifesto">
+      <div class="container section-grid">
+
+        <p class="eyebrow">
+          The thesis
+        </p>
+
+        <p class="manifesto-copy reveal">
+          Production teams do not need another gallery of pretty locations.
+          <span>They need the intelligence to know which locations can actually work.</span>
+        </p>
 
       </div>
     </section>
@@ -1191,134 +1792,77 @@
     <section class="section" id="scouthalo">
       <div class="container">
 
-        <div class="section-header">
-
-          <p class="eyebrow">
-            01 / ScoutHalo
-          </p>
+        <div class="company-intro">
 
           <div>
-            <h2 class="section-title">
-              The location intelligence layer for creative production.
-            </h2>
+            <p class="eyebrow">01 · What I'm building</p>
 
-            <p class="section-intro">
-              ScoutHalo helps production teams move from a creative brief
-              to viable, shoot-ready locations with better search, deeper
-              intelligence, and fewer operational surprises.
-            </p>
+            <h2 class="company-title reveal">
+              ScoutHalo.
+            </h2>
+          </div>
+
+          <p class="company-description reveal">
+            <strong>ScoutHalo is building the operating system for production
+            location intelligence.</strong> It helps teams discover, evaluate,
+            compare, organize, and prepare shoot-ready locations in one
+            AI-powered workspace.
+          </p>
+
+        </div>
+
+
+        <div class="fragmented-list reveal">
+
+          <div class="fragmented-item">
+            <span class="fragmented-index">01</span>
+            <span class="fragmented-name">Google Maps</span>
+          </div>
+
+          <div class="fragmented-item">
+            <span class="fragmented-index">02</span>
+            <span class="fragmented-name">Instagram</span>
+          </div>
+
+          <div class="fragmented-item">
+            <span class="fragmented-index">03</span>
+            <span class="fragmented-name">Location libraries</span>
+          </div>
+
+          <div class="fragmented-item">
+            <span class="fragmented-index">04</span>
+            <span class="fragmented-name">PDFs</span>
+          </div>
+
+          <div class="fragmented-item">
+            <span class="fragmented-index">05</span>
+            <span class="fragmented-name">Spreadsheets</span>
+          </div>
+
+          <div class="fragmented-item">
+            <span class="fragmented-index">06</span>
+            <span class="fragmented-name">Local knowledge</span>
           </div>
 
         </div>
 
 
-        <div class="scouthalo-panel">
+        <div class="fragmented-close reveal">
 
-          <div class="scouthalo-copy">
+          <p>
+            ScoutHalo replaces a fragmented research process with one
+            production-ready intelligence layer.
+          </p>
 
-            <h3>
-              Location scouting is still fragmented.
-            </h3>
-
-            <p>
-              Teams move between maps, social platforms, spreadsheets,
-              PDFs, location libraries, emails, and local knowledge to
-              answer basic production questions.
-            </p>
-
-            <p>
-              <strong>ScoutHalo centralizes that workflow.</strong>
-              It helps teams discover locations, assess production
-              constraints, compare alternatives, organize shortlists,
-              and prepare decisions in one workspace.
-            </p>
-
-            <p>
-              The product is designed for location scouts, producers,
-              photographers, filmmakers, production companies, and
-              creative agencies.
-            </p>
-
-            <div class="hero-actions">
-              <a
-                href="https://scouthalo.com"
-                target="_blank"
-                rel="noopener noreferrer"
-                class="button button-primary"
-              >
-                Visit ScoutHalo
-                <span aria-hidden="true">↗</span>
-              </a>
-            </div>
-
-          </div>
-
-
-          <div
-            class="scouthalo-interface"
-            aria-label="ScoutHalo search example"
+          <a
+            href="https://scouthalo.com/product"
+            target="_blank"
+            rel="noopener noreferrer"
+            class="button button-dark"
           >
-
-            <div class="interface-window">
-
-              <div class="window-top">
-                <span class="window-brand">
-                  ScoutHalo / Scout
-                </span>
-
-                <span class="window-status">
-                  <span class="status-dot"></span>
-                  Searching
-                </span>
-              </div>
-
-
-              <div class="search-example">
-
-                <p class="search-label">
-                  Production brief
-                </p>
-
-                <div class="search-query">
-                  Brutalist museum with strong geometric lines, controllable
-                  morning light, low pedestrian traffic, and practical
-                  production access.
-                </div>
-
-              </div>
-
-
-              <div class="result-list">
-
-                <div class="result-item">
-                  <span class="result-number">01</span>
-                  <span class="result-name">
-                    Concrete Arts Complex
-                  </span>
-                  <span class="result-score">94% match</span>
-                </div>
-
-                <div class="result-item">
-                  <span class="result-number">02</span>
-                  <span class="result-name">
-                    Modernist Civic Museum
-                  </span>
-                  <span class="result-score">89% match</span>
-                </div>
-
-                <div class="result-item">
-                  <span class="result-number">03</span>
-                  <span class="result-name">
-                    Monolithic Cultural Center
-                  </span>
-                  <span class="result-score">84% match</span>
-                </div>
-
-              </div>
-
-            </div>
-
-          </div>
+            View the product
+            <span class="arrow" aria-hidden="true">↗</span>
+          </a>
 
         </div>
 
@@ -1326,101 +1870,218 @@
     </section>
 
 
-    <!-- Workflow -->
+    <!-- Product visual -->
+    <section class="section product-section">
+      <div class="container">
+
+        <div class="section-grid">
+
+          <p class="eyebrow">
+            02 · Product
+          </p>
+
+          <div>
+            <h2 class="section-heading reveal">
+              From a creative brief to a viable location.
+            </h2>
+
+            <p class="section-description reveal">
+              Search by visual intent, production requirements, geography,
+              atmosphere, timing, access, lighting, logistics, and constraints.
+            </p>
+          </div>
+
+        </div>
+
+
+        <div class="product-frame reveal">
+
+          <div class="product-toolbar">
+
+            <div class="toolbar-left">
+              <span class="toolbar-dot"></span>
+              <span>ScoutHalo · Scout</span>
+            </div>
+
+            <div class="toolbar-right">
+              <span>Production intelligence</span>
+            </div>
+
+          </div>
+
+
+          <div class="product-canvas">
+
+            <div class="search-demo">
+
+              <p class="search-demo-label">
+                Production brief
+              </p>
+
+              <div class="search-demo-query">
+                Brutalist museum with powerful geometric lines, controllable
+                morning light, low pedestrian traffic, and practical
+                production access.
+              </div>
+
+
+              <div class="search-demo-results">
+
+                <article class="result-card">
+
+                  <div class="result-top">
+                    <span>01</span>
+                    <span>94% match</span>
+                  </div>
+
+                  <div>
+                    <h3 class="result-title">
+                      Concrete Arts Complex
+                    </h3>
+
+                    <div class="result-tags">
+                      <span class="result-tag">Morning light</span>
+                      <span class="result-tag">Production access</span>
+                    </div>
+                  </div>
+
+                </article>
+
+
+                <article class="result-card">
+
+                  <div class="result-top">
+                    <span>02</span>
+                    <span>89% match</span>
+                  </div>
+
+                  <div>
+                    <h3 class="result-title">
+                      Modernist Civic Museum
+                    </h3>
+
+                    <div class="result-tags">
+                      <span class="result-tag">Low crowds</span>
+                      <span class="result-tag">Strong geometry</span>
+                    </div>
+                  </div>
+
+                </article>
+
+
+                <article class="result-card">
+
+                  <div class="result-top">
+                    <span>03</span>
+                    <span>84% match</span>
+                  </div>
+
+                  <div>
+                    <h3 class="result-title">
+                      Monolithic Cultural Center
+                    </h3>
+
+                    <div class="result-tags">
+                      <span class="result-tag">Permit review</span>
+                      <span class="result-tag">Vehicle access</span>
+                    </div>
+                  </div>
+
+                </article>
+
+              </div>
+
+            </div>
+
+          </div>
+
+        </div>
+
+
+        <div class="product-cta">
+
+          <a
+            href="https://scouthalo.com"
+            target="_blank"
+            rel="noopener noreferrer"
+            class="button button-light"
+          >
+            Open ScoutHalo
+            <span class="arrow" aria-hidden="true">↗</span>
+          </a>
+
+        </div>
+
+      </div>
+    </section>
+
+
+    <!-- Outcomes -->
     <section class="section">
       <div class="container">
 
-        <div class="section-header">
+        <div class="section-grid">
 
           <p class="eyebrow">
-            02 / Product
+            03 · The workflow
           </p>
 
           <div>
-            <h2 class="section-title">
-              From inspiration to execution.
+            <h2 class="section-heading reveal">
+              Discover less randomly. Decide more confidently.
             </h2>
-
-            <p class="section-intro">
-              ScoutHalo is being built around the actual decisions production
-              teams need to make—not around another gallery of attractive images.
-            </p>
           </div>
 
         </div>
 
 
-        <div class="workflow-grid">
+        <div class="outcome-grid reveal">
 
-          <article class="workflow-card">
-            <span class="workflow-number">01</span>
+          <article class="outcome-card">
 
-            <h3>Discover</h3>
+            <span class="outcome-number">01</span>
 
-            <p>
-              Search with creative intent, visual references, geography,
-              atmosphere, and production requirements.
-            </p>
+            <div class="outcome-content">
+              <h3>Discover.</h3>
+
+              <p>
+                Stop searching across disconnected platforms. Describe the
+                production and find relevant location candidates.
+              </p>
+            </div>
+
           </article>
 
 
-          <article class="workflow-card">
-            <span class="workflow-number">02</span>
+          <article class="outcome-card">
 
-            <h3>Evaluate</h3>
+            <span class="outcome-number">02</span>
 
-            <p>
-              Understand lighting, access, permits, logistics, timing,
-              crowd conditions, and production constraints.
-            </p>
+            <div class="outcome-content">
+              <h3>Evaluate.</h3>
+
+              <p>
+                Understand lighting, access, permits, logistics, timing,
+                crowds, constraints, and operational risk.
+              </p>
+            </div>
+
           </article>
 
 
-          <article class="workflow-card">
-            <span class="workflow-number">03</span>
+          <article class="outcome-card">
 
-            <h3>Compare</h3>
+            <span class="outcome-number">03</span>
 
-            <p>
-              Place viable candidates side by side and assess the tradeoffs
-              that matter to the production.
-            </p>
-          </article>
+            <div class="outcome-content">
+              <h3>Execute.</h3>
 
+              <p>
+                Compare options, align stakeholders, prepare the brief, and
+                arrive with fewer unknowns.
+              </p>
+            </div>
 
-          <article class="workflow-card">
-            <span class="workflow-number">04</span>
-
-            <h3>Organize</h3>
-
-            <p>
-              Save findings, create collections, structure shortlists,
-              and maintain context across the project.
-            </p>
-          </article>
-
-
-          <article class="workflow-card">
-            <span class="workflow-number">05</span>
-
-            <h3>Align</h3>
-
-            <p>
-              Give creative, production, and client stakeholders a shared
-              environment for reviewing options.
-            </p>
-          </article>
-
-
-          <article class="workflow-card">
-            <span class="workflow-number">06</span>
-
-            <h3>Prepare</h3>
-
-            <p>
-              Move forward with stronger intelligence and fewer unknowns
-              before the team reaches the location.
-            </p>
           </article>
 
         </div>
@@ -1429,104 +2090,203 @@
     </section>
 
 
-    <!-- About -->
-    <section class="section" id="about">
+    <!-- Founder -->
+    <section class="founder-section" id="founder">
+
+      <div class="founder-grid">
+
+        <figure class="founder-image">
+
+          <img
+            src="./facundo-franco-founder-scouthalo.png"
+            alt="Portrait of Facundo Franco, Founder and CEO of ScoutHalo"
+            width="1280"
+            height="1280"
+            loading="lazy"
+          >
+
+        </figure>
+
+
+        <div class="founder-copy">
+
+          <div>
+
+            <p class="eyebrow">
+              04 · Founder
+            </p>
+
+            <h2 class="founder-heading reveal">
+              Built by<br>
+              Facundo<br>
+              Franco.
+            </h2>
+
+            <div class="founder-bio reveal">
+
+              <p>
+                I am the <strong>Founder and CEO of ScoutHalo</strong>.
+                My work spans product strategy, AI systems, search relevance,
+                data quality, customer discovery, positioning, and
+                founder-led go-to-market.
+              </p>
+
+              <p style="margin-top: 22px;">
+                Before ScoutHalo, I worked across growth and operations,
+                managing acquisition, CRM, analytics, marketplaces, commercial
+                execution, and operational systems.
+              </p>
+
+              <p style="margin-top: 22px;">
+                I am currently based in Uruguay and preparing to relocate to
+                <strong>Miami, Florida</strong>, while building ScoutHalo for
+                production teams operating globally.
+              </p>
+
+            </div>
+
+          </div>
+
+
+          <div class="founder-meta reveal">
+
+            <div class="founder-meta-row">
+              <span class="founder-meta-label">Role</span>
+              <span class="founder-meta-value">Founder & CEO</span>
+            </div>
+
+            <div class="founder-meta-row">
+              <span class="founder-meta-label">Company</span>
+              <span class="founder-meta-value">ScoutHalo</span>
+            </div>
+
+            <div class="founder-meta-row">
+              <span class="founder-meta-label">Current base</span>
+              <span class="founder-meta-value">Uruguay</span>
+            </div>
+
+            <div class="founder-meta-row">
+              <span class="founder-meta-label">Relocating</span>
+              <span class="founder-meta-value">Miami, Florida</span>
+            </div>
+
+            <div class="founder-meta-row">
+              <span class="founder-meta-label">Focus</span>
+              <span class="founder-meta-value">
+                Product · Search · AI · Data · GTM
+              </span>
+            </div>
+
+          </div>
+
+        </div>
+
+      </div>
+
+    </section>
+
+
+    <!-- Evolution -->
+    <section class="section" id="evolution">
       <div class="container">
 
-        <div class="section-header">
+        <div class="section-grid">
 
           <p class="eyebrow">
-            03 / About
+            05 · Evolution
           </p>
 
           <div>
-            <h2 class="section-title">
-              Founder, operator, and product builder.
+            <h2 class="section-heading reveal">
+              From an initial insight to a global platform.
             </h2>
+
+            <p class="section-description reveal">
+              ScoutHalo did not begin as a fully formed product. It evolved
+              through research, iteration, customer conversations, and a deeper
+              understanding of production workflows.
+            </p>
           </div>
 
         </div>
 
 
-        <div class="about-grid">
+        <div class="evolution-list reveal">
 
-          <div class="about-copy">
+          <div class="evolution-item">
 
-            <p>
-              I am <strong>Facundo Franco</strong>, the founder and CEO of
+            <span class="evolution-year">Origin</span>
+
+            <h3 class="evolution-title">
+              The location problem.
+            </h3>
+
+            <p class="evolution-description">
+              Location information was fragmented, inconsistent, and difficult
+              to convert into production decisions.
+            </p>
+
+          </div>
+
+
+          <div class="evolution-item">
+
+            <span class="evolution-year">First</span>
+
+            <h3 class="evolution-title">
+              NYCScout.
+            </h3>
+
+            <p class="evolution-description">
+              An initial experiment focused on location discovery in New York.
+            </p>
+
+          </div>
+
+
+          <div class="evolution-item">
+
+            <span class="evolution-year">Learn</span>
+
+            <h3 class="evolution-title">
+              Production workflows.
+            </h3>
+
+            <p class="evolution-description">
+              Discovery alone was not enough. Teams needed evaluation,
+              comparison, logistics, and preparation.
+            </p>
+
+          </div>
+
+
+          <div class="evolution-item">
+
+            <span class="evolution-year">Now</span>
+
+            <h3 class="evolution-title">
               ScoutHalo.
-            </p>
+            </h3>
 
-            <p>
-              I am building ScoutHalo because the information needed to
-              discover and evaluate production locations remains fragmented,
-              inconsistent, and difficult to use.
-            </p>
-
-            <p>
-              My work spans product strategy, search quality, AI systems,
-              data infrastructure, customer discovery, positioning, and
-              founder-led go-to-market.
-            </p>
-
-            <p>
-              Before ScoutHalo, I worked across growth and operations,
-              managing acquisition, CRM, analytics, marketplaces, commercial
-              execution, and operational systems.
-            </p>
-
-            <p>
-              I am based in Uruguay and building for production teams and
-              creative agencies operating across the United States, Europe,
-              and global production markets.
+            <p class="evolution-description">
+              A broader operating system for production location intelligence.
             </p>
 
           </div>
 
 
-          <div class="about-facts">
+          <div class="evolution-item">
 
-            <div class="fact">
-              <span class="fact-label">Role</span>
-              <span class="fact-value">
-                Founder & CEO
-              </span>
-            </div>
+            <span class="evolution-year">Next</span>
 
-            <div class="fact">
-              <span class="fact-label">Company</span>
-              <span class="fact-value">
-                ScoutHalo
-              </span>
-            </div>
+            <h3 class="evolution-title">
+              Build the category.
+            </h3>
 
-            <div class="fact">
-              <span class="fact-label">Product</span>
-              <span class="fact-value">
-                AI-powered location intelligence for production
-              </span>
-            </div>
-
-            <div class="fact">
-              <span class="fact-label">Focus</span>
-              <span class="fact-value">
-                Search, data quality, AI systems, product, and go-to-market
-              </span>
-            </div>
-
-            <div class="fact">
-              <span class="fact-label">Location</span>
-              <span class="fact-value">
-                Uruguay · Building globally
-              </span>
-            </div>
-
-            <div class="fact">
-              <span class="fact-label">Markets</span>
-              <span class="fact-value">
-                United States and Europe
-              </span>
-            </div>
+            <p class="evolution-description">
+              Better search, stronger data, agency adoption, and a global
+              intelligence layer for production.
+            </p>
 
           </div>
 
@@ -1536,95 +2296,201 @@
     </section>
 
 
-    <!-- Focus -->
-    <section class="section" id="focus">
+    <!-- Priorities -->
+    <section class="section priorities-section" id="priorities">
       <div class="container">
 
-        <div class="section-header">
+        <div class="section-grid">
 
           <p class="eyebrow">
-            04 / Current focus
+            06 · Current priorities
           </p>
 
           <div>
-            <h2 class="section-title">
-              Building the system behind better location decisions.
+            <h2 class="section-heading reveal">
+              The work that compounds.
             </h2>
+
+            <p class="section-description reveal">
+              The objective is not to add more features. It is to make ScoutHalo
+              more relevant, more reliable, and more valuable to production teams.
+            </p>
           </div>
 
         </div>
 
 
-        <div class="focus-list">
+        <div class="priority-list reveal">
 
-          <div class="focus-item">
-            <span class="focus-number">01</span>
+          <div class="priority-item">
+            <span class="priority-index">01</span>
 
-            <h3 class="focus-name">
+            <h3 class="priority-title">
               Search relevance
             </h3>
 
-            <p class="focus-description">
-              Interpreting creative intent and ranking locations based on
-              visual fit, production viability, and user constraints.
+            <p class="priority-description">
+              Interpret creative intent accurately and rank locations based on
+              visual fit, geographic context, production viability, and user
+              constraints.
             </p>
           </div>
 
 
-          <div class="focus-item">
-            <span class="focus-number">02</span>
+          <div class="priority-item">
+            <span class="priority-index">02</span>
 
-            <h3 class="focus-name">
+            <h3 class="priority-title">
               Data quality
             </h3>
 
-            <p class="focus-description">
-              Turning fragmented geographic, visual, operational, and
-              production information into structured intelligence.
+            <p class="priority-description">
+              Transform fragmented geographic, visual, environmental, and
+              operational information into trustworthy production intelligence.
             </p>
           </div>
 
 
-          <div class="focus-item">
-            <span class="focus-number">03</span>
+          <div class="priority-item">
+            <span class="priority-index">03</span>
 
-            <h3 class="focus-name">
-              Product workflow
+            <h3 class="priority-title">
+              Production reasoning
             </h3>
 
-            <p class="focus-description">
-              Designing a workspace that supports discovery, evaluation,
-              comparison, approval, and preparation without adding complexity.
+            <p class="priority-description">
+              Help teams identify tradeoffs, constraints, risks, and unknowns
+              before committing time and money to a location.
             </p>
           </div>
 
 
-          <div class="focus-item">
-            <span class="focus-number">04</span>
+          <div class="priority-item">
+            <span class="priority-index">04</span>
 
-            <h3 class="focus-name">
-              Customer discovery
+            <h3 class="priority-title">
+              Agency adoption
             </h3>
 
-            <p class="focus-description">
-              Working with production teams and creative agencies to identify
-              real constraints and validate commercial value.
+            <p class="priority-description">
+              Work directly with production companies and creative agencies to
+              validate the product inside real scouting and decision workflows.
             </p>
           </div>
 
 
-          <div class="focus-item">
-            <span class="focus-number">05</span>
+          <div class="priority-item">
+            <span class="priority-index">05</span>
 
-            <h3 class="focus-name">
-              Founder-led growth
+            <h3 class="priority-title">
+              Revenue
             </h3>
 
-            <p class="focus-description">
-              Building relationships with early customers, refining positioning,
-              and converting product value into adoption and revenue.
+            <p class="priority-description">
+              Convert product value into durable commercial relationships with
+              the teams that experience the problem most acutely.
             </p>
           </div>
+
+        </div>
+
+      </div>
+    </section>
+
+
+    <!-- Notes -->
+    <section class="section" id="notes">
+      <div class="container">
+
+        <div class="section-grid">
+
+          <p class="eyebrow">
+            07 · Notes
+          </p>
+
+          <div>
+            <h2 class="section-heading reveal">
+              Thinking in public.
+            </h2>
+
+            <p class="section-description reveal">
+              Notes on location intelligence, AI products, production workflows,
+              and building ScoutHalo.
+            </p>
+          </div>
+
+        </div>
+
+
+        <div class="notes-grid reveal">
+
+          <article class="note-card">
+
+            <div class="note-meta">
+              <span>Coming soon</span>
+              <span>Location intelligence</span>
+            </div>
+
+            <div>
+              <h3 class="note-title">
+                Why production needs an intelligence layer.
+              </h3>
+
+              <p class="note-description">
+                The gap between discovering an attractive location and knowing
+                whether it can support a real production.
+              </p>
+            </div>
+
+            <span class="note-arrow" aria-hidden="true">↗</span>
+
+          </article>
+
+
+          <article class="note-card">
+
+            <div class="note-meta">
+              <span>Coming soon</span>
+              <span>Product</span>
+            </div>
+
+            <div>
+              <h3 class="note-title">
+                Why Google Maps is not a production tool.
+              </h3>
+
+              <p class="note-description">
+                Maps can show where a place is. Production teams need to know
+                how, when, and whether it can work.
+              </p>
+            </div>
+
+            <span class="note-arrow" aria-hidden="true">↗</span>
+
+          </article>
+
+
+          <article class="note-card">
+
+            <div class="note-meta">
+              <span>Coming soon</span>
+              <span>Founder notes</span>
+            </div>
+
+            <div>
+              <h3 class="note-title">
+                What agencies taught me about location scouting.
+              </h3>
+
+              <p class="note-description">
+                Product lessons from understanding where existing scouting
+                workflows break down.
+              </p>
+            </div>
+
+            <span class="note-arrow" aria-hidden="true">↗</span>
+
+          </article>
 
         </div>
 
@@ -1633,55 +2499,54 @@
 
 
     <!-- Contact -->
-    <section class="contact-section" id="contact">
+    <section class="contact" id="contact">
       <div class="container">
 
-        <div class="contact-panel">
+        <div class="contact-content">
 
           <p class="eyebrow">
             Contact
           </p>
 
-          <h2>
-            Building the future of location intelligence.
+          <h2 class="contact-title reveal">
+            Let's build<br>
+            what comes next.
           </h2>
 
-          <p>
-            I am interested in connecting with production companies,
-            creative agencies, location professionals, founders, investors,
-            and people building at the intersection of AI and creative work.
+          <p class="contact-description reveal">
+            I am interested in connecting with production companies, creative
+            agencies, location professionals, founders, investors, and people
+            building at the intersection of AI and creative production.
           </p>
 
-          <div class="contact-actions">
+          <div class="contact-actions reveal">
 
             <a
               href="https://scouthalo.com"
               target="_blank"
               rel="noopener noreferrer"
-              class="button button-primary"
+              class="button button-dark"
             >
               Visit ScoutHalo
-              <span aria-hidden="true">↗</span>
+              <span class="arrow" aria-hidden="true">↗</span>
             </a>
 
             <a
               href="https://www.linkedin.com/in/facundo-franco"
               target="_blank"
               rel="noopener noreferrer"
-              class="button button-secondary"
+              class="button button-light"
             >
-              LinkedIn
-              <span aria-hidden="true">↗</span>
+              Connect on LinkedIn
+              <span class="arrow" aria-hidden="true">↗</span>
             </a>
 
             <a
-              href="https://x.com/facundofranco_"
-              target="_blank"
-              rel="noopener noreferrer"
-              class="button button-secondary"
+              href="mailto:hello@scouthalo.com"
+              class="button button-light"
             >
-              X / Twitter
-              <span aria-hidden="true">↗</span>
+              Email
+              <span class="arrow" aria-hidden="true">↗</span>
             </a>
 
           </div>
@@ -1696,42 +2561,123 @@
 
   <!-- Footer -->
   <footer class="footer">
-    <div class="container footer-inner">
 
-      <span>
-        © 2026 Facundo Franco · Founder & CEO of ScoutHalo
-      </span>
+    <div class="container footer-main">
 
-      <div class="footer-links">
+      <div>
+        <p class="footer-brand">
+          Facundo Franco.
+        </p>
 
-        <a
-          href="https://scouthalo.com"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          ScoutHalo
-        </a>
-
-        <a
-          href="https://www.linkedin.com/in/facundo-franco"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          LinkedIn
-        </a>
-
-        <a
-          href="https://x.com/facundofranco_"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          X
-        </a>
-
+        <p class="footer-role">
+          Founder & CEO · ScoutHalo
+        </p>
       </div>
 
+
+      <ul class="footer-links">
+
+        <li>
+          <a
+            href="https://scouthalo.com"
+            target="_blank"
+            rel="noopener noreferrer"
+          >
+            ScoutHalo
+          </a>
+        </li>
+
+        <li>
+          <a
+            href="https://www.linkedin.com/in/facundo-franco"
+            target="_blank"
+            rel="noopener noreferrer"
+          >
+            LinkedIn
+          </a>
+        </li>
+
+        <li>
+          <a
+            href="https://x.com/facundofranco_"
+            target="_blank"
+            rel="noopener noreferrer"
+          >
+            X
+          </a>
+        </li>
+
+        <li>
+          <a
+            href="https://www.youtube.com/@ScoutHalo"
+            target="_blank"
+            rel="noopener noreferrer"
+          >
+            YouTube
+          </a>
+        </li>
+
+        <li>
+          <a href="mailto:hello@scouthalo.com">
+            Email
+          </a>
+        </li>
+
+      </ul>
+
     </div>
+
+
+    <div class="container footer-bottom">
+
+      <span>
+        © 2026 Facundo Franco
+      </span>
+
+      <span>
+        Uruguay → Miami · Building globally
+      </span>
+
+    </div>
+
   </footer>
+
+
+  <script>
+    const revealElements = document.querySelectorAll(".reveal");
+
+    const revealObserver = new IntersectionObserver(
+      (entries) => {
+        entries.forEach((entry) => {
+          if (entry.isIntersecting) {
+            entry.target.classList.add("visible");
+            revealObserver.unobserve(entry.target);
+          }
+        });
+      },
+      {
+        threshold: 0.12
+      }
+    );
+
+    revealElements.forEach((element) => {
+      revealObserver.observe(element);
+    });
+
+    const mobileMenuButton = document.querySelector(
+      ".mobile-menu-button"
+    );
+
+    mobileMenuButton?.addEventListener("click", () => {
+      const firstSection = document.querySelector("#scouthalo");
+
+      if (firstSection) {
+        firstSection.scrollIntoView({
+          behavior: "smooth"
+        });
+      }
+    });
+  </script>
 
 </body>
 </html>
