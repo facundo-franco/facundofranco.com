@@ -1,836 +1,1249 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Facundo Franco — Agent Operator</title>
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link href="https://fonts.googleapis.com/css2?family=Syne:wght@400;600;700;800&family=DM+Mono:wght@300;400;500&display=swap" rel="stylesheet">
-<style>
-  :root {
-    --bg:     #0a0d1a;
-    --gold:   #b8963e;
-    --white:  #edecea;
-    --muted:  #58586e;
-    --dim:    #181d32;
-  }
- 
-  * { margin: 0; padding: 0; box-sizing: border-box; }
-  html { scroll-behavior: smooth; }
- 
-  body {
-    background: var(--bg);
-    color: var(--white);
-    font-family: 'DM Mono', monospace;
-    font-size: 14px;
-    line-height: 1.7;
-    overflow-x: hidden;
-    -webkit-font-smoothing: antialiased;
-  }
- 
-  a { color: inherit; text-decoration: none; }
- 
-  /* NAV */
-  nav {
-    position: fixed;
-    top: 0; left: 0; right: 0;
-    z-index: 100;
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    padding: 28px 80px;
-    background: rgba(10,13,26,0.7);
-    backdrop-filter: blur(12px);
-    -webkit-backdrop-filter: blur(12px);
-  }
- 
-  .nav-logo {
-    font-family: 'Syne', sans-serif;
-    font-weight: 800;
-    font-size: 24px;
-    letter-spacing: 1px;
-    color: var(--gold);
-    position: relative;
-    display: inline-block;
-  }
- 
-  .nav-logo::after {
-    content: '';
-    position: absolute;
-    bottom: -4px;
-    left: 0;
-    width: 100%;
-    height: 1px;
-    background: var(--gold);
-    opacity: 0.45;
-  }
- 
-  .nav-links {
-    display: flex;
-    gap: 40px;
-    list-style: none;
-  }
- 
-  .nav-links a {
-    font-size: 10px;
-    letter-spacing: 2.5px;
-    color: var(--muted);
-    text-transform: uppercase;
-    transition: color 0.2s;
-  }
- 
-  .nav-links a:hover { color: var(--white); }
- 
-  .nav-cta {
-    font-size: 10px;
-    letter-spacing: 2.5px;
-    text-transform: uppercase;
-    color: var(--gold);
-    transition: opacity 0.2s;
-  }
- 
-  .nav-cta:hover { opacity: 0.65; }
- 
-  /* HERO */
-  .hero {
-    height: 100vh;
-    min-height: 640px;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    padding: 0 80px;
-    position: relative;
-    overflow: hidden;
-  }
- 
-  .hero-line {
-    width: 120px;
-    height: 1px;
-    background: var(--gold);
-    margin-bottom: 40px;
-    box-shadow:
-      0 0 8px rgba(184, 150, 62, 0.8),
-      0 0 24px rgba(184, 150, 62, 0.4),
-      0 0 60px rgba(184, 150, 62, 0.15);
-  }
- 
-  .hero-label {
-    font-size: 10px;
-    letter-spacing: 4px;
-    color: var(--gold);
-    text-transform: uppercase;
-    margin-bottom: 40px;
-  }
- 
-  .hero-name {
-    font-family: 'Syne', sans-serif;
-    font-size: clamp(72px, 11vw, 168px);
-    font-weight: 800;
-    line-height: 0.9;
-    letter-spacing: -4px;
-    margin-bottom: 64px;
-  }
- 
-  .hero-name .dim { color: var(--muted); }
- 
-  .hero-desc {
-    max-width: 440px;
-    color: var(--muted);
-    font-size: 13px;
-    line-height: 2;
-    margin-bottom: 64px;
-  }
- 
-  .hero-desc strong { color: var(--white); font-weight: 400; }
- 
-  .hero-actions {
-    display: flex;
-    gap: 40px;
-    align-items: center;
-  }
- 
-  /* BUTTONS */
-  .btn-primary {
-    font-family: 'DM Mono', monospace;
-    font-size: 10px;
-    letter-spacing: 2.5px;
-    text-transform: uppercase;
-    background: var(--gold);
-    color: var(--bg);
-    padding: 14px 32px;
-    font-weight: 500;
-    border: 1px solid var(--gold);
-    transition: background 0.22s ease, color 0.22s ease;
-  }
- 
-  .btn-primary:hover {
-    background: transparent;
-    color: var(--gold);
-  }
- 
-  .btn-secondary {
-    font-size: 10px;
-    letter-spacing: 2.5px;
-    text-transform: uppercase;
-    color: var(--muted);
-    position: relative;
-    transition: color 0.2s;
-  }
- 
-  .btn-secondary::after {
-    content: '';
-    position: absolute;
-    bottom: -2px;
-    left: 0;
-    width: 0;
-    height: 1px;
-    background: var(--white);
-    transition: width 0.25s ease;
-  }
- 
-  .btn-secondary:hover { color: var(--white); }
-  .btn-secondary:hover::after { width: 100%; }
- 
-  /* SECTION */
-  section {
-    padding: 180px 80px;
-  }
- 
-  .section-label {
-    font-size: 10px;
-    letter-spacing: 4px;
-    color: var(--gold);
-    text-transform: uppercase;
-    margin-bottom: 20px;
-  }
- 
-  .section-title {
-    font-family: 'Syne', sans-serif;
-    font-size: clamp(40px, 5.5vw, 80px);
-    font-weight: 800;
-    line-height: 0.92;
-    letter-spacing: -3px;
-    margin-bottom: 88px;
-  }
- 
-  /* THESIS */
-  .thesis-intro {
-    max-width: 560px;
-    color: var(--muted);
-    font-size: 14px;
-    line-height: 2;
-    margin-bottom: 80px;
-  }
- 
-  .thesis-intro strong { color: var(--white); font-weight: 400; }
- 
-  .thesis-grid {
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-  }
- 
-  .thesis-col { padding-right: 64px; }
- 
-  .thesis-col.active {
-    padding-right: 0;
-    padding-left: 64px;
-    border-left: 1px solid var(--dim);
-  }
- 
-  .thesis-col-label {
-    font-size: 10px;
-    letter-spacing: 3px;
-    text-transform: uppercase;
-    color: var(--muted);
-    margin-bottom: 40px;
-  }
- 
-  .thesis-col.active .thesis-col-label { color: var(--gold); }
- 
-  .thesis-item {
-    display: flex;
-    align-items: baseline;
-    gap: 20px;
-    padding: 18px 0;
-    border-bottom: 1px solid var(--dim);
-    font-size: 13px;
-    color: var(--muted);
-  }
- 
-  .thesis-item:first-of-type { border-top: 1px solid var(--dim); }
-  .thesis-col.active .thesis-item { color: var(--white); }
- 
-  .thesis-num {
-    font-size: 10px;
-    color: var(--muted);
-    letter-spacing: 1px;
-    flex-shrink: 0;
-  }
- 
-  .thesis-col.active .thesis-num { color: var(--gold); }
- 
-  /* PROJECTS */
-  .project-row {
-    display: grid;
-    grid-template-columns: 48px 1fr auto;
-    gap: 48px;
-    align-items: start;
-    padding: 52px 0;
-    border-top: 1px solid var(--dim);
-  }
- 
-  .project-row:last-child { border-bottom: 1px solid var(--dim); }
- 
-  .project-num {
-    font-size: 10px;
-    letter-spacing: 2px;
-    color: var(--gold);
-    padding-top: 5px;
-  }
- 
-  .project-status {
-    font-size: 10px;
-    letter-spacing: 2px;
-    text-transform: uppercase;
-    margin-bottom: 16px;
-  }
- 
-  .status-live    { color: #4caf50; }
-  .status-active  { color: #64b5f6; }
- 
-  .project-title {
-    font-family: 'Syne', sans-serif;
-    font-size: 24px;
-    font-weight: 700;
-    letter-spacing: -0.5px;
-    margin-bottom: 12px;
-  }
- 
-  .project-desc {
-    color: var(--muted);
-    font-size: 13px;
-    line-height: 1.85;
-    margin-bottom: 20px;
-    max-width: 560px;
-  }
- 
-  .project-tags {
-    display: flex;
-    flex-wrap: wrap;
-    gap: 20px;
-  }
- 
-  .tag {
-    font-size: 10px;
-    letter-spacing: 1px;
-    text-transform: uppercase;
-    color: var(--muted);
-  }
- 
-  .project-link {
-    font-size: 10px;
-    letter-spacing: 2.5px;
-    text-transform: uppercase;
-    color: var(--gold);
-    white-space: nowrap;
-    padding-top: 5px;
-    position: relative;
-    display: inline-block;
-    transition: color 0.2s, transform 0.2s;
-  }
- 
-  .project-link::after {
-    content: '';
-    position: absolute;
-    bottom: -3px;
-    left: 0;
-    width: 0;
-    height: 1px;
-    background: var(--gold);
-    transition: width 0.25s ease;
-  }
- 
-  .project-link:hover { color: var(--white); transform: translateX(3px); }
-  .project-link:hover::after { width: 100%; background: var(--white); }
- 
-  /* SKILLS */
-  .skill-row {
-    display: grid;
-    grid-template-columns: 48px 220px 1fr;
-    gap: 48px;
-    align-items: baseline;
-    padding: 40px 0;
-    border-top: 1px solid var(--dim);
-  }
- 
-  .skill-row:last-child { border-bottom: 1px solid var(--dim); }
- 
-  .skill-num {
-    font-size: 10px;
-    letter-spacing: 2px;
-    color: var(--gold);
-  }
- 
-  .skill-name {
-    font-family: 'Syne', sans-serif;
-    font-size: 16px;
-    font-weight: 600;
-    letter-spacing: -0.3px;
-  }
- 
-  .skill-desc {
-    font-size: 13px;
-    color: var(--muted);
-    line-height: 1.75;
-  }
- 
-  .skill-context {
-    font-size: 10px;
-    letter-spacing: 2px;
-    color: var(--muted);
-    text-transform: uppercase;
-    opacity: 0.5;
-    margin-left: 8px;
-  }
- 
-  /* BUILDING */
-  .building-grid {
-    display: grid;
-    grid-template-columns: 1fr 1px 1fr;
-    align-items: start;
-  }
- 
-  .building-divider { background: var(--dim); align-self: stretch; }
- 
-  .building-item { padding-right: 64px; }
- 
-  .building-item + .building-divider + .building-item {
-    padding-right: 0;
-    padding-left: 64px;
-  }
- 
-  .building-name {
-    font-family: 'Syne', sans-serif;
-    font-size: 36px;
-    font-weight: 800;
-    letter-spacing: 6px;
-    margin-bottom: 20px;
-  }
- 
-  .building-tagline {
-    color: var(--muted);
-    font-size: 13px;
-    line-height: 1.85;
-    margin-bottom: 36px;
-    max-width: 340px;
-  }
- 
-  .building-link {
-    font-size: 10px;
-    letter-spacing: 2.5px;
-    text-transform: uppercase;
-    color: var(--gold);
-    display: inline-block;
-    position: relative;
-    transition: color 0.2s, transform 0.2s;
-  }
- 
-  .building-link::after {
-    content: '';
-    position: absolute;
-    bottom: -3px;
-    left: 0;
-    width: 0;
-    height: 1px;
-    background: var(--gold);
-    transition: width 0.25s ease;
-  }
- 
-  .building-link:hover { color: var(--white); transform: translateX(3px); }
-  .building-link:hover::after { width: 100%; background: var(--white); }
- 
-  /* CONTACT */
-  .contact-grid {
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    gap: 80px;
-  }
- 
-  .contact-title {
-    font-family: 'Syne', sans-serif;
-    font-size: clamp(36px, 4.5vw, 64px);
-    font-weight: 800;
-    line-height: 0.92;
-    letter-spacing: -2px;
-    margin-bottom: 28px;
-  }
- 
-  .contact-desc {
-    color: var(--muted);
-    font-size: 13px;
-    line-height: 1.9;
-    margin-bottom: 56px;
-    max-width: 340px;
-  }
- 
-  .contact-link {
-    font-size: 10px;
-    letter-spacing: 2px;
-    text-transform: uppercase;
-    color: var(--muted);
-    border-bottom: 1px solid var(--dim);
-    padding: 18px 0;
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    transition: color 0.2s, border-color 0.2s;
-  }
- 
-  .contact-link:first-of-type { border-top: 1px solid var(--dim); }
- 
-  .contact-link:hover { color: var(--white); border-bottom-color: rgba(184,150,62,0.3); }
-  .contact-link:hover span:last-child { color: var(--gold); }
- 
-  .available-label {
-    font-size: 10px;
-    letter-spacing: 4px;
-    color: var(--gold);
-    text-transform: uppercase;
-    margin-bottom: 48px;
-    display: flex;
-    align-items: center;
-    gap: 10px;
-  }
- 
-  .available-dot {
-    width: 6px;
-    height: 6px;
-    background: #4caf50;
-    border-radius: 50%;
-    animation: pulse 2s infinite;
-    flex-shrink: 0;
-  }
- 
-  @keyframes pulse {
-    0%, 100% { opacity: 1; }
-    50%       { opacity: 0.3; }
-  }
- 
-  .available-item {
-    padding: 18px 0;
-    border-bottom: 1px solid var(--dim);
-    display: flex;
-    justify-content: space-between;
-    font-size: 12px;
-  }
- 
-  .available-item:first-of-type { border-top: 1px solid var(--dim); }
- 
-  .available-item-label {
-    color: var(--muted);
-    letter-spacing: 2px;
-    text-transform: uppercase;
-    font-size: 10px;
-  }
- 
-  .available-item-label::before {
-    content: '> ';
-    color: var(--gold);
-    opacity: 0.5;
-  }
- 
-  .available-item-value {
-    color: var(--gold);
-    font-family: 'DM Mono', monospace;
-    font-size: 11px;
-    letter-spacing: 0.5px;
-  }
- 
-  /* FOOTER */
-  footer {
-    padding: 32px 80px;
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    font-size: 10px;
-    letter-spacing: 1.5px;
-    color: var(--muted);
-    border-top: 1px solid var(--dim);
-  }
- 
-  /* FADE IN */
-  .fade-in {
-    opacity: 0;
-    transform: translateY(18px);
-    transition: opacity 0.55s ease, transform 0.55s ease;
-  }
- 
-  .fade-in.visible {
-    opacity: 1;
-    transform: translateY(0);
-  }
- 
-  .fade-in:nth-child(2) { transition-delay: 0.08s; }
-  .fade-in:nth-child(3) { transition-delay: 0.16s; }
-  .fade-in:nth-child(4) { transition-delay: 0.22s; }
-  .fade-in:nth-child(5) { transition-delay: 0.28s; }
-  .fade-in:nth-child(6) { transition-delay: 0.34s; }
- 
-  /* RESPONSIVE */
-  @media (max-width: 900px) {
-    nav { padding: 24px 28px; }
-    .nav-links { display: none; }
-    .nav-cta { display: none; }
-    .hero { padding: 0 28px; }
-    .hero-name { font-size: clamp(56px, 14vw, 120px); letter-spacing: -2px; }
-    section { padding: 112px 28px; }
-    .thesis-grid { grid-template-columns: 1fr; }
-    .thesis-col { padding-right: 0; margin-bottom: 56px; }
-    .thesis-col.active { padding-left: 0; border-left: none; border-top: 1px solid var(--dim); padding-top: 56px; margin-bottom: 0; }
-    .project-row { grid-template-columns: 36px 1fr; gap: 20px; }
-    .project-row > .project-link { display: none; }
-    .skill-row { grid-template-columns: 36px 1fr; gap: 20px; }
-    .skill-row > .skill-desc { display: none; }
-    .building-grid { grid-template-columns: 1fr; }
-    .building-divider { display: none; }
-    .building-item { padding-right: 0; margin-bottom: 56px; }
-    .building-item + .building-divider + .building-item { padding-left: 0; margin-bottom: 0; }
-    .contact-grid { grid-template-columns: 1fr; gap: 64px; }
-    footer { padding: 28px; flex-direction: column; gap: 12px; text-align: center; }
-  }
-</style>
-</head>
-<body>
- 
-<nav>
-  <div class="nav-logo">FF.</div>
-  <ul class="nav-links">
-    <li><a href="#thesis">Thesis</a></li>
-    <li><a href="#projects">Projects</a></li>
-    <li><a href="#skills">Skills</a></li>
-    <li><a href="#building">Building</a></li>
-    <li><a href="#contact">Contact</a></li>
-  </ul>
-  <a href="#contact" class="nav-cta">Work Together</a>
-</nav>
- 
-<section class="hero">
-  <div class="hero-line"></div>
-  <div class="hero-label">// Building the operator layer.</div>
-  <h1 class="hero-name">Facundo<br><span class="dim">Franco.</span></h1>
-  <p class="hero-desc">
-    I run business functions using <strong>AI agents as the execution layer.</strong><br>
-    An operator who understands both <strong>how a business works</strong> and <strong>how to make agents run it.</strong>
-  </p>
-  <div class="hero-actions">
-    <a href="#contact" class="btn-primary">Work Together</a>
-    <a href="#thesis" class="btn-secondary">Read the Thesis</a>
-  </div>
-</section>
- 
-<section id="thesis">
-  <div class="section-label fade-in">// 01 — The Thesis</div>
-  <h2 class="section-title fade-in">What is an<br>Agent Operator?</h2>
-  <p class="thesis-intro fade-in">
-    Most companies need to redesign their workflows for agents — but don't have anyone who understands both the <strong>business function</strong> and the <strong>AI layer</strong>. The agent operator fills that gap.
-  </p>
-  <div class="thesis-grid fade-in">
-    <div class="thesis-col">
-      <div class="thesis-col-label">Old Operator</div>
-      <div class="thesis-item"><span class="thesis-num">—</span>Runs functions manually</div>
-      <div class="thesis-item"><span class="thesis-num">—</span>Execution eats all time</div>
-      <div class="thesis-item"><span class="thesis-num">—</span>Scales by hiring</div>
-      <div class="thesis-item"><span class="thesis-num">—</span>Bottleneck: bandwidth</div>
-      <div class="thesis-item"><span class="thesis-num">—</span>Output limited by hours</div>
-    </div>
-    <div class="thesis-col active">
-      <div class="thesis-col-label">Agent Operator</div>
-      <div class="thesis-item"><span class="thesis-num">→</span>Directs agents to run functions</div>
-      <div class="thesis-item"><span class="thesis-num">→</span>Execution runs itself</div>
-      <div class="thesis-item"><span class="thesis-num">→</span>Scales by improving systems</div>
-      <div class="thesis-item"><span class="thesis-num">→</span>Bottleneck: judgment</div>
-      <div class="thesis-item"><span class="thesis-num">→</span>Output limited by imagination</div>
-    </div>
-  </div>
-</section>
- 
-<section id="projects">
-  <div class="section-label fade-in">// 02 — Projects</div>
-  <h2 class="section-title fade-in">Proof of<br>work.</h2>
- 
-  <div class="project-row fade-in">
-    <div class="project-num">01</div>
-    <div class="project-body">
-      <div class="project-status status-live">● Live</div>
-      <div class="project-title">Sella</div>
-      <p class="project-desc">AI agent that converts conversations into sales. Handles product discovery, qualification, and purchase flow over WhatsApp. Deploys in hours, not weeks.</p>
-      <div class="project-tags">
-        <span class="tag">Agent</span>
-        <span class="tag">Sales</span>
-        <span class="tag">WhatsApp</span>
-        <span class="tag">E-commerce</span>
-      </div>
-    </div>
-    <a href="https://whatsapp-sales.vercel.app" target="_blank" class="project-link">View Live →</a>
-  </div>
- 
-  <div class="project-row fade-in">
-    <div class="project-num">02</div>
-    <div class="project-body">
-      <div class="project-status status-live">● Live</div>
-      <div class="project-title">Composio Dependency Graph</div>
-      <p class="project-desc">Interactive visualization of Composio's tool dependency graph. Maps how tools connect across the agent layer. 100+ Google integrations charted.</p>
-      <div class="project-tags">
-        <span class="tag">Agent Tooling</span>
-        <span class="tag">Visualization</span>
-        <span class="tag">Composio</span>
-      </div>
-    </div>
-    <a href="https://composio-dep-graph.vercel.app" target="_blank" class="project-link">View Live →</a>
-  </div>
- 
-  <div class="project-row fade-in">
-    <div class="project-num">03</div>
-    <div class="project-body">
-      <div class="project-status status-active">● Active</div>
-      <div class="project-title">Operator Vault</div>
-      <p class="project-desc">Personal knowledge OS built in Obsidian, managed via Claude Code and MCP. Every function documented, repeatable, and improvable.</p>
-      <div class="project-tags">
-        <span class="tag">Obsidian</span>
-        <span class="tag">Claude Code</span>
-        <span class="tag">MCP</span>
-        <span class="tag">gstack</span>
-      </div>
-    </div>
-    <div></div>
-  </div>
- 
-</section>
- 
-<section id="skills">
-  <div class="section-label fade-in">// 03 — Skills</div>
-  <h2 class="section-title fade-in">The stack.</h2>
- 
-  <div class="skill-row fade-in">
-    <div class="skill-num">01</div>
-    <div class="skill-name">Agent Architecture</div>
-    <p class="skill-desc">Multi-agent systems that run business functions. Prompt stacks, tool use, MCP integrations, workflow design.</p>
-  </div>
-  <div class="skill-row fade-in">
-    <div class="skill-num">02</div>
-    <div class="skill-name">Claude Code / CLI</div>
-    <p class="skill-desc">Daily user. Vault management, agent deployment, system building. Operator-level fluency.</p>
-  </div>
-  <div class="skill-row fade-in">
-    <div class="skill-num">03</div>
-    <div class="skill-name">Evals & Drift Detection</div>
-    <p class="skill-desc">Catching agent failures before clients do. Running evals before launch, monitoring live systems, keeping agents on spec.</p>
-  </div>
-  <div class="skill-row fade-in">
-    <div class="skill-num">04</div>
-    <div class="skill-name">Business Context <span class="skill-context">domain</span></div>
-    <p class="skill-desc">Deep understanding of how businesses actually run — growth, ops, revenue. Agents work better when the person directing them knows the domain.</p>
-  </div>
-  <div class="skill-row fade-in">
-    <div class="skill-num">05</div>
-    <div class="skill-name">MCP & Tool Chains</div>
-    <p class="skill-desc">MCP server design, tool dependency mapping, integration architecture. Built the Composio graph from 100+ API tools.</p>
-  </div>
-  <div class="skill-row fade-in">
-    <div class="skill-num">06</div>
-    <div class="skill-name">Systems Thinking</div>
-    <p class="skill-desc">Obsidian-based knowledge management. Every function documented, repeatable, and improvable. The operator OS.</p>
-  </div>
- 
-</section>
- 
-<section id="building">
-  <div class="section-label fade-in">// 04 — Building</div>
-  <h2 class="section-title fade-in">Companies.</h2>
-  <div class="building-grid fade-in">
-    <div class="building-item">
-      <div class="building-name">SELLA</div>
-      <p class="building-tagline">AI agent that converts conversations into sales. Built for e-commerce operators who want revenue, not more headcount.</p>
-      <a href="https://whatsapp-sales.vercel.app" target="_blank" class="building-link">Visit Sella →</a>
-    </div>
-    <div class="building-divider"></div>
-    <div class="building-item">
-      <div class="building-name">HARNESS</div>
-      <p class="building-tagline">Signal for the agent layer. Operator-focused coverage of AI infrastructure, MCP, production systems, and what actually runs.</p>
-      <a href="https://x.com/harnessoperator" target="_blank" class="building-link">Follow @harnessoperator →</a>
-    </div>
-  </div>
-</section>
- 
-<section id="contact">
-  <div class="section-label fade-in">// 05 — Contact</div>
-  <div class="contact-grid fade-in">
-    <div>
-      <h2 class="contact-title">Let's work<br>together.</h2>
-      <p class="contact-desc">If you're building something that needs to run on agents, this is where we start.</p>
-      <a href="https://x.com/facundofranco_" target="_blank" class="contact-link">
-        <span>X / Twitter</span>
-        <span>@facundofranco_</span>
-      </a>
-      <a href="https://linkedin.com/in/facundo-franco" target="_blank" class="contact-link">
-        <span>LinkedIn</span>
-        <span>facundo-franco</span>
-      </a>
-      <a href="https://linktr.ee/facundofranco" target="_blank" class="contact-link">
-        <span>Linktree</span>
-        <span>facundofranco</span>
-      </a>
-    </div>
-    <div>
-      <div class="available-label">
-        <div class="available-dot"></div>
-        Available Now
-      </div>
-      <div class="available-item">
-        <span class="available-item-label">Role Type</span>
-        <span class="available-item-value">Agent Operator / FDE</span>
-      </div>
-      <div class="available-item">
-        <span class="available-item-label">Location</span>
-        <span class="available-item-value">Remote — Global</span>
-      </div>
-      <div class="available-item">
-        <span class="available-item-label">Stage</span>
-        <span class="available-item-value">Startup / Founder</span>
-      </div>
-      <div class="available-item">
-        <span class="available-item-label">Functions</span>
-        <span class="available-item-value">Growth · Ops · Revenue</span>
-      </div>
-      <div class="available-item">
-        <span class="available-item-label">Availability</span>
-        <span class="available-item-value">Immediate</span>
-      </div>
-      <div class="available-item">
-        <span class="available-item-label">Stack</span>
-        <span class="available-item-value">MCP · Claude Code · gstack</span>
-      </div>
-    </div>
-  </div>
-</section>
- 
-<footer>
-  <span>© 2026 Facundo Franco — Agent Operator</span>
-  <span>Remote — Global</span>
-  <span>@facundofranco_</span>
-</footer>
- 
-<script>
-  const observer = new IntersectionObserver((entries) => {
-    entries.forEach(entry => {
-      if (entry.isIntersecting) {
-        entry.target.classList.add('visible');
-        observer.unobserve(entry.target);
+  <meta charset="UTF-8">
+
+  <meta
+    name="viewport"
+    content="width=device-width, initial-scale=1.0"
+  >
+
+  <title>Facundo Franco — Founder & CEO of ScoutHalo</title>
+
+  <meta
+    name="description"
+    content="Facundo Franco is the Founder and CEO of ScoutHalo, an AI-powered location intelligence platform for production teams and creative agencies."
+  >
+
+  <meta name="author" content="Facundo Franco">
+
+  <meta
+    property="og:title"
+    content="Facundo Franco — Founder & CEO of ScoutHalo"
+  >
+
+  <meta
+    property="og:description"
+    content="Building ScoutHalo, an AI-powered location intelligence platform for production teams and creative agencies."
+  >
+
+  <meta property="og:type" content="website">
+
+  <meta
+    name="twitter:card"
+    content="summary_large_image"
+  >
+
+  <meta
+    name="twitter:title"
+    content="Facundo Franco — Founder & CEO of ScoutHalo"
+  >
+
+  <meta
+    name="twitter:description"
+    content="Building the future of production location intelligence."
+  >
+
+  <link
+    rel="preconnect"
+    href="https://fonts.googleapis.com"
+  >
+
+  <link
+    rel="preconnect"
+    href="https://fonts.gstatic.com"
+    crossorigin
+  >
+
+  <link
+    href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=DM+Mono:wght@300;400;500&family=Syne:wght@400;600;700;800&display=swap"
+    rel="stylesheet"
+  >
+
+  <style>
+    :root {
+      --red: #e8380d;
+      --bg: #080808;
+      --surface: #0f0f0f;
+      --surface-hover: #141414;
+      --border: #1a1a1a;
+      --text: #f0f0f0;
+      --muted: #777;
+      --dim: #333;
+      --green: #4ade80;
+    }
+
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    html {
+      scroll-behavior: smooth;
+      scroll-padding-top: 80px;
+    }
+
+    body {
+      background: var(--bg);
+      color: var(--text);
+      font-family: "DM Mono", monospace;
+      font-size: 14px;
+      line-height: 1.7;
+      overflow-x: hidden;
+    }
+
+    body::before {
+      content: "";
+      position: fixed;
+      inset: 0;
+      background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitchTiles'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)' opacity='0.03'/%3E%3C/svg%3E");
+      pointer-events: none;
+      z-index: 999;
+      opacity: 0.4;
+    }
+
+    a {
+      color: inherit;
+    }
+
+    nav {
+      position: fixed;
+      top: 0;
+      left: 0;
+      right: 0;
+      z-index: 100;
+      padding: 20px 48px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      border-bottom: 1px solid var(--border);
+      background: rgba(8, 8, 8, 0.92);
+      backdrop-filter: blur(12px);
+      -webkit-backdrop-filter: blur(12px);
+    }
+
+    .nav-logo {
+      font-family: "Bebas Neue", sans-serif;
+      font-size: 20px;
+      letter-spacing: 0.08em;
+      color: var(--text);
+      text-decoration: none;
+    }
+
+    .nav-logo span {
+      color: var(--red);
+    }
+
+    .nav-links {
+      display: flex;
+      gap: 32px;
+      list-style: none;
+    }
+
+    .nav-links a {
+      font-size: 11px;
+      letter-spacing: 0.15em;
+      text-transform: uppercase;
+      color: var(--muted);
+      text-decoration: none;
+      transition: color 0.2s ease;
+    }
+
+    .nav-links a:hover {
+      color: var(--text);
+    }
+
+    .hero {
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      padding: 120px 48px 80px;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .hero::before {
+      content: "";
+      position: absolute;
+      inset: 0;
+      background-image:
+        linear-gradient(var(--border) 1px, transparent 1px),
+        linear-gradient(90deg, var(--border) 1px, transparent 1px);
+      background-size: 64px 64px;
+      opacity: 0.4;
+      pointer-events: none;
+    }
+
+    .hero::after {
+      content: "LOCATION INTELLIGENCE";
+      position: absolute;
+      right: -30px;
+      bottom: 32px;
+      color: rgba(255, 255, 255, 0.025);
+      font-family: "Bebas Neue", sans-serif;
+      font-size: clamp(80px, 13vw, 200px);
+      letter-spacing: 0.03em;
+      white-space: nowrap;
+      pointer-events: none;
+    }
+
+    .hero-content {
+      position: relative;
+      z-index: 2;
+      max-width: 1100px;
+    }
+
+    .hero-tag {
+      font-size: 11px;
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+      color: var(--red);
+      margin-bottom: 24px;
+      animation: fadeUp 0.6s ease both;
+    }
+
+    .hero-title {
+      font-family: "Bebas Neue", sans-serif;
+      font-size: clamp(72px, 10vw, 140px);
+      line-height: 0.92;
+      letter-spacing: 0.01em;
+      margin-bottom: 32px;
+      animation: fadeUp 0.6s ease 0.1s both;
+    }
+
+    .hero-title .outline {
+      -webkit-text-stroke: 1px var(--text);
+      color: transparent;
+    }
+
+    .hero-title .accent {
+      color: var(--red);
+    }
+
+    .hero-sub {
+      max-width: 720px;
+      color: var(--muted);
+      font-size: 15px;
+      line-height: 1.9;
+      margin-bottom: 42px;
+      animation: fadeUp 0.6s ease 0.2s both;
+    }
+
+    .hero-sub strong {
+      color: var(--text);
+      font-weight: 500;
+    }
+
+    .hero-cta {
+      display: flex;
+      gap: 16px;
+      flex-wrap: wrap;
+      animation: fadeUp 0.6s ease 0.3s both;
+    }
+
+    .btn {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      padding: 12px 28px;
+      font-family: "DM Mono", monospace;
+      font-size: 11px;
+      letter-spacing: 0.15em;
+      text-transform: uppercase;
+      text-decoration: none;
+      border: 1px solid;
+      transition:
+        background 0.2s ease,
+        color 0.2s ease,
+        border-color 0.2s ease,
+        transform 0.2s ease;
+      cursor: pointer;
+    }
+
+    .btn:hover {
+      transform: translateY(-2px);
+    }
+
+    .btn-primary {
+      background: var(--red);
+      color: #fff;
+      border-color: var(--red);
+    }
+
+    .btn-primary:hover {
+      background: transparent;
+      color: var(--red);
+    }
+
+    .btn-ghost {
+      background: transparent;
+      color: var(--muted);
+      border-color: var(--dim);
+    }
+
+    .btn-ghost:hover {
+      color: var(--text);
+      border-color: var(--text);
+    }
+
+    section {
+      padding: 96px 48px;
+      border-top: 1px solid var(--border);
+      max-width: 1100px;
+      margin: 0 auto;
+    }
+
+    .section-tag {
+      font-size: 10px;
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+      color: var(--red);
+      margin-bottom: 16px;
+    }
+
+    .section-title {
+      font-family: "Bebas Neue", sans-serif;
+      font-size: clamp(40px, 5vw, 64px);
+      line-height: 1;
+      margin-bottom: 48px;
+      letter-spacing: 0.02em;
+    }
+
+    .thesis-block {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-left: 3px solid var(--red);
+      padding: 40px 48px;
+    }
+
+    .thesis-block p {
+      font-size: 16px;
+      line-height: 1.9;
+      color: #c7c7c7;
+    }
+
+    .thesis-block p + p {
+      margin-top: 20px;
+    }
+
+    .thesis-block strong {
+      color: var(--text);
+      font-weight: 500;
+    }
+
+    .problem-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 1px;
+      background: var(--border);
+      margin-top: 32px;
+    }
+
+    .problem-card {
+      background: var(--surface);
+      padding: 30px;
+      transition: background 0.2s ease;
+    }
+
+    .problem-card:hover {
+      background: var(--surface-hover);
+    }
+
+    .problem-number {
+      font-family: "Bebas Neue", sans-serif;
+      font-size: 42px;
+      line-height: 1;
+      color: var(--dim);
+      margin-bottom: 14px;
+    }
+
+    .problem-title {
+      font-family: "Syne", sans-serif;
+      font-size: 14px;
+      font-weight: 700;
+      color: var(--text);
+      margin-bottom: 10px;
+    }
+
+    .problem-copy {
+      font-size: 12px;
+      color: var(--muted);
+      line-height: 1.7;
+    }
+
+    .bg-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 1px;
+      background: var(--border);
+    }
+
+    .bg-card {
+      background: var(--surface);
+      padding: 32px;
+      transition: background 0.2s ease;
+    }
+
+    .bg-card:hover {
+      background: var(--surface-hover);
+    }
+
+    .bg-card-label {
+      font-size: 10px;
+      letter-spacing: 0.15em;
+      text-transform: uppercase;
+      color: var(--red);
+      margin-bottom: 12px;
+    }
+
+    .bg-card-title {
+      font-family: "Syne", sans-serif;
+      font-size: 18px;
+      font-weight: 700;
+      margin-bottom: 10px;
+      color: var(--text);
+    }
+
+    .bg-card-sub {
+      font-size: 12px;
+      color: var(--muted);
+      line-height: 1.75;
+    }
+
+    .bg-card-tags {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+      margin-top: 18px;
+    }
+
+    .tag {
+      font-size: 10px;
+      letter-spacing: 0.08em;
+      padding: 4px 10px;
+      border: 1px solid var(--dim);
+      color: var(--muted);
+      text-transform: uppercase;
+    }
+
+    .skills-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 1px;
+      background: var(--border);
+    }
+
+    .skill-block {
+      background: var(--surface);
+      padding: 28px 32px;
+      transition: background 0.2s ease;
+    }
+
+    .skill-block:hover {
+      background: var(--surface-hover);
+    }
+
+    .skill-num {
+      font-family: "Bebas Neue", sans-serif;
+      font-size: 48px;
+      color: var(--dim);
+      line-height: 1;
+      margin-bottom: 8px;
+    }
+
+    .skill-name {
+      font-family: "Syne", sans-serif;
+      font-size: 14px;
+      font-weight: 700;
+      color: var(--text);
+      margin-bottom: 8px;
+    }
+
+    .skill-desc {
+      font-size: 12px;
+      color: var(--muted);
+      line-height: 1.7;
+    }
+
+    .project-list {
+      display: flex;
+      flex-direction: column;
+      gap: 1px;
+      background: var(--border);
+    }
+
+    .project-item {
+      background: var(--surface);
+      padding: 34px;
+      display: grid;
+      grid-template-columns: 1fr auto;
+      gap: 28px;
+      align-items: start;
+      transition: background 0.2s ease;
+    }
+
+    .project-item:hover {
+      background: var(--surface-hover);
+    }
+
+    .project-name {
+      font-family: "Syne", sans-serif;
+      font-size: 18px;
+      font-weight: 700;
+      margin-bottom: 8px;
+      color: var(--text);
+    }
+
+    .project-desc {
+      font-size: 13px;
+      color: var(--muted);
+      line-height: 1.75;
+      max-width: 700px;
+    }
+
+    .project-link {
+      display: inline-block;
+      margin-top: 16px;
+      color: var(--text);
+      font-size: 11px;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      text-decoration: none;
+      border-bottom: 1px solid var(--red);
+      padding-bottom: 2px;
+    }
+
+    .project-link:hover {
+      color: var(--red);
+    }
+
+    .project-status {
+      font-size: 10px;
+      letter-spacing: 0.15em;
+      text-transform: uppercase;
+      padding: 6px 14px;
+      border: 1px solid;
+      white-space: nowrap;
+    }
+
+    .status-live {
+      color: var(--green);
+      border-color: rgba(74, 222, 128, 0.25);
+    }
+
+    .status-building {
+      color: var(--red);
+      border-color: rgba(232, 56, 13, 0.3);
+    }
+
+    .contact-block {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      padding: 48px;
+      display: grid;
+      grid-template-columns: 1fr auto;
+      gap: 48px;
+      align-items: center;
+    }
+
+    .contact-title {
+      font-family: "Bebas Neue", sans-serif;
+      font-size: clamp(42px, 5vw, 58px);
+      line-height: 1;
+      margin-bottom: 16px;
+    }
+
+    .contact-sub {
+      max-width: 620px;
+      font-size: 13px;
+      color: var(--muted);
+      line-height: 1.8;
+    }
+
+    .contact-links {
+      display: flex;
+      flex-direction: column;
+      gap: 14px;
+      min-width: 170px;
+    }
+
+    .contact-link {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      color: var(--muted);
+      text-decoration: none;
+      font-size: 13px;
+      transition: color 0.2s ease;
+    }
+
+    .contact-link:hover {
+      color: var(--text);
+    }
+
+    .contact-link-dot {
+      width: 6px;
+      height: 6px;
+      background: var(--red);
+      flex-shrink: 0;
+    }
+
+    footer {
+      border-top: 1px solid var(--border);
+      padding: 24px 48px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      max-width: 100%;
+    }
+
+    .footer-text,
+    .footer-handle {
+      font-size: 11px;
+      color: var(--dim);
+      letter-spacing: 0.1em;
+    }
+
+    @keyframes fadeUp {
+      from {
+        opacity: 0;
+        transform: translateY(20px);
       }
-    });
-  }, { threshold: 0.08, rootMargin: '0px 0px -32px 0px' });
- 
-  document.querySelectorAll('.fade-in').forEach(el => observer.observe(el));
-</script>
+
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+
+    @media (max-width: 900px) {
+      .problem-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .skills-grid {
+        grid-template-columns: 1fr 1fr;
+      }
+    }
+
+    @media (max-width: 768px) {
+      nav {
+        padding: 16px 24px;
+      }
+
+      .nav-links {
+        gap: 18px;
+      }
+
+      .nav-links li:nth-child(2),
+      .nav-links li:nth-child(3) {
+        display: none;
+      }
+
+      .hero {
+        min-height: auto;
+        padding: 140px 24px 90px;
+      }
+
+      .hero::after {
+        display: none;
+      }
+
+      .hero-sub {
+        font-size: 13px;
+      }
+
+      section {
+        padding: 64px 24px;
+      }
+
+      .thesis-block {
+        padding: 30px 26px;
+      }
+
+      .thesis-block p {
+        font-size: 14px;
+      }
+
+      .bg-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .skills-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .project-item {
+        grid-template-columns: 1fr;
+      }
+
+      .project-status {
+        width: fit-content;
+      }
+
+      .contact-block {
+        grid-template-columns: 1fr;
+        padding: 32px 26px;
+      }
+
+      footer {
+        padding: 20px 24px;
+        flex-direction: column;
+        gap: 8px;
+        text-align: center;
+      }
+    }
+
+    @media (max-width: 480px) {
+      .nav-links {
+        gap: 14px;
+      }
+
+      .nav-links a {
+        font-size: 9px;
+      }
+
+      .hero-title {
+        font-size: 72px;
+      }
+
+      .hero-cta {
+        flex-direction: column;
+        align-items: stretch;
+      }
+
+      .btn {
+        width: 100%;
+      }
+    }
+  </style>
+</head>
+
+<body>
+
+  <!-- NAVIGATION -->
+  <nav>
+    <a href="#top" class="nav-logo" aria-label="Facundo Franco home">
+      FF<span>.</span>
+    </a>
+
+    <ul class="nav-links">
+      <li><a href="#scouthalo">ScoutHalo</a></li>
+      <li><a href="#about">About</a></li>
+      <li><a href="#focus">Focus</a></li>
+      <li><a href="#building">Building</a></li>
+      <li><a href="#contact">Contact</a></li>
+    </ul>
+  </nav>
+
+
+  <!-- HERO -->
+  <header class="hero" id="top">
+    <div class="hero-content">
+
+      <div class="hero-tag">
+        // Founder & CEO — ScoutHalo
+      </div>
+
+      <h1 class="hero-title">
+        Facundo<br>
+        <span class="outline">Franco</span><span class="accent">.</span>
+      </h1>
+
+      <p class="hero-sub">
+        Building <strong>ScoutHalo</strong>, an AI-powered location intelligence
+        platform for production teams and creative agencies.
+        <br><br>
+        My focus is turning fragmented location research into
+        <strong>production-ready intelligence</strong>—helping teams discover,
+        evaluate, compare, and prepare locations with greater speed and confidence.
+      </p>
+
+      <div class="hero-cta">
+        <a
+          href="https://scouthalo.com"
+          target="_blank"
+          rel="noopener noreferrer"
+          class="btn btn-primary"
+        >
+          Visit ScoutHalo
+        </a>
+
+        <a href="#scouthalo" class="btn btn-ghost">
+          What I'm Building
+        </a>
+      </div>
+
+    </div>
+  </header>
+
+
+  <!-- SCOUTHALO THESIS -->
+  <section id="scouthalo">
+
+    <div class="section-tag">
+      // 01 — ScoutHalo
+    </div>
+
+    <h2 class="section-title">
+      Building the future<br>
+      of location scouting.
+    </h2>
+
+    <div class="thesis-block">
+      <p>
+        Location scouting remains one of the most fragmented and manual workflows
+        in production. Teams move between Google Maps, social platforms, location
+        libraries, spreadsheets, PDFs, emails, local contacts, and personal
+        knowledge just to identify and evaluate viable options.
+      </p>
+
+      <p>
+        <strong>ScoutHalo is building the intelligence layer for that workflow.</strong>
+        It gives production teams a structured environment to discover locations,
+        analyze their suitability, compare alternatives, organize shortlists,
+        and prepare for execution.
+      </p>
+
+      <p>
+        The objective is not to replace location scouts. It is to give scouts,
+        producers, filmmakers, photographers, and creative agencies better tools
+        and faster access to the information required to make production decisions.
+      </p>
+    </div>
+
+    <div class="problem-grid">
+
+      <article class="problem-card">
+        <div class="problem-number">01</div>
+        <div class="problem-title">Discover</div>
+        <div class="problem-copy">
+          Search for locations using creative intent, visual characteristics,
+          geographic requirements, and production constraints—not only names
+          and categories.
+        </div>
+      </article>
+
+      <article class="problem-card">
+        <div class="problem-number">02</div>
+        <div class="problem-title">Evaluate</div>
+        <div class="problem-copy">
+          Understand access, timing, lighting, permits, logistics, crowd
+          conditions, limitations, and other factors that determine whether
+          a location can actually work.
+        </div>
+      </article>
+
+      <article class="problem-card">
+        <div class="problem-number">03</div>
+        <div class="problem-title">Decide</div>
+        <div class="problem-copy">
+          Compare options, organize shortlists, align stakeholders, and move
+          from visual inspiration to a production-ready decision.
+        </div>
+      </article>
+
+    </div>
+
+  </section>
+
+
+  <!-- ABOUT -->
+  <section id="about">
+
+    <div class="section-tag">
+      // 02 — About
+    </div>
+
+    <h2 class="section-title">
+      Founder, operator<br>
+      and product builder.
+    </h2>
+
+    <div class="bg-grid">
+
+      <article class="bg-card">
+        <div class="bg-card-label">Current Role</div>
+
+        <div class="bg-card-title">
+          Founder & CEO of ScoutHalo
+        </div>
+
+        <div class="bg-card-sub">
+          Leading product strategy, AI systems, search quality, data
+          infrastructure, customer discovery, company positioning, and
+          go-to-market.
+        </div>
+
+        <div class="bg-card-tags">
+          <span class="tag">Founder</span>
+          <span class="tag">Product</span>
+          <span class="tag">AI</span>
+          <span class="tag">Search</span>
+          <span class="tag">B2B SaaS</span>
+        </div>
+      </article>
+
+
+      <article class="bg-card">
+        <div class="bg-card-label">Previous Experience</div>
+
+        <div class="bg-card-title">
+          Growth & Operations
+        </div>
+
+        <div class="bg-card-sub">
+          Before ScoutHalo, I operated across acquisition, CRM, analytics,
+          marketplaces, e-commerce, commercial operations, and execution.
+          That experience shaped how I approach systems, customers, product
+          quality, and business outcomes.
+        </div>
+
+        <div class="bg-card-tags">
+          <span class="tag">Growth</span>
+          <span class="tag">Operations</span>
+          <span class="tag">Analytics</span>
+          <span class="tag">Revenue</span>
+        </div>
+      </article>
+
+
+      <article class="bg-card">
+        <div class="bg-card-label">Mission</div>
+
+        <div class="bg-card-title">
+          Build category-defining AI software
+        </div>
+
+        <div class="bg-card-sub">
+          I am interested in building vertical AI products that solve difficult,
+          real-world operational problems—not adding AI to workflows where it
+          provides no meaningful advantage.
+        </div>
+
+        <div class="bg-card-tags">
+          <span class="tag">Vertical AI</span>
+          <span class="tag">Creative Tools</span>
+          <span class="tag">Location Intelligence</span>
+          <span class="tag">Workflows</span>
+        </div>
+      </article>
+
+
+      <article class="bg-card">
+        <div class="bg-card-label">Location</div>
+
+        <div class="bg-card-title">
+          Montevideo, Uruguay
+        </div>
+
+        <div class="bg-card-sub">
+          Based in Uruguay and building for production teams and creative
+          agencies operating across the United States, Europe, and global
+          production markets.
+        </div>
+
+        <div class="bg-card-tags">
+          <span class="tag">Uruguay</span>
+          <span class="tag">United States</span>
+          <span class="tag">Europe</span>
+          <span class="tag">Global</span>
+        </div>
+      </article>
+
+    </div>
+
+  </section>
+
+
+  <!-- FOCUS -->
+  <section id="focus">
+
+    <div class="section-tag">
+      // 03 — Focus
+    </div>
+
+    <h2 class="section-title">
+      What I work on.
+    </h2>
+
+    <div class="skills-grid">
+
+      <article class="skill-block">
+        <div class="skill-num">01</div>
+        <div class="skill-name">AI Product Design</div>
+        <div class="skill-desc">
+          Designing products where AI improves the quality of a core workflow,
+          rather than functioning as a superficial feature.
+        </div>
+      </article>
+
+
+      <article class="skill-block">
+        <div class="skill-num">02</div>
+        <div class="skill-name">Search & Retrieval</div>
+        <div class="skill-desc">
+          Building systems that interpret user intent, retrieve relevant
+          candidates, rank results, and produce decision-useful answers.
+        </div>
+      </article>
+
+
+      <article class="skill-block">
+        <div class="skill-num">03</div>
+        <div class="skill-name">Location Intelligence</div>
+        <div class="skill-desc">
+          Structuring geographic, visual, operational, environmental, and
+          production data into usable location intelligence.
+        </div>
+      </article>
+
+
+      <article class="skill-block">
+        <div class="skill-num">04</div>
+        <div class="skill-name">Product Systems</div>
+        <div class="skill-desc">
+          Connecting product architecture, data pipelines, user workflows,
+          interface decisions, and quality controls into one coherent system.
+        </div>
+      </article>
+
+
+      <article class="skill-block">
+        <div class="skill-num">05</div>
+        <div class="skill-name">Customer Discovery</div>
+        <div class="skill-desc">
+          Working directly with agencies, production teams, and creative
+          professionals to identify constraints, validate assumptions, and
+          prioritize product decisions.
+        </div>
+      </article>
+
+
+      <article class="skill-block">
+        <div class="skill-num">06</div>
+        <div class="skill-name">Founder-Led Go-to-Market</div>
+        <div class="skill-desc">
+          Translating product value into positioning, customer conversations,
+          early acquisition, commercial validation, and revenue.
+        </div>
+      </article>
+
+    </div>
+
+  </section>
+
+
+  <!-- BUILDING -->
+  <section id="building">
+
+    <div class="section-tag">
+      // 04 — Building
+    </div>
+
+    <h2 class="section-title">
+      From discovery<br>
+      to production.
+    </h2>
+
+    <div class="project-list">
+
+      <article class="project-item">
+        <div>
+          <div class="project-name">
+            ScoutHalo
+          </div>
+
+          <div class="project-desc">
+            An AI-powered location intelligence platform for production teams
+            and creative agencies. ScoutHalo helps users discover, evaluate,
+            compare, organize, and prepare shoot-ready locations with
+            execution-level intelligence.
+          </div>
+
+          <div class="bg-card-tags">
+            <span class="tag">AI</span>
+            <span class="tag">Search</span>
+            <span class="tag">Location Intelligence</span>
+            <span class="tag">Production</span>
+            <span class="tag">B2B SaaS</span>
+          </div>
+
+          <a
+            href="https://scouthalo.com"
+            target="_blank"
+            rel="noopener noreferrer"
+            class="project-link"
+          >
+            Explore ScoutHalo →
+          </a>
+        </div>
+
+        <span class="project-status status-building">
+          Building
+        </span>
+      </article>
+
+
+      <article class="project-item">
+        <div>
+          <div class="project-name">
+            Production Intelligence
+          </div>
+
+          <div class="project-desc">
+            Developing a structured intelligence layer around locations,
+            including access, permits, lighting, timing, logistics, crowd
+            conditions, environmental factors, shoot constraints, and
+            operational risk.
+          </div>
+
+          <div class="bg-card-tags">
+            <span class="tag">Access</span>
+            <span class="tag">Permits</span>
+            <span class="tag">Lighting</span>
+            <span class="tag">Logistics</span>
+            <span class="tag">Constraints</span>
+          </div>
+        </div>
+
+        <span class="project-status status-live">
+          Active
+        </span>
+      </article>
+
+
+      <article class="project-item">
+        <div>
+          <div class="project-name">
+            AI Search Infrastructure
+          </div>
+
+          <div class="project-desc">
+            Building the search, retrieval, enrichment, ranking, reasoning,
+            and data-quality systems required to turn an open-ended creative
+            request into relevant and actionable location recommendations.
+          </div>
+
+          <div class="bg-card-tags">
+            <span class="tag">Retrieval</span>
+            <span class="tag">Ranking</span>
+            <span class="tag">Enrichment</span>
+            <span class="tag">Reasoning</span>
+            <span class="tag">Data Quality</span>
+          </div>
+        </div>
+
+        <span class="project-status status-live">
+          Active
+        </span>
+      </article>
+
+
+      <article class="project-item">
+        <div>
+          <div class="project-name">
+            The Origin
+          </div>
+
+          <div class="project-desc">
+            ScoutHalo began as NYCScout, an early experiment focused on
+            location discovery in New York City. Through product iteration
+            and a deeper understanding of production workflows, it evolved
+            into a broader platform for global production location intelligence.
+          </div>
+
+          <div class="bg-card-tags">
+            <span class="tag">NYCScout</span>
+            <span class="tag">Product Evolution</span>
+            <span class="tag">Customer Learning</span>
+          </div>
+        </div>
+
+        <span class="project-status status-live">
+          Evolved
+        </span>
+      </article>
+
+    </div>
+
+  </section>
+
+
+  <!-- CONTACT -->
+  <section id="contact">
+
+    <div class="section-tag">
+      // 05 — Contact
+    </div>
+
+    <div class="contact-block">
+
+      <div>
+        <div class="contact-title">
+          Let's build the future<br>
+          of location intelligence.
+        </div>
+
+        <div class="contact-sub">
+          I am interested in connecting with production companies, creative
+          agencies, location professionals, founders, investors, and people
+          building at the intersection of AI and creative workflows.
+        </div>
+      </div>
+
+
+      <div class="contact-links">
+
+        <a
+          href="https://scouthalo.com"
+          target="_blank"
+          rel="noopener noreferrer"
+          class="contact-link"
+        >
+          <span class="contact-link-dot"></span>
+          ScoutHalo
+        </a>
+
+        <a
+          href="https://linkedin.com/in/facundo-franco"
+          target="_blank"
+          rel="noopener noreferrer"
+          class="contact-link"
+        >
+          <span class="contact-link-dot"></span>
+          LinkedIn
+        </a>
+
+        <a
+          href="https://x.com/facundofranco_"
+          target="_blank"
+          rel="noopener noreferrer"
+          class="contact-link"
+        >
+          <span class="contact-link-dot"></span>
+          X / Twitter
+        </a>
+
+      </div>
+
+    </div>
+
+  </section>
+
+
+  <!-- FOOTER -->
+  <footer>
+    <div class="footer-text">
+      © 2026 Facundo Franco — Founder & CEO of ScoutHalo
+    </div>
+
+    <div class="footer-handle">
+      @facundofranco_
+    </div>
+  </footer>
+
 </body>
 </html>
