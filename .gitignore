@@ -1,0 +1,8 @@
+# OS
+.DS_Store
+
+# Unpublished article drafts — kept local until they are ready to publish.
+# When publishing one, remove its line here, flip robots to index, and add it to sitemap.xml.
+articles/why-i-built-scouthalo.html
+articles/why-production-needs-location-intelligence.html
+articles/why-google-maps-is-not-a-production-tool.html

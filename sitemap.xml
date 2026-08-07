@@ -4,9 +4,29 @@
 
   <url>
     <loc>https://facundofranco.com/</loc>
-    <lastmod>2026-08-06</lastmod>
+    <lastmod>2026-08-07</lastmod>
     <changefreq>monthly</changefreq>
     <priority>1.0</priority>
   </url>
+
+  <url>
+    <loc>https://facundofranco.com/about.html</loc>
+    <lastmod>2026-08-07</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+
+  <url>
+    <loc>https://facundofranco.com/articles/</loc>
+    <lastmod>2026-08-07</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.7</priority>
+  </url>
+
+  <!--
+    Draft articles are intentionally excluded from the sitemap and are marked
+    noindex until they are genuinely published. Add each article's <url> here
+    (with a real <lastmod>) at publish time.
+  -->
 
 </urlset>

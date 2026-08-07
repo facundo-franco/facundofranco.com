@@ -94,1058 +94,72 @@
     href="https://fonts.googleapis.com/css2?family=DM+Mono:wght@400;500&family=Inter:wght@400;500;600;700&display=swap"
     rel="stylesheet"
   >
-  <meta
-name="twitter:image"
-content="https://facundofranco.com/facundo-franco-founder-scouthalo.png"
->
+
+  <link rel="stylesheet" href="/styles.css">
 
   <script type="application/ld+json">
 {
   "@context": "https://schema.org",
-  "@type": "Person",
-  "@id": "https://facundofranco.com/#person",
-  "name": "Facundo Franco",
-  "givenName": "Facundo",
-  "familyName": "Franco",
-  "url": "https://facundofranco.com/",
-  "image": "https://facundofranco.com/facundo-franco-founder-scouthalo.png",
-  "jobTitle": "Founder & CEO",
-  "description": "Founder and CEO of ScoutHalo, an AI-powered location intelligence platform for production teams and creative agencies.",
-  "worksFor": {
-    "@type": "Organization",
-    "name": "ScoutHalo",
-    "url": "https://scouthalo.com"
-  },
-  "founderOf": {
-    "@type": "Organization",
-    "name": "ScoutHalo",
-    "url": "https://scouthalo.com"
-  },
-  "knowsAbout": [
-    "Artificial Intelligence",
-    "Location Intelligence",
-    "Production Location Scouting",
-    "Search Systems",
-    "Creative Production",
-    "B2B SaaS"
-  ],
-  "sameAs": [
-    "https://www.linkedin.com/in/facundo-franco",
-    "https://x.com/facundofranco_",
-    "https://www.instagram.com/facundofranco_1",
-    "https://www.youtube.com/@FacundoFrancoN",
-    "https://www.tiktok.com/@facundofranco_1",
-    "https://www.facebook.com/facundofrancon"
+  "@graph": [
+    {
+      "@type": "WebSite",
+      "@id": "https://facundofranco.com/#website",
+      "url": "https://facundofranco.com/",
+      "name": "Facundo Franco",
+      "inLanguage": "en",
+      "publisher": { "@id": "https://facundofranco.com/#person" }
+    },
+    {
+      "@type": "Person",
+      "@id": "https://facundofranco.com/#person",
+      "name": "Facundo Franco",
+      "givenName": "Facundo",
+      "familyName": "Franco",
+      "url": "https://facundofranco.com/",
+      "image": "https://facundofranco.com/facundo-franco-founder-scouthalo.png",
+      "jobTitle": "Founder & CEO",
+      "description": "Founder and CEO of ScoutHalo, an AI-powered location intelligence platform for production teams and creative agencies.",
+      "worksFor": { "@id": "https://scouthalo.com/#organization" },
+      "founderOf": { "@id": "https://scouthalo.com/#organization" },
+      "knowsAbout": [
+        "Artificial Intelligence",
+        "AI Operators",
+        "Location Intelligence",
+        "Production AI",
+        "Production Location Scouting",
+        "Search Systems",
+        "Creative Production",
+        "B2B SaaS"
+      ],
+      "sameAs": [
+        "https://www.linkedin.com/in/facundo-franco",
+        "https://x.com/facundofranco_",
+        "https://www.instagram.com/facundofranco_1",
+        "https://www.youtube.com/@FacundoFrancoN",
+        "https://www.tiktok.com/@facundofranco_1",
+        "https://www.facebook.com/facundofrancon"
+      ]
+    },
+    {
+      "@type": "Organization",
+      "@id": "https://scouthalo.com/#organization",
+      "name": "ScoutHalo",
+      "url": "https://scouthalo.com",
+      "description": "AI-powered location intelligence platform for production teams and creative agencies.",
+      "founder": { "@id": "https://facundofranco.com/#person" }
+    },
+    {
+      "@type": "WebSite",
+      "@id": "https://agentoperator.io/#website",
+      "url": "https://agentoperator.io",
+      "name": "Agent Operator",
+      "description": "Defining the AI Operator category in public.",
+      "author": { "@id": "https://facundofranco.com/#person" },
+      "creator": { "@id": "https://facundofranco.com/#person" }
+    }
   ]
 }
   </script>
-
-  <style>
-    :root {
-      --background: #090d10;
-      --surface: #10161a;
-      --surface-raised: #151d22;
-      --surface-soft: #0d1215;
-
-      --border: #253038;
-      --border-soft: rgba(145, 165, 176, 0.16);
-
-      --text: #edf3f5;
-      --muted: #8b9aa1;
-      --subtle: #5f6d73;
-
-      --cyan: #63d9e8;
-      --cyan-strong: #38c6d9;
-      --cyan-soft: rgba(99, 217, 232, 0.1);
-
-      --max-width: 1240px;
-      --page-padding: clamp(20px, 4vw, 56px);
-    }
-
-    * {
-      box-sizing: border-box;
-      margin: 0;
-      padding: 0;
-    }
-
-    html {
-      scroll-behavior: smooth;
-      scroll-padding-top: 88px;
-    }
-
-    body {
-      background: var(--background);
-      color: var(--text);
-
-      font-family: "Inter", sans-serif;
-      font-size: 16px;
-      line-height: 1.6;
-
-      overflow-x: hidden;
-      -webkit-font-smoothing: antialiased;
-    }
-
-    body::before {
-      content: "";
-      position: fixed;
-      inset: 0;
-      z-index: -2;
-      pointer-events: none;
-
-      background:
-        radial-gradient(
-          circle at 82% 8%,
-          rgba(99, 217, 232, 0.08),
-          transparent 27%
-        ),
-        radial-gradient(
-          circle at 12% 82%,
-          rgba(99, 217, 232, 0.035),
-          transparent 30%
-        );
-    }
-
-    body::after {
-      content: "";
-      position: fixed;
-      inset: 0;
-      z-index: -1;
-      pointer-events: none;
-
-      opacity: 0.18;
-
-      background-image:
-        linear-gradient(
-          rgba(255, 255, 255, 0.025) 1px,
-          transparent 1px
-        ),
-        linear-gradient(
-          90deg,
-          rgba(255, 255, 255, 0.025) 1px,
-          transparent 1px
-        );
-
-      background-size: 64px 64px;
-    }
-
-    a {
-      color: inherit;
-    }
-
-    img {
-      display: block;
-      max-width: 100%;
-    }
-
-    button {
-      font: inherit;
-    }
-
-    ::selection {
-      background: var(--cyan);
-      color: var(--background);
-    }
-
-    .container {
-      width: min(
-        calc(100% - (var(--page-padding) * 2)),
-        var(--max-width)
-      );
-
-      margin: 0 auto;
-    }
-
-    .mono {
-      font-family: "DM Mono", monospace;
-    }
-
-    .eyebrow {
-      display: inline-flex;
-      align-items: center;
-      gap: 10px;
-
-      color: var(--cyan);
-
-      font-family: "DM Mono", monospace;
-      font-size: 10px;
-      font-weight: 500;
-      letter-spacing: 0.11em;
-      text-transform: uppercase;
-    }
-
-    .eyebrow::before {
-      content: "";
-      width: 24px;
-      height: 1px;
-      background: currentColor;
-    }
-
-    .button {
-      min-height: 48px;
-
-      display: inline-flex;
-      align-items: center;
-      justify-content: center;
-      gap: 9px;
-
-      padding: 0 20px;
-
-      border: 1px solid transparent;
-
-      font-family: "DM Mono", monospace;
-      font-size: 10px;
-      font-weight: 500;
-      letter-spacing: 0.08em;
-      text-transform: uppercase;
-      text-decoration: none;
-
-      transition:
-        background-color 170ms ease,
-        border-color 170ms ease,
-        color 170ms ease,
-        transform 170ms ease;
-    }
-
-    .button:hover {
-      transform: translateY(-2px);
-    }
-
-    .button-primary {
-      background: var(--cyan);
-      border-color: var(--cyan);
-      color: #061013;
-    }
-
-    .button-primary:hover {
-      background: var(--cyan-strong);
-      border-color: var(--cyan-strong);
-    }
-
-    .button-secondary {
-      background: transparent;
-      border-color: var(--border);
-      color: var(--text);
-    }
-
-    .button-secondary:hover {
-      border-color: var(--cyan);
-      color: var(--cyan);
-    }
-
-    .section {
-      padding: clamp(80px, 10vw, 130px) 0;
-      border-top: 1px solid var(--border-soft);
-    }
-
-    .section-header {
-      display: grid;
-      grid-template-columns: 180px 1fr;
-      gap: clamp(30px, 7vw, 100px);
-      margin-bottom: 54px;
-    }
-
-    .section-title {
-      max-width: 800px;
-
-      font-size: clamp(38px, 5vw, 68px);
-      font-weight: 600;
-      line-height: 1.02;
-      letter-spacing: -0.05em;
-    }
-
-    .section-intro {
-      max-width: 720px;
-      margin-top: 20px;
-
-      color: var(--muted);
-      font-size: 17px;
-      line-height: 1.75;
-      letter-spacing: -0.015em;
-    }
-
-    /* Header */
-
-    .site-header {
-      position: fixed;
-      inset: 0 0 auto;
-      z-index: 100;
-
-      border-bottom: 1px solid var(--border-soft);
-
-      background: rgba(9, 13, 16, 0.84);
-      backdrop-filter: blur(18px);
-      -webkit-backdrop-filter: blur(18px);
-    }
-
-    .nav {
-      height: 72px;
-
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      gap: 30px;
-    }
-
-    .brand {
-      display: inline-flex;
-      align-items: center;
-      gap: 11px;
-
-      color: var(--text);
-      text-decoration: none;
-
-      font-size: 14px;
-      font-weight: 600;
-      letter-spacing: -0.025em;
-    }
-
-    .brand-mark {
-      width: 32px;
-      height: 32px;
-
-      display: grid;
-      place-items: center;
-
-      border: 1px solid var(--border);
-      background: var(--surface);
-
-      color: var(--cyan);
-
-      font-family: "DM Mono", monospace;
-      font-size: 9px;
-    }
-
-    .nav-links {
-      display: flex;
-      align-items: center;
-      gap: 28px;
-      list-style: none;
-    }
-
-    .nav-links a {
-      color: var(--muted);
-
-      font-family: "DM Mono", monospace;
-      font-size: 9px;
-      font-weight: 500;
-      letter-spacing: 0.09em;
-      text-transform: uppercase;
-      text-decoration: none;
-
-      transition: color 160ms ease;
-    }
-
-    .nav-links a:hover {
-      color: var(--text);
-    }
-
-    .nav-product {
-      padding: 9px 13px;
-      border: 1px solid var(--border);
-      color: var(--text) !important;
-    }
-
-    .nav-product:hover {
-      border-color: var(--cyan);
-      color: var(--cyan) !important;
-    }
-
-    /* Hero */
-
-    .hero {
-      min-height: 100vh;
-
-      display: flex;
-      align-items: center;
-
-      padding: 135px 0 82px;
-
-      border-bottom: 1px solid var(--border-soft);
-    }
-
-    .hero-layout {
-      display: grid;
-      grid-template-columns: minmax(0, 1fr) 340px;
-      gap: clamp(50px, 9vw, 130px);
-      align-items: center;
-    }
-
-    .hero-copy {
-      max-width: 830px;
-    }
-
-    .hero h1 {
-      margin-top: 25px;
-
-      font-size: clamp(68px, 10vw, 134px);
-      font-weight: 600;
-      line-height: 0.86;
-      letter-spacing: -0.075em;
-    }
-
-    .hero-role {
-      margin-top: 27px;
-
-      color: var(--text);
-
-      font-family: "DM Mono", monospace;
-      font-size: 11px;
-      letter-spacing: 0.09em;
-      text-transform: uppercase;
-    }
-
-    .hero-description {
-      max-width: 690px;
-
-      margin-top: 28px;
-
-      color: var(--muted);
-      font-size: clamp(18px, 1.7vw, 22px);
-      line-height: 1.7;
-      letter-spacing: -0.02em;
-    }
-
-    .hero-description strong {
-      color: var(--text);
-      font-weight: 500;
-    }
-
-    .hero-actions {
-      display: flex;
-      flex-wrap: wrap;
-      gap: 11px;
-      margin-top: 34px;
-    }
-
-    .portrait-card {
-      position: relative;
-
-      padding: 12px;
-
-      border: 1px solid var(--border);
-      background: var(--surface);
-    }
-
-    .portrait-frame {
-      aspect-ratio: 4 / 5;
-      overflow: hidden;
-
-      background: var(--surface-raised);
-    }
-
-    .portrait-frame img {
-      width: 100%;
-      height: 100%;
-
-      object-fit: cover;
-      object-position: center 23%;
-
-      filter:
-        saturate(0.72)
-        contrast(1.04)
-        brightness(0.9);
-    }
-
-    .portrait-caption {
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      gap: 20px;
-
-      padding: 14px 2px 2px;
-    }
-
-    .portrait-name {
-      font-size: 12px;
-      font-weight: 500;
-    }
-
-    .portrait-company {
-      color: var(--muted);
-
-      font-family: "DM Mono", monospace;
-      font-size: 8px;
-      letter-spacing: 0.08em;
-      text-transform: uppercase;
-      text-align: right;
-    }
-
-    .portrait-coordinate {
-      position: absolute;
-      top: 24px;
-      right: 24px;
-
-      padding: 6px 8px;
-
-      border: 1px solid rgba(255, 255, 255, 0.22);
-      background: rgba(8, 13, 16, 0.5);
-      backdrop-filter: blur(8px);
-
-      color: rgba(255, 255, 255, 0.7);
-
-      font-family: "DM Mono", monospace;
-      font-size: 7px;
-      letter-spacing: 0.08em;
-      text-transform: uppercase;
-    }
-
-    /* Product */
-
-    .product-panel {
-      display: grid;
-      grid-template-columns: 0.8fr 1.2fr;
-
-      overflow: hidden;
-
-      border: 1px solid var(--border);
-      background: var(--surface);
-    }
-
-    .product-copy {
-      padding: clamp(30px, 5vw, 58px);
-      border-right: 1px solid var(--border);
-    }
-
-    .product-copy h3 {
-      font-size: clamp(30px, 4vw, 48px);
-      line-height: 1.07;
-      letter-spacing: -0.045em;
-      font-weight: 600;
-    }
-
-    .product-copy p {
-      margin-top: 21px;
-
-      color: var(--muted);
-      font-size: 15px;
-      line-height: 1.75;
-    }
-
-    .product-copy strong {
-      color: var(--text);
-      font-weight: 500;
-    }
-
-    .product-link {
-      display: inline-flex;
-      align-items: center;
-      gap: 8px;
-
-      margin-top: 27px;
-
-      color: var(--cyan);
-
-      font-family: "DM Mono", monospace;
-      font-size: 10px;
-      letter-spacing: 0.08em;
-      text-transform: uppercase;
-      text-decoration: none;
-    }
-
-    .product-link:hover {
-      color: var(--text);
-    }
-
-    .product-interface {
-      min-height: 520px;
-      padding: clamp(22px, 4vw, 44px);
-
-      display: flex;
-      align-items: center;
-
-      background:
-        radial-gradient(
-          circle at center,
-          rgba(99, 217, 232, 0.08),
-          transparent 44%
-        ),
-        linear-gradient(
-          rgba(255, 255, 255, 0.022) 1px,
-          transparent 1px
-        ),
-        linear-gradient(
-          90deg,
-          rgba(255, 255, 255, 0.022) 1px,
-          transparent 1px
-        );
-
-      background-size: auto, 48px 48px, 48px 48px;
-    }
-
-    .interface-window {
-      width: 100%;
-
-      border: 1px solid var(--border);
-      background: rgba(9, 13, 16, 0.92);
-
-      box-shadow: 0 24px 70px rgba(0, 0, 0, 0.3);
-    }
-
-    .interface-header {
-      min-height: 48px;
-
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      gap: 20px;
-
-      padding: 0 16px;
-
-      border-bottom: 1px solid var(--border);
-
-      color: var(--muted);
-
-      font-family: "DM Mono", monospace;
-      font-size: 8px;
-      letter-spacing: 0.08em;
-      text-transform: uppercase;
-    }
-
-    .interface-status {
-      display: flex;
-      align-items: center;
-      gap: 8px;
-    }
-
-    .interface-status::before {
-      content: "";
-      width: 6px;
-      height: 6px;
-      border-radius: 50%;
-      background: var(--cyan);
-      box-shadow: 0 0 0 4px var(--cyan-soft);
-    }
-
-    .interface-body {
-      padding: 24px;
-    }
-
-    .brief-label {
-      color: var(--subtle);
-
-      font-family: "DM Mono", monospace;
-      font-size: 8px;
-      letter-spacing: 0.08em;
-      text-transform: uppercase;
-    }
-
-    .brief-box {
-      margin-top: 9px;
-      padding: 17px;
-
-      border: 1px solid var(--border);
-      background: var(--surface-soft);
-
-      color: var(--text);
-      font-size: 13px;
-      line-height: 1.6;
-    }
-
-    .result-grid {
-      display: grid;
-      gap: 9px;
-      margin-top: 16px;
-    }
-
-    .result-row {
-      display: grid;
-      grid-template-columns: 30px 1fr auto;
-      gap: 12px;
-      align-items: center;
-
-      padding: 13px;
-
-      border: 1px solid var(--border-soft);
-      background: rgba(255, 255, 255, 0.018);
-    }
-
-    .result-index,
-    .result-score {
-      color: var(--muted);
-
-      font-family: "DM Mono", monospace;
-      font-size: 8px;
-      letter-spacing: 0.05em;
-      text-transform: uppercase;
-    }
-
-    .result-index {
-      color: var(--cyan);
-    }
-
-    .result-name {
-      font-size: 11px;
-      font-weight: 500;
-    }
-
-    /* Capabilities */
-
-    .capability-grid {
-      display: grid;
-      grid-template-columns: repeat(3, 1fr);
-
-      border-top: 1px solid var(--border);
-      border-left: 1px solid var(--border);
-    }
-
-    .capability-card {
-      min-height: 280px;
-
-      display: flex;
-      flex-direction: column;
-      justify-content: space-between;
-
-      padding: 28px;
-
-      border-right: 1px solid var(--border);
-      border-bottom: 1px solid var(--border);
-
-      background: var(--surface-soft);
-
-      transition:
-        background-color 180ms ease,
-        transform 180ms ease;
-    }
-
-    .capability-card:hover {
-      background: var(--surface-raised);
-      transform: translateY(-3px);
-    }
-
-    .capability-number {
-      color: var(--cyan);
-
-      font-family: "DM Mono", monospace;
-      font-size: 9px;
-      letter-spacing: 0.08em;
-    }
-
-    .capability-card h3 {
-      font-size: 25px;
-      font-weight: 500;
-      letter-spacing: -0.035em;
-    }
-
-    .capability-card p {
-      margin-top: 11px;
-
-      color: var(--muted);
-      font-size: 13px;
-      line-height: 1.7;
-    }
-
-    /* Founder */
-
-.founder-layout {
-  display: block;
-}
-
-    .founder-image {
-      overflow: hidden;
-
-      border: 1px solid var(--border);
-      background: var(--surface);
-      padding: 10px;
-    }
-
-    .founder-image img {
-      width: 100%;
-      aspect-ratio: 4 / 5;
-
-      object-fit: cover;
-      object-position: center 23%;
-
-      filter:
-        grayscale(0.65)
-        saturate(0.7)
-        contrast(1.05)
-        brightness(0.86);
-    }
-
-    .founder-content h2 {
-      max-width: 760px;
-
-      font-size: clamp(40px, 5.5vw, 72px);
-      font-weight: 600;
-      line-height: 1.02;
-      letter-spacing: -0.055em;
-    }
-
-    .founder-copy {
-      max-width: 730px;
-      margin-top: 29px;
-
-      color: var(--muted);
-      font-size: 17px;
-      line-height: 1.8;
-      letter-spacing: -0.015em;
-    }
-
-    .founder-copy p + p {
-      margin-top: 20px;
-    }
-
-    .founder-copy strong {
-      color: var(--text);
-      font-weight: 500;
-    }
-
-    .founder-meta {
-      display: grid;
-      grid-template-columns: repeat(3, 1fr);
-
-      margin-top: 38px;
-
-      border-top: 1px solid var(--border);
-      border-left: 1px solid var(--border);
-    }
-
-    .founder-meta-item {
-      min-height: 100px;
-
-      padding: 17px;
-
-      border-right: 1px solid var(--border);
-      border-bottom: 1px solid var(--border);
-    }
-
-    .founder-meta-label {
-      color: var(--subtle);
-
-      font-family: "DM Mono", monospace;
-      font-size: 8px;
-      letter-spacing: 0.08em;
-      text-transform: uppercase;
-    }
-
-    .founder-meta-value {
-      margin-top: 8px;
-
-      font-size: 12px;
-      font-weight: 500;
-      line-height: 1.55;
-    }
-
-    /* Contact */
-
-    .contact {
-      border-top: 1px solid var(--border-soft);
-      padding: clamp(80px, 10vw, 130px) 0;
-    }
-
-    .contact-panel {
-      position: relative;
-      overflow: hidden;
-
-      padding: clamp(35px, 6vw, 72px);
-
-      border: 1px solid var(--border);
-      background: var(--surface);
-    }
-
-    .contact-panel::after {
-      content: "";
-      position: absolute;
-      right: -120px;
-      bottom: -160px;
-
-      width: 420px;
-      height: 420px;
-      border-radius: 50%;
-
-      background: radial-gradient(
-        circle,
-        rgba(99, 217, 232, 0.14),
-        transparent 68%
-      );
-
-      pointer-events: none;
-    }
-
-    .contact-content {
-      position: relative;
-      z-index: 2;
-    }
-
-    .contact-panel h2 {
-      max-width: 800px;
-
-      margin-top: 17px;
-
-      font-size: clamp(38px, 5.5vw, 72px);
-      font-weight: 600;
-      line-height: 1.02;
-      letter-spacing: -0.055em;
-    }
-
-    .contact-panel p {
-      max-width: 670px;
-
-      margin-top: 22px;
-
-      color: var(--muted);
-      font-size: 16px;
-      line-height: 1.75;
-    }
-
-    .contact-actions {
-      display: flex;
-      flex-wrap: wrap;
-      gap: 11px;
-      margin-top: 30px;
-    }
-
-    /* Footer */
-
-   .site-footer {
-  margin-top: 120px;
-  border-top: 1px solid var(--border);
-}
-
-.footer-container {
-  max-width: 1120px;
-  margin: 0 auto;
-  padding: 64px 32px 32px;
-}
-
-.footer-content {
-  display: flex;
-  justify-content: space-between;
-  gap: 64px;
-  align-items: flex-start;
-  flex-wrap: wrap;
-}
-
-.footer-brand h3 {
-  margin: 0 0 12px;
-  font-size: 18px;
-  font-weight: 600;
-}
-
-.footer-brand p {
-  margin: 0;
-  max-width: 420px;
-  color: var(--text-secondary);
-  line-height: 1.7;
-}
-
-.footer-links {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 14px;
-}
-
-.footer-links a {
-  padding: 8px 14px;
-  border: 1px solid var(--border);
-  font-size: 13px;
-  letter-spacing: .04em;
-  text-transform: uppercase;
-  transition: all .2s ease;
-}
-
-.footer-links a:hover {
-  background: var(--accent);
-  color: #000;
-}
-
-.footer-bottom {
-  margin-top: 56px;
-  padding-top: 24px;
-  border-top: 1px solid var(--border);
-  color: var(--text-muted);
-  font-size: 13px;
-}
-
-    /* Responsive */
-
-    @media (max-width: 940px) {
-      .hero-layout {
-        grid-template-columns: 1fr 280px;
-        gap: 50px;
-      }
-
-      .product-panel {
-        grid-template-columns: 1fr;
-      }
-
-      .product-copy {
-        border-right: 0;
-        border-bottom: 1px solid var(--border);
-      }
-
-      .section-header {
-        grid-template-columns: 1fr;
-        gap: 18px;
-      }
-
-      .founder-layout {
-        grid-template-columns: 260px 1fr;
-        gap: 50px;
-      }
-
-      .founder-meta {
-        grid-template-columns: 1fr;
-      }
-    }
-
-    @media (max-width: 720px) {
-      .nav {
-        height: 64px;
-      }
-
-      .nav-links li:not(:last-child) {
-        display: none;
-      }
-
-      .hero {
-        min-height: auto;
-        padding: 110px 0 70px;
-      }
-
-      .hero-layout,
-      .founder-layout {
-        grid-template-columns: 1fr;
-      }
-
-      .hero h1 {
-        font-size: clamp(64px, 20vw, 94px);
-      }
-
-      .portrait-card {
-        width: min(100%, 330px);
-      }
-
-      .capability-grid {
-        grid-template-columns: 1fr;
-      }
-
-      .capability-card {
-        min-height: 220px;
-      }
-
-      .founder-image {
-        width: min(100%, 300px);
-      }
-
-      .contact-actions,
-      .hero-actions {
-        flex-direction: column;
-        align-items: stretch;
-      }
-
-      .button {
-        width: 100%;
-      }
-
-      .footer-inner {
-        padding: 25px 0;
-
-        flex-direction: column;
-        align-items: flex-start;
-      }
-    }
-  </style>
 </head>
 
 <body>
@@ -1162,20 +176,19 @@ content="https://facundofranco.com/facundo-franco-founder-scouthalo.png"
         <span>Facundo Franco</span>
       </a>
 
-      <ul class="nav-links">
-        <li><a href="#scouthalo">ScoutHalo</a></li>
-        <li><a href="#founder">Founder</a></li>
+      <button
+        class="nav-toggle"
+        type="button"
+        aria-expanded="false"
+        aria-controls="primary-nav"
+        aria-label="Open menu"
+      >
+        <span class="nav-toggle-bar"></span>
+      </button>
 
-        <li>
-          <a
-            href="https://scouthalo.com"
-            target="_blank"
-            rel="noopener noreferrer"
-            class="nav-product"
-          >
-            Open ScoutHalo ↗
-          </a>
-        </li>
+      <ul class="nav-links" id="primary-nav">
+        <li><a href="/about.html">About</a></li>
+        <li><a href="/articles/">Writing</a></li>
       </ul>
 
     </nav>
@@ -1191,7 +204,7 @@ content="https://facundofranco.com/facundo-franco-founder-scouthalo.png"
         <div class="hero-copy">
 
           <p class="eyebrow">
-            Founder & CEO of ScoutHalo
+            Building &amp; operating AI
           </p>
 
           <h1>
@@ -1199,14 +212,10 @@ content="https://facundofranco.com/facundo-franco-founder-scouthalo.png"
             Franco.
           </h1>
 
-          <p class="hero-role">
-            AI · Search · Location intelligence · Production
-          </p>
-
           <p class="hero-description">
-            Building <strong>ScoutHalo</strong>, an AI-powered location
-            intelligence platform that helps production teams discover,
-            evaluate, and prepare shoot-ready locations.
+            Founder of <strong>ScoutHalo</strong>. I build AI products, and
+            research the emerging <strong>AI Operator</strong> category — how
+            AI gets operated in production.
           </p>
 
           <div class="hero-actions">
@@ -1221,10 +230,12 @@ content="https://facundofranco.com/facundo-franco-founder-scouthalo.png"
             </a>
 
             <a
-              href="#scouthalo"
+              href="https://agentoperator.io"
+              target="_blank"
+              rel="noopener noreferrer"
               class="button button-secondary"
             >
-              About the product
+              AgentOperator ↗
             </a>
 
           </div>
@@ -1233,82 +244,47 @@ content="https://facundofranco.com/facundo-franco-founder-scouthalo.png"
 
 
         <figure class="portrait-card">
-
           <div class="portrait-frame">
             <img
               src="./facundo-franco-founder-scouthalo.png"
-              alt="Facundo Franco, Founder and CEO of ScoutHalo"
+              alt="Facundo Franco, founder of ScoutHalo"
               width="1280"
               height="1280"
             >
           </div>
-
-          <span class="portrait-coordinate">
-            34.90° S · 56.16° W
-          </span>
-
-          <figcaption class="portrait-caption">
-            <span class="portrait-name">
-              Facundo Franco
-            </span>
-
-            <span class="portrait-company">
-              Founder & CEO<br>
-              ScoutHalo
-            </span>
-          </figcaption>
-
         </figure>
 
       </div>
     </section>
 
 
-    <!-- ScoutHalo -->
-    <section class="section" id="scouthalo">
+    <!-- Building -->
+    <section class="section" id="work">
       <div class="container">
 
         <div class="section-header">
 
           <p class="eyebrow">
-            01 · ScoutHalo
+            01 · Building
           </p>
 
           <div>
             <h2 class="section-title">
-              The intelligence layer for production locations.
+              A company, and a category.
             </h2>
-
-            <p class="section-intro">
-              Production teams still scout across maps, social platforms,
-              location libraries, spreadsheets, PDFs, and fragmented local
-              knowledge. ScoutHalo brings that workflow into one structured,
-              AI-powered workspace.
-            </p>
           </div>
 
         </div>
 
+        <div class="work-grid">
 
-        <div class="product-panel">
-
-          <div class="product-copy">
-
-            <h3>
-              From a creative brief to a viable location.
-            </h3>
-
+          <article class="work-card">
+            <p class="work-tag">Flagship product</p>
+            <h3>ScoutHalo</h3>
             <p>
-              <strong>ScoutHalo helps production teams search with intent,</strong>
-              understand whether a location can actually work, compare
-              alternatives, and prepare decisions with fewer unknowns.
+              AI location intelligence for production teams — discover,
+              evaluate, and prepare shoot-ready locations.
             </p>
-
-            <p>
-              It is designed for location scouts, producers, photographers,
-              filmmakers, production companies, and creative agencies.
-            </p>
-
             <a
               href="https://scouthalo.com"
               target="_blank"
@@ -1317,127 +293,23 @@ content="https://facundofranco.com/facundo-franco-founder-scouthalo.png"
             >
               Visit ScoutHalo ↗
             </a>
-
-          </div>
-
-
-          <div class="product-interface">
-
-            <div class="interface-window">
-
-              <div class="interface-header">
-
-                <span>
-                  ScoutHalo · Scout
-                </span>
-
-                <span class="interface-status">
-                  Production intelligence
-                </span>
-
-              </div>
-
-
-              <div class="interface-body">
-
-                <p class="brief-label">
-                  Production brief
-                </p>
-
-                <div class="brief-box">
-                  Brutalist museum with strong geometric lines, controllable
-                  morning light, low pedestrian traffic, and practical
-                  production access.
-                </div>
-
-
-                <div class="result-grid">
-
-                  <div class="result-row">
-                    <span class="result-index">01</span>
-                    <span class="result-name">Concrete Arts Complex</span>
-                    <span class="result-score">94% match</span>
-                  </div>
-
-                  <div class="result-row">
-                    <span class="result-index">02</span>
-                    <span class="result-name">Modernist Civic Museum</span>
-                    <span class="result-score">89% match</span>
-                  </div>
-
-                  <div class="result-row">
-                    <span class="result-index">03</span>
-                    <span class="result-name">Monolithic Cultural Center</span>
-                    <span class="result-score">84% match</span>
-                  </div>
-
-                </div>
-
-              </div>
-
-            </div>
-
-          </div>
-
-        </div>
-
-
-        <div
-          class="capability-grid"
-          style="margin-top: 18px;"
-        >
-
-          <article class="capability-card">
-
-            <span class="capability-number">
-              01
-            </span>
-
-            <div>
-              <h3>Discover</h3>
-
-              <p>
-                Find relevant locations from creative direction, geography,
-                atmosphere, visual characteristics, and production requirements.
-              </p>
-            </div>
-
           </article>
 
-
-          <article class="capability-card">
-
-            <span class="capability-number">
-              02
-            </span>
-
-            <div>
-              <h3>Evaluate</h3>
-
-              <p>
-                Understand lighting, access, timing, logistics, permits,
-                crowd conditions, constraints, and operational risk.
-              </p>
-            </div>
-
-          </article>
-
-
-          <article class="capability-card">
-
-            <span class="capability-number">
-              03
-            </span>
-
-            <div>
-              <h3>Prepare</h3>
-
-              <p>
-                Compare candidates, organize shortlists, align stakeholders,
-                and move into production with stronger intelligence.
-              </p>
-            </div>
-
+          <article class="work-card">
+            <p class="work-tag">Category initiative</p>
+            <h3>AgentOperator</h3>
+            <p>
+              Defining the AI Operator category in public. The model is a
+              commodity; the operator is not.
+            </p>
+            <a
+              href="https://agentoperator.io"
+              target="_blank"
+              rel="noopener noreferrer"
+              class="product-link"
+            >
+              Read at AgentOperator.io ↗
+            </a>
           </article>
 
         </div>
@@ -1446,79 +318,32 @@ content="https://facundofranco.com/facundo-franco-founder-scouthalo.png"
     </section>
 
 
-    <!-- Founder -->
-    <section class="section" id="founder">
-      <div class="container founder-layout">
+    <!-- Writing -->
+    <section class="section" id="writing">
+      <div class="container">
 
-        <div class="founder-content">
+        <div class="section-header">
 
           <p class="eyebrow">
-            02 · Founder
+            02 · Writing
           </p>
 
-          <h2>
-            Building ScoutHalo from product to market.
-          </h2>
-
-          <div class="founder-copy">
-
-            <p>
-              I’m <strong>Facundo Franco</strong>, Founder and CEO of ScoutHalo.
-              I lead product strategy, search relevance, AI systems, data
-              quality, customer discovery, positioning, and founder-led
-              go-to-market.
-            </p>
-
-            <p>
-              Before ScoutHalo, I worked across growth and operations,
-              managing acquisition, CRM, analytics, marketplaces, commercial
-              execution, and operational systems.
-            </p>
-
-            <p>
-              I am currently based in Uruguay and preparing to relocate to
-              <strong>Miami, Florida</strong>, while building ScoutHalo for
-              production teams operating globally.
-            </p>
-
-          </div>
-
-
-          <div class="founder-meta">
-
-            <div class="founder-meta-item">
-              <p class="founder-meta-label">
-                Role
-              </p>
-
-              <p class="founder-meta-value">
-                Founder & CEO
-              </p>
-            </div>
-
-            <div class="founder-meta-item">
-              <p class="founder-meta-label">
-                Company
-              </p>
-
-              <p class="founder-meta-value">
-                ScoutHalo
-              </p>
-            </div>
-
-            <div class="founder-meta-item">
-              <p class="founder-meta-label">
-                Focus
-              </p>
-
-              <p class="founder-meta-value">
-                Product · Search · AI · Data · GTM
-              </p>
-            </div>
-
+          <div>
+            <h2 class="section-title">
+              Writing.
+            </h2>
           </div>
 
         </div>
+
+        <p class="writing-empty">
+          Essays on building AI in production, and the discipline of operating
+          it. <strong>First pieces soon.</strong>
+        </p>
+
+        <a href="/articles/" class="product-link">
+          Visit the writing index →
+        </a>
 
       </div>
     </section>
@@ -1537,54 +362,35 @@ content="https://facundofranco.com/facundo-franco-founder-scouthalo.png"
             </p>
 
             <h2>
-              Building better infrastructure for creative production.
+              Get in touch.
             </h2>
 
             <p>
-              I am interested in connecting with production companies,
-              creative agencies, location professionals, founders, investors,
-              and people building at the intersection of AI and creative work.
+              Open to conversations about building and operating AI in
+              production.
             </p>
 
-   <div class="hero-actions">
+            <div class="contact-actions">
 
-  <a
-    href="https://scouthalo.com"
-    target="_blank"
-    rel="noopener noreferrer"
-    class="button button-primary"
-  >
-    Visit ScoutHalo ↗
-  </a>
+              <a
+                href="https://www.linkedin.com/in/facundo-franco"
+                target="_blank"
+                rel="noopener noreferrer"
+                class="button button-primary"
+              >
+                LinkedIn ↗
+              </a>
 
-  <a
-    href="https://www.linkedin.com/in/facundo-franco"
-    target="_blank"
-    rel="noopener noreferrer"
-    class="button button-secondary"
-  >
-    LinkedIn ↗
-  </a>
+              <a
+                href="https://x.com/facundofranco_"
+                target="_blank"
+                rel="noopener noreferrer"
+                class="button button-secondary"
+              >
+                X ↗
+              </a>
 
-  <a
-    href="https://x.com/facundofranco_"
-    target="_blank"
-    rel="noopener noreferrer"
-    class="button button-secondary"
-  >
-    X ↗
-  </a>
-
-  <a
-    href="https://www.youtube.com/@FacundoFrancoN"
-    target="_blank"
-    rel="noopener noreferrer"
-    class="button button-secondary"
-  >
-    YouTube ↗
-  </a>
-
-</div>
+            </div>
 
           </div>
 
@@ -1596,88 +402,69 @@ content="https://facundofranco.com/facundo-franco-founder-scouthalo.png"
   </main>
 
 
- <footer class="site-footer">
-  <div class="footer-container">
+  <footer class="site-footer">
+    <div class="footer-container">
 
-    <div class="footer-content">
+      <div class="footer-content">
 
-      <div class="footer-brand">
-        <h3>Facundo Franco</h3>
+        <div class="footer-brand">
+          <h3>Facundo Franco</h3>
 
-        <p>
-          Founder & CEO of ScoutHalo.
-          Building infrastructure for creative production.
-        </p>
+          <p>
+            Founder of ScoutHalo. Building and operating AI in production.
+          </p>
+        </div>
+
+        <nav class="footer-links" aria-label="Footer">
+
+          <a href="/about.html">About</a>
+
+          <a href="/articles/">Writing</a>
+
+          <a
+            href="https://scouthalo.com"
+            target="_blank"
+            rel="noopener noreferrer"
+          >
+            ScoutHalo ↗
+          </a>
+
+          <a
+            href="https://agentoperator.io"
+            target="_blank"
+            rel="noopener noreferrer"
+          >
+            AgentOperator ↗
+          </a>
+
+          <a
+            href="https://www.linkedin.com/in/facundo-franco"
+            target="_blank"
+            rel="noopener noreferrer"
+          >
+            LinkedIn ↗
+          </a>
+
+          <a
+            href="https://x.com/facundofranco_"
+            target="_blank"
+            rel="noopener noreferrer"
+          >
+            X ↗
+          </a>
+
+        </nav>
+
       </div>
 
-      <nav class="footer-links">
-
-        <a
-          href="https://scouthalo.com"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          ScoutHalo ↗
-        </a>
-
-        <a
-          href="https://www.linkedin.com/in/facundo-franco"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          LinkedIn ↗
-        </a>
-
-        <a
-          href="https://x.com/facundofranco_"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          X ↗
-        </a>
-
-        <a
-          href="https://www.instagram.com/facundofranco_1"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Instagram ↗
-        </a>
-
-        <a
-          href="https://www.youtube.com/@FacundoFrancoN"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          YouTube ↗
-        </a>
-
-        <a
-          href="https://www.tiktok.com/@facundofranco_1"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          TikTok ↗
-        </a>
-        
-      <a
-         href="https://www.facebook.com/facundofrancon"
-         target="_blank"
-         rel="noopener noreferrer"
-       >
-         Facebook
-       </a>
-
-      </nav>
+      <div class="footer-bottom">
+        <span>© 2026 Facundo Franco</span>
+      </div>
 
     </div>
+  </footer>
 
-    <div class="footer-bottom">
-      <span>© 2026 Facundo Franco</span>
-    </div>
-
-  </div>
-</footer>
+  <script src="/scripts.js" defer></script>
 
 </body>
 </html>
