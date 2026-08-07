@@ -1,8 +1,31 @@
+# Dependencies
+/node_modules
+
+# Next.js
+/.next
+/out
+/build
+next-env.d.ts
+*.tsbuildinfo
+
+# Vercel
+/.vercel
+
+# Env
+.env
+.env.*
+!.env.example
+
+# Logs
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+
 # OS
 .DS_Store
 
-# Unpublished article drafts — kept local until they are ready to publish.
-# When publishing one, remove its line here, flip robots to index, and add it to sitemap.xml.
-articles/why-i-built-scouthalo.html
-articles/why-production-needs-location-intelligence.html
-articles/why-google-maps-is-not-a-production-tool.html
+# Unpublished writing drafts — kept local, never committed to the public repo.
+# Published articles live directly in content/writing/*.mdx and ARE committed.
+content/writing/why-i-built-scouthalo.mdx
+content/writing/why-production-needs-location-intelligence.mdx
+content/writing/why-google-maps-is-not-a-production-tool.mdx
