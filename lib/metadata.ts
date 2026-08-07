@@ -12,9 +12,15 @@ export const baseMetadata: Metadata = {
   applicationName: "Facundo Franco",
   authors: [{ name: "Facundo Franco", url: SITE.url }],
   robots: "index, follow, max-image-preview:large",
+  appleWebApp: {
+    capable: true,
+    title: "Facundo Franco",
+    statusBarStyle: "black-translucent",
+  },
   openGraph: {
     type: "website",
     siteName: "Facundo Franco",
+    locale: "en_US",
     url: `${SITE.url}/`,
     title: SITE.title,
     description:
@@ -22,6 +28,8 @@ export const baseMetadata: Metadata = {
     images: [
       {
         url: SITE.ogImage,
+        width: 1280,
+        height: 1280,
         alt: "Facundo Franco, Founder and CEO of ScoutHalo",
       },
     ],
@@ -56,10 +64,18 @@ export function pageMetadata({ title, description, path, ogType = "website" }: P
     openGraph: {
       type: ogType,
       siteName: "Facundo Franco",
+      locale: "en_US",
       url: SITE.url + path,
       title: ogTitle,
       description: desc,
-      images: [{ url: SITE.ogImage, alt: "Facundo Franco, Founder and CEO of ScoutHalo" }],
+      images: [
+        {
+          url: SITE.ogImage,
+          width: 1280,
+          height: 1280,
+          alt: "Facundo Franco, Founder and CEO of ScoutHalo",
+        },
+      ],
     },
     twitter: {
       card: "summary_large_image",

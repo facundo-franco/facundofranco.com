@@ -169,9 +169,28 @@ button {
     transform: none;
   }
 
+  /* Above-the-fold entrance — CSS-only, so the LCP element paints and animates
+     immediately without waiting for hydration. Visually identical to the
+     scroll reveal above. */
+  .reveal-load {
+    animation: reveal-in 0.8s cubic-bezier(0.16, 0.7, 0.2, 1) both;
+    animation-delay: var(--reveal-delay, 0ms);
+  }
+
   /* Slowly drifting ambient light behind everything */
   body::before {
     animation: aura 26s ease-in-out infinite alternate;
+  }
+}
+
+@keyframes reveal-in {
+  from {
+    opacity: 0;
+    transform: translateY(18px);
+  }
+  to {
+    opacity: 1;
+    transform: none;
   }
 }
 

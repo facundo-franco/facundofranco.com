@@ -2,27 +2,20 @@
 
 import Image from "next/image";
 import { useEffect, useRef } from "react";
-import { registerReveal } from "./Reveal";
+import type { CSSProperties } from "react";
 import { SITE } from "@/lib/site";
 
 export default function Portrait({ priority = false, delay = 120 }: { priority?: boolean; delay?: number }) {
   const figureRef = useRef<HTMLElement>(null);
 
+  // Entrance is CSS (reveal-load); this effect only adds the subtle parallax.
   useEffect(() => {
     const figure = figureRef.current;
     if (!figure) return;
-
-    const reduce = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
-    let unregister: (() => void) | undefined;
-
-    if (reduce) {
-      figure.classList.add("is-visible");
-    } else {
-      unregister = registerReveal(figure);
-    }
+    if (window.matchMedia("(prefers-reduced-motion: reduce)").matches) return;
 
     const img = figure.querySelector("img");
-    if (reduce || !img) return () => unregister?.();
+    if (!img) return;
 
     let raf: number | null = null;
     const update = () => {
@@ -42,7 +35,6 @@ export default function Portrait({ priority = false, delay = 120 }: { priority?:
     update();
 
     return () => {
-      unregister?.();
       window.removeEventListener("scroll", onScroll);
       window.removeEventListener("resize", onScroll);
     };
@@ -51,9 +43,8 @@ export default function Portrait({ priority = false, delay = 120 }: { priority?:
   return (
     <figure
       ref={figureRef}
-      className="portrait-card"
-      data-reveal
-      style={{ ["--reveal-delay" as string]: `${delay}ms` }}
+      className="portrait-card reveal-load"
+      style={{ "--reveal-delay": `${delay}ms` } as CSSProperties}
     >
       <div className="portrait-frame">
         <Image

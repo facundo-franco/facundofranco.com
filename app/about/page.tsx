@@ -1,3 +1,4 @@
+import type { CSSProperties } from "react";
 import type { Metadata } from "next";
 import ContactSection from "@/components/ContactSection";
 import JsonLd from "@/components/JsonLd";
@@ -26,24 +27,25 @@ export default function AboutPage() {
       <section className="page-hero" id="top">
         <div className="container about-hero">
           <div className="about-hero-copy">
-            <Reveal as="p" className="eyebrow">
-              About
-            </Reveal>
-            <Reveal as="h1" delay={80}>
+            <p className="eyebrow reveal-load">About</p>
+            <h1 className="reveal-load" style={{ "--reveal-delay": "80ms" } as CSSProperties}>
               Facundo Franco
-            </Reveal>
-            <Reveal as="p" className="page-lede" delay={160}>
+            </h1>
+            <p className="page-lede reveal-load" style={{ "--reveal-delay": "160ms" } as CSSProperties}>
               Founder of <strong>ScoutHalo</strong>. I build AI products, and research the emerging{" "}
               <strong>AI Operator</strong> category.
-            </Reveal>
-            <Reveal as="div" className="about-actions" delay={240}>
+            </p>
+            <div
+              className="about-actions reveal-load"
+              style={{ "--reveal-delay": "240ms" } as CSSProperties}
+            >
               <MagneticButton href="https://scouthalo.com" className="button button-primary">
                 Explore ScoutHalo ↗
               </MagneticButton>
               <MagneticButton href="#contact" className="button button-secondary" external={false}>
                 Get in touch
               </MagneticButton>
-            </Reveal>
+            </div>
           </div>
 
           <Portrait priority delay={120} />

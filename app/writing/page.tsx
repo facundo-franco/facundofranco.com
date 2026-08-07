@@ -1,3 +1,4 @@
+import type { CSSProperties } from "react";
 import type { Metadata } from "next";
 import Link from "next/link";
 import JsonLd from "@/components/JsonLd";
@@ -28,15 +29,13 @@ export default function WritingPage() {
       {/* Hero */}
       <section className="page-hero" id="top">
         <div className="container">
-          <Reveal as="p" className="eyebrow">
-            Writing
-          </Reveal>
-          <Reveal as="h1" delay={80}>
+          <p className="eyebrow reveal-load">Writing</p>
+          <h1 className="reveal-load" style={{ "--reveal-delay": "80ms" } as CSSProperties}>
             Writing.
-          </Reveal>
-          <Reveal as="p" className="page-lede" delay={160}>
+          </h1>
+          <p className="page-lede reveal-load" style={{ "--reveal-delay": "160ms" } as CSSProperties}>
             Essays on building AI in production, and the discipline of operating it.
-          </Reveal>
+          </p>
         </div>
       </section>
 

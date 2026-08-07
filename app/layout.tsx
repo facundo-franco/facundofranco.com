@@ -1,4 +1,4 @@
-import type { Metadata } from "next";
+import type { Metadata, Viewport } from "next";
 import { Inter, DM_Mono } from "next/font/google";
 import Script from "next/script";
 import "@/styles/globals.css";
@@ -21,6 +21,13 @@ const dmMono = DM_Mono({
 });
 
 export const metadata: Metadata = baseMetadata;
+
+export const viewport: Viewport = {
+  width: "device-width",
+  initialScale: 1,
+  themeColor: "#090d10",
+  colorScheme: "dark",
+};
 
 export default function RootLayout({ children }: { children: React.ReactNode }) {
   return (
