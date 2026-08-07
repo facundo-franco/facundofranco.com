@@ -50,8 +50,8 @@ function ensureObserver(): IntersectionObserver {
   return observer;
 }
 
-/** Observe an element for reveal. Used by Reveal and by Portrait. */
-export function registerReveal(el: Element): () => void {
+/** Observe an element for reveal. */
+function registerReveal(el: Element): () => void {
   const io = ensureObserver();
   io.observe(el);
   return () => io.unobserve(el);

@@ -25,20 +25,13 @@ export const baseMetadata: Metadata = {
     title: SITE.title,
     description:
       "Building ScoutHalo, the AI-powered location intelligence platform for production teams and creative agencies.",
-    images: [
-      {
-        url: SITE.ogImage,
-        width: 1280,
-        height: 1280,
-        alt: "Facundo Franco, Founder and CEO of ScoutHalo",
-      },
-    ],
+    // og:image comes from the file-based opengraph-image routes (branded card).
   },
   twitter: {
     card: "summary_large_image",
     title: SITE.title,
     description: "Building AI-powered location intelligence for production teams.",
-    images: [SITE.ogImage],
+    // twitter:image falls back to og:image (the generated card).
   },
 };
 
@@ -68,20 +61,13 @@ export function pageMetadata({ title, description, path, ogType = "website" }: P
       url: SITE.url + path,
       title: ogTitle,
       description: desc,
-      images: [
-        {
-          url: SITE.ogImage,
-          width: 1280,
-          height: 1280,
-          alt: "Facundo Franco, Founder and CEO of ScoutHalo",
-        },
-      ],
+      // og:image is supplied by the route's opengraph-image (branded card).
     },
     twitter: {
       card: "summary_large_image",
       title: ogTitle,
       description: desc,
-      images: [SITE.ogImage],
+      // twitter:image falls back to og:image.
     },
   };
 }

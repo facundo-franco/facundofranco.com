@@ -229,10 +229,6 @@ button {
   margin: 0 auto;
 }
 
-.mono {
-  font-family: var(--font-mono), monospace;
-}
-
 .eyebrow {
   display: inline-flex;
   align-items: center;
@@ -836,24 +832,6 @@ button {
   color: var(--text);
 }
 
-/* Editorial empty state — used on the homepage writing block and /articles/ */
-.writing-empty {
-  max-width: 640px;
-  padding: 34px 0 4px;
-
-  color: var(--muted);
-  font-size: 17px;
-  line-height: 1.8;
-  letter-spacing: -0.015em;
-
-  border-top: 1px solid var(--border);
-}
-
-.writing-empty strong {
-  color: var(--text);
-  font-weight: 500;
-}
-
 /* Upcoming-essays roadmap — real topics, not published; no dates, no metadata */
 .roadmap {
   list-style: none;
@@ -1233,34 +1211,6 @@ button {
   color: var(--muted);
 }
 
-/* Reserved press / speaking panel — honest placeholder, no fabricated logos */
-.reserved-panel {
-  max-width: 720px;
-  padding: 28px 28px 30px;
-
-  border: 1px dashed var(--border);
-  background: var(--surface-soft);
-}
-
-.reserved-panel p {
-  color: var(--muted);
-  font-size: 15px;
-  line-height: 1.75;
-}
-
-.reserved-panel p + p {
-  margin-top: 14px;
-}
-
-.reserved-panel a {
-  color: var(--cyan);
-  text-decoration: none;
-}
-
-.reserved-panel a:hover {
-  color: var(--text);
-}
-
 /* --------------------------------------------------------------------------
    Article (writing detail) — narrow editorial reading column
    -------------------------------------------------------------------------- */
@@ -1314,17 +1264,6 @@ button {
   font-size: clamp(18px, 2vw, 21px);
   line-height: 1.65;
   letter-spacing: -0.02em;
-}
-
-.article-meta {
-  margin-top: 20px;
-
-  color: var(--subtle);
-
-  font-family: var(--font-mono), monospace;
-  font-size: 9px;
-  letter-spacing: 0.08em;
-  text-transform: uppercase;
 }
 
 .author-block {
