@@ -1132,14 +1132,6 @@ button {
   margin-top: 30px;
 }
 
-/* Now — a plain status snapshot */
-.now-list {
-  list-style: none;
-}
-
-.now-list li + li {
-  margin-top: 6px;
-}
 
 
 /* --------------------------------------------------------------------------
