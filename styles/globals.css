@@ -732,9 +732,23 @@ button {
   letter-spacing: -0.015em;
 }
 
-.work-flagship .product-link {
+/* Primary external link, with a quieter internal link beside it */
+.work-actions {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 16px 30px;
+
   margin-top: auto;
   padding-top: 32px;
+}
+
+.work-actions .product-link {
+  margin-top: 0;
+}
+
+.product-link-quiet {
+  color: var(--muted);
 }
 
 /* Card left, framed product mockup right — same composition as Speaking */
@@ -788,6 +802,67 @@ button {
 }
 
 .post-preview-label {
+  color: var(--subtle);
+
+  font-family: var(--font-mono), monospace;
+  font-size: 9px;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+}
+
+/* --------------------------------------------------------------------------
+   Story (/story) — hero, then chapters: copy left, framed figure right
+   -------------------------------------------------------------------------- */
+.story-hero {
+  padding: clamp(140px, 16vw, 200px) 0 clamp(64px, 7.5vw, 108px);
+}
+
+.story-hero-title {
+  max-width: 12ch;
+  margin-top: 22px;
+
+  font-size: clamp(52px, 8vw, 112px);
+  font-weight: 600;
+  line-height: 0.92;
+  letter-spacing: -0.065em;
+}
+
+.story-hero-intro {
+  max-width: 640px;
+  margin-top: 28px;
+
+  color: var(--muted);
+  font-size: clamp(18px, 1.7vw, 22px);
+  line-height: 1.7;
+  letter-spacing: -0.02em;
+}
+
+.chapter {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) minmax(0, 360px);
+  gap: clamp(40px, 6vw, 88px);
+  align-items: start;
+
+  margin-top: clamp(30px, 4vw, 44px);
+}
+
+.chapter-text-only {
+  grid-template-columns: minmax(0, 1fr);
+}
+
+.chapter-copy {
+  max-width: 60ch;
+}
+
+.chapter-figure-frame img {
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+}
+
+.chapter-caption {
+  margin-top: 14px;
+
   color: var(--subtle);
 
   font-family: var(--font-mono), monospace;
@@ -1133,6 +1208,16 @@ button {
   .building .post-preview {
     justify-self: center;
     width: min(100%, 300px);
+  }
+
+  .chapter {
+    grid-template-columns: 1fr;
+    gap: 36px;
+  }
+
+  .chapter-figure {
+    justify-self: center;
+    width: min(100%, 340px);
   }
 
   .nav {

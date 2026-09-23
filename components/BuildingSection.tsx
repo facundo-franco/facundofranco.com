@@ -1,3 +1,4 @@
+import Link from "next/link";
 import { SCOUTHALO_URL } from "@/lib/site";
 import PostPreview from "./PostPreview";
 import SectionHeader from "./SectionHeader";
@@ -18,14 +19,19 @@ export default function BuildingSection() {
                 I built the first version from Uruguay and am now working toward the next stage:
                 bringing it to production teams in the U.S. and building the company from Miami.
               </p>
-              <a
-                href={SCOUTHALO_URL}
-                target="_blank"
-                rel="noopener noreferrer"
-                className="product-link"
-              >
-                Visit ScoutHalo ↗
-              </a>
+              <div className="work-actions">
+                <a
+                  href={SCOUTHALO_URL}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="product-link"
+                >
+                  Visit ScoutHalo ↗
+                </a>
+                <Link href="/story" className="product-link product-link-quiet">
+                  Read the story →
+                </Link>
+              </div>
             </div>
 
             <PostPreview
