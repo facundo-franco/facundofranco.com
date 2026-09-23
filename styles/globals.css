@@ -1087,6 +1087,51 @@ button {
   color: var(--text);
 }
 
+/* About — biography beside a small column of editorial facts */
+.section-compact {
+  padding: clamp(56px, 6vw, 84px) 0;
+}
+
+.about {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) clamp(200px, 20vw, 260px);
+  gap: clamp(40px, 6vw, 88px);
+  align-items: start;
+
+  margin-top: clamp(26px, 3.5vw, 38px);
+}
+
+.about .story {
+  margin-top: 0;
+}
+
+.about-facts {
+  display: grid;
+  gap: 22px;
+}
+
+.about-facts dt {
+  color: var(--subtle);
+
+  font-family: var(--font-mono), monospace;
+  font-size: 9px;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+}
+
+.about-facts dd {
+  margin-top: 6px;
+
+  color: var(--text);
+  font-size: 15px;
+  line-height: 1.55;
+  letter-spacing: -0.01em;
+}
+
+.about-links {
+  margin-top: 30px;
+}
+
 /* Now — a plain status snapshot */
 .now-list {
   list-style: none;
@@ -1310,6 +1355,22 @@ button {
   .section-header > .eyebrow {
     margin-top: 0;
   }
+
+  /* Facts drop below the biography, separated by a hairline */
+  .about {
+    grid-template-columns: 1fr;
+    gap: 32px;
+  }
+
+  .about-meta {
+    padding-top: 28px;
+    border-top: 1px solid var(--border-soft);
+  }
+
+  .about-facts {
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    gap: 22px 32px;
+  }
 }
 
 @media (max-width: 720px) {
@@ -1321,6 +1382,30 @@ button {
   .chapter {
     grid-template-columns: 1fr;
     gap: 36px;
+  }
+
+  .section-compact {
+    padding: 48px 0;
+  }
+
+  .about {
+    gap: 26px;
+  }
+
+  .about-meta {
+    padding-top: 22px;
+  }
+
+  .about-facts {
+    gap: 14px;
+  }
+
+  .about-facts dd {
+    margin-top: 4px;
+  }
+
+  .about-links {
+    margin-top: 22px;
   }
 
   .chapter-figure {

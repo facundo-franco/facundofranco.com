@@ -17,8 +17,8 @@ export default function HomePage() {
       <Hero />
       <BuildingSection />
       <AboutSection />
-      <SpeakingSection />
       <NowSection />
+      <SpeakingSection />
     </main>
   );
 }

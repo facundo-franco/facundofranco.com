@@ -7,7 +7,7 @@ export default function SpeakingSection() {
   return (
     <section className="section" id="speaking">
       <div className="container">
-        <SectionHeader eyebrow="03 · Speaking" title="Sharing what I learn.">
+        <SectionHeader eyebrow="04 · Speaking" title="Sharing what I learn.">
           <div className="speaking">
             <div className="speaking-copy">
               <div className="prose">
