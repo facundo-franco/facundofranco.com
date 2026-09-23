@@ -1,5 +1,5 @@
 import Image from "next/image";
-import type { ReactNode } from "react";
+import type { CSSProperties, ReactNode } from "react";
 import SectionHeader from "./SectionHeader";
 
 type ChapterFigure = {
@@ -40,7 +40,10 @@ export default function StoryChapter({
             <div className="prose chapter-copy">{children}</div>
 
             {figure ? (
-              <figure className="chapter-figure">
+              <figure
+                className="chapter-figure"
+                style={{ "--ratio": figure.width / figure.height } as CSSProperties}
+              >
                 <div className="post-preview">
                   <div
                     className="post-preview-frame chapter-figure-frame"

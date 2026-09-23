@@ -2,7 +2,7 @@
 
 import Image from "next/image";
 import { useRef, useState } from "react";
-import type { KeyboardEvent, TouchEvent } from "react";
+import type { CSSProperties, KeyboardEvent, TouchEvent } from "react";
 
 export type CarouselSlide = {
   src: string;
@@ -58,6 +58,7 @@ export default function StoryCarousel({
   return (
     <figure
       className="chapter-figure story-carousel"
+      style={{ "--ratio": first.width / first.height } as CSSProperties}
       role="region"
       aria-roledescription="carousel"
       aria-label={label}

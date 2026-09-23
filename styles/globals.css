@@ -834,14 +834,14 @@ button {
    Story (/story) — hero, then chapters: copy left, framed figure right
    -------------------------------------------------------------------------- */
 .story-hero {
-  padding: clamp(140px, 16vw, 200px) 0 clamp(64px, 7.5vw, 108px);
+  padding: calc(72px + clamp(40px, 6vw, 88px)) 0 clamp(40px, 5vw, 64px);
 }
 
 .story-hero-title {
   max-width: 12ch;
-  margin-top: 22px;
+  margin-top: 18px;
 
-  font-size: clamp(52px, 8vw, 112px);
+  font-size: clamp(48px, 7vw, 96px);
   font-weight: 600;
   line-height: 0.92;
   letter-spacing: -0.065em;
@@ -849,7 +849,7 @@ button {
 
 .story-hero-intro {
   max-width: 640px;
-  margin-top: 28px;
+  margin-top: 20px;
 
   color: var(--muted);
   font-size: clamp(18px, 1.7vw, 22px);
@@ -857,26 +857,66 @@ button {
   letter-spacing: -0.02em;
 }
 
-/* Longer chapter eyebrows stay on one line in the 180px column */
+/* Chapters are denser than homepage sections: less padding, smaller
+   headings, tighter copy, and figures capped by viewport height. */
+.story-chapter {
+  /* Tallest a figure's image may be; its width follows from --ratio. */
+  --fig-max-h: min(500px, calc(100vh - 360px));
+
+  padding: clamp(48px, 5vw, 72px) 0;
+}
+
+.story-chapter .section-title {
+  font-size: clamp(34px, 4.2vw, 56px);
+}
+
+/* Longer chapter eyebrows stay on one line in the label column */
 .story-chapter .section-header > .eyebrow {
   white-space: nowrap;
 }
 
+.story-chapter .section-header > .eyebrow::before {
+  flex-shrink: 0;
+}
+
+@media (min-width: 941px) {
+  .story-chapter .section-header {
+    gap: clamp(30px, 4vw, 56px);
+  }
+
+  .story-chapter .section-header > .eyebrow {
+    margin-top: calc(clamp(34px, 4.2vw, 56px) * 0.51 - 8px);
+  }
+}
+
+/* Copy fills the column (up to a reading width); the figure takes only the
+   width its capped height needs. */
 .chapter {
   display: grid;
-  grid-template-columns: minmax(0, 1fr) minmax(0, 360px);
-  gap: clamp(40px, 6vw, 88px);
+  grid-template-columns: minmax(0, 1fr) auto;
+  column-gap: clamp(40px, 5vw, 72px);
   align-items: start;
 
-  margin-top: clamp(30px, 4vw, 44px);
+  margin-top: clamp(20px, 2.4vw, 30px);
 }
 
 .chapter-text-only {
   grid-template-columns: minmax(0, 1fr);
 }
 
-.chapter-copy {
-  max-width: 60ch;
+.story-chapter .chapter-copy {
+  max-width: 600px;
+  line-height: 1.65;
+}
+
+.story-chapter .chapter-copy p + p {
+  margin-top: 18px;
+}
+
+/* Frame = image width + 2 × 12px padding + 2 × 1px border. The vw cap keeps
+   the copy column readable on smaller desktops. */
+.story-chapter .chapter-figure {
+  width: min(360px, 28vw, calc(var(--fig-max-h) * var(--ratio) + 26px));
 }
 
 .chapter-figure-frame img {
@@ -924,9 +964,10 @@ button {
 
 .story-carousel-meta {
   display: flex;
+  flex-wrap: wrap;
   align-items: center;
   justify-content: space-between;
-  gap: 16px;
+  gap: 10px 16px;
 
   margin-top: 10px;
 }
@@ -939,6 +980,13 @@ button {
   display: inline-flex;
   align-items: center;
   gap: 12px;
+
+  margin-left: auto;
+}
+
+.story-carousel-meta .chapter-caption,
+.story-carousel-count {
+  white-space: nowrap;
 }
 
 .story-carousel-button {
@@ -1406,7 +1454,13 @@ button {
 
   .chapter {
     grid-template-columns: 1fr;
-    gap: 36px;
+    gap: 28px;
+  }
+
+  .story-chapter {
+    --fig-max-h: min(480px, calc(100vh - 300px));
+
+    padding: 44px 0;
   }
 
   .section-compact {
@@ -1433,9 +1487,8 @@ button {
     margin-top: 22px;
   }
 
-  .chapter-figure {
-    justify-self: center;
-    width: min(100%, 340px);
+  .story-chapter .chapter-figure {
+    width: min(100%, 340px, calc(var(--fig-max-h) * var(--ratio) + 26px));
   }
 
   .nav {
