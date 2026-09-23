@@ -737,6 +737,20 @@ button {
   padding-top: 32px;
 }
 
+/* Card left, framed product mockup right — same composition as Speaking */
+.building {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) minmax(0, 340px);
+  gap: clamp(40px, 6vw, 88px);
+  align-items: start;
+
+  margin-top: clamp(30px, 4vw, 44px);
+}
+
+.building .work-flagship {
+  margin-top: 0;
+}
+
 /* --------------------------------------------------------------------------
    Speaking — copy left, framed post preview right (frame shared with portrait)
    -------------------------------------------------------------------------- */
@@ -1109,6 +1123,16 @@ button {
   .speaking {
     grid-template-columns: 1fr;
     gap: 36px;
+  }
+
+  .building {
+    grid-template-columns: 1fr;
+    gap: 36px;
+  }
+
+  .building .post-preview {
+    justify-self: center;
+    width: min(100%, 300px);
   }
 
   .nav {
