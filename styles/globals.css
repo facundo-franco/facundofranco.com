@@ -999,44 +999,66 @@ button {
 .footer-container {
   width: min(calc(100% - (var(--page-padding) * 2)), var(--max-width));
   margin: 0 auto;
-  padding: clamp(44px, 5vw, 68px) 0 clamp(28px, 3vw, 36px);
+  padding: clamp(44px, 5vw, 64px) 0 clamp(28px, 3vw, 36px);
 }
 
+/* Brand left, Connect right */
 .footer-content {
-  display: flex;
-  justify-content: space-between;
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) auto;
   gap: clamp(32px, 6vw, 72px);
-  align-items: flex-start;
-  flex-wrap: wrap;
+  align-items: start;
 }
 
 .footer-brand h3 {
-  font-size: 15px;
+  font-size: 17px;
   font-weight: 600;
   letter-spacing: -0.02em;
 }
 
 .footer-brand p {
   margin-top: 12px;
-  max-width: 340px;
+  max-width: 380px;
 
   color: var(--muted);
   font-size: 14px;
   line-height: 1.7;
 }
 
+.footer-brand a {
+  color: var(--text);
+  text-decoration: none;
+
+  transition: color 200ms ease;
+}
+
+.footer-brand a:hover {
+  color: var(--cyan);
+}
+
+.footer-label {
+  color: var(--subtle);
+
+  font-family: var(--font-mono), monospace;
+  font-size: 9px;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+}
+
 .footer-links {
   display: flex;
   flex-wrap: wrap;
-  gap: 12px 24px;
+  gap: 14px 28px;
+
+  margin-top: 16px;
 }
 
 .footer-links a {
   color: var(--muted);
 
   font-family: var(--font-mono), monospace;
-  font-size: 9px;
-  letter-spacing: 0.09em;
+  font-size: 10px;
+  letter-spacing: 0.08em;
   text-transform: uppercase;
   text-decoration: none;
 
@@ -1044,11 +1066,11 @@ button {
 }
 
 .footer-links a:hover {
-  color: var(--text);
+  color: var(--cyan);
 }
 
 .footer-bottom {
-  margin-top: clamp(36px, 5vw, 56px);
+  margin-top: clamp(32px, 4vw, 48px);
   padding-top: 20px;
   border-top: 1px solid var(--border-soft);
 
@@ -1056,6 +1078,17 @@ button {
   font-family: var(--font-mono), monospace;
   font-size: 11px;
   letter-spacing: 0.05em;
+}
+
+@media (max-width: 720px) {
+  .footer-content {
+    grid-template-columns: 1fr;
+    gap: 32px;
+  }
+
+  .footer-links {
+    gap: 14px 24px;
+  }
 }
 
 /* --------------------------------------------------------------------------
