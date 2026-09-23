@@ -140,6 +140,10 @@ export default function StoryPage() {
       >
         <p>Eventually, I found a better way to build it.</p>
         <p>
+          I came across a different approach to building with AI that made the part I&apos;d
+          thought was impossible suddenly look solvable.
+        </p>
+        <p>
           The problem that had made the first version impossible to scale started to look
           solvable. I realized I could build the product differently, and this time I decided to
           go all in.
@@ -155,8 +159,8 @@ export default function StoryPage() {
           parallel on different parts of the product.
         </p>
         <p>
-          I wasn&apos;t working a job during that period. My family gave me the room to take that
-          risk. They supported me emotionally and financially, helping cover my basic living
+          I wasn&apos;t working a job during that period. My family made it possible for me to take
+          that risk. They supported me emotionally and financially, helping cover my basic living
           expenses and the tools I needed to keep building.
         </p>
         <p>
@@ -181,9 +185,9 @@ export default function StoryPage() {
           What started as a sentence in my Notes became ScoutNYC, and eventually ScoutHalo.
         </p>
         <p>
-          The product today is very different from that first version. ScoutHalo is becoming a
-          location intelligence platform for production teams — designed to help them discover,
-          evaluate, and prepare locations before a shoot.
+          The product today is very different from that first version. ScoutHalo is a location
+          intelligence platform for production teams, designed to help them discover, evaluate,
+          and prepare locations before a shoot.
         </p>
         <p>
           I&apos;m now working on the next part: getting it into the hands of production teams,
