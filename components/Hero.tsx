@@ -29,9 +29,17 @@ export default function Hero() {
               Explore ScoutHalo ↗
             </MagneticButton>
             <nav className="text-links" aria-label="More">
-              <Link href="/story">My story →</Link>
+              <Link href="/story" className="product-link product-link-quiet">
+                My story →
+              </Link>
               {CONNECT.map((c) => (
-                <a key={c.href} href={c.href} target="_blank" rel="noopener noreferrer">
+                <a
+                  key={c.href}
+                  href={c.href}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="social-link"
+                >
                   {c.label} ↗
                 </a>
               ))}

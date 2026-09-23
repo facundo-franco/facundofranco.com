@@ -101,7 +101,7 @@ export default function StoryCarousel({
         <div className="story-carousel-controls">
           <button
             type="button"
-            className="story-carousel-button"
+            className="story-carousel-button icon-button"
             onClick={() => go(index - 1)}
             disabled={index === 0}
             aria-label="Previous screenshot"
@@ -113,7 +113,7 @@ export default function StoryCarousel({
           </span>
           <button
             type="button"
-            className="story-carousel-button"
+            className="story-carousel-button icon-button"
             onClick={() => go(index + 1)}
             disabled={index === last}
             aria-label="Next screenshot"

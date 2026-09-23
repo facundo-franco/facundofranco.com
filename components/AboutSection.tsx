@@ -44,7 +44,13 @@ export default function AboutSection() {
 
               <nav className="text-links about-links" aria-label="Profiles">
                 {ABOUT_LINKS.map((c) => (
-                  <a key={c.href} href={c.href} target="_blank" rel="noopener noreferrer">
+                  <a
+                    key={c.href}
+                    href={c.href}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="social-link"
+                  >
                     {c.label} ↗
                   </a>
                 ))}

@@ -37,11 +37,11 @@ export default function Header() {
       <nav className="nav container" aria-label="Main navigation">
         <Link href="/" className="brand" aria-label="Facundo Franco home">
           <span className="brand-mark">FF</span>
-          <span>Facundo Franco</span>
+          <span className="brand-name">Facundo Franco</span>
         </Link>
 
         <button
-          className="nav-toggle"
+          className="nav-toggle icon-button"
           type="button"
           aria-expanded={open}
           aria-controls="primary-nav"

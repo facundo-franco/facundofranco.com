@@ -26,6 +26,8 @@
 
   --max-width: 1240px;
   --page-padding: clamp(20px, 4vw, 56px);
+
+  --header-h: 84px;
 }
 
 /* --------------------------------------------------------------------------
@@ -39,7 +41,7 @@
 
 html {
   scroll-behavior: smooth;
-  scroll-padding-top: 88px;
+  scroll-padding-top: calc(var(--header-h) + 16px);
 }
 
 body {
@@ -263,9 +265,9 @@ button {
   border: 1px solid transparent;
 
   font-family: var(--font-mono), monospace;
-  font-size: 10px;
+  font-size: 12px;
   font-weight: 500;
-  letter-spacing: 0.08em;
+  letter-spacing: 0.1em;
   text-transform: uppercase;
   text-decoration: none;
 
@@ -360,19 +362,19 @@ button {
    Header / nav
    -------------------------------------------------------------------------- */
 .site-header {
-  position: fixed;
-  inset: 0 0 auto;
+  position: sticky;
+  top: 0;
   z-index: 100;
 
   border-bottom: 1px solid var(--border-soft);
 
-  background: rgba(9, 13, 16, 0.84);
+  background: rgba(9, 13, 16, 0.94);
   backdrop-filter: blur(18px);
   -webkit-backdrop-filter: blur(18px);
 }
 
 .nav {
-  height: 72px;
+  height: var(--header-h);
 
   display: flex;
   align-items: center;
@@ -383,19 +385,20 @@ button {
 .brand {
   display: inline-flex;
   align-items: center;
-  gap: 11px;
+  gap: 14px;
+  min-height: 44px;
 
   color: var(--text);
   text-decoration: none;
 
-  font-size: 14px;
+  font-size: 16px;
   font-weight: 600;
-  letter-spacing: -0.025em;
+  letter-spacing: -0.02em;
 }
 
 .brand-mark {
-  width: 32px;
-  height: 32px;
+  width: 38px;
+  height: 38px;
 
   display: grid;
   place-items: center;
@@ -406,25 +409,51 @@ button {
   color: var(--cyan);
 
   font-family: var(--font-mono), monospace;
-  font-size: 9px;
+  font-size: 10px;
+  font-weight: 500;
+
+  transition:
+    border-color 200ms ease,
+    background-color 200ms ease;
 }
 
+.brand-name {
+  transition: color 200ms ease;
+}
+
+.brand:hover .brand-mark {
+  border-color: rgba(99, 217, 232, 0.55);
+  background: var(--cyan-soft);
+}
+
+.brand:hover .brand-name {
+  color: #ffffff;
+}
+
+/* Navigation link: mono caps, muted → white on hover; short cyan underline */
 .nav-links {
   display: flex;
   align-items: center;
-  gap: 28px;
+  gap: clamp(28px, 3.4vw, 48px);
   list-style: none;
 }
 
 .nav-links a {
   position: relative;
 
+  display: inline-flex;
+  align-items: center;
+  min-height: 44px;
+  /* Wider hit area without moving the label */
+  padding: 0 10px;
+  margin: 0 -10px;
+
   color: var(--muted);
 
   font-family: var(--font-mono), monospace;
-  font-size: 9px;
+  font-size: 12px;
   font-weight: 500;
-  letter-spacing: 0.09em;
+  letter-spacing: 0.12em;
   text-transform: uppercase;
   text-decoration: none;
 
@@ -434,16 +463,16 @@ button {
 .nav-links a::after {
   content: "";
   position: absolute;
-  left: 0;
-  right: 0;
-  bottom: -5px;
-  height: 1px;
+  left: 10px;
+  bottom: 6px;
+  width: 24px;
+  height: 2px;
 
   background: var(--cyan);
 
   transform: scaleX(0);
   transform-origin: 0 50%;
-  transition: transform 320ms cubic-bezier(0.2, 0.6, 0.2, 1);
+  transition: transform 280ms cubic-bezier(0.2, 0.6, 0.2, 1);
 }
 
 .nav-links a:hover {
@@ -459,26 +488,37 @@ button {
   color: var(--cyan);
 }
 
-/* Mobile menu toggle — hidden on desktop, shown under 720px */
-.nav-toggle {
-  display: none;
-  width: 42px;
-  height: 42px;
+/* Icon/control button: square, bordered; menu toggle and carousel arrows */
+.icon-button {
+  width: 40px;
+  height: 40px;
 
-  align-items: center;
-  justify-content: center;
+  display: inline-grid;
+  place-items: center;
 
   background: transparent;
   border: 1px solid var(--border);
   color: var(--text);
   cursor: pointer;
 
-  transition: border-color 160ms ease;
+  transition:
+    border-color 200ms ease,
+    color 200ms ease;
 }
 
-.nav-toggle:hover {
+.icon-button:hover:not(:disabled) {
   border-color: var(--cyan);
   color: var(--cyan);
+}
+
+.icon-button:disabled {
+  opacity: 0.35;
+  cursor: default;
+}
+
+/* Mobile menu toggle — hidden on desktop, shown under 720px */
+.nav-toggle {
+  display: none;
 }
 
 .nav-toggle-bar,
@@ -529,12 +569,13 @@ button {
    Hero
    -------------------------------------------------------------------------- */
 .hero {
-  min-height: 100vh;
+  min-height: calc(100vh - var(--header-h));
+  min-height: calc(100svh - var(--header-h));
 
   display: flex;
   align-items: center;
 
-  padding: 135px 0 82px;
+  padding: 63px 0 82px;
 
   border-bottom: 1px solid var(--border-soft);
 }
@@ -581,26 +622,35 @@ button {
   margin-top: 34px;
 }
 
-/* Quiet secondary links (mono, muted) — hero */
+/* Row of secondary / social links (hero, About) */
 .text-links {
   display: flex;
   flex-wrap: wrap;
-  gap: 12px 24px;
+  align-items: center;
+  gap: 0 26px;
 }
 
-.text-links a {
+/* Social/utility link: small mono caps with a 44px hit area */
+.social-link {
+  display: inline-flex;
+  align-items: center;
+  min-height: 44px;
+  /* Wider hit area without moving the label */
+  padding: 0 10px;
+  margin: 0 -10px;
+
   color: var(--muted);
 
   font-family: var(--font-mono), monospace;
-  font-size: 10px;
-  letter-spacing: 0.08em;
+  font-size: 11px;
+  letter-spacing: 0.1em;
   text-transform: uppercase;
   text-decoration: none;
 
   transition: color 200ms ease;
 }
 
-.text-links a:hover {
+.social-link:hover {
   color: var(--cyan);
 }
 
@@ -636,7 +686,8 @@ button {
 }
 
 /* --------------------------------------------------------------------------
-   Inline link (mono, cyan) — shared across sections
+   Secondary text CTA (mono, cyan; -quiet for muted) — shared across pages.
+   The label stays compact; the 44px box is the hit area.
    -------------------------------------------------------------------------- */
 .product-link {
   position: relative;
@@ -645,25 +696,27 @@ button {
   align-items: center;
   gap: 8px;
   align-self: flex-start;
-
-  margin-top: 27px;
+  min-height: 44px;
 
   color: var(--cyan);
 
   font-family: var(--font-mono), monospace;
-  font-size: 10px;
-  letter-spacing: 0.08em;
+  font-size: 12px;
+  font-weight: 500;
+  letter-spacing: 0.1em;
   text-transform: uppercase;
   text-decoration: none;
 
-  transition: transform 300ms cubic-bezier(0.2, 0.6, 0.2, 1);
+  transition:
+    color 200ms ease,
+    transform 300ms cubic-bezier(0.2, 0.6, 0.2, 1);
 }
 
 .product-link::after {
   content: "";
   position: absolute;
   left: 0;
-  bottom: -4px;
+  bottom: 9px;
   width: 100%;
   height: 1px;
 
@@ -732,19 +785,15 @@ button {
   letter-spacing: -0.015em;
 }
 
-/* Primary external link, with a quieter internal link beside it */
+/* Primary external link, with quieter links beside it */
 .work-actions {
   display: flex;
   flex-wrap: wrap;
   align-items: center;
-  gap: 16px 30px;
+  gap: 0 32px;
 
   margin-top: auto;
-  padding-top: 32px;
-}
-
-.work-actions .product-link {
-  margin-top: 0;
+  padding-top: 20px;
 }
 
 .product-link-quiet {
@@ -834,7 +883,7 @@ button {
    Story (/story) — hero, then chapters: copy left, framed figure right
    -------------------------------------------------------------------------- */
 .story-hero {
-  padding: calc(72px + clamp(40px, 6vw, 88px)) 0 clamp(40px, 5vw, 64px);
+  padding: clamp(40px, 6vw, 88px) 0 clamp(40px, 5vw, 64px);
 }
 
 .story-hero-title {
@@ -990,42 +1039,17 @@ button {
 }
 
 .story-carousel-button {
-  width: 28px;
-  height: 28px;
-
-  display: inline-grid;
-  place-items: center;
-
-  border: 1px solid var(--border);
-  background: transparent;
-  color: var(--muted);
-
   font-family: var(--font-mono), monospace;
-  font-size: 11px;
-  cursor: pointer;
-
-  transition:
-    border-color 200ms ease,
-    color 200ms ease;
-}
-
-.story-carousel-button:hover:not(:disabled) {
-  border-color: var(--cyan);
-  color: var(--cyan);
-}
-
-.story-carousel-button:disabled {
-  opacity: 0.35;
-  cursor: default;
+  font-size: 14px;
 }
 
 .story-carousel-count {
   min-width: 4ch;
 
-  color: var(--subtle);
+  color: var(--muted);
 
   font-family: var(--font-mono), monospace;
-  font-size: 9px;
+  font-size: 11px;
   letter-spacing: 0.1em;
   text-align: center;
 }
@@ -1074,6 +1098,8 @@ button {
 }
 
 .footer-brand a {
+  padding: 13px 0;
+
   color: var(--text);
   text-decoration: none;
 
@@ -1096,25 +1122,9 @@ button {
 .footer-links {
   display: flex;
   flex-wrap: wrap;
-  gap: 14px 28px;
+  gap: 0 28px;
 
-  margin-top: 16px;
-}
-
-.footer-links a {
-  color: var(--muted);
-
-  font-family: var(--font-mono), monospace;
-  font-size: 10px;
-  letter-spacing: 0.08em;
-  text-transform: uppercase;
-  text-decoration: none;
-
-  transition: color 200ms ease;
-}
-
-.footer-links a:hover {
-  color: var(--cyan);
+  margin-top: 6px;
 }
 
 .footer-bottom {
@@ -1135,7 +1145,7 @@ button {
   }
 
   .footer-links {
-    gap: 14px 24px;
+    gap: 0 24px;
   }
 }
 
@@ -1210,7 +1220,7 @@ button {
 }
 
 .about-links {
-  margin-top: 30px;
+  margin-top: 18px;
 }
 
 
@@ -1219,7 +1229,7 @@ button {
    Article (writing detail) — narrow editorial reading column
    -------------------------------------------------------------------------- */
 .article {
-  padding: clamp(120px, 15vw, 168px) 0 clamp(70px, 9vw, 108px);
+  padding: clamp(48px, 9vw, 96px) 0 clamp(70px, 9vw, 108px);
 }
 
 .article-container {
@@ -1386,29 +1396,14 @@ button {
 .article-footer {
   display: flex;
   flex-wrap: wrap;
+  align-items: center;
   justify-content: space-between;
-  gap: 16px;
+  gap: 0 16px;
 
   margin-top: 56px;
   padding-top: 26px;
 
   border-top: 1px solid var(--border);
-}
-
-.article-footer a {
-  color: var(--muted);
-
-  font-family: var(--font-mono), monospace;
-  font-size: 10px;
-  letter-spacing: 0.08em;
-  text-transform: uppercase;
-  text-decoration: none;
-
-  transition: color 160ms ease;
-}
-
-.article-footer a:hover {
-  color: var(--cyan);
 }
 
 /* --------------------------------------------------------------------------
@@ -1484,21 +1479,37 @@ button {
   }
 
   .about-links {
-    margin-top: 22px;
+    margin-top: 12px;
   }
 
   .story-chapter .chapter-figure {
     width: min(100%, 340px, calc(var(--fig-max-h) * var(--ratio) + 26px));
   }
 
-  .nav {
-    height: 64px;
+  :root {
+    --header-h: 66px;
+  }
+
+  .brand {
+    gap: 12px;
+    font-size: 15px;
+  }
+
+  .brand-mark {
+    width: 36px;
+    height: 36px;
+  }
+
+  .icon-button {
+    width: 44px;
+    height: 44px;
   }
 
   .nav-toggle {
-    display: inline-flex;
+    display: inline-grid;
   }
 
+  /* Menu panel: opaque, full width, directly under the header */
   .nav-links {
     position: absolute;
     top: 100%;
@@ -1509,12 +1520,11 @@ button {
     align-items: stretch;
     gap: 0;
 
-    padding: 4px var(--page-padding) 18px;
+    padding: 6px var(--page-padding) 20px;
 
-    background: rgba(9, 13, 16, 0.97);
-    border-bottom: 1px solid var(--border-soft);
-    backdrop-filter: blur(18px);
-    -webkit-backdrop-filter: blur(18px);
+    background: var(--background);
+    border-bottom: 1px solid var(--border);
+    box-shadow: 0 28px 48px rgba(0, 0, 0, 0.45);
 
     display: none;
   }
@@ -1528,12 +1538,25 @@ button {
   }
 
   .nav-links li a {
-    display: block;
-    padding: 15px 2px;
+    display: flex;
+    justify-content: space-between;
+    min-height: 66px;
+    padding: 0 2px;
+    margin: 0;
 
-    font-size: 11px;
+    font-family: var(--font-inter), sans-serif;
+    font-size: 24px;
+    font-weight: 500;
+    letter-spacing: -0.02em;
+    text-transform: none;
 
     border-bottom: 1px solid var(--border-soft);
+  }
+
+  /* Active/hover marker sits at the right end of the row */
+  .nav-links li a::after {
+    position: static;
+    width: 24px;
   }
 
   .nav-links li:last-child a {
@@ -1542,7 +1565,7 @@ button {
 
   .hero {
     min-height: auto;
-    padding: 110px 0 70px;
+    padding: 46px 0 70px;
   }
 
   .hero-layout {
@@ -1563,7 +1586,7 @@ button {
   .hero-actions {
     flex-direction: column;
     align-items: stretch;
-    gap: 22px;
+    gap: 12px;
   }
 
   .button {
@@ -1580,7 +1603,7 @@ button {
   display: flex;
   align-items: center;
 
-  padding: clamp(120px, 16vh, 200px) 0;
+  padding: clamp(48px, 10vh, 128px) 0;
 }
 
 .notfound h1 {
@@ -1593,5 +1616,5 @@ button {
 }
 
 .notfound .product-link {
-  margin-top: 30px;
+  margin-top: 18px;
 }

@@ -29,11 +29,19 @@ export default function Footer() {
             <p className="footer-label">Connect</p>
             <nav className="footer-links" aria-label="Connect">
               {FOOTER_SOCIALS.map((c) => (
-                <a key={c.href} href={c.href} target="_blank" rel="noopener noreferrer">
+                <a
+                  key={c.href}
+                  href={c.href}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="social-link"
+                >
                   {c.label} ↗
                 </a>
               ))}
-              <a href={`mailto:${EMAIL}`}>Email ↗</a>
+              <a href={`mailto:${EMAIL}`} className="social-link">
+                Email ↗
+              </a>
             </nav>
           </div>
         </div>
