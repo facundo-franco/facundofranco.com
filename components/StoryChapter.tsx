@@ -14,24 +14,29 @@ type ChapterFigure = {
 
 // One chapter of the /story page: copy left, optional framed figure right.
 // Chapters stack as sections, so new parts can be appended without layout work.
+// `aside` takes a custom right-column visual (e.g. a carousel) in place of `figure`.
 export default function StoryChapter({
   id,
   eyebrow,
   title,
   figure,
+  aside,
   children,
 }: {
   id: string;
   eyebrow: string;
   title: string;
   figure?: ChapterFigure;
+  aside?: ReactNode;
   children: ReactNode;
 }) {
+  const hasVisual = Boolean(figure || aside);
+
   return (
-    <section className="section" id={id}>
+    <section className="section story-chapter" id={id}>
       <div className="container">
         <SectionHeader eyebrow={eyebrow} title={title}>
-          <div className={`chapter${figure ? "" : " chapter-text-only"}`}>
+          <div className={`chapter${hasVisual ? "" : " chapter-text-only"}`}>
             <div className="prose chapter-copy">{children}</div>
 
             {figure ? (
@@ -55,7 +60,9 @@ export default function StoryChapter({
                   <figcaption className="chapter-caption">{figure.caption}</figcaption>
                 ) : null}
               </figure>
-            ) : null}
+            ) : (
+              aside
+            )}
           </div>
         </SectionHeader>
       </div>

@@ -837,6 +837,11 @@ button {
   letter-spacing: -0.02em;
 }
 
+/* Longer chapter eyebrows stay on one line in the 180px column */
+.story-chapter .section-header > .eyebrow {
+  white-space: nowrap;
+}
+
 .chapter {
   display: grid;
   grid-template-columns: minmax(0, 1fr) minmax(0, 360px);
@@ -869,6 +874,99 @@ button {
   font-size: 9px;
   letter-spacing: 0.1em;
   text-transform: uppercase;
+}
+
+/* Carousel — same frame as the chapter figure; slides stacked, one visible */
+.story-carousel:focus-visible {
+  outline-offset: 6px;
+}
+
+.story-carousel-frame {
+  touch-action: pan-y;
+}
+
+.story-carousel-slide {
+  position: absolute;
+  inset: 0;
+
+  opacity: 0;
+  visibility: hidden;
+  transition:
+    opacity 220ms ease,
+    visibility 0s linear 220ms;
+}
+
+.story-carousel-slide.is-active {
+  opacity: 1;
+  visibility: visible;
+  transition: opacity 220ms ease;
+}
+
+.story-carousel-meta {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 16px;
+
+  margin-top: 10px;
+}
+
+.story-carousel-meta .chapter-caption {
+  margin-top: 0;
+}
+
+.story-carousel-controls {
+  display: inline-flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.story-carousel-button {
+  width: 28px;
+  height: 28px;
+
+  display: inline-grid;
+  place-items: center;
+
+  border: 1px solid var(--border);
+  background: transparent;
+  color: var(--muted);
+
+  font-family: var(--font-mono), monospace;
+  font-size: 11px;
+  cursor: pointer;
+
+  transition:
+    border-color 200ms ease,
+    color 200ms ease;
+}
+
+.story-carousel-button:hover:not(:disabled) {
+  border-color: var(--cyan);
+  color: var(--cyan);
+}
+
+.story-carousel-button:disabled {
+  opacity: 0.35;
+  cursor: default;
+}
+
+.story-carousel-count {
+  min-width: 4ch;
+
+  color: var(--subtle);
+
+  font-family: var(--font-mono), monospace;
+  font-size: 9px;
+  letter-spacing: 0.1em;
+  text-align: center;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .story-carousel-slide,
+  .story-carousel-slide.is-active {
+    transition: none;
+  }
 }
 
 /* --------------------------------------------------------------------------
