@@ -133,7 +133,7 @@ function Chevron({ direction }: { direction: "left" | "right" }) {
       <polyline
         points={direction === "left" ? "10,2 2,11 10,20" : "2,2 10,11 2,20"}
         stroke="currentColor"
-        strokeWidth="1.5"
+        strokeWidth="2"
         strokeLinecap="round"
         strokeLinejoin="round"
       />
