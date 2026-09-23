@@ -456,7 +456,7 @@ button {
 }
 
 .nav-links a[aria-current="page"] {
-  color: var(--text);
+  color: var(--cyan);
 }
 
 /* Mobile menu toggle — hidden on desktop, shown under 720px */

@@ -1,4 +1,5 @@
 import type { CSSProperties } from "react";
+import Link from "next/link";
 import { CONNECT, SCOUTHALO_URL } from "@/lib/site";
 import MagneticButton from "./MagneticButton";
 import Portrait from "./Portrait";
@@ -27,7 +28,8 @@ export default function Hero() {
             <MagneticButton href={SCOUTHALO_URL} className="button button-primary">
               Explore ScoutHalo ↗
             </MagneticButton>
-            <nav className="text-links" aria-label="Elsewhere">
+            <nav className="text-links" aria-label="More">
+              <Link href="/story">My story →</Link>
               {CONNECT.map((c) => (
                 <a key={c.href} href={c.href} target="_blank" rel="noopener noreferrer">
                   {c.label} ↗
