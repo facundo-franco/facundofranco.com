@@ -541,7 +541,7 @@ button {
 
 .hero-layout {
   display: grid;
-  grid-template-columns: minmax(0, 1fr) 300px;
+  grid-template-columns: minmax(0, 1fr) clamp(300px, 25vw, 360px);
   gap: clamp(48px, 8vw, 112px);
   align-items: center;
 }
@@ -751,18 +751,38 @@ button {
   color: var(--muted);
 }
 
-/* Card left, framed product mockup right — same composition as Speaking */
+/* Single card across the content column */
 .building {
-  display: grid;
-  grid-template-columns: minmax(0, 1fr) minmax(0, 340px);
-  gap: clamp(40px, 6vw, 88px);
-  align-items: start;
-
   margin-top: clamp(30px, 4vw, 44px);
 }
 
 .building .work-flagship {
+  max-width: none;
   margin-top: 0;
+}
+
+/* Wide screens: lede left; supporting copy and links right */
+@media (min-width: 941px) {
+  .building .work-flagship {
+    display: grid;
+    grid-template-columns: minmax(0, 1.1fr) minmax(0, 1fr);
+    column-gap: clamp(40px, 5vw, 72px);
+    align-items: start;
+  }
+
+  .building .work-lede {
+    grid-column: 1;
+    grid-row: 1 / span 2;
+  }
+
+  .building .work-body {
+    grid-column: 2;
+    margin-top: 0;
+  }
+
+  .building .work-actions {
+    grid-column: 2;
+  }
 }
 
 /* --------------------------------------------------------------------------
@@ -1298,16 +1318,6 @@ button {
     gap: 36px;
   }
 
-  .building {
-    grid-template-columns: 1fr;
-    gap: 36px;
-  }
-
-  .building .post-preview {
-    justify-self: center;
-    width: min(100%, 300px);
-  }
-
   .chapter {
     grid-template-columns: 1fr;
     gap: 36px;
@@ -1374,14 +1384,17 @@ button {
 
   .hero-layout {
     grid-template-columns: 1fr;
+    gap: 44px;
   }
 
   .hero h1 {
     font-size: clamp(64px, 20vw, 94px);
   }
 
+  /* Secondary identity element on mobile: small, left-aligned with the copy */
   .portrait-card {
-    width: min(100%, 330px);
+    width: 228px;
+    padding: 10px;
   }
 
   .hero-actions {

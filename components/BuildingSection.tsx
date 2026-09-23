@@ -1,6 +1,5 @@
 import Link from "next/link";
 import { SCOUTHALO_URL } from "@/lib/site";
-import PostPreview from "./PostPreview";
 import SectionHeader from "./SectionHeader";
 
 // What I'm building now. ScoutHalo is the center of gravity of the site.
@@ -33,13 +32,6 @@ export default function BuildingSection() {
                 </Link>
               </div>
             </div>
-
-            <PostPreview
-              src="/images/scouthalo-iphone-mockup.webp"
-              width={924}
-              height={1702}
-              alt="ScoutHalo on iPhone: the Scout search screen with recent location scouts."
-            />
           </div>
         </SectionHeader>
       </div>
