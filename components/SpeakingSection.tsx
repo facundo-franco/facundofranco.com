@@ -12,20 +12,11 @@ export default function SpeakingSection() {
             <div className="speaking-copy">
               <div className="prose">
                 <p>
-                  I recently joined DataCamp to talk about becoming an AI Agent Operator and share
-                  what I&apos;ve learned building ScoutHalo and working with AI agents in real-world
-                  workflows.
+                  I joined DataCamp to talk about becoming an AI Agent Operator and what I&apos;ve
+                  learned building ScoutHalo with AI agents.
                 </p>
                 <p>More than 700 people joined live.</p>
               </div>
-              <a
-                href={SESSION_URL}
-                target="_blank"
-                rel="noopener noreferrer"
-                className="product-link"
-              >
-                View the session ↗
-              </a>
             </div>
 
             <PostPreview
