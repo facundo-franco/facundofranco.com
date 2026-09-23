@@ -8,8 +8,8 @@ export default function NowSection() {
         <SectionHeader eyebrow="03 · Now" title="Now.">
           <ul className="prose story now-list">
             <li>Building ScoutHalo.</li>
-            <li>Talking with production teams and agencies.</li>
-            <li>Preparing for the next stage of the company in the U.S.</li>
+            <li>Working with production teams and agencies as I shape the product.</li>
+            <li>Preparing to build the next stage of the company from Miami.</li>
           </ul>
         </SectionHeader>
       </div>

@@ -56,6 +56,12 @@ draft: false
 
 Then write the body in Markdown/MDX.
 
+The homepage Writing section is currently hidden. The article pipeline above
+(loader, `/writing/<slug>` pages, sitemap entries, `BlogPosting` data) still
+works; to show a list on the homepage again, restore `components/WritingSection.tsx`
+from git history (commit `7924182`), render it in `app/page.tsx`, add Writing
+back to `NAV` in `lib/site.ts`, and point the `/writing` redirect at `/#writing`.
+
 ### Adding an article
 
 1. Create `content/writing/my-article.mdx` with the frontmatter above.
@@ -64,8 +70,8 @@ Then write the body in Markdown/MDX.
 
 ### Publishing
 
-Set `draft: false` and add a real `publishedAt`. On the next deploy it appears in
-the homepage Writing section, the sitemap, and gets `BlogPosting` structured
+Set `draft: false` and add a real `publishedAt`. On the next deploy it is built at
+`/writing/<slug>`, appears in the sitemap, and gets `BlogPosting` structured
 data with the author referencing the canonical Person.
 
 ### Draft behavior
@@ -86,9 +92,9 @@ Unfinished drafts are also gitignored so they never reach the public repo.
 - Structured data via reusable helpers (`lib/schema.ts`): one canonical
   `#person` and ScoutHalo `#organization`.
 - `sitemap.xml` and `robots.txt` are generated (`app/sitemap.ts`, `app/robots.ts`).
-- The site is a single page (hero, ScoutHalo, About, Now, Writing) plus article pages.
-  Old URLs redirect to home-page sections in `next.config.mjs`
-  (`/about`, `/about.html → /#about`; `/writing`, `/articles → /#writing`).
+- The site is a single page (hero, ScoutHalo, About, Now) plus any published article pages.
+  Old URLs redirect in `next.config.mjs`
+  (`/about`, `/about.html → /#about`; `/writing`, `/articles → /`).
 
 ## Deployment
 

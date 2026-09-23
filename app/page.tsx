@@ -3,7 +3,6 @@ import Hero from "@/components/Hero";
 import BuildingSection from "@/components/BuildingSection";
 import AboutSection from "@/components/AboutSection";
 import NowSection from "@/components/NowSection";
-import WritingSection from "@/components/WritingSection";
 import JsonLd from "@/components/JsonLd";
 import { homeGraph } from "@/lib/schema";
 import { pageMetadata } from "@/lib/metadata";
@@ -18,7 +17,6 @@ export default function HomePage() {
       <BuildingSection />
       <AboutSection />
       <NowSection />
-      <WritingSection />
     </main>
   );
 }

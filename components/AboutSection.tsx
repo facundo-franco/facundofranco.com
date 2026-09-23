@@ -15,8 +15,8 @@ export default function AboutSection() {
             </p>
             <p>I built Sella, an AI sales agent for e-commerce, before starting ScoutHalo.</p>
             <p>
-              Today I&apos;m focused on building ScoutHalo and taking it from a working product into a
-              company used by production teams.
+              Today I&apos;m focused on turning ScoutHalo from a working product into a company used
+              by production teams around the world.
             </p>
           </div>
         </SectionHeader>

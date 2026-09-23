@@ -20,7 +20,6 @@ export const NAV = [
   { label: "ScoutHalo", href: "/#scouthalo" },
   { label: "About", href: "/#about" },
   { label: "Now", href: "/#now" },
-  { label: "Writing", href: "/#writing" },
 ] as const;
 
 export const SCOUTHALO_URL = "https://scouthalo.com";

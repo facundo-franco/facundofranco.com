@@ -14,12 +14,14 @@ const nextConfig = {
       { source: "/favicon.ico", destination: "/icon.svg", permanent: false },
       { source: "/index.html", destination: "/", permanent: true },
       { source: "/about.html", destination: "/#about", permanent: true },
-      { source: "/articles", destination: "/#writing", permanent: true },
-      { source: "/articles/:path*", destination: "/#writing", permanent: true },
-      // About and the writing index now live as sections of the home page.
+      // Writing is hidden for now; old writing URLs go home. Temporary, so a
+      // writing index can come back later without cached redirects in the way.
+      { source: "/articles", destination: "/", permanent: false },
+      { source: "/articles/:path*", destination: "/", permanent: false },
+      // About now lives as a section of the home page.
       // Temporary, so a standalone page can come back later without cache issues.
       { source: "/about", destination: "/#about", permanent: false },
-      { source: "/writing", destination: "/#writing", permanent: false },
+      { source: "/writing", destination: "/", permanent: false },
     ];
   },
 

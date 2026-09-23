@@ -72,7 +72,7 @@ export default async function ArticlePage({ params }: { params: Promise<{ slug: 
           </div>
 
           <div className="article-footer">
-            <Link href="/#writing">← All writing</Link>
+            <Link href="/">← Home</Link>
             <a href="https://scouthalo.com" target="_blank" rel="noopener noreferrer">
               Visit ScoutHalo ↗
             </a>
