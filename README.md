@@ -86,7 +86,7 @@ Unfinished drafts are also gitignored so they never reach the public repo.
 - Structured data via reusable helpers (`lib/schema.ts`): one canonical
   `#person` and ScoutHalo `#organization`.
 - `sitemap.xml` and `robots.txt` are generated (`app/sitemap.ts`, `app/robots.ts`).
-- The site is a single page (hero, ScoutHalo, About, Writing) plus article pages.
+- The site is a single page (hero, ScoutHalo, About, Now, Writing) plus article pages.
   Old URLs redirect to home-page sections in `next.config.mjs`
   (`/about`, `/about.html → /#about`; `/writing`, `/articles → /#writing`).
 

@@ -9,16 +9,14 @@ export default function AboutSection() {
           <div className="prose story">
             <p>I&apos;m Facundo Franco, founder of ScoutHalo.</p>
             <p>
-              I started in e-commerce, where I got close to the day-to-day reality of acquiring
-              customers, converting them, and operating a business.
+              I started in e-commerce, working directly on customer acquisition, conversion, and
+              operations. That experience eventually pushed me from operating businesses toward
+              building products myself.
             </p>
+            <p>I built Sella, an AI sales agent for e-commerce, before starting ScoutHalo.</p>
             <p>
-              That eventually pushed me toward building products myself. I built Sella, an AI sales
-              agent for e-commerce, and started spending more of my time building with AI.
-            </p>
-            <p>
-              ScoutHalo came out of that path. Today I&apos;m focused on building intelligence for the
-              physical world, starting with how production teams discover and evaluate locations.
+              Today I&apos;m focused on building ScoutHalo and taking it from a working product into a
+              company used by production teams.
             </p>
           </div>
         </SectionHeader>

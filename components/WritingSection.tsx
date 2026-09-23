@@ -17,7 +17,7 @@ export default function WritingSection() {
     <section className="section" id="writing">
       <div className="container">
         <SectionHeader
-          eyebrow="03 · Writing"
+          eyebrow="04 · Writing"
           title="Writing."
           intro="Notes on building ScoutHalo, location intelligence, AI, and startups."
         />

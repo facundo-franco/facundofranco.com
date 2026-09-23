@@ -721,6 +721,16 @@ button {
   letter-spacing: -0.02em;
 }
 
+.work-body {
+  max-width: 56ch;
+  margin-top: 18px;
+
+  color: var(--muted);
+  font-size: 16px;
+  line-height: 1.75;
+  letter-spacing: -0.015em;
+}
+
 .work-flagship .product-link {
   margin-top: auto;
   padding-top: 32px;
@@ -906,6 +916,15 @@ button {
 
 .story p:first-child {
   color: var(--text);
+}
+
+/* Now — a plain status snapshot */
+.now-list {
+  list-style: none;
+}
+
+.now-list li + li {
+  margin-top: 6px;
 }
 
 

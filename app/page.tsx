@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import Hero from "@/components/Hero";
 import BuildingSection from "@/components/BuildingSection";
 import AboutSection from "@/components/AboutSection";
+import NowSection from "@/components/NowSection";
 import WritingSection from "@/components/WritingSection";
 import JsonLd from "@/components/JsonLd";
 import { homeGraph } from "@/lib/schema";
@@ -16,6 +17,7 @@ export default function HomePage() {
       <Hero />
       <BuildingSection />
       <AboutSection />
+      <NowSection />
       <WritingSection />
     </main>
   );
