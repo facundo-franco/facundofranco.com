@@ -123,6 +123,45 @@ export default function StoryPage() {
           attention, so I put it aside.
         </p>
       </StoryChapter>
+
+      <StoryChapter
+        id="all-in"
+        eyebrow="03 · All in"
+        title="Then I went all in."
+        figure={{
+          src: "/images/scouthalo-build-room-uruguay-2026.jpg",
+          width: 240,
+          height: 320,
+          alt: "The small room where ScoutHalo was built: a desk with a computer and chair beside a bed, under a window.",
+          caption: "Where I built ScoutHalo — Uruguay, winter 2026.",
+        }}
+      >
+        <p>Eventually, I found a better way to build it.</p>
+        <p>
+          The problem that had made the first version impossible to scale started to look
+          solvable. I realized I could build the product differently, and this time I decided to
+          go all in.
+        </p>
+        <p>
+          I spent most of that winter in Uruguay in one small room, with a bed next to my desk and
+          a computer. For about three months, most days started when I woke up and ended when I
+          went to sleep.
+        </p>
+        <p>
+          I was learning as I built. AI let me move at a speed that wouldn&apos;t have been
+          possible for me otherwise. Some days I had as many as four Claude Code agents working in
+          parallel on different parts of the product.
+        </p>
+        <p>
+          I wasn&apos;t working a job during that period. My family gave me the room to take that
+          risk. They supported me emotionally and financially, helping cover my basic living
+          expenses and the tools I needed to keep building.
+        </p>
+        <p>
+          That support gave me something incredibly valuable: time. I used it to turn the rough
+          idea I&apos;d written in Notes into the first real version of ScoutHalo.
+        </p>
+      </StoryChapter>
     </main>
   );
 }
