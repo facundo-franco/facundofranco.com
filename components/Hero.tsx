@@ -1,4 +1,5 @@
 import type { CSSProperties } from "react";
+import { CONNECT, SCOUTHALO_URL } from "@/lib/site";
 import MagneticButton from "./MagneticButton";
 import Portrait from "./Portrait";
 
@@ -11,26 +12,28 @@ export default function Hero() {
     <section className="hero" id="top">
       <div className="container hero-layout">
         <div className="hero-copy">
-          <p className="eyebrow reveal-load">Building &amp; operating AI</p>
-
-          <h1 className="reveal-load" style={d(80)}>
+          <h1 className="reveal-load">
             Facundo
             <br />
             Franco.
           </h1>
 
-          <p className="hero-description reveal-load" style={d(160)}>
-            Founder of <strong>ScoutHalo</strong>. I build AI products, and research the emerging{" "}
-            <strong>AI Operator</strong> category — how AI gets operated in production.
+          <p className="hero-description reveal-load" style={d(80)}>
+            Founder of <strong>ScoutHalo</strong>, building location intelligence for production
+            teams.
           </p>
 
-          <div className="hero-actions reveal-load" style={d(240)}>
-            <MagneticButton href="https://scouthalo.com" className="button button-primary">
+          <div className="hero-actions reveal-load" style={d(160)}>
+            <MagneticButton href={SCOUTHALO_URL} className="button button-primary">
               Explore ScoutHalo ↗
             </MagneticButton>
-            <MagneticButton href="https://agentoperator.io" className="button button-secondary">
-              AgentOperator ↗
-            </MagneticButton>
+            <nav className="text-links" aria-label="Elsewhere">
+              {CONNECT.map((c) => (
+                <a key={c.href} href={c.href} target="_blank" rel="noopener noreferrer">
+                  {c.label} ↗
+                </a>
+              ))}
+            </nav>
           </div>
         </div>
 

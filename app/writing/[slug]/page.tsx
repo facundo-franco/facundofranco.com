@@ -63,7 +63,7 @@ export default async function ArticlePage({ params }: { params: Promise<{ slug: 
             </span>
             <span>
               <Link href="/">Facundo Franco</Link>
-              <span className="author-role">Founder &amp; CEO of ScoutHalo</span>
+              <span className="author-role">Founder of ScoutHalo</span>
             </span>
           </div>
 
@@ -72,7 +72,7 @@ export default async function ArticlePage({ params }: { params: Promise<{ slug: 
           </div>
 
           <div className="article-footer">
-            <Link href="/writing">← All writing</Link>
+            <Link href="/#writing">← All writing</Link>
             <a href="https://scouthalo.com" target="_blank" rel="noopener noreferrer">
               Visit ScoutHalo ↗
             </a>

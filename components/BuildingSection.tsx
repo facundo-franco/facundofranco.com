@@ -1,48 +1,27 @@
-import Reveal from "./Reveal";
+import { SCOUTHALO_URL } from "@/lib/site";
 import SectionHeader from "./SectionHeader";
 
-// Deliberately asymmetric: ScoutHalo (flagship) carries more weight than
-// AgentOperator (research). This hierarchy is intentional — do not equalize.
+// What I'm building now. ScoutHalo is the center of gravity of the site.
 export default function BuildingSection() {
   return (
-    <section className="section" id="work">
+    <section className="section" id="scouthalo">
       <div className="container">
-        <SectionHeader eyebrow="01 · Building" title="A company, and a category." />
-
-        <div className="work">
-          <Reveal as="article" className="work-flagship">
-            <p className="work-tag">Flagship product</p>
-            <h3>ScoutHalo</h3>
-            <p>
-              AI location intelligence for production teams — discover, evaluate, and prepare
-              shoot-ready locations.
+        <SectionHeader eyebrow="01 · Now" title="Building ScoutHalo.">
+          <div className="work-flagship">
+            <p className="work-lede">
+              ScoutHalo is location intelligence for production teams. It helps teams discover,
+              evaluate, and prepare shoot-ready locations.
             </p>
             <a
-              href="https://scouthalo.com"
+              href={SCOUTHALO_URL}
               target="_blank"
               rel="noopener noreferrer"
               className="product-link"
             >
               Visit ScoutHalo ↗
             </a>
-          </Reveal>
-
-          <Reveal as="aside" className="work-research" delay={120}>
-            <p className="work-tag">Research</p>
-            <p className="work-manifesto">
-              The model is a commodity. <em>The operator is not.</em>
-            </p>
-            <p>Defining the AI Operator category in public.</p>
-            <a
-              href="https://agentoperator.io"
-              target="_blank"
-              rel="noopener noreferrer"
-              className="product-link"
-            >
-              Read at AgentOperator.io ↗
-            </a>
-          </Reveal>
-        </div>
+          </div>
+        </SectionHeader>
       </div>
     </section>
   );

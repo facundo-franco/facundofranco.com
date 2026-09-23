@@ -1,8 +1,8 @@
 import type { Metadata } from "next";
 import Hero from "@/components/Hero";
 import BuildingSection from "@/components/BuildingSection";
-import WritingPreview from "@/components/WritingPreview";
-import ContactSection from "@/components/ContactSection";
+import AboutSection from "@/components/AboutSection";
+import WritingSection from "@/components/WritingSection";
 import JsonLd from "@/components/JsonLd";
 import { homeGraph } from "@/lib/schema";
 import { pageMetadata } from "@/lib/metadata";
@@ -15,8 +15,8 @@ export default function HomePage() {
       <JsonLd data={homeGraph()} />
       <Hero />
       <BuildingSection />
-      <WritingPreview />
-      <ContactSection />
+      <AboutSection />
+      <WritingSection />
     </main>
   );
 }

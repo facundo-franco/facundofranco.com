@@ -1,5 +1,5 @@
 // Reusable JSON-LD builders. One canonical Person, one ScoutHalo Organization,
-// one AgentOperator WebSite — referenced by @id, never duplicated by hand.
+// referenced by @id, never duplicated by hand.
 import { IDS, SITE, SAME_AS } from "./site";
 import type { Article } from "./writing";
 
@@ -16,20 +16,15 @@ export function personNode(): Node {
     familyName: "Franco",
     url: `${SITE.url}/`,
     image: SITE.url + SITE.ogImage,
-    jobTitle: "Founder & CEO",
-    description:
-      "Founder and CEO of ScoutHalo, an AI-powered location intelligence platform for production teams and creative agencies.",
+    jobTitle: "Founder",
+    description: "Founder of ScoutHalo, building location intelligence for production teams.",
     worksFor: { "@id": IDS.scouthalo },
     founderOf: { "@id": IDS.scouthalo },
     knowsAbout: [
-      "Artificial Intelligence",
-      "AI Operators",
       "Location Intelligence",
-      "Production AI",
       "Production Location Scouting",
-      "Search Systems",
-      "Creative Production",
-      "B2B SaaS",
+      "Artificial Intelligence",
+      "E-commerce",
     ],
     sameAs: SAME_AS,
   };
@@ -41,8 +36,7 @@ export function organizationNode(): Node {
     "@id": IDS.scouthalo,
     name: "ScoutHalo",
     url: "https://scouthalo.com",
-    description:
-      "AI-powered location intelligence platform for production teams and creative agencies.",
+    description: "Location intelligence for production teams.",
     founder: personRef(),
   };
 }
@@ -58,49 +52,10 @@ export function websiteNode(): Node {
   };
 }
 
-export function agentOperatorNode(): Node {
-  return {
-    "@type": "WebSite",
-    "@id": IDS.agentOperator,
-    url: "https://agentoperator.io",
-    name: "Agent Operator",
-    description: "Defining the AI Operator category in public.",
-    author: personRef(),
-    creator: personRef(),
-  };
-}
-
 const graph = (nodes: Node[]) => ({ "@context": "https://schema.org", "@graph": nodes });
 
 export function homeGraph() {
-  return graph([websiteNode(), personNode(), organizationNode(), agentOperatorNode()]);
-}
-
-export function aboutGraph() {
-  return graph([
-    {
-      "@type": "ProfilePage",
-      "@id": `${SITE.url}/about#page`,
-      url: `${SITE.url}/about`,
-      name: "About Facundo Franco — Founder & CEO of ScoutHalo",
-      isPartOf: { "@id": IDS.website },
-      mainEntity: personNode(),
-    },
-  ]);
-}
-
-export function writingGraph() {
-  return graph([
-    {
-      "@type": "CollectionPage",
-      "@id": `${SITE.url}/writing#page`,
-      url: `${SITE.url}/writing`,
-      name: "Writing — Facundo Franco",
-      description: "Essays on building AI in production, and the discipline of operating it.",
-      isPartOf: { "@id": IDS.website },
-      author: personRef(),
-    },
-  ]);
+  return graph([websiteNode(), personNode(), organizationNode()]);
 }
 
 export function articleGraph(a: Article) {

@@ -23,14 +23,13 @@ export const baseMetadata: Metadata = {
     locale: "en_US",
     url: `${SITE.url}/`,
     title: SITE.title,
-    description:
-      "Building ScoutHalo, the AI-powered location intelligence platform for production teams and creative agencies.",
+    description: "Founder of ScoutHalo, building location intelligence for production teams.",
     // og:image comes from the file-based opengraph-image routes (branded card).
   },
   twitter: {
     card: "summary_large_image",
     title: SITE.title,
-    description: "Building AI-powered location intelligence for production teams.",
+    description: "Founder of ScoutHalo, building location intelligence for production teams.",
     // twitter:image falls back to og:image (the generated card).
   },
 };

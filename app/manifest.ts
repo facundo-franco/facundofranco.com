@@ -4,7 +4,7 @@ export default function manifest(): MetadataRoute.Manifest {
   return {
     name: "Facundo Franco",
     short_name: "Facundo Franco",
-    description: "Founder of ScoutHalo. Building and operating AI in production.",
+    description: "Founder of ScoutHalo, building location intelligence for production teams.",
     start_url: "/",
     display: "standalone",
     background_color: "#090d10",

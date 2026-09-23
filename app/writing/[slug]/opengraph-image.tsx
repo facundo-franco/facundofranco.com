@@ -14,6 +14,6 @@ export default async function Image({ params }: { params: Promise<{ slug: string
   const a = getArticleBySlug(slug);
   return ogImage(
     a?.title ?? "Writing",
-    a?.description ?? "Essays on building AI in production, and the discipline of operating it."
+    a?.description ?? "Notes on building ScoutHalo, location intelligence, AI, and startups."
   );
 }

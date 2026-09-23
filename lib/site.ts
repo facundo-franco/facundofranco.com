@@ -3,9 +3,9 @@
 export const SITE = {
   url: "https://facundofranco.com",
   name: "Facundo Franco",
-  title: "Facundo Franco — Founder & CEO of ScoutHalo",
+  title: "Facundo Franco — Founder of ScoutHalo",
   description:
-    "Facundo Franco is the Founder and CEO of ScoutHalo, an AI-powered location intelligence platform for production teams and creative agencies.",
+    "Facundo Franco is the founder of ScoutHalo, building location intelligence for production teams.",
   ogImage: "/images/facundo-franco-founder-scouthalo.png",
 } as const;
 
@@ -13,14 +13,26 @@ export const IDS = {
   person: `${SITE.url}/#person`,
   website: `${SITE.url}/#website`,
   scouthalo: "https://scouthalo.com/#organization",
-  agentOperator: "https://agentoperator.io/#website",
 } as const;
 
+// Single-page site: nav items are sections of the home page.
 export const NAV = [
-  { label: "About", href: "/about" },
-  { label: "Writing", href: "/writing" },
+  { label: "ScoutHalo", href: "/#scouthalo" },
+  { label: "About", href: "/#about" },
+  { label: "Writing", href: "/#writing" },
 ] as const;
 
+export const SCOUTHALO_URL = "https://scouthalo.com";
+
+// The few ways to reach me that the site actually surfaces.
+export const CONNECT = [
+  { label: "X", href: "https://x.com/facundofranco_" },
+  { label: "LinkedIn", href: "https://www.linkedin.com/in/facundo-franco" },
+] as const;
+
+export const EMAIL = "hello@scouthalo.com";
+
+// Every public profile — used only for structured data (sameAs), not shown on the page.
 export const SOCIALS = [
   { label: "LinkedIn", handle: "/in/facundo-franco", href: "https://www.linkedin.com/in/facundo-franco" },
   { label: "X", handle: "@facundofranco_", href: "https://x.com/facundofranco_" },
@@ -32,10 +44,3 @@ export const SOCIALS = [
 
 export const SAME_AS: string[] = SOCIALS.map((s) => s.href);
 
-// Real, planned topics — a roadmap, not fabricated published articles.
-export const UPCOMING_ESSAYS = [
-  "How to Become an AI Operator",
-  "Production Intelligence",
-  "AI Needs Operators",
-  "Location Intelligence",
-] as const;

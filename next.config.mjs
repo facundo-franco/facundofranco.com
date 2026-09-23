@@ -13,9 +13,13 @@ const nextConfig = {
       // Browsers hard-request /favicon.ico regardless of the SVG icon link.
       { source: "/favicon.ico", destination: "/icon.svg", permanent: false },
       { source: "/index.html", destination: "/", permanent: true },
-      { source: "/about.html", destination: "/about", permanent: true },
-      { source: "/articles", destination: "/writing", permanent: true },
-      { source: "/articles/:path*", destination: "/writing", permanent: true },
+      { source: "/about.html", destination: "/#about", permanent: true },
+      { source: "/articles", destination: "/#writing", permanent: true },
+      { source: "/articles/:path*", destination: "/#writing", permanent: true },
+      // About and the writing index now live as sections of the home page.
+      // Temporary, so a standalone page can come back later without cache issues.
+      { source: "/about", destination: "/#about", permanent: false },
+      { source: "/writing", destination: "/#writing", permanent: false },
     ];
   },
 

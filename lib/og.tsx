@@ -61,7 +61,7 @@ export function ogImage(title: string, subtitle: string) {
         </div>
 
         <div style={{ display: "flex", color: "#74828a", fontSize: 22, letterSpacing: 1 }}>
-          Founder of ScoutHalo · AI Operator
+          Founder of ScoutHalo
         </div>
       </div>
     ),

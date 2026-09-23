@@ -64,15 +64,15 @@ Then write the body in Markdown/MDX.
 
 ### Publishing
 
-Set `draft: false` and add a real `publishedAt`. On the next deploy it appears on
-`/writing`, the homepage preview, the sitemap, and gets `BlogPosting` structured
+Set `draft: false` and add a real `publishedAt`. On the next deploy it appears in
+the homepage Writing section, the sitemap, and gets `BlogPosting` structured
 data with the author referencing the canonical Person.
 
 ### Draft behavior
 
 `draft: true` means the article is:
 
-- never listed on `/writing` or the homepage,
+- never listed on the homepage,
 - never in `sitemap.xml`,
 - **not** built as a static page in production (the URL 404s — see
   `dynamicParams = false` in `app/writing/[slug]/page.tsx`),
@@ -84,10 +84,11 @@ Unfinished drafts are also gitignored so they never reach the public repo.
 
 - Metadata via the Next.js Metadata API (`lib/metadata.ts`).
 - Structured data via reusable helpers (`lib/schema.ts`): one canonical
-  `#person`, ScoutHalo `#organization`, AgentOperator `#website`.
+  `#person` and ScoutHalo `#organization`.
 - `sitemap.xml` and `robots.txt` are generated (`app/sitemap.ts`, `app/robots.ts`).
-- Old static URLs are redirected to clean paths in `next.config.mjs`
-  (`/about.html → /about`, `/articles → /writing`).
+- The site is a single page (hero, ScoutHalo, About, Writing) plus article pages.
+  Old URLs redirect to home-page sections in `next.config.mjs`
+  (`/about`, `/about.html → /#about`; `/writing`, `/articles → /#writing`).
 
 ## Deployment
 

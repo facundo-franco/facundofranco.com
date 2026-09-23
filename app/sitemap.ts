@@ -7,8 +7,6 @@ export default function sitemap(): MetadataRoute.Sitemap {
 
   const routes: MetadataRoute.Sitemap = [
     { url: `${SITE.url}/`, lastModified: now, changeFrequency: "monthly", priority: 1 },
-    { url: `${SITE.url}/about`, lastModified: now, changeFrequency: "monthly", priority: 0.8 },
-    { url: `${SITE.url}/writing`, lastModified: now, changeFrequency: "weekly", priority: 0.7 },
   ];
 
   // Only published articles — drafts are never listed.
