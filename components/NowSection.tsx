@@ -5,7 +5,7 @@ export default function NowSection() {
   return (
     <section className="section" id="now">
       <div className="container">
-        <SectionHeader eyebrow="03 · Now" title="Now.">
+        <SectionHeader eyebrow="04 · Now" title="Now.">
           <ul className="prose story now-list">
             <li>Building ScoutHalo.</li>
             <li>Working with production teams and agencies as I shape the product.</li>

@@ -604,7 +604,8 @@ button {
   color: var(--cyan);
 }
 
-.portrait-card {
+.portrait-card,
+.post-preview {
   position: relative;
 
   padding: 12px;
@@ -734,6 +735,51 @@ button {
 .work-flagship .product-link {
   margin-top: auto;
   padding-top: 32px;
+}
+
+/* --------------------------------------------------------------------------
+   Speaking — copy left, framed post preview right (frame shared with portrait)
+   -------------------------------------------------------------------------- */
+.speaking {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) minmax(0, 460px);
+  gap: clamp(40px, 6vw, 88px);
+  align-items: start;
+
+  margin-top: clamp(26px, 3.5vw, 38px);
+}
+
+.speaking-copy .prose {
+  max-width: 46ch;
+}
+
+.post-preview-frame {
+  position: relative;
+  aspect-ratio: 10 / 7;
+  overflow: hidden;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  background: var(--surface-raised);
+}
+
+.post-preview-frame img {
+  object-fit: cover;
+}
+
+.post-preview-link {
+  display: block;
+}
+
+.post-preview-label {
+  color: var(--subtle);
+
+  font-family: var(--font-mono), monospace;
+  font-size: 9px;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
 }
 
 /* --------------------------------------------------------------------------
@@ -1060,6 +1106,11 @@ button {
 }
 
 @media (max-width: 720px) {
+  .speaking {
+    grid-template-columns: 1fr;
+    gap: 36px;
+  }
+
   .nav {
     height: 64px;
   }
