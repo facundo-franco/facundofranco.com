@@ -1,9 +1,11 @@
 import type { Metadata } from "next";
 import type { CSSProperties } from "react";
+import Link from "next/link";
 import StoryCarousel from "@/components/StoryCarousel";
 import type { CarouselSlide } from "@/components/StoryCarousel";
 import StoryChapter from "@/components/StoryChapter";
 import { pageMetadata } from "@/lib/metadata";
+import { SCOUTHALO_URL } from "@/lib/site";
 
 export const metadata: Metadata = pageMetadata({
   title: "Building ScoutHalo",
@@ -161,6 +163,47 @@ export default function StoryPage() {
           That support gave me something incredibly valuable: time. I used it to turn the rough
           idea I&apos;d written in Notes into the first real version of ScoutHalo.
         </p>
+      </StoryChapter>
+
+      <StoryChapter
+        id="today"
+        eyebrow="04 · Today"
+        title="Still building."
+        figure={{
+          src: "/images/scouthalo-iphone-mockup.webp",
+          width: 924,
+          height: 1702,
+          alt: "ScoutHalo on iPhone: the Scout search screen with recent location scouts.",
+          caption: "ScoutHalo today.",
+        }}
+      >
+        <p>
+          What started as a sentence in my Notes became ScoutNYC, and eventually ScoutHalo.
+        </p>
+        <p>
+          The product today is very different from that first version. ScoutHalo is becoming a
+          location intelligence platform for production teams — designed to help them discover,
+          evaluate, and prepare locations before a shoot.
+        </p>
+        <p>
+          I&apos;m now working on the next part: getting it into the hands of production teams,
+          learning from how they use it, and building the company around it.
+        </p>
+        <p>This is still the beginning.</p>
+
+        <div className="work-actions">
+          <a
+            href={SCOUTHALO_URL}
+            target="_blank"
+            rel="noopener noreferrer"
+            className="product-link"
+          >
+            Visit ScoutHalo ↗
+          </a>
+          <Link href="/" className="product-link product-link-quiet">
+            Back to home →
+          </Link>
+        </div>
       </StoryChapter>
     </main>
   );
