@@ -1025,26 +1025,51 @@ button {
   margin-top: 0;
 }
 
-.story-carousel-controls {
-  display: inline-flex;
-  align-items: center;
-  gap: 12px;
-
-  margin-left: auto;
-}
-
 .story-carousel-meta .chapter-caption,
 .story-carousel-count {
   white-space: nowrap;
 }
 
-.story-carousel-button {
-  font-family: var(--font-mono), monospace;
-  font-size: 14px;
+/* Arrows sit on the screenshot: tall, translucent, light grey */
+.story-carousel-arrow {
+  position: absolute;
+  top: 50%;
+  z-index: 1;
+
+  width: 36px;
+  height: 76px;
+
+  display: grid;
+  place-items: center;
+
+  border: 0;
+  background: rgba(9, 13, 16, 0.28);
+  color: rgba(237, 243, 245, 0.72);
+  cursor: pointer;
+
+  transform: translateY(-50%);
+
+  transition:
+    background-color 200ms ease,
+    color 200ms ease;
+}
+
+.story-carousel-arrow:hover {
+  background: rgba(9, 13, 16, 0.55);
+  color: #ffffff;
+}
+
+.story-carousel-arrow-prev {
+  left: 6px;
+}
+
+.story-carousel-arrow-next {
+  right: 6px;
 }
 
 .story-carousel-count {
   min-width: 4ch;
+  margin-left: auto;
 
   color: var(--muted);
 

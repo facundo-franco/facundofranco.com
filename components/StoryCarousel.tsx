@@ -92,36 +92,51 @@ export default function StoryCarousel({
               />
             </div>
           ))}
+
+          {/* Quiet arrows on the image itself; each only where there's somewhere to go. */}
+          {index > 0 ? (
+            <button
+              type="button"
+              className="story-carousel-arrow story-carousel-arrow-prev"
+              onClick={() => go(index - 1)}
+              aria-label="Previous screenshot"
+            >
+              <Chevron direction="left" />
+            </button>
+          ) : null}
+          {index < last ? (
+            <button
+              type="button"
+              className="story-carousel-arrow story-carousel-arrow-next"
+              onClick={() => go(index + 1)}
+              aria-label="Next screenshot"
+            >
+              <Chevron direction="right" />
+            </button>
+          ) : null}
         </div>
       </div>
 
       <div className="story-carousel-meta">
         {caption ? <figcaption className="chapter-caption">{caption}</figcaption> : <span />}
-
-        <div className="story-carousel-controls">
-          <button
-            type="button"
-            className="story-carousel-button icon-button"
-            onClick={() => go(index - 1)}
-            disabled={index === 0}
-            aria-label="Previous screenshot"
-          >
-            ←
-          </button>
-          <span className="story-carousel-count" aria-live="polite">
-            {index + 1} / {slides.length}
-          </span>
-          <button
-            type="button"
-            className="story-carousel-button icon-button"
-            onClick={() => go(index + 1)}
-            disabled={index === last}
-            aria-label="Next screenshot"
-          >
-            →
-          </button>
-        </div>
+        <span className="story-carousel-count" aria-live="polite">
+          {index + 1} / {slides.length}
+        </span>
       </div>
     </figure>
+  );
+}
+
+function Chevron({ direction }: { direction: "left" | "right" }) {
+  return (
+    <svg width="12" height="22" viewBox="0 0 12 22" fill="none" aria-hidden="true">
+      <polyline
+        points={direction === "left" ? "10,2 2,11 10,20" : "2,2 10,11 2,20"}
+        stroke="currentColor"
+        strokeWidth="1.5"
+        strokeLinecap="round"
+        strokeLinejoin="round"
+      />
+    </svg>
   );
 }

@@ -132,8 +132,8 @@ export default function StoryPage() {
         title="Then I went all in."
         figure={{
           src: "/images/scouthalo-build-room-uruguay-2026.jpg",
-          width: 240,
-          height: 320,
+          width: 1500,
+          height: 2000,
           alt: "The small room where ScoutHalo was built: a desk with a computer and chair beside a bed, under a window.",
           caption: "Where I built ScoutHalo — Uruguay, winter 2026.",
         }}
