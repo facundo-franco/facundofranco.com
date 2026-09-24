@@ -23,7 +23,7 @@ export default function BuildingSection() {
                   />
                 </span>
                 <span className="work-brand-status">
-                  ScoutHalo · <span className="work-brand-live">V1 live</span>
+                  V1 · <span className="work-brand-live">Live</span>
                 </span>
               </div>
               <p className="work-lede">
@@ -32,8 +32,8 @@ export default function BuildingSection() {
               </p>
               <p className="work-body">
                 The first version is live. I built it from Uruguay, established the company in the
-                U.S., and am now working with production teams while preparing for the next stage of
-                growth.
+                U.S., and am now working with production teams while preparing to raise capital for
+                the next stage.
               </p>
               <div className="work-actions">
                 <a

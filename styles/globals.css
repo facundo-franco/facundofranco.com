@@ -808,6 +808,17 @@ button {
 .building .work-flagship {
   max-width: none;
   margin-top: 0;
+  /* Less room under the links than above the content */
+  padding-bottom: clamp(24px, 2.8vw, 36px);
+}
+
+/* Secondary to the lede, but a touch brighter than default body copy */
+.building .work-body {
+  color: #a9b5bb;
+}
+
+.building .work-actions {
+  padding-top: 14px;
 }
 
 /* Brand signature: small mark + status label */
@@ -816,7 +827,7 @@ button {
   align-items: center;
   gap: 10px;
 
-  margin-bottom: 22px;
+  margin-bottom: 18px;
 }
 
 /* Shows the rings of the square mark; its dark backdrop blends into the card */
@@ -864,7 +875,7 @@ button {
     grid-column: 2;
     grid-row: 1;
     justify-self: end;
-    margin-bottom: 18px;
+    margin-bottom: 5px;
   }
 
   .building .work-lede {
