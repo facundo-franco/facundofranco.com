@@ -582,8 +582,9 @@ button {
 
 .hero-layout {
   display: grid;
-  grid-template-columns: minmax(0, 1fr) clamp(300px, 27vw, 390px);
-  gap: clamp(48px, 7vw, 100px);
+  /* Portrait supports the name rather than competing with it */
+  grid-template-columns: minmax(0, 1fr) clamp(260px, 22vw, 316px);
+  gap: clamp(56px, 9vw, 140px);
   align-items: center;
 }
 

@@ -13,7 +13,7 @@ export default function Hero() {
     <section className="hero" id="top">
       <div className="container hero-layout">
         <div className="hero-copy">
-          <p className="eyebrow hero-eyebrow reveal-load">Founder · Builder · Uruguay → Miami</p>
+          <p className="eyebrow hero-eyebrow reveal-load">Founder of ScoutHalo</p>
 
           <h1 className="reveal-load" style={d(40)}>
             Facundo
@@ -31,7 +31,7 @@ export default function Hero() {
               Explore ScoutHalo ↗
             </MagneticButton>
             <Link href="/story" className="story-cta">
-              <span className="story-cta-label">Read my story</span>
+              <span className="story-cta-label">How I built ScoutHalo</span>
               <span className="story-cta-arrow">→</span>
             </Link>
           </div>
