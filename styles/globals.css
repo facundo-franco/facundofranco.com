@@ -912,6 +912,13 @@ button {
   max-width: 46ch;
 }
 
+/* Two-column layout: lift the centred copy + stat ~35px toward the heading */
+@media (min-width: 721px) {
+  .speaking-copy {
+    margin-bottom: 80px;
+  }
+}
+
 /* Attendance proof point: figure over a mono label */
 .speaking-stat {
   display: flex;
@@ -941,7 +948,7 @@ button {
 
 /* Caption under the post, marked with a thin cyan rule */
 .speaking-meta {
-  margin-top: 14px;
+  margin-top: 25px;
   padding-left: 12px;
 
   border-left: 1px solid var(--cyan);
