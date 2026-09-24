@@ -1310,11 +1310,12 @@ button {
 
 .about-layout {
   display: grid;
-  grid-template-columns: 180px minmax(0, 1fr) clamp(200px, 20vw, 260px);
+  /* Wider first column than other sections so the photo has real presence */
+  grid-template-columns: clamp(250px, 21vw, 272px) minmax(0, 1fr) clamp(200px, 20vw, 260px);
   grid-template-areas:
     "label title title"
     "photo bio   meta";
-  column-gap: clamp(30px, 7vw, 100px);
+  column-gap: clamp(30px, 4vw, 56px);
   row-gap: clamp(26px, 3.5vw, 38px);
   align-items: start;
 }
@@ -1331,10 +1332,24 @@ button {
 
 .about-photo {
   grid-area: photo;
+}
 
+.about-photo-card {
   padding: 8px;
   border: 1px solid var(--border);
   background: var(--surface);
+}
+
+/* Documentary-style caption, tight under the photo */
+.about-photo-caption {
+  margin-top: 10px;
+
+  color: var(--subtle);
+
+  font-family: var(--font-mono), monospace;
+  font-size: 10px;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
 }
 
 /* Portrait crop of the (wider) original, kept on the face */
@@ -1623,7 +1638,7 @@ button {
   }
 
   .about-photo {
-    width: min(100%, 236px);
+    width: clamp(200px, 65%, 360px);
     margin-top: 32px;
   }
 

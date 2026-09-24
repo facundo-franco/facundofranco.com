@@ -26,15 +26,18 @@ export default function AboutSection() {
           <h2 className="section-title about-title">About.</h2>
 
           <figure className="about-photo">
-            <div className="about-photo-frame">
-              <Image
-                src="/images/facundo-franco-about.jpg"
-                alt="Facundo Franco standing on a city street, with white apartment buildings behind him."
-                fill
-                sizes="(max-width: 940px) 220px, 180px"
-                quality={90}
-              />
+            <div className="about-photo-card">
+              <div className="about-photo-frame">
+                <Image
+                  src="/images/facundo-franco-about.jpg"
+                  alt="Facundo Franco standing on a city street, with white apartment buildings behind him."
+                  fill
+                  sizes="(max-width: 940px) 65vw, 272px"
+                  quality={90}
+                />
+              </div>
             </div>
+            <figcaption className="about-photo-caption">Buenos Aires, Argentina — 2026</figcaption>
           </figure>
 
           <div className="about-bio">
