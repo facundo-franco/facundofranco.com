@@ -9,7 +9,7 @@ export default function BuildingSection() {
   return (
     <section className="section" id="scouthalo">
       <div className="container">
-        <SectionHeader eyebrow="01 · ScoutHalo" title="Building ScoutHalo.">
+        <SectionHeader eyebrow="02 · ScoutHalo" title="Building ScoutHalo.">
           <div className="origin">
             <p className="origin-hook">From a note in my phone to a working product.</p>
 

@@ -14,8 +14,8 @@ export default function HomePage() {
     <main>
       <JsonLd data={homeGraph()} />
       <Hero />
-      <BuildingSection />
       <AboutSection />
+      <BuildingSection />
       <NowSection />
     </main>
   );

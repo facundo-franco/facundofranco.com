@@ -22,7 +22,7 @@ export default function AboutSection() {
     <section className="section section-compact" id="about">
       <div className="container">
         <Reveal as="div" className="about-layout">
-          <p className="eyebrow about-label">02 · About</p>
+          <p className="eyebrow about-label">01 · About</p>
           <h2 className="section-title about-title">About.</h2>
 
           <figure className="about-photo">

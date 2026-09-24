@@ -1496,12 +1496,29 @@ a.exposure-shot:hover {
   padding: clamp(44px, 5vw, 64px) 0 clamp(28px, 3vw, 36px);
 }
 
-/* Brand left, Connect right */
+/* Brand left; Navigate and Connect groups right */
 .footer-content {
   display: grid;
   grid-template-columns: minmax(0, 1fr) auto;
   gap: clamp(32px, 6vw, 72px);
   align-items: start;
+}
+
+.footer-groups {
+  display: flex;
+  gap: clamp(48px, 6vw, 96px);
+}
+
+/* Stacked list of small mono links; each keeps its 44px hit area */
+.footer-links-stack {
+  flex-direction: column;
+  align-items: flex-start;
+  flex-wrap: nowrap;
+  gap: 0;
+}
+
+.footer-links-stack .social-link {
+  min-height: 40px;
 }
 
 .footer-brand h3 {
@@ -1574,6 +1591,14 @@ a.exposure-shot:hover {
 
   .footer-links {
     gap: 0 24px;
+  }
+
+  .footer-groups {
+    gap: 40px;
+  }
+
+  .footer-links-stack .social-link {
+    min-height: 44px;
   }
 }
 
@@ -1749,9 +1774,8 @@ a.exposure-shot:hover {
   grid-template-areas:
     "lead  photo"
     "copy  photo"
-    "road  road"
-    "cta   cta";
-  grid-template-rows: auto 1fr auto auto;
+    "road  road";
+  grid-template-rows: auto 1fr auto;
   column-gap: clamp(36px, 4.5vw, 64px);
 }
 
@@ -1765,10 +1789,6 @@ a.exposure-shot:hover {
 
 .now-roadmap {
   grid-area: road;
-}
-
-.now-body .work-actions {
-  grid-area: cta;
 }
 
 /* Tighter frame than other sections so the whole plan reads in one view */
@@ -1952,10 +1972,6 @@ a.exposure-shot:hover {
   font-weight: 600;
 }
 
-#now .work-actions {
-  padding-top: clamp(10px, 1.2vw, 14px);
-}
-
 @media (max-width: 1100px) {
   .now-body {
     grid-template-columns: minmax(0, 1fr);
@@ -1963,8 +1979,7 @@ a.exposure-shot:hover {
       "lead"
       "copy"
       "photo"
-      "road"
-      "cta";
+      "road";
     grid-template-rows: none;
   }
 

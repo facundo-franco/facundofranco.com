@@ -1,6 +1,4 @@
 import Image from "next/image";
-import Link from "next/link";
-import { EMAIL, SCOUTHALO_URL } from "@/lib/site";
 import SectionHeader from "./SectionHeader";
 
 // The next stage, as a short roadmap. Plans and direction, not results.
@@ -82,23 +80,6 @@ export default function NowSection() {
                 </li>
               ))}
             </ol>
-
-            <div className="work-actions">
-              <a
-                href={SCOUTHALO_URL}
-                target="_blank"
-                rel="noopener noreferrer"
-                className="product-link"
-              >
-                Explore ScoutHalo ↗
-              </a>
-              <Link href="/story" className="product-link product-link-quiet">
-                Read the story →
-              </Link>
-              <a href={`mailto:${EMAIL}`} className="product-link product-link-quiet">
-                Get in touch ↗
-              </a>
-            </div>
           </div>
         </SectionHeader>
       </div>

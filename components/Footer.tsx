@@ -8,6 +8,14 @@ const FOOTER_SOCIALS = [
   { label: "YouTube", href: "https://www.youtube.com/@facundofrancon" },
 ] as const;
 
+// Site navigation, now that page sections end without their own link rows.
+const FOOTER_NAV = [
+  { label: "Building ScoutHalo →", href: "/story" },
+  { label: "About →", href: "/about" },
+  { label: "Now ↑", href: "/#now" },
+  { label: "Exposure →", href: "/exposure" },
+] as const;
+
 export default function Footer() {
   return (
     <footer className="site-footer" id="contact">
@@ -26,32 +34,50 @@ export default function Footer() {
             </p>
           </div>
 
-          <div className="footer-connect">
-            <p className="footer-label">Connect</p>
-            <nav className="footer-links" aria-label="Connect">
-              {FOOTER_SOCIALS.map((c) => (
+          <div className="footer-groups">
+            <div className="footer-group">
+              <p className="footer-label">Navigate</p>
+              <nav className="footer-links footer-links-stack" aria-label="Site">
                 <a
-                  key={c.href}
-                  href={c.href}
+                  href={SCOUTHALO_URL}
                   target="_blank"
                   rel="noopener noreferrer"
                   className="social-link"
                 >
-                  {c.label} ↗
+                  ScoutHalo ↗
                 </a>
-              ))}
-              <a href={`mailto:${EMAIL}`} className="social-link">
-                Email ↗
-              </a>
-            </nav>
+                {FOOTER_NAV.map((n) => (
+                  <Link key={n.href} href={n.href} className="social-link">
+                    {n.label}
+                  </Link>
+                ))}
+              </nav>
+            </div>
+
+            <div className="footer-group">
+              <p className="footer-label">Connect</p>
+              <nav className="footer-links footer-links-stack" aria-label="Connect">
+                {FOOTER_SOCIALS.map((c) => (
+                  <a
+                    key={c.href}
+                    href={c.href}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="social-link"
+                  >
+                    {c.label} ↗
+                  </a>
+                ))}
+                <a href={`mailto:${EMAIL}`} className="social-link">
+                  Email ↗
+                </a>
+              </nav>
+            </div>
           </div>
         </div>
 
         <div className="footer-bottom">
           <span>© {new Date().getFullYear()} Facundo Franco</span>
-          <Link href="/exposure" className="social-link">
-            Exposure →
-          </Link>
         </div>
       </div>
     </footer>
