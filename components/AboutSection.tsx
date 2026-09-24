@@ -4,7 +4,7 @@ import { CONNECT } from "@/lib/site";
 import Reveal from "./Reveal";
 
 const FACTS = [
-  { label: "Based in", value: "Uruguay → Miami" },
+  { label: "Next", value: "Uruguay → Miami" },
   { label: "Building", value: "ScoutHalo" },
   { label: "Background", value: "E-commerce → Products" },
   { label: "Focus", value: "Location intelligence for production teams" },
@@ -44,17 +44,13 @@ export default function AboutSection() {
             <div className="prose story">
               <p>I&apos;m Facundo Franco, founder of ScoutHalo.</p>
               <p>
-                I grew up in Punta del Este, Uruguay. My path into building companies wasn&apos;t
-                particularly conventional — I left university early and learned mostly by doing.
+                I grew up in Punta del Este, Uruguay. I left university early and spent the next few
+                years experimenting with businesses and learning by doing.
               </p>
               <p>
-                I spent several years experimenting with businesses before getting my first real
-                operating experience in e-commerce, working across pricing, sales, customer
-                experience, and operations.
-              </p>
-              <p>
-                That eventually pushed me from operating businesses toward building products
-                myself.
+                My first real operating experience came in e-commerce, working across pricing, sales,
+                customer experience, and operations. That eventually pushed me from operating
+                businesses toward building products myself.
               </p>
               <p>
                 Today, I&apos;m building ScoutHalo, a location intelligence platform for production
