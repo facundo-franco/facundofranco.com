@@ -15,11 +15,11 @@ export const IDS = {
   scouthalo: "https://scouthalo.com/#organization",
 } as const;
 
-// Nav items: sections of the home page, plus the /story page.
+// Nav items: home-page sections plus the /story and /about pages.
 export const NAV = [
   { label: "ScoutHalo", href: "/#scouthalo" },
   { label: "Story", href: "/story" },
-  { label: "About", href: "/#about" },
+  { label: "About", href: "/about" },
   { label: "Now", href: "/#now" },
 ] as const;
 

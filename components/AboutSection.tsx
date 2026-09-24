@@ -1,3 +1,4 @@
+import Link from "next/link";
 import { CONNECT } from "@/lib/site";
 import SectionHeader from "./SectionHeader";
 
@@ -18,18 +19,24 @@ export default function AboutSection() {
       <div className="container">
         <SectionHeader eyebrow="02 · About" title="About.">
           <div className="about">
-            <div className="prose story">
-              <p>I&apos;m Facundo Franco, founder of ScoutHalo.</p>
-              <p>
-                I started in e-commerce, working directly on customer acquisition, conversion, and
-                operations. That experience eventually pushed me from operating businesses toward
-                building products myself.
-              </p>
-              <p>I built Sella, an AI sales agent for e-commerce, before starting ScoutHalo.</p>
-              <p>
-                Today I&apos;m focused on turning ScoutHalo from a working product into a company
-                used by production teams around the world.
-              </p>
+            <div className="about-bio">
+              <div className="prose story">
+                <p>I&apos;m Facundo Franco, founder of ScoutHalo.</p>
+                <p>
+                  I started in e-commerce, working directly on customer acquisition, conversion, and
+                  operations. That experience eventually pushed me from operating businesses toward
+                  building products myself.
+                </p>
+                <p>I built Sella, an AI sales agent for e-commerce, before starting ScoutHalo.</p>
+                <p>
+                  Today I&apos;m focused on turning ScoutHalo from a working product into a company
+                  used by production teams around the world.
+                </p>
+              </div>
+
+              <Link href="/about" className="product-link about-more">
+                More about me →
+              </Link>
             </div>
 
             <aside className="about-meta" aria-label="At a glance">
