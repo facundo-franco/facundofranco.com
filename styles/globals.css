@@ -1549,8 +1549,84 @@ button {
 
 
 /* --------------------------------------------------------------------------
-   Now — subheading + status, narrative, then a three-step roadmap
+   Now — story left, Brickell photo right, roadmap across the bottom
    -------------------------------------------------------------------------- */
+.now-body {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) clamp(320px, 29vw, 420px);
+  grid-template-areas:
+    "lead  photo"
+    "copy  photo"
+    "road  road"
+    "cta   cta";
+  grid-template-rows: auto 1fr auto auto;
+  column-gap: clamp(36px, 4.5vw, 64px);
+}
+
+.now-lead {
+  grid-area: lead;
+}
+
+.now-copy {
+  grid-area: copy;
+}
+
+.now-roadmap {
+  grid-area: road;
+}
+
+.now-body .work-actions {
+  grid-area: cta;
+}
+
+.now-photo {
+  grid-area: photo;
+  margin-top: clamp(16px, 1.8vw, 20px);
+}
+
+.now-photo-card {
+  padding: 8px;
+  border: 1px solid var(--border);
+  background: var(--surface);
+}
+
+/* Portrait crop of the landscape original, centred on the street vista */
+.now-photo-frame {
+  position: relative;
+  aspect-ratio: 4 / 5;
+  overflow: hidden;
+
+  background: var(--surface-raised);
+}
+
+.now-photo-frame img {
+  object-fit: cover;
+  object-position: 50% 50%;
+}
+
+/* Caption: place over status, marked with a thin cyan rule */
+.now-photo-caption {
+  display: flex;
+  flex-direction: column;
+
+  margin-top: 14px;
+  padding-left: 12px;
+
+  border-left: 1px solid var(--cyan);
+
+  color: var(--subtle);
+
+  font-family: var(--font-mono), monospace;
+  font-size: 10px;
+  letter-spacing: 0.1em;
+  line-height: 1.7;
+  text-transform: uppercase;
+}
+
+.now-photo-caption-title {
+  color: var(--text);
+}
+
 .now-lead {
   display: flex;
   flex-wrap: wrap;
@@ -1676,6 +1752,24 @@ button {
 
 #now .work-actions {
   padding-top: clamp(14px, 1.6vw, 18px);
+}
+
+@media (max-width: 1100px) {
+  .now-body {
+    grid-template-columns: minmax(0, 1fr);
+    grid-template-areas:
+      "lead"
+      "copy"
+      "photo"
+      "road"
+      "cta";
+    grid-template-rows: none;
+  }
+
+  .now-photo {
+    width: min(100%, 460px);
+    margin-top: clamp(26px, 3vw, 34px);
+  }
 }
 
 @media (max-width: 720px) {
