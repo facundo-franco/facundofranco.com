@@ -810,6 +810,47 @@ button {
   margin-top: 0;
 }
 
+/* Brand signature: small mark + status label */
+.work-brand {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+
+  margin-bottom: 22px;
+}
+
+/* Shows the rings of the square mark; its dark backdrop blends into the card */
+.work-brand-mark {
+  position: relative;
+  flex: none;
+
+  width: 32px;
+  height: 32px;
+  overflow: hidden;
+}
+
+.work-brand-mark img {
+  width: 100%;
+  height: 100%;
+
+  transform: scale(1.8);
+  mix-blend-mode: lighten;
+}
+
+.work-brand-status {
+  color: var(--muted);
+
+  font-family: var(--font-mono), monospace;
+  font-size: 10px;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  white-space: nowrap;
+}
+
+.work-brand-live {
+  color: var(--cyan);
+}
+
 /* Wide screens: lede left; supporting copy and links right */
 @media (min-width: 941px) {
   .building .work-flagship {
@@ -819,18 +860,27 @@ button {
     align-items: start;
   }
 
+  .building .work-brand {
+    grid-column: 2;
+    grid-row: 1;
+    justify-self: end;
+    margin-bottom: 18px;
+  }
+
   .building .work-lede {
     grid-column: 1;
-    grid-row: 1 / span 2;
+    grid-row: 1 / span 3;
   }
 
   .building .work-body {
     grid-column: 2;
+    grid-row: 2;
     margin-top: 0;
   }
 
   .building .work-actions {
     grid-column: 2;
+    grid-row: 3;
   }
 }
 

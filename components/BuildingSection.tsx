@@ -1,3 +1,4 @@
+import Image from "next/image";
 import Link from "next/link";
 import { SCOUTHALO_URL } from "@/lib/site";
 import SectionHeader from "./SectionHeader";
@@ -10,13 +11,29 @@ export default function BuildingSection() {
         <SectionHeader eyebrow="01 · ScoutHalo" title="Building ScoutHalo.">
           <div className="building">
             <div className="work-flagship">
+              {/* Brand signature: mark + status, upper-right of the card on desktop */}
+              <div className="work-brand">
+                <span className="work-brand-mark">
+                  <Image
+                    src="/images/scouthalo-mark.webp"
+                    alt="ScoutHalo"
+                    width={1254}
+                    height={1254}
+                    sizes="60px"
+                  />
+                </span>
+                <span className="work-brand-status">
+                  ScoutHalo · <span className="work-brand-live">V1 live</span>
+                </span>
+              </div>
               <p className="work-lede">
                 ScoutHalo is location intelligence for production teams, helping them discover,
                 evaluate, and prepare shoot-ready locations.
               </p>
               <p className="work-body">
-                I built the first version from Uruguay and am now working toward the next stage:
-                bringing it to production teams in the U.S. and building the company from Miami.
+                The first version is live. I built it from Uruguay, established the company in the
+                U.S., and am now working with production teams while preparing for the next stage of
+                growth.
               </p>
               <div className="work-actions">
                 <a
