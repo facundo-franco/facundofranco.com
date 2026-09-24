@@ -739,52 +739,6 @@ button {
 /* --------------------------------------------------------------------------
    Current work — ScoutHalo
    -------------------------------------------------------------------------- */
-/* Flagship — ScoutHalo: boxed, weighty, present */
-.work-flagship {
-  position: relative;
-  max-width: 800px;
-  margin-top: clamp(30px, 4vw, 44px);
-  display: flex;
-  flex-direction: column;
-  overflow: hidden;
-
-  padding: clamp(30px, 4vw, 54px);
-
-  border: 1px solid var(--border);
-  background:
-    radial-gradient(130% 130% at 100% 0%, rgba(99, 217, 232, 0.06), transparent 55%),
-    var(--surface);
-
-  transition:
-    border-color 300ms ease,
-    transform 320ms cubic-bezier(0.2, 0.6, 0.2, 1);
-}
-
-.work-flagship:hover {
-  border-color: rgba(99, 217, 232, 0.4);
-  transform: translateY(-3px);
-}
-
-.work-lede {
-  max-width: 46ch;
-
-  color: var(--text);
-  font-size: clamp(19px, 2vw, 24px);
-  font-weight: 500;
-  line-height: 1.5;
-  letter-spacing: -0.02em;
-}
-
-.work-body {
-  max-width: 56ch;
-  margin-top: 18px;
-
-  color: var(--muted);
-  font-size: 16px;
-  line-height: 1.75;
-  letter-spacing: -0.015em;
-}
-
 /* Primary external link, with quieter links beside it */
 .work-actions {
   display: flex;
@@ -800,47 +754,96 @@ button {
   color: var(--muted);
 }
 
-/* Single card across the content column */
-.building {
-  margin-top: clamp(30px, 4vw, 44px);
+/* Origin: hook, short copy, then the path from note to product */
+.origin {
+  margin-top: clamp(16px, 1.8vw, 22px);
 }
 
-.building .work-flagship {
-  max-width: none;
-  margin-top: 0;
-  /* Less room under the links than above the content */
-  padding-bottom: clamp(24px, 2.8vw, 36px);
+.origin-hook {
+  max-width: 24ch;
+
+  color: var(--text);
+  font-size: clamp(24px, 2.6vw, 34px);
+  font-weight: 500;
+  line-height: 1.2;
+  letter-spacing: -0.035em;
 }
 
-/* Secondary to the lede, but a touch brighter than default body copy */
-.building .work-body {
-  color: #a9b5bb;
+.origin .origin-copy {
+  max-width: 620px;
+  margin-top: clamp(18px, 2vw, 24px);
 }
 
-.building .work-actions {
-  padding-top: 14px;
+.origin-copy p + p {
+  margin-top: 14px;
 }
 
-/* Brand signature: small mark + status label */
-.work-brand {
+/* Path: three steps on one thin rule, joined by arrows */
+.origin-path {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) auto minmax(0, 1fr) auto minmax(0, 1.2fr);
+  align-items: start;
+  column-gap: clamp(16px, 2.4vw, 32px);
+
+  margin-top: clamp(32px, 3.6vw, 44px);
+  padding-top: 18px;
+  border-top: 1px solid var(--border);
+
+  list-style: none;
+}
+
+.origin-step {
   display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.origin-step-meta {
+  color: var(--cyan);
+
+  font-family: var(--font-mono), monospace;
+  font-size: 11px;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+}
+
+.origin-step-title {
+  display: inline-flex;
   align-items: center;
   gap: 10px;
 
-  margin-bottom: 18px;
+  color: var(--muted);
+  font-size: clamp(19px, 1.8vw, 22px);
+  font-weight: 500;
+  line-height: 1.2;
+  letter-spacing: -0.025em;
 }
 
-/* Shows the rings of the square mark; its dark backdrop blends into the card */
-.work-brand-mark {
+/* The destination reads brightest */
+.origin-step-now .origin-step-title {
+  color: var(--text);
+}
+
+.origin-step-status {
+  color: var(--cyan);
+
+  font-family: var(--font-mono), monospace;
+  font-size: 10px;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+}
+
+/* Square mark cropped to its rings; its dark backdrop blends into the page */
+.origin-mark {
   position: relative;
   flex: none;
 
-  width: 32px;
-  height: 32px;
+  width: 24px;
+  height: 24px;
   overflow: hidden;
 }
 
-.work-brand-mark img {
+.origin-mark img {
   width: 100%;
   height: 100%;
 
@@ -848,50 +851,107 @@ button {
   mix-blend-mode: lighten;
 }
 
-.work-brand-status {
-  color: var(--muted);
+.origin-arrow {
+  /* Sits level with the step titles */
+  padding-top: 21px;
+
+  color: var(--subtle);
+  font-size: 18px;
+  line-height: 1.2;
+
+  transition:
+    color 300ms ease,
+    transform 300ms cubic-bezier(0.2, 0.6, 0.2, 1);
+}
+
+.origin-path:hover .origin-arrow {
+  color: var(--cyan);
+  transform: translateX(3px);
+}
+
+/* Actions: the story first, larger and underlined; the product link quieter */
+.origin-actions {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 8px 36px;
+
+  margin-top: clamp(28px, 3vw, 36px);
+}
+
+.story-cta {
+  display: inline-flex;
+  align-items: center;
+  gap: 12px;
+  min-height: 44px;
+
+  color: var(--cyan);
 
   font-family: var(--font-mono), monospace;
-  font-size: 10px;
-  letter-spacing: 0.1em;
+  font-size: 14px;
+  font-weight: 500;
+  letter-spacing: 0.12em;
   text-transform: uppercase;
-  white-space: nowrap;
+  text-decoration: none;
+
+  transition: color 200ms ease;
 }
 
-.work-brand-live {
-  color: var(--cyan);
+/* Underline the words only; the arrow slides on hover */
+.story-cta-label {
+  padding-bottom: 6px;
+  border-bottom: 1px solid rgba(99, 217, 232, 0.35);
+
+  transition: border-color 200ms ease;
 }
 
-/* Wide screens: lede left; supporting copy and links right */
-@media (min-width: 941px) {
-  .building .work-flagship {
-    display: grid;
-    grid-template-columns: minmax(0, 1.1fr) minmax(0, 1fr);
-    column-gap: clamp(40px, 5vw, 72px);
-    align-items: start;
+.story-cta-arrow {
+  display: inline-block;
+  transition: transform 300ms cubic-bezier(0.2, 0.6, 0.2, 1);
+}
+
+.story-cta:hover {
+  color: var(--text);
+}
+
+.story-cta:hover .story-cta-label {
+  border-bottom-color: currentColor;
+}
+
+.story-cta:hover .story-cta-arrow {
+  transform: translateX(5px);
+}
+
+@media (max-width: 720px) {
+  /* Vertical sequence with downward arrows */
+  .origin-path {
+    grid-template-columns: minmax(0, 1fr);
+    row-gap: 12px;
   }
 
-  .building .work-brand {
-    grid-column: 2;
-    grid-row: 1;
-    justify-self: end;
-    margin-bottom: 5px;
+  .origin-arrow {
+    padding-top: 0;
+    transform: rotate(90deg);
+    justify-self: start;
+    width: 18px;
+    text-align: center;
   }
 
-  .building .work-lede {
-    grid-column: 1;
-    grid-row: 1 / span 3;
+  .origin-path:hover .origin-arrow {
+    transform: rotate(90deg);
   }
 
-  .building .work-body {
-    grid-column: 2;
-    grid-row: 2;
-    margin-top: 0;
+  .origin-actions {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 4px;
   }
+}
 
-  .building .work-actions {
-    grid-column: 2;
-    grid-row: 3;
+@media (prefers-reduced-motion: reduce) {
+  .origin-arrow,
+  .story-cta-arrow {
+    transition: none;
   }
 }
 

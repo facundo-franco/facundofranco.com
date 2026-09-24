@@ -3,51 +3,73 @@ import Link from "next/link";
 import { SCOUTHALO_URL } from "@/lib/site";
 import SectionHeader from "./SectionHeader";
 
-// What I'm building now. ScoutHalo is the center of gravity of the site.
+// An editorial way into /story: the hook, a short origin, and the path from
+// note to product. Stage and plans live in the Now section.
 export default function BuildingSection() {
   return (
     <section className="section" id="scouthalo">
       <div className="container">
         <SectionHeader eyebrow="01 · ScoutHalo" title="Building ScoutHalo.">
-          <div className="building">
-            <div className="work-flagship">
-              {/* Brand signature: mark + status, upper-right of the card on desktop */}
-              <div className="work-brand">
-                <span className="work-brand-mark">
-                  <Image
-                    src="/images/scouthalo-mark.webp"
-                    alt="ScoutHalo"
-                    width={1254}
-                    height={1254}
-                    sizes="60px"
-                  />
-                </span>
-                <span className="work-brand-status">
-                  V1 · <span className="work-brand-live">Live</span>
-                </span>
-              </div>
-              <p className="work-lede">
-                ScoutHalo is location intelligence for production teams, helping them discover,
-                evaluate, and prepare shoot-ready locations.
+          <div className="origin">
+            <p className="origin-hook">From a note in my phone to a working product.</p>
+
+            <div className="prose origin-copy">
+              <p>
+                ScoutHalo started in October 2025 as a simple note: an app for finding specific
+                places for different kinds of creators.
               </p>
-              <p className="work-body">
-                The first version is live. I built it from Uruguay, established the company in the
-                U.S., and am now working with production teams while preparing to raise capital for
-                the next stage.
+              <p>
+                I built the first version myself from Uruguay. It became ScoutNYC, then evolved into
+                ScoutHalo — a location intelligence platform built for production teams.
               </p>
-              <div className="work-actions">
-                <a
-                  href={SCOUTHALO_URL}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="product-link"
-                >
-                  Visit ScoutHalo ↗
-                </a>
-                <Link href="/story" className="product-link product-link-quiet">
-                  Read the story →
-                </Link>
-              </div>
+            </div>
+
+            <ol className="origin-path" aria-label="How ScoutHalo came together">
+              <li className="origin-step">
+                <span className="origin-step-meta">Oct 2025</span>
+                <span className="origin-step-title">The note</span>
+              </li>
+              <li className="origin-arrow" aria-hidden="true">
+                →
+              </li>
+              <li className="origin-step">
+                <span className="origin-step-meta">ScoutNYC</span>
+                <span className="origin-step-title">First version</span>
+              </li>
+              <li className="origin-arrow" aria-hidden="true">
+                →
+              </li>
+              <li className="origin-step origin-step-now">
+                <span className="origin-step-meta">2026</span>
+                <span className="origin-step-title">
+                  <span className="origin-mark">
+                    <Image
+                      src="/images/scouthalo-mark.webp"
+                      alt=""
+                      width={1254}
+                      height={1254}
+                      sizes="48px"
+                    />
+                  </span>
+                  ScoutHalo
+                </span>
+                <span className="origin-step-status">V1 live</span>
+              </li>
+            </ol>
+
+            <div className="origin-actions">
+              <Link href="/story" className="story-cta">
+                <span className="story-cta-label">Read the full story</span>
+                <span className="story-cta-arrow">→</span>
+              </Link>
+              <a
+                href={SCOUTHALO_URL}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="product-link product-link-quiet"
+              >
+                Visit ScoutHalo ↗
+              </a>
             </div>
           </div>
         </SectionHeader>
