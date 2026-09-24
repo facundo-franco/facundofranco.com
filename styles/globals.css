@@ -2381,36 +2381,77 @@ a.exposure-shot:hover {
 
   .hero {
     min-height: auto;
-    padding: 46px 0 70px;
+    padding: 40px 0 56px;
   }
 
   .hero-layout {
     grid-template-columns: 1fr;
-    gap: 44px;
+    gap: 36px;
   }
 
   .hero h1 {
     font-size: clamp(64px, 20vw, 94px);
   }
 
-  /* Secondary identity element on mobile: small, left-aligned with the copy */
+  /* Secondary identity element on mobile: centred, not full width */
   .portrait-card {
-    width: 228px;
+    justify-self: center;
+    width: min(78%, 320px);
     padding: 10px;
   }
 
+  /* Two full-width buttons of equal height: primary cyan, secondary outlined */
   .hero-actions {
     flex-direction: column;
     align-items: stretch;
-    gap: 8px;
+    gap: 10px;
   }
 
-  .hero-actions .story-cta {
-    align-self: flex-start;
+  .hero-story {
+    justify-content: center;
+    min-height: 52px;
+    padding: 0 20px;
+
+    border: 1px solid var(--border);
+    background: var(--surface);
+    color: var(--text);
+
+    font-size: 13px;
+    letter-spacing: 0.1em;
+
+    transition:
+      border-color 200ms ease,
+      color 200ms ease;
   }
 
+  .hero-story .story-cta-label {
+    padding-bottom: 0;
+    border-bottom: 0;
+  }
+
+  .hero-story:hover {
+    border-color: var(--cyan);
+    color: var(--cyan);
+  }
+
+  /* X / LinkedIn live in the footer on mobile */
   .hero-social {
-    margin-top: 6px;
+    display: none;
+  }
+
+  /* Editorial photos: centred within the content column */
+  .about-photo {
+    justify-self: center;
+    width: min(78%, 320px);
+  }
+
+  .now-photo {
+    justify-self: center;
+    width: min(82%, 380px);
+  }
+
+  .exposure-figure {
+    justify-self: center;
   }
 
   .button {
