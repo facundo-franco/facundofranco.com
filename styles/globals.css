@@ -1364,9 +1364,10 @@ button {
   grid-template-columns: clamp(250px, 21vw, 272px) minmax(0, 1fr) clamp(200px, 20vw, 260px);
   grid-template-areas:
     "label title title"
-    "photo bio   meta";
+    "photo bio   meta"
+    "photo cta   meta";
+  grid-template-rows: auto auto 1fr;
   column-gap: clamp(30px, 4vw, 56px);
-  row-gap: clamp(26px, 3.5vw, 38px);
   align-items: start;
 }
 
@@ -1378,10 +1379,13 @@ button {
 
 .about-title {
   grid-area: title;
+  margin-bottom: clamp(22px, 2.6vw, 28px);
 }
 
+/* Sits a little below the bio's first line, clear of the section label */
 .about-photo {
   grid-area: photo;
+  margin-top: 20px;
 }
 
 .about-photo-card {
@@ -1394,7 +1398,7 @@ button {
 .about-photo-caption {
   margin-top: 10px;
 
-  color: var(--subtle);
+  color: var(--muted);
 
   font-family: var(--font-mono), monospace;
   font-size: 10px;
@@ -1421,10 +1425,33 @@ button {
 
 .about-bio {
   grid-area: bio;
+  max-width: 580px;
 }
 
+/* Opening line reads a step above the body copy */
+.about-layout .story p:first-child {
+  font-size: clamp(18px, 1.35vw, 19px);
+  font-weight: 500;
+  letter-spacing: -0.02em;
+}
+
+/* Current snapshot: separated from the story by a hairline rule */
 .about-meta {
   grid-area: meta;
+  align-self: stretch;
+
+  padding-left: clamp(22px, 2.2vw, 32px);
+  border-left: 1px solid var(--border-soft);
+}
+
+/* Closing action for the biography, set off by a short rule */
+.about-cta {
+  grid-area: cta;
+  max-width: 580px;
+
+  margin-top: 18px;
+  padding-top: 4px;
+  border-top: 1px solid var(--border-soft);
 }
 
 .about-layout .story {
@@ -1433,7 +1460,7 @@ button {
 
 .about-facts {
   display: grid;
-  gap: 22px;
+  gap: 20px;
 }
 
 .about-facts dt {
@@ -1446,7 +1473,7 @@ button {
 }
 
 .about-facts dd {
-  margin-top: 6px;
+  margin-top: 3px;
 
   color: var(--text);
   font-size: 15px;
@@ -1456,10 +1483,6 @@ button {
 
 .about-links {
   margin-top: 18px;
-}
-
-.about-more {
-  margin-top: 14px;
 }
 
 
@@ -1663,16 +1686,17 @@ button {
     margin-top: 0;
   }
 
-  /* One column: label, title, bio, photo, then facts under a hairline */
+  /* One column: label, title, photo, bio, facts under a hairline, then CTA */
   .about-layout {
     grid-template-columns: minmax(0, 1fr);
     grid-template-areas:
       "label"
       "title"
-      "bio"
       "photo"
-      "meta";
-    row-gap: 0;
+      "bio"
+      "meta"
+      "cta";
+    grid-template-rows: none;
   }
 
   .about-label {
@@ -1681,24 +1705,32 @@ button {
 
   .about-title {
     margin-top: 18px;
-  }
-
-  .about-bio {
-    margin-top: clamp(26px, 3.5vw, 38px);
+    margin-bottom: 0;
   }
 
   .about-photo {
     width: clamp(200px, 65%, 360px);
-    margin-top: 32px;
+    margin-top: 28px;
+  }
+
+  .about-bio {
+    max-width: none;
+    margin-top: 30px;
   }
 
   .about-meta {
-    margin-top: 32px;
-  }
-
-  .about-meta {
-    padding-top: 28px;
+    margin-top: 30px;
+    padding-top: 26px;
+    padding-left: 0;
+    border-left: 0;
     border-top: 1px solid var(--border-soft);
+  }
+
+  .about-cta {
+    max-width: none;
+    margin-top: 14px;
+    padding-top: 0;
+    border-top: 0;
   }
 
   .about-facts {
@@ -1728,13 +1760,21 @@ button {
     padding: 48px 0;
   }
 
-  .about-photo,
+  .about-photo {
+    margin-top: 22px;
+  }
+
+  .about-bio,
   .about-meta {
-    margin-top: 26px;
+    margin-top: 24px;
   }
 
   .about-meta {
-    padding-top: 22px;
+    padding-top: 20px;
+  }
+
+  .about-cta {
+    margin-top: 8px;
   }
 
   .about-facts {

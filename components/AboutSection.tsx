@@ -61,10 +61,6 @@ export default function AboutSection() {
                 teams.
               </p>
             </div>
-
-            <Link href="/about" className="product-link about-more">
-              More about me →
-            </Link>
           </div>
 
           <aside className="about-meta" aria-label="At a glance">
@@ -91,6 +87,12 @@ export default function AboutSection() {
               ))}
             </nav>
           </aside>
+
+          <div className="about-cta">
+            <Link href="/about" className="product-link">
+              More about me →
+            </Link>
+          </div>
         </Reveal>
       </div>
     </section>
