@@ -1,3 +1,4 @@
+import Link from "next/link";
 import { CONNECT, EMAIL, SCOUTHALO_URL } from "@/lib/site";
 
 // Profiles shown in the footer, in display order.
@@ -48,6 +49,9 @@ export default function Footer() {
 
         <div className="footer-bottom">
           <span>© {new Date().getFullYear()} Facundo Franco</span>
+          <Link href="/exposure" className="social-link">
+            Exposure →
+          </Link>
         </div>
       </div>
     </footer>

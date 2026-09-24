@@ -15,7 +15,7 @@ export default function NowSection() {
   return (
     <section className="section section-compact" id="now">
       <div className="container">
-        <SectionHeader eyebrow="04 · Now" title="Now.">
+        <SectionHeader eyebrow="03 · Now" title="Now.">
           <div className="now-body">
             <div className="now-lead">
               <p className="now-subhead">Turning ScoutHalo into a company.</p>
