@@ -52,7 +52,7 @@ export default function Portrait({ priority = false, delay = 120 }: { priority?:
           alt="Facundo Franco, founder of ScoutHalo"
           fill
           priority={priority}
-          sizes="(max-width: 720px) 208px, 360px"
+          sizes="(max-width: 720px) 208px, 390px"
           quality={90}
         />
       </div>
