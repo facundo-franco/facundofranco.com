@@ -5,6 +5,7 @@ import SectionHeader from "./SectionHeader";
 const FACTS = [
   { label: "Based in", value: "Uruguay → Miami" },
   { label: "Building", value: "ScoutHalo" },
+  { label: "Background", value: "E-commerce → Products" },
   { label: "Focus", value: "Location intelligence for production teams" },
 ] as const;
 
@@ -23,14 +24,21 @@ export default function AboutSection() {
               <div className="prose story">
                 <p>I&apos;m Facundo Franco, founder of ScoutHalo.</p>
                 <p>
-                  I started in e-commerce, working directly on customer acquisition, conversion, and
-                  operations. That experience eventually pushed me from operating businesses toward
-                  building products myself.
+                  I grew up in Punta del Este, Uruguay. My path into building companies wasn&apos;t
+                  particularly conventional — I left university early and learned mostly by doing.
                 </p>
-                <p>I built Sella, an AI sales agent for e-commerce, before starting ScoutHalo.</p>
                 <p>
-                  Today I&apos;m focused on turning ScoutHalo from a working product into a company
-                  used by production teams around the world.
+                  I spent several years experimenting with businesses before getting my first real
+                  operating experience in e-commerce, working across pricing, sales, customer
+                  experience, and operations.
+                </p>
+                <p>
+                  That eventually pushed me from operating businesses toward building products
+                  myself.
+                </p>
+                <p>
+                  Today, I&apos;m building ScoutHalo, a location intelligence platform for production
+                  teams.
                 </p>
               </div>
 
