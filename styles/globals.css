@@ -1493,46 +1493,41 @@ a.exposure-shot:hover {
 .footer-container {
   width: min(calc(100% - (var(--page-padding) * 2)), var(--max-width));
   margin: 0 auto;
-  padding: clamp(44px, 5vw, 64px) 0 clamp(28px, 3vw, 36px);
+  padding: clamp(44px, 5vw, 60px) 0 clamp(24px, 3vw, 32px);
 }
 
-/* Brand left; Navigate and Connect groups right */
+/* Identity | Navigate | Connect */
 .footer-content {
   display: grid;
-  grid-template-columns: minmax(0, 1fr) auto;
-  gap: clamp(32px, 6vw, 72px);
+  grid-template-columns: minmax(0, 1.4fr) minmax(0, 1fr) minmax(0, 1fr);
+  gap: clamp(32px, 5vw, 72px);
   align-items: start;
 }
 
-.footer-groups {
+.footer-identity {
   display: flex;
-  gap: clamp(48px, 6vw, 96px);
+  align-items: center;
+  gap: 14px;
 }
 
-/* Stacked list of small mono links; each keeps its 44px hit area */
-.footer-links-stack {
-  flex-direction: column;
-  align-items: flex-start;
-  flex-wrap: nowrap;
-  gap: 0;
-}
-
-.footer-links-stack .social-link {
-  min-height: 40px;
+.footer-identity .brand-mark {
+  width: 36px;
+  height: 36px;
+  flex: none;
 }
 
 .footer-brand h3 {
-  font-size: 17px;
+  font-size: 19px;
   font-weight: 600;
-  letter-spacing: -0.02em;
+  letter-spacing: -0.025em;
 }
 
 .footer-brand p {
-  margin-top: 12px;
-  max-width: 380px;
+  margin-top: 16px;
+  max-width: 360px;
 
   color: var(--muted);
-  font-size: 14px;
+  font-size: 15px;
   line-height: 1.7;
 }
 
@@ -1553,17 +1548,77 @@ a.exposure-shot:hover {
   color: var(--subtle);
 
   font-family: var(--font-mono), monospace;
-  font-size: 9px;
-  letter-spacing: 0.1em;
+  font-size: 10px;
+  letter-spacing: 0.12em;
   text-transform: uppercase;
 }
 
-.footer-links {
+/* Navigate: plain sans links with a cyan underline that draws in on hover */
+.footer-nav {
   display: flex;
-  flex-wrap: wrap;
-  gap: 0 28px;
+  flex-direction: column;
+  align-items: flex-start;
 
-  margin-top: 6px;
+  margin-top: 10px;
+}
+
+.footer-nav a {
+  display: inline-flex;
+  align-items: center;
+  min-height: 40px;
+
+  color: #c6d0d4;
+  font-size: 16px;
+  font-weight: 500;
+  letter-spacing: -0.015em;
+  text-decoration: none;
+
+  background: linear-gradient(currentColor, currentColor) 0 calc(100% - 9px) / 0 1px no-repeat;
+
+  transition:
+    color 200ms ease,
+    background-size 280ms cubic-bezier(0.2, 0.6, 0.2, 1);
+}
+
+.footer-nav a:hover {
+  color: var(--cyan);
+  background-size: 100% 1px;
+}
+
+/* Connect: outline icon + label, muted until hovered */
+.footer-social {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+
+  margin-top: 10px;
+}
+
+.footer-social a {
+  display: inline-flex;
+  align-items: center;
+  gap: 12px;
+  min-height: 40px;
+
+  color: var(--muted);
+  font-size: 15px;
+  letter-spacing: -0.01em;
+  text-decoration: none;
+
+  transition: color 200ms ease;
+}
+
+.footer-social a svg {
+  flex: none;
+  transition: color 200ms ease;
+}
+
+.footer-social a:hover {
+  color: var(--text);
+}
+
+.footer-social a:hover svg {
+  color: var(--cyan);
 }
 
 .footer-bottom {
@@ -1571,10 +1626,10 @@ a.exposure-shot:hover {
   flex-wrap: wrap;
   align-items: center;
   justify-content: space-between;
-  gap: 0 24px;
+  gap: 4px 24px;
 
-  margin-top: clamp(32px, 4vw, 48px);
-  padding-top: 8px;
+  margin-top: clamp(36px, 4vw, 48px);
+  padding-top: 18px;
   border-top: 1px solid var(--border-soft);
 
   color: var(--subtle);
@@ -1583,22 +1638,76 @@ a.exposure-shot:hover {
   letter-spacing: 0.05em;
 }
 
-@media (max-width: 720px) {
+@media (max-width: 940px) {
   .footer-content {
-    grid-template-columns: 1fr;
-    gap: 32px;
+    grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
   }
 
-  .footer-links {
-    gap: 0 24px;
+  .footer-brand {
+    grid-column: 1 / -1;
+  }
+}
+
+@media (max-width: 720px) {
+  /* Stacked: identity, navigate, connect */
+  .footer-content {
+    grid-template-columns: minmax(0, 1fr);
+    gap: 36px;
   }
 
-  .footer-groups {
-    gap: 40px;
-  }
-
-  .footer-links-stack .social-link {
+  .footer-nav a {
     min-height: 44px;
+    font-size: 17px;
+  }
+
+  /* Social icons as a row of square buttons; Email keeps its label */
+  .footer-social {
+    flex-direction: row;
+    flex-wrap: wrap;
+    gap: 10px;
+    margin-top: 14px;
+  }
+
+  .footer-social a {
+    position: relative;
+    justify-content: center;
+    width: 44px;
+    height: 44px;
+    min-height: 44px;
+
+    border: 1px solid var(--border);
+    color: var(--muted);
+
+    transition:
+      color 200ms ease,
+      border-color 200ms ease;
+  }
+
+  .footer-social a:hover {
+    border-color: var(--cyan);
+  }
+
+  .footer-social .footer-social-label {
+    position: absolute;
+    width: 1px;
+    height: 1px;
+    overflow: hidden;
+    clip-path: inset(50%);
+    white-space: nowrap;
+  }
+
+  .footer-social a.footer-social-email {
+    width: auto;
+    padding: 0 16px;
+    gap: 10px;
+  }
+
+  .footer-social a.footer-social-email .footer-social-label {
+    position: static;
+    width: auto;
+    height: auto;
+    overflow: visible;
+    clip-path: none;
   }
 }
 
