@@ -1383,10 +1383,19 @@ button {
   line-height: 1.65;
 }
 
-/* /about: the Buenos Aires photo, uncropped, as a beat in the chronology */
-.profile-photo {
-  width: min(100%, 560px);
-  margin: clamp(36px, 4.4vw, 52px) auto 0;
+/* /about hero: intro left, Buenos Aires portrait right. The intro starts on
+   the same line as the 640px reading column below; on narrower desktops the
+   intro column narrows so the portrait still fits inside the page padding. */
+.about-hero {
+  --hero-left: max(var(--page-padding), calc(50% - 320px));
+
+  display: grid;
+  grid-template-columns: minmax(0, 640px) 290px;
+  column-gap: 48px;
+  align-items: center;
+
+  width: min(978px, calc(100% - var(--hero-left) - var(--page-padding)));
+  margin-left: var(--hero-left);
 }
 
 .profile-photo-card {
@@ -1399,6 +1408,21 @@ button {
   display: block;
   width: 100%;
   height: auto;
+}
+
+/* Stacked: portrait centred under the intro, before the first chapter */
+@media (max-width: 940px) {
+  .about-hero {
+    grid-template-columns: minmax(0, 1fr);
+    width: min(calc(100% - (var(--page-padding) * 2)), 640px);
+    margin: 0 auto;
+  }
+
+  .about-hero-photo {
+    justify-self: center;
+    width: min(76%, 300px);
+    margin-top: clamp(32px, 6vw, 44px);
+  }
 }
 
 /* Documentary-style caption, tight under the photo */
@@ -2683,10 +2707,6 @@ a.exposure-shot:hover {
   }
 
   /* Editorial photos: centred within the content column */
-  .profile-photo {
-    width: min(88%, 380px);
-    margin-top: 40px;
-  }
 
   .now-photo {
     justify-self: center;

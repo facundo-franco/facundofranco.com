@@ -42,7 +42,8 @@ function Chapter({
 export default function AboutPage() {
   return (
     <main id="main" className="profile">
-      <div className="profile-container">
+      {/* Intro left, Buenos Aires portrait right; stacks on narrow screens */}
+      <div className="about-hero">
         <header className="profile-hero">
           <p className="eyebrow reveal-load">About</p>
           <h1 className="profile-title reveal-load" style={d(80)}>
@@ -56,6 +57,24 @@ export default function AboutPage() {
             This is the short version of how I got here.
           </p>
         </header>
+
+        <figure className="about-hero-photo reveal-load" style={d(260)}>
+          <div className="profile-photo-card">
+            <Image
+              src="/images/facundo-franco-about.jpg"
+              alt="Facundo Franco standing on a city street, with white apartment buildings behind him."
+              width={1578}
+              height={1475}
+              sizes="(max-width: 940px) 300px, 290px"
+              quality={90}
+              priority
+            />
+          </div>
+          <figcaption className="profile-photo-caption">Buenos Aires, Argentina — 2026</figcaption>
+        </figure>
+      </div>
+
+      <div className="profile-container">
 
         <Chapter id="the-beginning" eyebrow="01 · The beginning" title="Growing up in Uruguay.">
           <p>
@@ -172,21 +191,6 @@ export default function AboutPage() {
           <p>An idea I&apos;d written down months earlier was still sitting in my Notes.</p>
           <p>I decided to give it a shot.</p>
         </Chapter>
-
-        {/* Where the path has led: a recent photo, between the personal story and ScoutHalo */}
-        <Reveal as="figure" className="profile-photo">
-          <div className="profile-photo-card">
-            <Image
-              src="/images/facundo-franco-about.jpg"
-              alt="Facundo Franco standing on a city street, with white apartment buildings behind him."
-              width={1578}
-              height={1475}
-              sizes="(max-width: 720px) 88vw, 560px"
-              quality={90}
-            />
-          </div>
-          <figcaption className="profile-photo-caption">Buenos Aires, Argentina — 2026</figcaption>
-        </Reveal>
 
         {/* Hand-off to the ScoutHalo build story on /building-scouthalo */}
         <Reveal as="aside" className="profile-next">
