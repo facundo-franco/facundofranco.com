@@ -1310,6 +1310,38 @@ button {
   line-height: 1.65;
 }
 
+/* /now: last-updated stamp and a wide Brickell photo between the text columns */
+.now-page-updated {
+  margin-top: 16px;
+
+  color: var(--subtle);
+
+  font-family: var(--font-mono), monospace;
+  font-size: 11px;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+}
+
+.now-page-photo {
+  width: min(calc(100% - (var(--page-padding) * 2)), 900px);
+  margin: clamp(40px, 5vw, 64px) auto 0;
+}
+
+.now-page-photo-card {
+  padding: 8px;
+  border: 1px solid var(--border);
+  background: var(--surface);
+}
+
+.now-page-photo-card img {
+  width: 100%;
+  height: auto;
+}
+
+.profile-next .work-actions {
+  padding-top: 10px;
+}
+
 .profile-next .product-link {
   margin-top: 10px;
 }
@@ -1890,6 +1922,10 @@ a.exposure-shot:hover {
 
 .now-lead {
   grid-area: lead;
+}
+
+.now-more {
+  margin-top: clamp(14px, 1.6vw, 18px);
 }
 
 .now-copy {

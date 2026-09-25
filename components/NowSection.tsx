@@ -1,4 +1,5 @@
 import Image from "next/image";
+import Link from "next/link";
 import SectionHeader from "./SectionHeader";
 
 // The next stage, as a short roadmap. Plans and direction, not results.
@@ -80,6 +81,13 @@ export default function NowSection() {
                 </li>
               ))}
             </ol>
+          </div>
+
+          {/* The full, living version of this section */}
+          <div className="now-more">
+            <Link href="/now" className="product-link">
+              What I&apos;m doing now →
+            </Link>
           </div>
         </SectionHeader>
       </div>

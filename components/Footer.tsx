@@ -7,18 +7,9 @@ import {
   IconMail,
 } from "@tabler/icons-react";
 import type { ComponentType } from "react";
-import { CONNECT, EMAIL, SCOUTHALO_URL } from "@/lib/site";
+import { CONNECT, EMAIL, NAV, SCOUTHALO_URL } from "@/lib/site";
 
 type IconProps = { size?: number; stroke?: number; "aria-hidden"?: boolean };
-
-// Site pages, plus the ScoutHalo product site.
-const FOOTER_NAV = [
-  { label: "ScoutHalo", href: SCOUTHALO_URL, external: true },
-  { label: "Building ScoutHalo", href: "/story" },
-  { label: "About", href: "/about" },
-  { label: "Now", href: "/#now" },
-  { label: "Exposure", href: "/exposure" },
-] as const;
 
 const hrefOf = (label: string) => CONNECT.find((c) => c.label === label)?.href ?? "";
 
@@ -57,8 +48,9 @@ export default function Footer() {
           <div className="footer-group">
             <p className="footer-label">Navigate</p>
             <nav className="footer-nav" aria-label="Site">
-              {FOOTER_NAV.map((n) =>
-                "external" in n ? (
+              {/* Same destinations as the header */}
+              {NAV.map((n) =>
+                n.external ? (
                   <a key={n.href} href={n.href} target="_blank" rel="noopener noreferrer">
                     {n.label}
                   </a>

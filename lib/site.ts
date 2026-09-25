@@ -15,15 +15,16 @@ export const IDS = {
   scouthalo: "https://scouthalo.com/#organization",
 } as const;
 
-// Nav items: home-page sections plus the /story and /about pages.
-export const NAV = [
-  { label: "ScoutHalo", href: "/#scouthalo" },
-  { label: "Story", href: "/story" },
-  { label: "About", href: "/about" },
-  { label: "Now", href: "/#now" },
-] as const;
-
 export const SCOUTHALO_URL = "https://scouthalo.com";
+
+// Primary destinations, shared by the header and footer. ScoutHalo is the
+// external product site; the rest are full pages (home sections preview them).
+export const NAV = [
+  { label: "ScoutHalo", href: SCOUTHALO_URL, external: true },
+  { label: "Story", href: "/story", external: false },
+  { label: "About", href: "/about", external: false },
+  { label: "Now", href: "/now", external: false },
+] as const;
 
 // The few ways to reach me that the site actually surfaces.
 export const CONNECT = [

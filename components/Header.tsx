@@ -54,14 +54,24 @@ export default function Header() {
         <ul className="nav-links" id="primary-nav">
           {NAV.map((item) => (
             <li key={item.href}>
-              {/* Section links don't change the route, so close the menu on click. */}
-              <Link
-                href={item.href}
-                aria-current={isActive(item.href) ? "page" : undefined}
-                onClick={() => setOpen(false)}
-              >
-                {item.label}
-              </Link>
+              {item.external ? (
+                <a
+                  href={item.href}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  onClick={() => setOpen(false)}
+                >
+                  {item.label}
+                </a>
+              ) : (
+                <Link
+                  href={item.href}
+                  aria-current={isActive(item.href) ? "page" : undefined}
+                  onClick={() => setOpen(false)}
+                >
+                  {item.label}
+                </Link>
+              )}
             </li>
           ))}
         </ul>
