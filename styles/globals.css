@@ -1310,6 +1310,36 @@ button {
   line-height: 1.65;
 }
 
+/* /about: the Buenos Aires photo, uncropped, as a beat in the chronology */
+.profile-photo {
+  width: min(100%, 560px);
+  margin: clamp(36px, 4.4vw, 52px) auto 0;
+}
+
+.profile-photo-card {
+  padding: 8px;
+  border: 1px solid var(--border);
+  background: var(--surface);
+}
+
+.profile-photo-card img {
+  display: block;
+  width: 100%;
+  height: auto;
+}
+
+/* Documentary-style caption, tight under the photo */
+.profile-photo-caption {
+  margin-top: 10px;
+
+  color: var(--muted);
+
+  font-family: var(--font-mono), monospace;
+  font-size: 10px;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+}
+
 /* /now: last-updated stamp and a wide Brickell photo between the text columns */
 .now-page-updated {
   margin-top: 16px;
@@ -1772,109 +1802,46 @@ a.exposure-shot:hover {
   color: var(--text);
 }
 
-/* About — label + photo | biography | editorial facts, on one grid */
+/* About — biography | editorial facts, inside the SectionHeader frame */
 .section-compact {
   padding: clamp(56px, 6vw, 84px) 0;
 }
 
-.about-layout {
+.about-body {
   display: grid;
-  /* Wider first column than other sections so the photo has real presence */
-  grid-template-columns: clamp(250px, 21vw, 272px) minmax(0, 1fr) clamp(200px, 20vw, 260px);
-  grid-template-areas:
-    "label title title"
-    "photo bio   meta"
-    "photo cta   meta";
-  grid-template-rows: auto auto 1fr;
-  column-gap: clamp(30px, 4vw, 56px);
-  align-items: start;
-}
+  grid-template-columns: minmax(0, 1fr) clamp(220px, 22vw, 280px);
+  column-gap: clamp(36px, 5vw, 72px);
+  align-items: stretch;
 
-.about-label {
-  grid-area: label;
-  /* Same first-line alignment as SectionHeader's eyebrow */
-  margin-top: calc(clamp(38px, 5vw, 68px) * 0.51 - 8px);
-}
-
-.about-title {
-  grid-area: title;
-  margin-bottom: clamp(22px, 2.6vw, 28px);
-}
-
-/* Sits a little below the bio's first line, clear of the section label */
-.about-photo {
-  grid-area: photo;
-  margin-top: 20px;
-}
-
-.about-photo-card {
-  padding: 8px;
-  border: 1px solid var(--border);
-  background: var(--surface);
-}
-
-/* Documentary-style caption, tight under the photo */
-.about-photo-caption {
-  margin-top: 10px;
-
-  color: var(--muted);
-
-  font-family: var(--font-mono), monospace;
-  font-size: 10px;
-  letter-spacing: 0.1em;
-  text-transform: uppercase;
-}
-
-/* Portrait crop of the (wider) original, kept on the face */
-.about-photo-frame {
-  position: relative;
-  aspect-ratio: 4 / 5;
-  overflow: hidden;
-
-  background: var(--surface-raised);
-}
-
-.about-photo-frame img {
-  object-fit: cover;
-  object-position: 47% 45%;
-  /* Tighter framing on face and shoulders; display-only, file untouched */
-  transform: scale(1.3);
-  transform-origin: 48% 62%;
+  margin-top: clamp(22px, 2.6vw, 28px);
 }
 
 .about-bio {
-  grid-area: bio;
   max-width: 580px;
 }
 
 /* Opening line reads a step above the body copy */
-.about-layout .story p:first-child {
+.about-bio .story p:first-child {
   font-size: clamp(18px, 1.35vw, 19px);
   font-weight: 500;
   letter-spacing: -0.02em;
 }
 
+.about-bio .story {
+  margin-top: 0;
+}
+
 /* Current snapshot: separated from the story by a hairline rule */
 .about-meta {
-  grid-area: meta;
-  align-self: stretch;
-
   padding-left: clamp(22px, 2.2vw, 32px);
   border-left: 1px solid var(--border-soft);
 }
 
 /* Closing action for the biography, set off by a short rule */
 .about-cta {
-  grid-area: cta;
-  max-width: 580px;
-
   margin-top: 18px;
   padding-top: 4px;
   border-top: 1px solid var(--border-soft);
-}
-
-.about-layout .story {
-  margin-top: 0;
 }
 
 .about-facts {
@@ -2344,36 +2311,14 @@ a.exposure-shot:hover {
     margin-top: 0;
   }
 
-  /* One column: label, title, photo, bio, facts under a hairline, then CTA */
-  .about-layout {
+  /* One column: bio and CTA, then facts under a hairline */
+  .about-body {
     grid-template-columns: minmax(0, 1fr);
-    grid-template-areas:
-      "label"
-      "title"
-      "photo"
-      "bio"
-      "meta"
-      "cta";
-    grid-template-rows: none;
-  }
-
-  .about-label {
-    margin-top: 0;
-  }
-
-  .about-title {
-    margin-top: 18px;
-    margin-bottom: 0;
-  }
-
-  .about-photo {
-    width: clamp(200px, 65%, 360px);
-    margin-top: 28px;
+    margin-top: 26px;
   }
 
   .about-bio {
     max-width: none;
-    margin-top: 30px;
   }
 
   .about-meta {
@@ -2385,7 +2330,6 @@ a.exposure-shot:hover {
   }
 
   .about-cta {
-    max-width: none;
     margin-top: 14px;
     padding-top: 0;
     border-top: 0;
@@ -2413,11 +2357,6 @@ a.exposure-shot:hover {
     padding: 48px 0;
   }
 
-  .about-photo {
-    margin-top: 22px;
-  }
-
-  .about-bio,
   .about-meta {
     margin-top: 24px;
   }
@@ -2585,9 +2524,9 @@ a.exposure-shot:hover {
   }
 
   /* Editorial photos: centred within the content column */
-  .about-photo {
-    justify-self: center;
-    width: min(78%, 320px);
+  .profile-photo {
+    width: min(88%, 380px);
+    margin-top: 40px;
   }
 
   .now-photo {

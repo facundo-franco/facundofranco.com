@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import type { CSSProperties, ReactNode } from "react";
+import Image from "next/image";
 import Link from "next/link";
 import Reveal from "@/components/Reveal";
 import { pageMetadata } from "@/lib/metadata";
@@ -170,6 +171,21 @@ export default function AboutPage() {
           <p>An idea I&apos;d written down months earlier was still sitting in my Notes.</p>
           <p>I decided to give it a shot.</p>
         </Chapter>
+
+        {/* Where the path has led: a recent photo, between the personal story and ScoutHalo */}
+        <Reveal as="figure" className="profile-photo">
+          <div className="profile-photo-card">
+            <Image
+              src="/images/facundo-franco-about.jpg"
+              alt="Facundo Franco standing on a city street, with white apartment buildings behind him."
+              width={1578}
+              height={1475}
+              sizes="(max-width: 720px) 88vw, 560px"
+              quality={90}
+            />
+          </div>
+          <figcaption className="profile-photo-caption">Buenos Aires, Argentina — 2026</figcaption>
+        </Reveal>
 
         {/* Hand-off to the ScoutHalo build story on /story */}
         <Reveal as="aside" className="profile-next">
