@@ -4,11 +4,12 @@ import Image from "next/image";
 import Link from "next/link";
 import Reveal from "@/components/Reveal";
 import { pageMetadata } from "@/lib/metadata";
+import { SCOUTHALO_URL } from "@/lib/site";
 
 export const metadata: Metadata = pageMetadata({
-  title: "About",
+  title: "About Facundo Franco — Founder of ScoutHalo",
   description:
-    "The path from growing up in Uruguay to operating businesses and eventually building ScoutHalo.",
+    "Facundo Franco's path from growing up in Punta del Este, Uruguay, through e-commerce and operations, to founding ScoutHalo.",
   path: "/about",
   ogType: "profile",
 });
@@ -40,7 +41,7 @@ function Chapter({
 
 export default function AboutPage() {
   return (
-    <main className="profile">
+    <main id="main" className="profile">
       <div className="profile-container">
         <header className="profile-hero">
           <p className="eyebrow reveal-load">About</p>
@@ -187,16 +188,26 @@ export default function AboutPage() {
           <figcaption className="profile-photo-caption">Buenos Aires, Argentina — 2026</figcaption>
         </Reveal>
 
-        {/* Hand-off to the ScoutHalo build story on /story */}
+        {/* Hand-off to the ScoutHalo build story on /building-scouthalo */}
         <Reveal as="aside" className="profile-next">
           <p className="eyebrow">Next</p>
           <h2 className="profile-heading">Building ScoutHalo.</h2>
           <p className="profile-next-text">
             How that idea in my Notes became ScoutNYC, and eventually ScoutHalo.
           </p>
-          <Link href="/story" className="product-link">
-            Building ScoutHalo →
-          </Link>
+          <div className="work-actions">
+            <Link href="/building-scouthalo" className="product-link">
+              Building ScoutHalo →
+            </Link>
+            <a
+              href={SCOUTHALO_URL}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="product-link product-link-quiet"
+            >
+              Visit ScoutHalo ↗
+            </a>
+          </div>
         </Reveal>
       </div>
     </main>

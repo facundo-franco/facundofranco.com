@@ -7,9 +7,9 @@ import { pageMetadata } from "@/lib/metadata";
 import { SCOUTHALO_URL } from "@/lib/site";
 
 export const metadata: Metadata = pageMetadata({
-  title: "Now",
+  title: "Now — Facundo Franco",
   description:
-    "What I'm working on now: raising capital, building the early ScoutHalo team, getting into the market, and building the next stage from Miami.",
+    "What Facundo Franco is working on now: raising capital for ScoutHalo, building the early team, reaching production teams, and preparing for the next stage in Miami.",
   path: "/now",
 });
 
@@ -42,7 +42,7 @@ function Priority({
 
 export default function NowPage() {
   return (
-    <main className="profile">
+    <main id="main" className="profile">
       <div className="profile-container">
         <header className="profile-hero">
           <p className="eyebrow reveal-load">Now</p>
@@ -103,13 +103,14 @@ export default function NowPage() {
       {/* The destination, shown wider than the reading column */}
       <Reveal as="figure" className="now-page-photo">
         <div className="now-page-photo-card">
-          {/* Original JPEG, served as-is so it stays sharp at this size. */}
+          {/* Full frame (no crop), so width-based variants stay sharp. */}
           <Image
             src="/images/brickell-miami.jpg"
             alt="Brickell, Miami at dusk: a street lined with glass towers and painted murals, traffic heading toward the skyline."
             width={2000}
             height={1333}
-            unoptimized
+            sizes="(max-width: 940px) 92vw, 884px"
+            quality={90}
           />
         </div>
         <figcaption className="now-photo-caption">
@@ -130,8 +131,8 @@ export default function NowPage() {
             <a href={SCOUTHALO_URL} target="_blank" rel="noopener noreferrer" className="product-link">
               Explore ScoutHalo ↗
             </a>
-            <Link href="/story" className="product-link product-link-quiet">
-              How I built ScoutHalo →
+            <Link href="/building-scouthalo" className="product-link product-link-quiet">
+              Building ScoutHalo →
             </Link>
           </div>
         </Reveal>

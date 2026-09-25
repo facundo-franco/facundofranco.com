@@ -50,14 +50,15 @@ export default function NowSection() {
             <figure className="now-photo">
               <div className="now-photo-card">
                 <div className="now-photo-frame">
-                  {/* Original JPEG, served as-is: the cover crop needs the full source
-                      height, which resized variants would upscale. */}
+                  {/* Square cover crop of a 3:2 original: the variant must be ~1.5× the
+                      frame's width, or the crop upscales it. sizes says so. */}
                   <Image
                     src="/images/brickell-miami.jpg"
                     alt="Brickell, Miami at dusk: a street lined with glass towers and painted murals, traffic heading toward the skyline."
                     width={2000}
                     height={1333}
-                    unoptimized
+                    sizes="(max-width: 720px) 106vw, 680px"
+                    quality={90}
                   />
                 </div>
               </div>

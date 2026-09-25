@@ -30,7 +30,7 @@ export default function Hero() {
             <MagneticButton href={SCOUTHALO_URL} className="button button-primary">
               Explore ScoutHalo ↗
             </MagneticButton>
-            <Link href="/story" className="story-cta hero-story">
+            <Link href="/building-scouthalo" className="story-cta hero-story">
               <span className="story-cta-label">Building ScoutHalo</span>
               <span className="story-cta-arrow">→</span>
             </Link>

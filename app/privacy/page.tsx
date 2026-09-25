@@ -5,7 +5,7 @@ import { pageMetadata } from "@/lib/metadata";
 import { EMAIL } from "@/lib/site";
 
 export const metadata: Metadata = pageMetadata({
-  title: "Privacy",
+  title: "Privacy — Facundo Franco",
   description:
     "How facundofranco.com handles data: no accounts, forms, or cookies — just privacy-friendly analytics and email.",
   path: "/privacy",
@@ -42,7 +42,7 @@ const mail = <a href={`mailto:${EMAIL}`}>{EMAIL}</a>;
 
 export default function PrivacyPage() {
   return (
-    <main className="profile">
+    <main id="main" className="profile">
       <div className="profile-container">
         <header className="profile-hero">
           <p className="eyebrow reveal-load">Legal</p>

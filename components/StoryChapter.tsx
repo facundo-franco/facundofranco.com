@@ -12,7 +12,7 @@ type ChapterFigure = {
   caption?: string;
 };
 
-// One chapter of the /story page: copy left, optional framed figure right.
+// One chapter of the /building-scouthalo page: copy left, optional framed figure right.
 // Chapters stack as sections, so new parts can be appended without layout work.
 // `aside` takes a custom right-column visual (e.g. a carousel) in place of `figure`.
 export default function StoryChapter({

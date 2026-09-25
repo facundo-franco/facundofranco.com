@@ -7,18 +7,25 @@ import {
   IconMail,
 } from "@tabler/icons-react";
 import type { ComponentType } from "react";
-import { CONNECT, EMAIL, NAV, SCOUTHALO_URL } from "@/lib/site";
+import { EMAIL, NAV, SCOUTHALO_URL, SOCIALS } from "@/lib/site";
 
 type IconProps = { size?: number; stroke?: number; "aria-hidden"?: boolean };
 
-const hrefOf = (label: string) => CONNECT.find((c) => c.label === label)?.href ?? "";
+// The header's destinations, plus Exposure (footer only), placed before Connect.
+const FOOTER_NAV = [
+  ...NAV.filter((n) => n.kind !== "connect"),
+  { label: "Exposure", href: "/exposure", kind: "page" },
+  ...NAV.filter((n) => n.kind === "connect"),
+] as const;
+
+const hrefOf = (label: string) => SOCIALS.find((c) => c.label === label)?.href ?? "";
 
 // Profiles and email, each with its outline icon.
 const FOOTER_SOCIALS: { label: string; href: string; Icon: ComponentType<IconProps> }[] = [
   { label: "X", href: hrefOf("X"), Icon: IconBrandX },
   { label: "LinkedIn", href: hrefOf("LinkedIn"), Icon: IconBrandLinkedin },
-  { label: "Instagram", href: "https://www.instagram.com/facundofranco_1", Icon: IconBrandInstagram },
-  { label: "YouTube", href: "https://www.youtube.com/@facundofrancon", Icon: IconBrandYoutube },
+  { label: "Instagram", href: hrefOf("Instagram"), Icon: IconBrandInstagram },
+  { label: "YouTube", href: hrefOf("YouTube"), Icon: IconBrandYoutube },
   { label: "Email", href: `mailto:${EMAIL}`, Icon: IconMail },
 ];
 
@@ -32,7 +39,7 @@ export default function Footer() {
               <span className="brand-mark" aria-hidden="true">
                 FF
               </span>
-              <h3>Facundo Franco</h3>
+              <p className="footer-name">Facundo Franco</p>
             </div>
             <p>
               Founder of{" "}
@@ -48,8 +55,8 @@ export default function Footer() {
           <div className="footer-group">
             <p className="footer-label">Navigate</p>
             <nav className="footer-nav" aria-label="Site">
-              {/* Same destinations as the header */}
-              {NAV.map((n) =>
+              {/* Same destinations as the header, plus Exposure */}
+              {FOOTER_NAV.map((n) =>
                 n.kind === "page" ? (
                   <Link key={n.href} href={n.href}>
                     {n.label}

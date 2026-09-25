@@ -29,6 +29,7 @@ components/      shared UI + small client components (Reveal, Portrait, Header�
 content/writing/ articles as .mdx (drafts gitignored)
 lib/             site constants, schema (JSON-LD), metadata, writing loader
 public/images/   images (portrait)
+scripts/         og-cards.cjs — renders the social preview cards
 styles/          globals.css — the design system
 ```
 
@@ -88,13 +89,21 @@ Unfinished drafts are also gitignored so they never reach the public repo.
 
 ## SEO
 
-- Metadata via the Next.js Metadata API (`lib/metadata.ts`).
-- Structured data via reusable helpers (`lib/schema.ts`): one canonical
-  `#person` and ScoutHalo `#organization`.
+- Metadata via the Next.js Metadata API (`lib/metadata.ts`): each page passes
+  its full title, description and path; canonical, Open Graph and X/Twitter
+  tags follow from that.
+- Social preview cards are static 1200×630 JPEGs next to each route
+  (`opengraph-image.jpg` + `twitter-image.jpg`, with `.alt.txt`), rendered in
+  the site's own fonts by `scripts/og-cards.cjs`. Articles generate theirs.
+- Structured data via reusable helpers (`lib/schema.ts`): `WebSite`, one
+  canonical `#person` and the ScoutHalo `#organization` on the home page.
+  `sameAs` lists only the profiles the site links to (`SOCIALS` in `lib/site.ts`).
 - `sitemap.xml` and `robots.txt` are generated (`app/sitemap.ts`, `app/robots.ts`).
-- The home page (hero, ScoutHalo, About, Now) plus `/story`, `/about`, `/now`, `/exposure`, `/privacy` and any
-  published article pages. Old URLs redirect in `next.config.mjs`
-  (`/about.html → /about`; `/writing`, `/articles → /`).
+- The home page (hero, About, Building ScoutHalo, Now) plus `/about`,
+  `/building-scouthalo`, `/now`, `/exposure`, `/privacy` and any published
+  article pages. Old URLs redirect in `next.config.mjs` (`/story →
+  /building-scouthalo`, `/about.html → /about`; `/writing`, `/articles → /`).
+  URLs have no trailing slash (`/about/` redirects to `/about`).
 
 ## Deployment
 

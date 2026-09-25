@@ -123,6 +123,36 @@ button {
   border-radius: 1px;
 }
 
+/* Keyboard-only: appears on first Tab, above the fixed header */
+.skip-link {
+  position: fixed;
+  top: 12px;
+  left: 12px;
+  z-index: 1000;
+
+  padding: 12px 16px;
+
+  background: var(--surface);
+  border: 1px solid var(--cyan);
+  color: var(--text);
+
+  font-family: var(--font-mono), monospace;
+  font-size: 12px;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  text-decoration: none;
+
+  opacity: 0;
+  pointer-events: none;
+  transform: translateY(-200%);
+}
+
+.skip-link:focus-visible {
+  opacity: 1;
+  pointer-events: auto;
+  transform: none;
+}
+
 /* --------------------------------------------------------------------------
    Motion system
    -------------------------------------------------------------------------- */
@@ -338,7 +368,7 @@ button {
   margin-top: calc(clamp(38px, 5vw, 68px) * 0.51 - 8px);
 }
 
-/* "02 · Building ScoutHalo" is longer than the other labels: one line, as on /story */
+/* "02 · Building ScoutHalo" is longer than the other labels: one line, as on /building-scouthalo */
 #scouthalo .section-header > .eyebrow {
   white-space: nowrap;
 }
@@ -1019,7 +1049,7 @@ button {
 }
 
 /* --------------------------------------------------------------------------
-   Framed screenshot preview (PostPreview)
+   Framed screenshot preview (story figures and carousel)
    -------------------------------------------------------------------------- */
 .post-preview-frame {
   position: relative;
@@ -1051,7 +1081,7 @@ button {
 }
 
 /* --------------------------------------------------------------------------
-   Story (/story) — hero, then chapters: copy left, framed figure right
+   Building ScoutHalo (/building-scouthalo) — hero, then chapters: copy left, framed figure right
    -------------------------------------------------------------------------- */
 .story-hero {
   padding: clamp(40px, 6vw, 88px) 0 clamp(40px, 5vw, 64px);
@@ -1667,9 +1697,15 @@ a.exposure-shot:hover {
   flex: none;
 }
 
-.footer-brand h3 {
+/* The name is a label, not a heading: keeps page outlines clean */
+.footer-brand .footer-name {
+  margin: 0;
+  max-width: none;
+
+  color: var(--text);
   font-size: 19px;
   font-weight: 600;
+  line-height: 1.2;
   letter-spacing: -0.025em;
 }
 
@@ -1686,7 +1722,11 @@ a.exposure-shot:hover {
   padding: 13px 0;
 
   color: var(--text);
-  text-decoration: none;
+  /* A faint underline marks it as a link inside the sentence, not by colour alone */
+  text-decoration: underline;
+  text-decoration-color: rgba(99, 217, 232, 0.35);
+  text-decoration-thickness: 1px;
+  text-underline-offset: 3px;
 
   transition: color 200ms ease;
 }
@@ -2683,6 +2723,19 @@ a.exposure-shot:hover {
   letter-spacing: -0.05em;
 }
 
-.notfound .product-link {
+.notfound-text {
+  max-width: 520px;
   margin-top: 18px;
+
+  color: var(--muted);
+  font-size: clamp(17px, 1.4vw, 19px);
+  line-height: 1.65;
+}
+
+.notfound-links {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 4px 28px;
+
+  margin-top: 22px;
 }

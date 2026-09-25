@@ -40,6 +40,9 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
           {`document.documentElement.className += " js"`}
         </Script>
 
+        <a href="#main" className="skip-link">
+          Skip to content
+        </a>
         <ScrollProgress />
         <Header />
         {children}

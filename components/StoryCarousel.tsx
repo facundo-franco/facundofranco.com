@@ -59,7 +59,6 @@ export default function StoryCarousel({
     <figure
       className="chapter-figure story-carousel"
       style={{ "--ratio": first.width / first.height } as CSSProperties}
-      role="region"
       aria-roledescription="carousel"
       aria-label={label}
       tabIndex={0}
@@ -117,12 +116,13 @@ export default function StoryCarousel({
         </div>
       </div>
 
-      <div className="story-carousel-meta">
-        {caption ? <figcaption className="chapter-caption">{caption}</figcaption> : <span />}
+      {/* The whole row is the caption, so <figcaption> stays a direct child of <figure>. */}
+      <figcaption className="story-carousel-meta">
+        {caption ? <span className="chapter-caption">{caption}</span> : <span />}
         <span className="story-carousel-count" aria-live="polite">
           {index + 1} / {slides.length}
         </span>
-      </div>
+      </figcaption>
     </figure>
   );
 }

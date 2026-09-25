@@ -26,7 +26,7 @@ export async function generateMetadata({
   const a = getArticleBySlug(slug);
   if (!a) return {};
   const meta = pageMetadata({
-    title: a.title,
+    title: `${a.title} — Facundo Franco`,
     description: a.description,
     path: `/writing/${a.slug}`,
     ogType: "article",
@@ -42,7 +42,7 @@ export default async function ArticlePage({ params }: { params: Promise<{ slug: 
   if (a.draft && process.env.NODE_ENV === "production") notFound();
 
   return (
-    <main>
+    <main id="main">
       <article className="article">
         <div className="article-container">
           {!a.draft ? <JsonLd data={articleGraph(a)} /> : null}

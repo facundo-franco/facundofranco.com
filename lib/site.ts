@@ -5,7 +5,7 @@ export const SITE = {
   name: "Facundo Franco",
   title: "Facundo Franco — Founder of ScoutHalo",
   description:
-    "Facundo Franco is the founder of ScoutHalo, building location intelligence for production teams.",
+    "Facundo Franco is the founder of ScoutHalo, building location intelligence for production teams. Building from Uruguay, with Miami next.",
   ogImage: "/images/facundo-franco-founder-scouthalo.png",
 } as const;
 
@@ -23,7 +23,7 @@ export const SCOUTHALO_URL = "https://scouthalo.com";
 export const NAV = [
   { label: "ScoutHalo", href: SCOUTHALO_URL, kind: "external" },
   { label: "About", href: "/about", kind: "page" },
-  { label: "Building ScoutHalo", href: "/story", kind: "page" },
+  { label: "Building ScoutHalo", href: "/building-scouthalo", kind: "page" },
   { label: "Now", href: "/now", kind: "page" },
   { label: "Connect", href: "#contact", kind: "connect" },
 ] as const;
@@ -36,14 +36,13 @@ export const CONNECT = [
 
 export const EMAIL = "hello@scouthalo.com";
 
-// Every public profile — used only for structured data (sameAs), not shown on the page.
+// Public profiles linked from the site (footer Connect). Also the Person's
+// sameAs in structured data — only profiles the site itself shows.
 export const SOCIALS = [
-  { label: "LinkedIn", handle: "/in/facundo-franco", href: "https://www.linkedin.com/in/facundo-franco" },
-  { label: "X", handle: "@facundofranco_", href: "https://x.com/facundofranco_" },
-  { label: "YouTube", handle: "@FacundoFrancoN", href: "https://www.youtube.com/@FacundoFrancoN" },
-  { label: "Instagram", handle: "@facundofranco_1", href: "https://www.instagram.com/facundofranco_1" },
-  { label: "TikTok", handle: "@facundofranco_1", href: "https://www.tiktok.com/@facundofranco_1" },
-  { label: "Facebook", handle: "/facundofrancon", href: "https://www.facebook.com/facundofrancon" },
+  { label: "X", href: "https://x.com/facundofranco_" },
+  { label: "LinkedIn", href: "https://www.linkedin.com/in/facundo-franco" },
+  { label: "Instagram", href: "https://www.instagram.com/facundofranco_1" },
+  { label: "YouTube", href: "https://www.youtube.com/@facundofrancon" },
 ] as const;
 
 export const SAME_AS: string[] = SOCIALS.map((s) => s.href);

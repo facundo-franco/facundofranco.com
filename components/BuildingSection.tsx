@@ -3,7 +3,7 @@ import Link from "next/link";
 import { SCOUTHALO_URL } from "@/lib/site";
 import SectionHeader from "./SectionHeader";
 
-// An editorial way into /story: the hook, a short origin, and the path from
+// An editorial way into /building-scouthalo: the hook, a short origin, and the path from
 // note to product. Stage and plans live in the Now section.
 export default function BuildingSection() {
   return (
@@ -58,7 +58,7 @@ export default function BuildingSection() {
             </ol>
 
             <div className="origin-actions">
-              <Link href="/story" className="story-cta">
+              <Link href="/building-scouthalo" className="story-cta">
                 <span className="story-cta-label">Read the story</span>
                 <span className="story-cta-arrow">→</span>
               </Link>

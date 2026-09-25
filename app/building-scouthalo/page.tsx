@@ -8,10 +8,10 @@ import { pageMetadata } from "@/lib/metadata";
 import { SCOUTHALO_URL } from "@/lib/site";
 
 export const metadata: Metadata = pageMetadata({
-  title: "Building ScoutHalo",
+  title: "Building ScoutHalo — From an Idea to Location Intelligence",
   description:
-    "How an idea sitting in my Notes turned into ScoutHalo, the company I'm building today.",
-  path: "/story",
+    "How a note in Facundo Franco's phone became ScoutNYC, and then ScoutHalo: a location intelligence platform for production teams.",
+  path: "/building-scouthalo",
   ogType: "article",
 });
 
@@ -44,10 +44,10 @@ const d = (ms: number) => ({ "--reveal-delay": `${ms}ms` }) as CSSProperties;
 
 export default function StoryPage() {
   return (
-    <main>
+    <main id="main">
       <header className="story-hero">
         <div className="container">
-          <p className="eyebrow reveal-load">The story</p>
+          <p className="eyebrow reveal-load">ScoutHalo</p>
           <h1 className="story-hero-title reveal-load" style={d(80)}>
             Building ScoutHalo.
           </h1>

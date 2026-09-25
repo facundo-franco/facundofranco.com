@@ -2,12 +2,14 @@
 
 import Link from "next/link";
 import { usePathname } from "next/navigation";
-import { useEffect, useState } from "react";
+import { useEffect, useRef, useState } from "react";
+import type { FocusEvent } from "react";
 import { NAV } from "@/lib/site";
 
 export default function Header() {
   const [open, setOpen] = useState(false);
   const pathname = usePathname();
+  const toggleRef = useRef<HTMLButtonElement>(null);
 
   // Close the mobile menu whenever the route changes.
   useEffect(() => {
@@ -15,8 +17,13 @@ export default function Header() {
   }, [pathname]);
 
   useEffect(() => {
+    // Escape closes the menu; if focus was inside it, hand focus back to the
+    // toggle so keyboard users aren't dropped onto <body>.
     const onKey = (e: KeyboardEvent) => {
-      if (e.key === "Escape") setOpen(false);
+      if (e.key !== "Escape") return;
+      const header = toggleRef.current?.closest("header");
+      if (header?.contains(document.activeElement)) toggleRef.current?.focus();
+      setOpen(false);
     };
     const mq = window.matchMedia("(min-width: 721px)");
     const onMq = (e: MediaQueryListEvent) => {
@@ -32,15 +39,27 @@ export default function Header() {
 
   const isActive = (href: string) => pathname === href || pathname.startsWith(`${href}/`);
 
+  // Tabbing out of the header closes the menu instead of leaving it over the page.
+  // Only when focus lands on something else: a null relatedTarget can be a click
+  // on a link that doesn't take focus (Safari), which must still go through.
+  const onBlur = (e: FocusEvent<HTMLElement>) => {
+    const next = e.relatedTarget as Node | null;
+    if (open && next && !e.currentTarget.contains(next)) setOpen(false);
+  };
+
   return (
-    <header className={`site-header${open ? " nav-open" : ""}`}>
+    <header className={`site-header${open ? " nav-open" : ""}`} onBlur={onBlur}>
       <nav className="nav container" aria-label="Main navigation">
-        <Link href="/" className="brand" aria-label="Facundo Franco home">
-          <span className="brand-mark">FF</span>
+        {/* Accessible name is the visible name; the monogram is decorative */}
+        <Link href="/" className="brand">
+          <span className="brand-mark" aria-hidden="true">
+            FF
+          </span>
           <span className="brand-name">Facundo Franco</span>
         </Link>
 
         <button
+          ref={toggleRef}
           className="nav-toggle icon-button"
           type="button"
           aria-expanded={open}

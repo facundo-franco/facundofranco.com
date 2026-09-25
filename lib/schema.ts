@@ -1,6 +1,6 @@
 // Reusable JSON-LD builders. One canonical Person, one ScoutHalo Organization,
 // referenced by @id, never duplicated by hand.
-import { IDS, SITE, SAME_AS } from "./site";
+import { IDS, SAME_AS, SCOUTHALO_URL, SITE } from "./site";
 import type { Article } from "./writing";
 
 type Node = Record<string, unknown>;
@@ -18,14 +18,9 @@ export function personNode(): Node {
     image: SITE.url + SITE.ogImage,
     jobTitle: "Founder",
     description: "Founder of ScoutHalo, building location intelligence for production teams.",
+    // ScoutHalo's side of the relationship is Organization.founder (below).
     worksFor: { "@id": IDS.scouthalo },
-    founderOf: { "@id": IDS.scouthalo },
-    knowsAbout: [
-      "Location Intelligence",
-      "Production Location Scouting",
-      "Artificial Intelligence",
-      "E-commerce",
-    ],
+    knowsAbout: ["Location intelligence", "E-commerce"],
     sameAs: SAME_AS,
   };
 }
@@ -35,7 +30,7 @@ export function organizationNode(): Node {
     "@type": "Organization",
     "@id": IDS.scouthalo,
     name: "ScoutHalo",
-    url: "https://scouthalo.com",
+    url: SCOUTHALO_URL,
     description: "Location intelligence for production teams.",
     founder: personRef(),
   };
@@ -47,8 +42,10 @@ export function websiteNode(): Node {
     "@id": IDS.website,
     url: `${SITE.url}/`,
     name: SITE.name,
+    description: SITE.description,
     inLanguage: "en",
     publisher: personRef(),
+    about: personRef(),
   };
 }
 

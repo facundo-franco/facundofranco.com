@@ -4,6 +4,9 @@ const nextConfig = {
 
   images: {
     formats: ["image/avif", "image/webp"],
+    // Default steps plus 1440/1680, so retina phones and laptops aren't
+    // bumped from 1200 straight to a 1920-wide photo.
+    deviceSizes: [640, 750, 828, 1080, 1200, 1440, 1680, 1920, 2048, 3840],
     qualities: [75, 90],
   },
 
@@ -14,6 +17,8 @@ const nextConfig = {
       { source: "/favicon.ico", destination: "/icon.svg", permanent: false },
       { source: "/index.html", destination: "/", permanent: true },
       { source: "/about.html", destination: "/about", permanent: true },
+      // The ScoutHalo build story moved from /story to its descriptive URL.
+      { source: "/story", destination: "/building-scouthalo", permanent: true },
       // Writing is hidden for now; old writing URLs go home. Temporary, so a
       // writing index can come back later without cached redirects in the way.
       { source: "/articles", destination: "/", permanent: false },

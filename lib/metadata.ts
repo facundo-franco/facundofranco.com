@@ -23,18 +23,17 @@ export const baseMetadata: Metadata = {
     locale: "en_US",
     url: `${SITE.url}/`,
     title: SITE.title,
-    description: "Founder of ScoutHalo, building location intelligence for production teams.",
-    // og:image comes from the file-based opengraph-image routes (branded card).
+    description: SITE.description,
   },
   twitter: {
     card: "summary_large_image",
     title: SITE.title,
-    description: "Founder of ScoutHalo, building location intelligence for production teams.",
-    // twitter:image falls back to og:image (the generated card).
+    description: SITE.description,
   },
 };
 
 type PageMetaInput = {
+  /** Full page title, used as-is (no template) for <title>, og:title and twitter:title. */
   title?: string;
   description?: string;
   path: string;
@@ -43,30 +42,30 @@ type PageMetaInput = {
 
 // Small helper so pages don't hand-roll canonical + OG each time.
 // Next replaces (does not deep-merge) openGraph/twitter per route, so we emit
-// the complete objects here.
+// the complete objects here. og:image / twitter:image come from each route's
+// opengraph-image / twitter-image files.
 export function pageMetadata({ title, description, path, ogType = "website" }: PageMetaInput): Metadata {
-  const ogTitle = title ? `${title} — Facundo Franco` : SITE.title;
+  const fullTitle = title ?? SITE.title;
   const desc = description ?? SITE.description;
+  const url = SITE.url + path;
   return {
-    // Omit when absent so the layout's default title/description are inherited
-    // (passing `undefined` would suppress them).
-    ...(title ? { title } : {}),
-    ...(description ? { description } : {}),
-    alternates: { canonical: path },
+    title: { absolute: fullTitle },
+    description: desc,
+    alternates: { canonical: url },
     openGraph: {
-      type: ogType,
+      ...(ogType === "profile"
+        ? { type: "profile", firstName: "Facundo", lastName: "Franco" }
+        : { type: ogType }),
       siteName: "Facundo Franco",
       locale: "en_US",
-      url: SITE.url + path,
-      title: ogTitle,
+      url,
+      title: fullTitle,
       description: desc,
-      // og:image is supplied by the route's opengraph-image (branded card).
     },
     twitter: {
       card: "summary_large_image",
-      title: ogTitle,
+      title: fullTitle,
       description: desc,
-      // twitter:image falls back to og:image.
     },
   };
 }

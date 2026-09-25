@@ -7,7 +7,7 @@ import type { ExposureEntry } from "@/lib/exposure";
 import { pageMetadata } from "@/lib/metadata";
 
 export const metadata: Metadata = pageMetadata({
-  title: "Exposure",
+  title: "Exposure — Facundo Franco",
   description: "Talks, interviews and features with Facundo Franco and ScoutHalo.",
   path: "/exposure",
 });
@@ -77,7 +77,7 @@ function Entry({ entry, index }: { entry: ExposureEntry; index: number }) {
 
 export default function ExposurePage() {
   return (
-    <main className="exposure">
+    <main id="main" className="exposure">
       <div className="container">
         <header className="exposure-hero">
           <p className="eyebrow reveal-load">Talks · Interviews · Features</p>
