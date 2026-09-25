@@ -41,7 +41,7 @@ export default function AboutSection() {
 
               <div className="about-cta">
                 <Link href="/about" className="product-link">
-                  More about me →
+                  Read more →
                 </Link>
               </div>
             </div>

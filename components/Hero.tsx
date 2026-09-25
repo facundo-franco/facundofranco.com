@@ -1,6 +1,6 @@
 import type { CSSProperties } from "react";
 import Link from "next/link";
-import { CONNECT, SCOUTHALO_URL } from "@/lib/site";
+import { SCOUTHALO_URL } from "@/lib/site";
 import MagneticButton from "./MagneticButton";
 import Portrait from "./Portrait";
 
@@ -31,25 +31,10 @@ export default function Hero() {
               Explore ScoutHalo ↗
             </MagneticButton>
             <Link href="/story" className="story-cta hero-story">
-              <span className="story-cta-label">How I built ScoutHalo</span>
+              <span className="story-cta-label">Building ScoutHalo</span>
               <span className="story-cta-arrow">→</span>
             </Link>
           </div>
-
-          {/* Utility links, kept small so they don't compete with the actions */}
-          <nav className="text-links hero-social reveal-load" style={d(220)} aria-label="Elsewhere">
-            {CONNECT.map((c) => (
-              <a
-                key={c.href}
-                href={c.href}
-                target="_blank"
-                rel="noopener noreferrer"
-                className="social-link"
-              >
-                {c.label} ↗
-              </a>
-            ))}
-          </nav>
         </div>
 
         <Portrait priority delay={120} />

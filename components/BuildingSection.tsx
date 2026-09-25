@@ -9,7 +9,7 @@ export default function BuildingSection() {
   return (
     <section className="section" id="scouthalo">
       <div className="container">
-        <SectionHeader eyebrow="02 · ScoutHalo" title="Building ScoutHalo.">
+        <SectionHeader eyebrow="02 · Building ScoutHalo" title="Building ScoutHalo.">
           <div className="origin">
             <p className="origin-hook">From a note in my phone to a working product.</p>
 
@@ -59,7 +59,7 @@ export default function BuildingSection() {
 
             <div className="origin-actions">
               <Link href="/story" className="story-cta">
-                <span className="story-cta-label">Read the full story</span>
+                <span className="story-cta-label">Read the story</span>
                 <span className="story-cta-arrow">→</span>
               </Link>
               <a

@@ -338,6 +338,15 @@ button {
   margin-top: calc(clamp(38px, 5vw, 68px) * 0.51 - 8px);
 }
 
+/* "02 · Building ScoutHalo" is longer than the other labels: one line, as on /story */
+#scouthalo .section-header > .eyebrow {
+  white-space: nowrap;
+}
+
+#scouthalo .section-header > .eyebrow::before {
+  flex-shrink: 0;
+}
+
 .section-title {
   max-width: 800px;
 
@@ -676,19 +685,6 @@ button {
 }
 
 /* X / LinkedIn: a quiet utility row under the actions */
-.hero-social {
-  margin-top: 14px;
-}
-
-.hero-social .social-link {
-  font-size: 10px;
-  color: var(--subtle);
-}
-
-.hero-social .social-link:hover {
-  color: var(--cyan);
-}
-
 /* Row of secondary / social links (hero, About) */
 .text-links {
   display: flex;
@@ -2575,11 +2571,6 @@ a.exposure-shot:hover {
   .hero-story:hover {
     border-color: var(--cyan);
     color: var(--cyan);
-  }
-
-  /* X / LinkedIn live in the footer on mobile */
-  .hero-social {
-    display: none;
   }
 
   /* Editorial photos: centred within the content column */

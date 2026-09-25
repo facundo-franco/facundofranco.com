@@ -86,7 +86,7 @@ export default function NowSection() {
           {/* The full, living version of this section */}
           <div className="now-more">
             <Link href="/now" className="product-link">
-              What I&apos;m doing now →
+              View current update →
             </Link>
           </div>
         </SectionHeader>

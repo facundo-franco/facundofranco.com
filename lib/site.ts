@@ -22,8 +22,8 @@ export const SCOUTHALO_URL = "https://scouthalo.com";
 // preview them); Connect jumps to the footer's contact links on any page.
 export const NAV = [
   { label: "ScoutHalo", href: SCOUTHALO_URL, kind: "external" },
-  { label: "Building ScoutHalo", href: "/story", kind: "page" },
   { label: "About", href: "/about", kind: "page" },
+  { label: "Building ScoutHalo", href: "/story", kind: "page" },
   { label: "Now", href: "/now", kind: "page" },
   { label: "Connect", href: "#contact", kind: "connect" },
 ] as const;
