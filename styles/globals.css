@@ -1018,7 +1018,7 @@ button {
 @media (max-width: 720px) {
   /* Compact horizontal progression: note → first version → ScoutHalo */
   .origin-path {
-    column-gap: 8px;
+    column-gap: 12px;
 
     margin-top: 26px;
     padding-top: 14px;
@@ -1049,10 +1049,11 @@ button {
     height: 20px;
   }
 
+  /* Smaller, quieter separators, level with the titles */
   .origin-arrow {
-    /* Level with the titles under the smaller meta line */
-    padding-top: 17px;
-    font-size: 14px;
+    padding-top: 21px;
+    font-size: 12px;
+    opacity: 0.7;
   }
 
   .origin-actions {
@@ -2800,9 +2801,10 @@ a.exposure-shot:hover {
 
   /* Editorial photos: centred within the content column */
 
+  /* Brickell spans the full content width */
   .now-photo {
-    justify-self: center;
-    width: min(72%, 330px);
+    justify-self: stretch;
+    width: 100%;
   }
 
   .exposure-figure {

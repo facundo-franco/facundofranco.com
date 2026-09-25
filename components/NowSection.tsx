@@ -57,7 +57,7 @@ export default function NowSection() {
                     alt="Brickell, Miami at dusk: a street lined with glass towers and painted murals, traffic heading toward the skyline."
                     width={2000}
                     height={1333}
-                    sizes="(max-width: 720px) 106vw, 680px"
+                    sizes="(max-width: 720px) min(calc(150vw - 87px), 1000px), 680px"
                     quality={90}
                   />
                 </div>
