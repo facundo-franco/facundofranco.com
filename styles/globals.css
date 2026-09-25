@@ -1016,28 +1016,86 @@ button {
 }
 
 @media (max-width: 720px) {
-  /* Vertical sequence with downward arrows */
+  /* Compact horizontal progression: note → first version → ScoutHalo */
   .origin-path {
-    grid-template-columns: minmax(0, 1fr);
-    row-gap: 12px;
+    column-gap: 8px;
+
+    margin-top: 26px;
+    padding-top: 14px;
+  }
+
+  .origin-step {
+    gap: 5px;
+  }
+
+  .origin-step-meta {
+    font-size: 10px;
+    letter-spacing: 0.1em;
+  }
+
+  .origin-step-title {
+    gap: 6px;
+
+    font-size: 15px;
+    letter-spacing: -0.015em;
+  }
+
+  .origin-step-status {
+    font-size: 9px;
+  }
+
+  .origin-mark {
+    width: 20px;
+    height: 20px;
   }
 
   .origin-arrow {
-    padding-top: 0;
-    transform: rotate(90deg);
-    justify-self: start;
-    width: 18px;
-    text-align: center;
-  }
-
-  .origin-path:hover .origin-arrow {
-    transform: rotate(90deg);
+    /* Level with the titles under the smaller meta line */
+    padding-top: 17px;
+    font-size: 14px;
   }
 
   .origin-actions {
     flex-direction: column;
     align-items: flex-start;
-    gap: 4px;
+    gap: 0;
+
+    margin-top: 20px;
+  }
+}
+
+/* Too narrow for three columns: a compact stacked timeline, one row per step */
+@media (max-width: 374px) {
+  .origin-path {
+    grid-template-columns: minmax(0, 1fr);
+    row-gap: 2px;
+  }
+
+  .origin-step {
+    flex-direction: row;
+    flex-wrap: wrap;
+    /* Centre, not baseline: the ScoutHalo title leads with its mark */
+    align-items: center;
+    column-gap: 12px;
+  }
+
+  .origin-step-meta {
+    min-width: 72px;
+  }
+
+  .origin-step-status {
+    margin-left: 84px;
+  }
+
+  .origin-arrow {
+    padding-top: 0;
+    width: 72px;
+    text-align: center;
+    transform: rotate(90deg);
+  }
+
+  .origin-path:hover .origin-arrow {
+    transform: rotate(90deg);
   }
 }
 
@@ -2291,9 +2349,32 @@ a.exposure-shot:hover {
 }
 
 @media (max-width: 720px) {
+  /* One compact status group: rows on thin rules, closed by a final rule */
   .now-roadmap {
     grid-template-columns: minmax(0, 1fr);
-    gap: 18px;
+    gap: 0;
+
+    margin-top: 22px;
+    border-bottom: 1px solid var(--border);
+  }
+
+  .now-step {
+    display: grid;
+    grid-template-columns: 112px minmax(0, 1fr);
+    align-items: baseline;
+    column-gap: 12px;
+
+    padding: 11px 0;
+  }
+
+  .now-step-value {
+    margin-top: 0;
+    font-size: 16px;
+  }
+
+  /* Less dead space between the link and the footer */
+  #now.section-compact {
+    padding-bottom: 36px;
   }
 
   .now-status {
@@ -2721,7 +2802,7 @@ a.exposure-shot:hover {
 
   .now-photo {
     justify-self: center;
-    width: min(82%, 380px);
+    width: min(72%, 330px);
   }
 
   .exposure-figure {
