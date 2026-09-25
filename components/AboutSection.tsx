@@ -1,19 +1,16 @@
 import Link from "next/link";
-import { CONNECT } from "@/lib/site";
 import SectionHeader from "./SectionHeader";
 
-const FACTS = [
-  { label: "Next", value: "Uruguay → Miami" },
-  { label: "Building", value: "ScoutHalo" },
-  { label: "Background", value: "E-commerce → Products" },
-  { label: "Focus", value: "Location intelligence for production teams" },
+// The progression in four steps; the full story lives on /about.
+const JOURNEY = [
+  { index: "01", step: "Start", value: "Punta del Este, Uruguay" },
+  { index: "02", step: "First chapter", value: "E-commerce & operating businesses" },
+  { index: "03", step: "Shift", value: "From operating → building products" },
+  { index: "04", step: "Now", value: "Founder of ScoutHalo" },
 ] as const;
 
-// LinkedIn first here, then X.
-const ABOUT_LINKS = ["LinkedIn", "X"].flatMap((label) => CONNECT.filter((c) => c.label === label));
-
 // A short founder introduction that leads to /about: biography on the left,
-// editorial facts on the right, in the same eyebrow | content frame as the
+// a compact founder journey on the right, in the same eyebrow | content frame as the
 // other home sections. The fuller story (and the photo) lives on /about.
 export default function AboutSection() {
   return (
@@ -41,34 +38,25 @@ export default function AboutSection() {
 
               <div className="about-cta">
                 <Link href="/about" className="product-link">
-                  Read more →
+                  Read my story →
                 </Link>
               </div>
             </div>
 
-            <aside className="about-meta" aria-label="At a glance">
-              <dl className="about-facts">
-                {FACTS.map((f) => (
-                  <div key={f.label}>
-                    <dt>{f.label}</dt>
-                    <dd>{f.value}</dd>
-                  </div>
+            <aside className="about-meta" aria-labelledby="about-journey-label">
+              <p className="about-journey-label" id="about-journey-label">
+                The story
+              </p>
+              <ol className="about-journey">
+                {JOURNEY.map((j) => (
+                  <li key={j.index}>
+                    <p className="about-journey-step">
+                      <span className="about-journey-index">{j.index}</span> — {j.step}
+                    </p>
+                    <p className="about-journey-value">{j.value}</p>
+                  </li>
                 ))}
-              </dl>
-
-              <nav className="text-links about-links" aria-label="Profiles">
-                {ABOUT_LINKS.map((c) => (
-                  <a
-                    key={c.href}
-                    href={c.href}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="social-link"
-                  >
-                    {c.label} ↗
-                  </a>
-                ))}
-              </nav>
+              </ol>
             </aside>
           </div>
         </SectionHeader>

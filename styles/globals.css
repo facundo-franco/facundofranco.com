@@ -2020,12 +2020,25 @@ a.exposure-shot:hover {
   border-top: 1px solid var(--border-soft);
 }
 
-.about-facts {
-  display: grid;
-  gap: 20px;
+/* Founder journey: four numbered steps, same type scale as the old facts */
+.about-journey-label {
+  color: var(--cyan);
+
+  font-family: var(--font-mono), monospace;
+  font-size: 10px;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
 }
 
-.about-facts dt {
+.about-journey {
+  display: grid;
+  gap: 20px;
+
+  margin-top: 20px;
+  list-style: none;
+}
+
+.about-journey-step {
   color: var(--subtle);
 
   font-family: var(--font-mono), monospace;
@@ -2034,17 +2047,17 @@ a.exposure-shot:hover {
   text-transform: uppercase;
 }
 
-.about-facts dd {
+.about-journey-index {
+  color: var(--cyan);
+}
+
+.about-journey-value {
   margin-top: 3px;
 
   color: var(--text);
   font-size: 15px;
   line-height: 1.55;
   letter-spacing: -0.01em;
-}
-
-.about-links {
-  margin-top: 18px;
 }
 
 
@@ -2487,7 +2500,7 @@ a.exposure-shot:hover {
     margin-top: 0;
   }
 
-  /* One column: bio and CTA, then facts under a hairline */
+  /* One column: bio and CTA, then the journey under a hairline */
   .about-body {
     grid-template-columns: minmax(0, 1fr);
     margin-top: 26px;
@@ -2511,8 +2524,9 @@ a.exposure-shot:hover {
     border-top: 0;
   }
 
-  .about-facts {
-    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  /* Journey as a compact 2×2 grid rather than a long column */
+  .about-journey {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
     gap: 22px 32px;
   }
 }
@@ -2545,16 +2559,13 @@ a.exposure-shot:hover {
     margin-top: 8px;
   }
 
-  .about-facts {
-    gap: 14px;
+  .about-journey {
+    gap: 18px 20px;
+    margin-top: 16px;
   }
 
-  .about-facts dd {
+  .about-journey-value {
     margin-top: 4px;
-  }
-
-  .about-links {
-    margin-top: 12px;
   }
 
   .story-chapter .chapter-figure {

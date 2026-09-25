@@ -28,12 +28,6 @@ export const NAV = [
   { label: "Connect", href: "#contact", kind: "connect" },
 ] as const;
 
-// The few ways to reach me that the site actually surfaces.
-export const CONNECT = [
-  { label: "X", href: "https://x.com/facundofranco_" },
-  { label: "LinkedIn", href: "https://www.linkedin.com/in/facundo-franco" },
-] as const;
-
 export const EMAIL = "hello@scouthalo.com";
 
 // Public profiles linked from the site (footer Connect). Also the Person's
