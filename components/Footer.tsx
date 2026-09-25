@@ -93,7 +93,10 @@ export default function Footer() {
 
         <div className="footer-bottom">
           <span>© {new Date().getFullYear()} Facundo Franco</span>
-          <span>Built from Uruguay.</span>
+          <span className="footer-legal">
+            <span>Built from Uruguay.</span>
+            <Link href="/privacy">Privacy</Link>
+          </span>
         </div>
       </div>
     </footer>

@@ -1383,6 +1383,52 @@ button {
   text-transform: uppercase;
 }
 
+/* /privacy: short numbered answers, lighter than the story chapters */
+.legal-section {
+  margin-top: clamp(24px, 3vw, 36px);
+  padding-top: clamp(24px, 2.6vw, 32px);
+  border-top: 1px solid var(--border-soft);
+}
+
+.legal-heading {
+  margin-top: 12px;
+
+  font-size: clamp(21px, 2vw, 24px);
+  font-weight: 600;
+  line-height: 1.2;
+  letter-spacing: -0.02em;
+}
+
+.legal-body {
+  margin-top: 12px;
+
+  color: #c6d0d4;
+  font-size: 17px;
+  line-height: 1.66;
+  letter-spacing: -0.01em;
+}
+
+.legal-body p + p {
+  margin-top: 14px;
+}
+
+.legal-body a {
+  color: var(--text);
+  text-decoration: underline;
+  text-decoration-color: rgba(99, 217, 232, 0.5);
+  text-underline-offset: 3px;
+  text-decoration-thickness: 1px;
+
+  transition:
+    color 200ms ease,
+    text-decoration-color 200ms ease;
+}
+
+.legal-body a:hover {
+  color: var(--cyan);
+  text-decoration-color: var(--cyan);
+}
+
 /* /now: last-updated stamp and a wide Brickell photo between the text columns */
 .now-page-updated {
   margin-top: 16px;
@@ -1741,6 +1787,29 @@ a.exposure-shot:hover {
   font-family: var(--font-mono), monospace;
   font-size: 11px;
   letter-spacing: 0.05em;
+}
+
+/* Legal layer: same small mono as the row, clickable only on a closer look */
+.footer-legal {
+  display: inline-flex;
+  align-items: center;
+  gap: 24px;
+}
+
+.footer-legal a {
+  display: inline-flex;
+  align-items: center;
+  /* Touch-sized hit area around small text */
+  min-height: 44px;
+
+  color: var(--subtle);
+  text-decoration: none;
+
+  transition: color 200ms ease;
+}
+
+.footer-legal a:hover {
+  color: var(--cyan);
 }
 
 @media (max-width: 940px) {
