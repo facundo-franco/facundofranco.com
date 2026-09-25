@@ -50,14 +50,20 @@ export default function Footer() {
             <nav className="footer-nav" aria-label="Site">
               {/* Same destinations as the header */}
               {NAV.map((n) =>
-                n.external ? (
-                  <a key={n.href} href={n.href} target="_blank" rel="noopener noreferrer">
-                    {n.label}
-                  </a>
-                ) : (
+                n.kind === "page" ? (
                   <Link key={n.href} href={n.href}>
                     {n.label}
                   </Link>
+                ) : (
+                  <a
+                    key={n.href}
+                    href={n.href}
+                    {...(n.kind === "external"
+                      ? { target: "_blank", rel: "noopener noreferrer" }
+                      : {})}
+                  >
+                    {n.label}
+                  </a>
                 )
               )}
             </nav>

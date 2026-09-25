@@ -18,12 +18,14 @@ export const IDS = {
 export const SCOUTHALO_URL = "https://scouthalo.com";
 
 // Primary destinations, shared by the header and footer. ScoutHalo is the
-// external product site; the rest are full pages (home sections preview them).
+// external product site; the pages are full destinations (home sections
+// preview them); Connect jumps to the footer's contact links on any page.
 export const NAV = [
-  { label: "ScoutHalo", href: SCOUTHALO_URL, external: true },
-  { label: "Story", href: "/story", external: false },
-  { label: "About", href: "/about", external: false },
-  { label: "Now", href: "/now", external: false },
+  { label: "ScoutHalo", href: SCOUTHALO_URL, kind: "external" },
+  { label: "Building ScoutHalo", href: "/story", kind: "page" },
+  { label: "About", href: "/about", kind: "page" },
+  { label: "Now", href: "/now", kind: "page" },
+  { label: "Connect", href: "#contact", kind: "connect" },
 ] as const;
 
 // The few ways to reach me that the site actually surfaces.

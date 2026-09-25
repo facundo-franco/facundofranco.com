@@ -53,17 +53,8 @@ export default function Header() {
 
         <ul className="nav-links" id="primary-nav">
           {NAV.map((item) => (
-            <li key={item.href}>
-              {item.external ? (
-                <a
-                  href={item.href}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  onClick={() => setOpen(false)}
-                >
-                  {item.label}
-                </a>
-              ) : (
+            <li key={item.href} className={item.kind === "connect" ? "nav-connect" : undefined}>
+              {item.kind === "page" ? (
                 <Link
                   href={item.href}
                   aria-current={isActive(item.href) ? "page" : undefined}
@@ -71,6 +62,16 @@ export default function Header() {
                 >
                   {item.label}
                 </Link>
+              ) : (
+                <a
+                  href={item.href}
+                  {...(item.kind === "external"
+                    ? { target: "_blank", rel: "noopener noreferrer" }
+                    : {})}
+                  onClick={() => setOpen(false)}
+                >
+                  {item.label}
+                </a>
               )}
             </li>
           ))}

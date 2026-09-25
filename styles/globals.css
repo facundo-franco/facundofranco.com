@@ -418,6 +418,7 @@ button {
 }
 
 .brand-name {
+  white-space: nowrap;
   transition: color 200ms ease;
 }
 
@@ -456,6 +457,7 @@ button {
   letter-spacing: 0.12em;
   text-transform: uppercase;
   text-decoration: none;
+  white-space: nowrap;
 
   transition: color 200ms ease;
 }
@@ -486,6 +488,51 @@ button {
 
 .nav-links a[aria-current="page"] {
   color: var(--cyan);
+}
+
+/* Connect: the one actionable item — a thin cyan outline, not a filled CTA */
+.nav-links .nav-connect a {
+  min-height: 40px;
+  padding: 0 16px;
+  margin: 0;
+
+  color: var(--text);
+  border: 1px solid rgba(99, 217, 232, 0.45);
+
+  transition:
+    color 200ms ease,
+    border-color 200ms ease,
+    background-color 200ms ease;
+}
+
+.nav-links .nav-connect a::after {
+  display: none;
+}
+
+.nav-links .nav-connect a:hover {
+  color: var(--cyan);
+  border-color: var(--cyan);
+  background: var(--cyan-soft);
+}
+
+/* Five destinations on narrower desktops: tighter gaps and type, no wrapping */
+@media (min-width: 721px) and (max-width: 1000px) {
+  .nav {
+    gap: 24px;
+  }
+
+  .nav-links {
+    gap: 22px;
+  }
+
+  .nav-links a {
+    font-size: 12px;
+    letter-spacing: 0.1em;
+  }
+
+  .nav-links .nav-connect a {
+    padding: 0 12px;
+  }
 }
 
 /* Icon/control button: square, bordered; menu toggle and carousel arrows */
@@ -2461,6 +2508,18 @@ a.exposure-shot:hover {
 
   .nav-links li:last-child a {
     border-bottom: 0;
+  }
+
+  /* Connect: set apart at the bottom of the menu, same thin cyan outline */
+  .nav-links li.nav-connect {
+    margin-top: 18px;
+  }
+
+  .nav-links li.nav-connect a {
+    min-height: 58px;
+    padding: 0 18px;
+
+    border: 1px solid rgba(99, 217, 232, 0.45);
   }
 
   .hero {
