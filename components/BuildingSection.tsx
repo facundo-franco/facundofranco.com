@@ -57,16 +57,15 @@ export default function BuildingSection() {
               </li>
             </ol>
 
-            <div className="origin-actions">
-              <Link href="/building-scouthalo" className="story-cta">
-                <span className="story-cta-label">Read the story</span>
-                <span className="story-cta-arrow">→</span>
+            <div className="cta-row">
+              <Link href="/building-scouthalo" className="cta-link">
+                Read the story →
               </Link>
               <a
                 href={SCOUTHALO_URL}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="product-link product-link-quiet"
+                className="cta-link cta-link-quiet"
               >
                 Visit ScoutHalo ↗
               </a>

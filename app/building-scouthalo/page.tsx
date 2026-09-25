@@ -195,16 +195,16 @@ export default function StoryPage() {
         </p>
         <p>This is still the beginning.</p>
 
-        <div className="work-actions">
+        <div className="cta-row">
           <a
             href={SCOUTHALO_URL}
             target="_blank"
             rel="noopener noreferrer"
-            className="product-link"
+            className="cta-link"
           >
             Visit ScoutHalo ↗
           </a>
-          <Link href="/" className="product-link product-link-quiet">
+          <Link href="/" className="cta-link cta-link-quiet">
             Back to home →
           </Link>
         </div>

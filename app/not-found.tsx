@@ -25,9 +25,9 @@ export default function NotFound() {
         <p className="notfound-text">
           This page doesn&apos;t exist, or it has moved. One of these should get you back on track.
         </p>
-        <nav className="notfound-links" aria-label="Main pages">
+        <nav className="cta-row" aria-label="Main pages">
           {DESTINATIONS.map((d) => (
-            <Link key={d.href} href={d.href} className="product-link">
+            <Link key={d.href} href={d.href} className="cta-link">
               {d.label} →
             </Link>
           ))}
@@ -35,7 +35,7 @@ export default function NotFound() {
             href={SCOUTHALO_URL}
             target="_blank"
             rel="noopener noreferrer"
-            className="product-link product-link-quiet"
+            className="cta-link cta-link-quiet"
           >
             ScoutHalo ↗
           </a>

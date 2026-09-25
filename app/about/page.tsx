@@ -199,15 +199,15 @@ export default function AboutPage() {
           <p className="profile-next-text">
             How that idea in my Notes became ScoutNYC, and eventually ScoutHalo.
           </p>
-          <div className="work-actions">
-            <Link href="/building-scouthalo" className="product-link">
+          <div className="cta-row">
+            <Link href="/building-scouthalo" className="cta-link">
               Building ScoutHalo →
             </Link>
             <a
               href={SCOUTHALO_URL}
               target="_blank"
               rel="noopener noreferrer"
-              className="product-link product-link-quiet"
+              className="cta-link cta-link-quiet"
             >
               Visit ScoutHalo ↗
             </a>

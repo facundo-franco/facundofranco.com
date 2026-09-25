@@ -37,7 +37,7 @@ export default function AboutSection() {
               </div>
 
               <div className="about-cta">
-                <Link href="/about" className="product-link">
+                <Link href="/about" className="cta-link">
                   Read my story →
                 </Link>
               </div>

@@ -127,11 +127,11 @@ export default function NowPage() {
             As things happen — capital raised, first hires, the move to Miami, new teams using
             ScoutHalo — I&apos;ll update it here.
           </p>
-          <div className="work-actions">
-            <a href={SCOUTHALO_URL} target="_blank" rel="noopener noreferrer" className="product-link">
+          <div className="cta-row">
+            <a href={SCOUTHALO_URL} target="_blank" rel="noopener noreferrer" className="cta-link">
               Explore ScoutHalo ↗
             </a>
-            <Link href="/building-scouthalo" className="product-link product-link-quiet">
+            <Link href="/building-scouthalo" className="cta-link cta-link-quiet">
               Building ScoutHalo →
             </Link>
           </div>

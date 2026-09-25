@@ -85,8 +85,8 @@ export default function NowSection() {
           </div>
 
           {/* The full, living version of this section */}
-          <div className="now-more">
-            <Link href="/now" className="product-link">
+          <div className="cta-row">
+            <Link href="/now" className="cta-link">
               View current update →
             </Link>
           </div>

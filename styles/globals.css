@@ -28,6 +28,22 @@
   --page-padding: clamp(20px, 4vw, 56px);
 
   --header-h: 88px;
+
+  /* Motion */
+  --ease: cubic-bezier(0.2, 0.6, 0.2, 1);
+  --dur: 200ms;
+  --dur-move: 300ms;
+
+  /* Shared spacing */
+  --space-page-top: clamp(40px, 6vw, 80px);
+  --space-page-bottom: clamp(64px, 8vw, 104px);
+  --space-cta: clamp(20px, 2.2vw, 28px);
+  --cta-gap: 4px 32px;
+  --button-gap: 12px;
+
+  /* Image frames, inline link underlines */
+  --frame-pad: 10px;
+  --link-underline: rgba(99, 217, 232, 0.4);
 }
 
 /* --------------------------------------------------------------------------
@@ -282,6 +298,9 @@ button {
   background: currentColor;
 }
 
+/* --------------------------------------------------------------------------
+   Buttons — .button + .button-primary (filled) / .button-secondary (outlined)
+   -------------------------------------------------------------------------- */
 .button {
   min-height: 52px;
 
@@ -297,16 +316,16 @@ button {
   font-family: var(--font-mono), monospace;
   font-size: 13px;
   font-weight: 500;
+  line-height: 1.6;
   letter-spacing: 0.1em;
   text-transform: uppercase;
   text-decoration: none;
 
   transition:
-    background-color 200ms ease,
-    border-color 200ms ease,
-    color 200ms ease,
-    box-shadow 260ms ease,
-    transform 220ms cubic-bezier(0.2, 0.6, 0.2, 1);
+    background-color var(--dur) ease,
+    border-color var(--dur) ease,
+    color var(--dur) ease,
+    transform var(--dur) var(--ease);
 }
 
 .button:hover {
@@ -329,7 +348,7 @@ button {
 }
 
 .button-secondary {
-  background: transparent;
+  background: var(--surface);
   border-color: var(--border);
   color: var(--text);
 }
@@ -452,13 +471,13 @@ button {
   letter-spacing: 0.04em;
 
   transition:
-    border-color 200ms ease,
-    background-color 200ms ease;
+    border-color var(--dur) ease,
+    background-color var(--dur) ease;
 }
 
 .brand-name {
   white-space: nowrap;
-  transition: color 200ms ease;
+  transition: color var(--dur) ease;
 }
 
 .brand:hover .brand-mark {
@@ -498,7 +517,7 @@ button {
   text-decoration: none;
   white-space: nowrap;
 
-  transition: color 200ms ease;
+  transition: color var(--dur) ease;
 }
 
 .nav-links a::after {
@@ -513,7 +532,7 @@ button {
 
   transform: scaleX(0);
   transform-origin: 0 50%;
-  transition: transform 280ms cubic-bezier(0.2, 0.6, 0.2, 1);
+  transition: transform 280ms var(--ease);
 }
 
 .nav-links a:hover {
@@ -539,9 +558,9 @@ button {
   border: 1px solid rgba(99, 217, 232, 0.45);
 
   transition:
-    color 200ms ease,
-    border-color 200ms ease,
-    background-color 200ms ease;
+    color var(--dur) ease,
+    border-color var(--dur) ease,
+    background-color var(--dur) ease;
 }
 
 .nav-links .nav-connect a::after {
@@ -588,8 +607,8 @@ button {
   cursor: pointer;
 
   transition:
-    border-color 200ms ease,
-    color 200ms ease;
+    border-color var(--dur) ease,
+    color var(--dur) ease;
 }
 
 .icon-button:hover:not(:disabled) {
@@ -706,52 +725,24 @@ button {
   font-weight: 500;
 }
 
+/* Primary + secondary button pair */
 .hero-actions {
   display: flex;
   flex-wrap: wrap;
   align-items: center;
-  gap: 14px 36px;
+  gap: var(--button-gap);
   margin-top: 36px;
 }
 
-/* X / LinkedIn: a quiet utility row under the actions */
-/* Row of secondary / social links (hero, About) */
-.text-links {
-  display: flex;
-  flex-wrap: wrap;
-  align-items: center;
-  gap: 0 26px;
-}
-
-/* Social/utility link: small mono caps with a 44px hit area */
-.social-link {
-  display: inline-flex;
-  align-items: center;
-  min-height: 44px;
-  /* Wider hit area without moving the label */
-  padding: 0 10px;
-  margin: 0 -10px;
-
-  color: var(--muted);
-
-  font-family: var(--font-mono), monospace;
-  font-size: 11px;
-  letter-spacing: 0.1em;
-  text-transform: uppercase;
-  text-decoration: none;
-
-  transition: color 200ms ease;
-}
-
-.social-link:hover {
-  color: var(--cyan);
-}
-
+/* Image frame — one treatment for every photo and screenshot */
 .portrait-card,
-.post-preview {
+.post-preview,
+.now-photo-card,
+.now-page-photo-card,
+.profile-photo-card {
   position: relative;
 
-  padding: 12px;
+  padding: var(--frame-pad);
 
   border: 1px solid var(--border);
   background: var(--surface);
@@ -779,10 +770,11 @@ button {
 }
 
 /* --------------------------------------------------------------------------
-   Secondary text CTA (mono, cyan; -quiet for muted) — shared across pages.
+   Text CTA — mono caps with an arrow: "→" internal, "↗" external.
+   .cta-link (cyan) and .cta-link-quiet (muted, for the second link in a row).
    The label stays compact; the 44px box is the hit area.
    -------------------------------------------------------------------------- */
-.product-link {
+.cta-link {
   position: relative;
 
   display: inline-flex;
@@ -796,16 +788,17 @@ button {
   font-family: var(--font-mono), monospace;
   font-size: 12px;
   font-weight: 500;
+  line-height: 1.6;
   letter-spacing: 0.1em;
   text-transform: uppercase;
   text-decoration: none;
 
   transition:
-    color 200ms ease,
-    transform 300ms cubic-bezier(0.2, 0.6, 0.2, 1);
+    color var(--dur) ease,
+    transform var(--dur-move) var(--ease);
 }
 
-.product-link::after {
+.cta-link::after {
   content: "";
   position: absolute;
   left: 0;
@@ -817,36 +810,35 @@ button {
 
   transform: scaleX(0);
   transform-origin: 0 50%;
-  transition: transform 320ms cubic-bezier(0.2, 0.6, 0.2, 1);
+  transition: transform var(--dur-move) var(--ease);
 }
 
-.product-link:hover {
+.cta-link:hover {
   color: var(--text);
   transform: translateX(3px);
 }
 
-.product-link:hover::after {
+.cta-link:hover::after {
   transform: scaleX(1);
+}
+
+.cta-link-quiet {
+  color: var(--muted);
+}
+
+/* A row of CTAs after content: one gap above, one gap between */
+.cta-row {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: var(--cta-gap);
+
+  margin-top: var(--space-cta);
 }
 
 /* --------------------------------------------------------------------------
    Current work — ScoutHalo
    -------------------------------------------------------------------------- */
-/* Primary external link, with quieter links beside it */
-.work-actions {
-  display: flex;
-  flex-wrap: wrap;
-  align-items: center;
-  gap: 0 32px;
-
-  margin-top: auto;
-  padding-top: 20px;
-}
-
-.product-link-quiet {
-  color: var(--muted);
-}
-
 /* Origin: hook, short copy, then the path from note to product */
 .origin {
   margin-top: clamp(16px, 1.8vw, 22px);
@@ -954,65 +946,12 @@ button {
 
   transition:
     color 300ms ease,
-    transform 300ms cubic-bezier(0.2, 0.6, 0.2, 1);
+    transform 300ms var(--ease);
 }
 
 .origin-path:hover .origin-arrow {
   color: var(--cyan);
   transform: translateX(3px);
-}
-
-/* Actions: the story first, larger and underlined; the product link quieter */
-.origin-actions {
-  display: flex;
-  flex-wrap: wrap;
-  align-items: center;
-  gap: 8px 36px;
-
-  margin-top: clamp(28px, 3vw, 36px);
-}
-
-.story-cta {
-  display: inline-flex;
-  align-items: center;
-  gap: 12px;
-  min-height: 44px;
-
-  color: var(--cyan);
-
-  font-family: var(--font-mono), monospace;
-  font-size: 14px;
-  font-weight: 500;
-  letter-spacing: 0.12em;
-  text-transform: uppercase;
-  text-decoration: none;
-
-  transition: color 200ms ease;
-}
-
-/* Underline the words only; the arrow slides on hover */
-.story-cta-label {
-  padding-bottom: 6px;
-  border-bottom: 1px solid rgba(99, 217, 232, 0.35);
-
-  transition: border-color 200ms ease;
-}
-
-.story-cta-arrow {
-  display: inline-block;
-  transition: transform 300ms cubic-bezier(0.2, 0.6, 0.2, 1);
-}
-
-.story-cta:hover {
-  color: var(--text);
-}
-
-.story-cta:hover .story-cta-label {
-  border-bottom-color: currentColor;
-}
-
-.story-cta:hover .story-cta-arrow {
-  transform: translateX(5px);
 }
 
 @media (max-width: 720px) {
@@ -1056,13 +995,6 @@ button {
     opacity: 0.7;
   }
 
-  .origin-actions {
-    flex-direction: column;
-    align-items: flex-start;
-    gap: 0;
-
-    margin-top: 20px;
-  }
 }
 
 /* Too narrow for three columns: a compact stacked timeline, one row per step */
@@ -1101,8 +1033,7 @@ button {
 }
 
 @media (prefers-reduced-motion: reduce) {
-  .origin-arrow,
-  .story-cta-arrow {
+  .origin-arrow {
     transition: none;
   }
 }
@@ -1126,34 +1057,28 @@ button {
   object-fit: cover;
 }
 
-.post-preview-link {
-  display: block;
-}
-
-.post-preview-label {
-  color: var(--subtle);
-
-  font-family: var(--font-mono), monospace;
-  font-size: 9px;
-  letter-spacing: 0.1em;
-  text-transform: uppercase;
-}
-
 /* --------------------------------------------------------------------------
    Building ScoutHalo (/building-scouthalo) — hero, then chapters: copy left, framed figure right
    -------------------------------------------------------------------------- */
 .story-hero {
-  padding: clamp(40px, 6vw, 88px) 0 clamp(40px, 5vw, 64px);
+  padding: var(--space-page-top) 0 clamp(40px, 5vw, 64px);
 }
 
-.story-hero-title {
-  max-width: 12ch;
+/* Page title on full-width pages (Building ScoutHalo, Exposure, 404);
+   reading-column pages use .profile-title */
+.story-hero-title,
+.exposure-page-title,
+.notfound h1 {
   margin-top: 18px;
 
   font-size: clamp(48px, 7vw, 96px);
   font-weight: 600;
   line-height: 0.92;
   letter-spacing: -0.065em;
+}
+
+.story-hero-title {
+  max-width: 12ch;
 }
 
 .story-hero-intro {
@@ -1227,7 +1152,7 @@ button {
 /* Frame = image width + 2 × 12px padding + 2 × 1px border. The vw cap keeps
    the copy column readable on smaller desktops. */
 .story-chapter .chapter-figure {
-  width: min(360px, 28vw, calc(var(--fig-max-h) * var(--ratio) + 26px));
+  width: min(360px, 28vw, calc(var(--fig-max-h) * var(--ratio) + var(--frame-pad) * 2 + 2px));
 }
 
 .chapter-figure-frame img {
@@ -1236,13 +1161,16 @@ button {
   object-fit: contain;
 }
 
-.chapter-caption {
-  margin-top: 14px;
+/* Figure caption — small mono caps under every framed image */
+.chapter-caption,
+.profile-photo-caption,
+.now-photo-caption {
+  margin-top: 12px;
 
   color: var(--subtle);
 
   font-family: var(--font-mono), monospace;
-  font-size: 9px;
+  font-size: 10px;
   letter-spacing: 0.1em;
   text-transform: uppercase;
 }
@@ -1314,8 +1242,8 @@ button {
   transform: translateY(-50%);
 
   transition:
-    background-color 200ms ease,
-    transform 200ms ease;
+    background-color var(--dur) ease,
+    transform var(--dur) ease;
 }
 
 .story-carousel-arrow:hover {
@@ -1368,8 +1296,10 @@ button {
 /* --------------------------------------------------------------------------
    About (/about) — one continuous editorial reading column
    -------------------------------------------------------------------------- */
-.profile {
-  padding: clamp(40px, 6vw, 80px) 0 clamp(64px, 8vw, 104px);
+/* Inner pages share one top/bottom rhythm */
+.profile,
+.exposure {
+  padding: var(--space-page-top) 0 var(--space-page-bottom);
 }
 
 .profile-container {
@@ -1457,12 +1387,6 @@ button {
   margin-left: var(--hero-left);
 }
 
-.profile-photo-card {
-  padding: 8px;
-  border: 1px solid var(--border);
-  background: var(--surface);
-}
-
 .profile-photo-card img {
   display: block;
   width: 100%;
@@ -1482,18 +1406,6 @@ button {
     width: min(76%, 300px);
     margin-top: clamp(32px, 6vw, 44px);
   }
-}
-
-/* Documentary-style caption, tight under the photo */
-.profile-photo-caption {
-  margin-top: 10px;
-
-  color: var(--muted);
-
-  font-family: var(--font-mono), monospace;
-  font-size: 10px;
-  letter-spacing: 0.1em;
-  text-transform: uppercase;
 }
 
 /* /privacy: short numbered answers, lighter than the story chapters */
@@ -1528,13 +1440,13 @@ button {
 .legal-body a {
   color: var(--text);
   text-decoration: underline;
-  text-decoration-color: rgba(99, 217, 232, 0.5);
+  text-decoration-color: var(--link-underline);
   text-underline-offset: 3px;
   text-decoration-thickness: 1px;
 
   transition:
-    color 200ms ease,
-    text-decoration-color 200ms ease;
+    color var(--dur) ease,
+    text-decoration-color var(--dur) ease;
 }
 
 .legal-body a:hover {
@@ -1559,41 +1471,14 @@ button {
   margin: clamp(40px, 5vw, 64px) auto 0;
 }
 
-.now-page-photo-card {
-  padding: 8px;
-  border: 1px solid var(--border);
-  background: var(--surface);
-}
-
 .now-page-photo-card img {
   width: 100%;
   height: auto;
 }
 
-.profile-next .work-actions {
-  padding-top: 10px;
-}
-
-.profile-next .product-link {
-  margin-top: 10px;
-}
-
 /* --------------------------------------------------------------------------
    Exposure (/exposure) — featured appearance: text left, screenshot right
    -------------------------------------------------------------------------- */
-.exposure {
-  padding: clamp(40px, 6vw, 80px) 0 clamp(64px, 8vw, 104px);
-}
-
-.exposure-page-title {
-  margin-top: 18px;
-
-  font-size: clamp(56px, 9vw, 120px);
-  font-weight: 600;
-  line-height: 0.9;
-  letter-spacing: -0.07em;
-}
-
 .exposure-list {
   margin-top: clamp(40px, 5vw, 64px);
 }
@@ -1605,7 +1490,7 @@ button {
   align-items: center;
 
   padding-top: clamp(32px, 4vw, 48px);
-  border-top: 1px solid var(--border);
+  border-top: 1px solid var(--border-soft);
 }
 
 .exposure-entry + .exposure-entry {
@@ -1703,7 +1588,7 @@ button {
   text-transform: uppercase;
 }
 
-.exposure-entry .product-link {
+.exposure-entry .cta-link {
   margin-top: 8px;
 }
 
@@ -1807,11 +1692,11 @@ a.exposure-shot:hover {
   color: var(--text);
   /* A faint underline marks it as a link inside the sentence, not by colour alone */
   text-decoration: underline;
-  text-decoration-color: rgba(99, 217, 232, 0.35);
+  text-decoration-color: var(--link-underline);
   text-decoration-thickness: 1px;
   text-underline-offset: 3px;
 
-  transition: color 200ms ease;
+  transition: color var(--dur) ease;
 }
 
 .footer-brand a:hover {
@@ -1850,8 +1735,8 @@ a.exposure-shot:hover {
   background: linear-gradient(currentColor, currentColor) 0 calc(100% - 9px) / 0 1px no-repeat;
 
   transition:
-    color 200ms ease,
-    background-size 280ms cubic-bezier(0.2, 0.6, 0.2, 1);
+    color var(--dur) ease,
+    background-size 280ms var(--ease);
 }
 
 .footer-nav a:hover {
@@ -1879,12 +1764,12 @@ a.exposure-shot:hover {
   letter-spacing: -0.01em;
   text-decoration: none;
 
-  transition: color 200ms ease;
+  transition: color var(--dur) ease;
 }
 
 .footer-social a svg {
   flex: none;
-  transition: color 200ms ease;
+  transition: color var(--dur) ease;
 }
 
 .footer-social a:hover {
@@ -1928,7 +1813,7 @@ a.exposure-shot:hover {
   color: var(--subtle);
   text-decoration: none;
 
-  transition: color 200ms ease;
+  transition: color var(--dur) ease;
 }
 
 .footer-legal a:hover {
@@ -1976,8 +1861,8 @@ a.exposure-shot:hover {
     color: var(--muted);
 
     transition:
-      color 200ms ease,
-      border-color 200ms ease;
+      color var(--dur) ease,
+      border-color var(--dur) ease;
   }
 
   .footer-social a:hover {
@@ -2139,10 +2024,6 @@ a.exposure-shot:hover {
   grid-area: lead;
 }
 
-.now-more {
-  margin-top: clamp(14px, 1.6vw, 18px);
-}
-
 .now-copy {
   grid-area: copy;
 }
@@ -2159,12 +2040,6 @@ a.exposure-shot:hover {
 .now-photo {
   grid-area: photo;
   margin-top: clamp(16px, 1.8vw, 20px);
-}
-
-.now-photo-card {
-  padding: 8px;
-  border: 1px solid var(--border);
-  background: var(--surface);
 }
 
 /* Near-square crop of the landscape original, centred on the street vista */
@@ -2184,23 +2059,16 @@ a.exposure-shot:hover {
   object-position: 50% 50%;
 }
 
-/* Caption: place over status, marked with a thin cyan rule */
+/* Brickell caption: place over status, marked with a thin cyan rule */
 .now-photo-caption {
   display: flex;
   flex-direction: column;
 
-  margin-top: 14px;
   padding-left: 12px;
 
   border-left: 1px solid var(--cyan);
 
-  color: var(--subtle);
-
-  font-family: var(--font-mono), monospace;
-  font-size: 10px;
-  letter-spacing: 0.1em;
   line-height: 1.7;
-  text-transform: uppercase;
 }
 
 .now-photo-caption-title {
@@ -2387,7 +2255,7 @@ a.exposure-shot:hover {
    Article (writing detail) — narrow editorial reading column
    -------------------------------------------------------------------------- */
 .article {
-  padding: clamp(48px, 9vw, 96px) 0 clamp(70px, 9vw, 108px);
+  padding: var(--space-page-top) 0 var(--space-page-bottom);
 }
 
 .article-container {
@@ -2446,7 +2314,7 @@ a.exposure-shot:hover {
   margin-top: 30px;
   padding-top: 26px;
 
-  border-top: 1px solid var(--border);
+  border-top: 1px solid var(--border-soft);
 }
 
 .author-avatar {
@@ -2561,7 +2429,7 @@ a.exposure-shot:hover {
   margin-top: 56px;
   padding-top: 26px;
 
-  border-top: 1px solid var(--border);
+  border-top: 1px solid var(--border-soft);
 }
 
 /* --------------------------------------------------------------------------
@@ -2652,7 +2520,7 @@ a.exposure-shot:hover {
 
   .story-chapter .chapter-figure {
     justify-self: center;
-    width: min(100%, 340px, calc(var(--fig-max-h) * var(--ratio) + 26px));
+    width: min(100%, 340px, calc(var(--fig-max-h) * var(--ratio) + var(--frame-pad) * 2 + 2px));
   }
 
   :root {
@@ -2762,41 +2630,12 @@ a.exposure-shot:hover {
   .portrait-card {
     justify-self: center;
     width: min(78%, 320px);
-    padding: 10px;
   }
 
   /* Two full-width buttons of equal height: primary cyan, secondary outlined */
   .hero-actions {
     flex-direction: column;
     align-items: stretch;
-    gap: 10px;
-  }
-
-  .hero-story {
-    justify-content: center;
-    min-height: 52px;
-    padding: 0 20px;
-
-    border: 1px solid var(--border);
-    background: var(--surface);
-    color: var(--text);
-
-    font-size: 13px;
-    letter-spacing: 0.1em;
-
-    transition:
-      border-color 200ms ease,
-      color 200ms ease;
-  }
-
-  .hero-story .story-cta-label {
-    padding-bottom: 0;
-    border-bottom: 0;
-  }
-
-  .hero-story:hover {
-    border-color: var(--cyan);
-    color: var(--cyan);
   }
 
   /* Editorial photos: centred within the content column */
@@ -2828,15 +2667,6 @@ a.exposure-shot:hover {
   padding: clamp(48px, 10vh, 128px) 0;
 }
 
-.notfound h1 {
-  margin-top: 18px;
-
-  font-size: clamp(48px, 8vw, 96px);
-  font-weight: 600;
-  line-height: 0.95;
-  letter-spacing: -0.05em;
-}
-
 .notfound-text {
   max-width: 520px;
   margin-top: 18px;
@@ -2846,10 +2676,3 @@ a.exposure-shot:hover {
   line-height: 1.65;
 }
 
-.notfound-links {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 4px 28px;
-
-  margin-top: 22px;
-}

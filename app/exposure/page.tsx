@@ -48,7 +48,7 @@ function Entry({ entry, index }: { entry: ExposureEntry; index: number }) {
         <p className="exposure-meta">{meta}</p>
 
         {entry.url ? (
-          <a href={entry.url} target="_blank" rel="noopener noreferrer" className="product-link">
+          <a href={entry.url} target="_blank" rel="noopener noreferrer" className="cta-link">
             View appearance ↗
           </a>
         ) : null}
