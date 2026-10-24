@@ -32,6 +32,14 @@ const nextConfig = {
   // Security headers applied to every route.
   async headers() {
     return [
+      // Videos are large and rarely change: let browsers and the CDN keep them
+      // for a week (rename the file to ship a new cut).
+      {
+        source: "/videos/:file*",
+        headers: [
+          { key: "Cache-Control", value: "public, max-age=604800, stale-while-revalidate=86400" },
+        ],
+      },
       {
         source: "/:path*",
         headers: [

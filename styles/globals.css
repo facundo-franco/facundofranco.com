@@ -2037,79 +2037,69 @@ button {
   letter-spacing: -0.02em;
 }
 
-/* Browser window, with the phone view set over its lower-right corner */
-.showcase-stage {
-  position: relative;
+/* The product preview video beside what it does and who it's for */
+.showcase-body {
+  display: grid;
+  grid-template-columns: clamp(270px, 26vw, 360px) minmax(0, 1fr);
+  gap: clamp(40px, 6vw, 96px);
+  align-items: center;
 
   margin-top: clamp(40px, 5vw, 64px);
-  padding: 0 clamp(70px, 10vw, 150px) clamp(64px, 7vw, 104px) 0;
 }
 
-.showcase-browser {
+.showcase-stage {
+  position: relative;
+}
+
+/* The video shows features not all live yet: labelled, plainly */
+.showcase-preview-tag {
+  display: inline-block;
+  margin-bottom: 12px;
+  padding: 4px 9px;
+
+  border: 1px solid rgba(99, 217, 232, 0.45);
+  color: var(--cyan);
+
+  font-family: var(--font-mono), monospace;
+  font-size: 11px;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+}
+
+.showcase-video-frame {
+  position: relative;
+
+  padding: var(--frame-pad);
+
   border: 1px solid var(--border);
   background: var(--surface);
   box-shadow: 0 40px 90px rgba(0, 0, 0, 0.45);
 }
 
-.showcase-browser-bar {
-  display: flex;
-  align-items: center;
-  gap: 16px;
-
-  height: 36px;
-  padding: 0 14px;
-
-  border-bottom: 1px solid var(--border);
-}
-
-.showcase-dots {
-  display: inline-flex;
-  gap: 6px;
-}
-
-.showcase-dots i {
-  width: 8px;
-  height: 8px;
-
-  border: 1px solid var(--border);
-  border-radius: 50%;
-}
-
-.showcase-url {
-  color: var(--subtle);
-
-  font-family: var(--font-mono), monospace;
-  font-size: 11px;
-  letter-spacing: 0.06em;
-}
-
-.showcase-browser img {
+.showcase-video {
+  display: block;
   width: 100%;
   height: auto;
+  aspect-ratio: 9 / 16;
+
+  /* The video's own backdrop, so the frame never flashes another colour */
+  background: #0a0a18;
+  object-fit: cover;
 }
 
-.showcase-phone {
+.showcase-video-toggle {
   position: absolute;
-  right: 0;
-  bottom: 0;
+  right: calc(var(--frame-pad) + 10px);
+  bottom: calc(var(--frame-pad) + 10px);
 
-  width: clamp(150px, 17vw, 230px);
-  padding: 8px;
-
-  border: 1px solid var(--border);
-  background: var(--surface);
-  box-shadow: 0 30px 70px rgba(0, 0, 0, 0.55);
-}
-
-.showcase-phone img {
-  width: 100%;
-  height: auto;
+  background: rgba(9, 13, 16, 0.72);
+  border-color: rgba(145, 165, 176, 0.35);
+  -webkit-backdrop-filter: blur(6px);
+  backdrop-filter: blur(6px);
 }
 
 .showcase-caption {
-  position: absolute;
-  left: 0;
-  bottom: clamp(26px, 3vw, 44px);
+  margin-top: 12px;
 
   color: var(--subtle);
 
@@ -2119,19 +2109,10 @@ button {
   text-transform: uppercase;
 }
 
-/* What it does | who it's for — aligned with the section's title column */
+/* What it does, then who it's for */
 .showcase-details {
   display: grid;
-  grid-template-columns: minmax(0, 1.5fr) minmax(0, 1fr);
-  gap: clamp(32px, 5vw, 72px);
-
-  margin-top: clamp(8px, 1vw, 16px);
-}
-
-@media (min-width: 941px) {
-  .showcase-details {
-    margin-left: calc(180px + clamp(30px, 7vw, 100px));
-  }
+  gap: clamp(30px, 3.4vw, 44px);
 }
 
 .showcase-capabilities {
@@ -2224,46 +2205,31 @@ button {
   line-height: 1.4;
 }
 
-@media (max-width: 940px) {
-  .showcase-details {
-    grid-template-columns: minmax(0, 1fr);
-    margin-top: 20px;
-  }
-}
-
-/* Phones: the phone view is the product shot; the desktop window is skipped */
-@media (max-width: 720px) {
-  .showcase-stage {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-
-    margin-top: 32px;
-    padding: 0;
-  }
-
-  .showcase-browser {
-    display: none;
-  }
-
-  .showcase-phone {
-    position: static;
-    width: min(74%, 300px);
-  }
-
-  .showcase-caption {
-    position: static;
-    margin-top: 14px;
-    text-align: center;
-  }
-
-  .showcase-details {
-    margin-top: 34px;
-  }
-
+@media (max-width: 1100px) {
   .showcase-capabilities {
     grid-template-columns: minmax(0, 1fr);
     gap: 22px;
+  }
+}
+
+@media (max-width: 940px) {
+  .showcase-body {
+    grid-template-columns: clamp(220px, 34vw, 280px) minmax(0, 1fr);
+    gap: 36px;
+  }
+}
+
+/* Phones: the video first, centred, then the details */
+@media (max-width: 720px) {
+  .showcase-body {
+    grid-template-columns: minmax(0, 1fr);
+    gap: 34px;
+    margin-top: 32px;
+  }
+
+  .showcase-stage {
+    justify-self: center;
+    width: min(80%, 320px);
   }
 }
 

@@ -2,6 +2,7 @@ import Image from "next/image";
 import Link from "next/link";
 import { SCOUTHALO_TAGLINE, SCOUTHALO_URL } from "@/lib/site";
 import SectionHeader from "./SectionHeader";
+import ShowcaseVideo from "./ShowcaseVideo";
 
 // What ScoutHalo does today. Every line mirrors scouthalo.com (product page,
 // October 2026); nothing here is roadmap.
@@ -33,8 +34,8 @@ const USE_CASES = [
   "Creators & production",
 ] as const;
 
-// The product, presented editorially: a captured browser window with the
-// phone view set over its corner, then what it does and who it's for.
+// The product, presented editorially: the New York product preview video beside
+// what ScoutHalo does and who it's for.
 export default function ShowcaseSection() {
   return (
     <section className="section showcase" id="building" aria-labelledby="showcase-title">
@@ -59,67 +60,50 @@ export default function ShowcaseSection() {
           </p>
         </SectionHeader>
 
-        <figure className="showcase-stage">
-          <div className="showcase-browser">
-            <div className="showcase-browser-bar" aria-hidden="true">
-              <span className="showcase-dots">
-                <i />
-                <i />
-                <i />
-              </span>
-              <span className="showcase-url">www.scouthalo.com</span>
-            </div>
-            <Image
-              src="/images/scouthalo-home-desktop-october-2026.webp"
-              alt="ScoutHalo's homepage: “AI search for places and things to do. Describe what you need. Find the right place.” above a search box with the example “Boutique hotel for a romantic weekend in Porto.”"
-              width={1600}
-              height={700}
-              sizes="(max-width: 720px) 92vw, (max-width: 1300px) 80vw, 1000px"
-              quality={90}
+        <div className="showcase-body">
+          <figure className="showcase-stage">
+            <p className="showcase-preview-tag">Product preview</p>
+            <ShowcaseVideo
+              sources={[
+                { src: "/videos/scouthalo-new-york-cafe.mp4", type: "video/mp4" },
+                { src: "/videos/scouthalo-new-york-cafe.webm", type: "video/webm" },
+              ]}
+              poster="/videos/scouthalo-new-york-cafe-poster.webp"
+              label="ScoutHalo product preview: searching “I'm in New York, I want a good café to work from”, then browsing real cafés with their evidence, and seeing them on a map."
             />
-          </div>
-          <div className="showcase-phone">
-            <Image
-              src="/images/scouthalo-home-mobile-october-2026.webp"
-              alt="ScoutHalo on a phone, with the example search “Rooftop bar with sunset views for drinks with friends in Lisbon.”"
-              width={924}
-              height={1327}
-              sizes="(max-width: 720px) 46vw, 230px"
-              quality={90}
-            />
-          </div>
-          <figcaption className="showcase-caption">
-            scouthalo.com · captured October 2026 · live in early access
-          </figcaption>
-        </figure>
+            <figcaption className="showcase-caption">
+              New York · finding a café to work from
+            </figcaption>
+          </figure>
 
-        <div className="showcase-details">
-          <ol className="showcase-capabilities">
-            {CAPABILITIES.map((c, i) => (
-              <li key={c.title}>
-                <p className="showcase-capability-head">
-                  <span>{String(i + 1).padStart(2, "0")}</span>
-                  {c.title}
-                </p>
-                <p className="showcase-capability-text">{c.text}</p>
-              </li>
-            ))}
-          </ol>
-
-          <div className="showcase-uses">
-            <p className="showcase-uses-label">One search for</p>
-            <ul className="showcase-chips">
-              {USE_CASES.map((u) => (
-                <li key={u}>{u}</li>
+          <div className="showcase-details">
+            <ol className="showcase-capabilities">
+              {CAPABILITIES.map((c, i) => (
+                <li key={c.title}>
+                  <p className="showcase-capability-head">
+                    <span>{String(i + 1).padStart(2, "0")}</span>
+                    {c.title}
+                  </p>
+                  <p className="showcase-capability-text">{c.text}</p>
+                </li>
               ))}
-            </ul>
-            <div className="cta-row">
-              <a href={SCOUTHALO_URL} target="_blank" rel="noopener noreferrer" className="cta-link">
-                Visit scouthalo.com ↗
-              </a>
-              <Link href="/building-scouthalo" className="cta-link cta-link-quiet">
-                How it started →
-              </Link>
+            </ol>
+
+            <div className="showcase-uses">
+              <p className="showcase-uses-label">One search for</p>
+              <ul className="showcase-chips">
+                {USE_CASES.map((u) => (
+                  <li key={u}>{u}</li>
+                ))}
+              </ul>
+              <div className="cta-row">
+                <a href={SCOUTHALO_URL} target="_blank" rel="noopener noreferrer" className="cta-link">
+                  Visit scouthalo.com ↗
+                </a>
+                <Link href="/building-scouthalo" className="cta-link cta-link-quiet">
+                  How it started →
+                </Link>
+              </div>
             </div>
           </div>
         </div>
