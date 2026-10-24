@@ -24,7 +24,11 @@ export const JOURNEY: Milestone[] = [
     title: "Learning to operate",
     text: "About a year and a half in e-commerce, from around 2024, selling on Mercado Libre in Montevideo.",
     href: "/about#operating",
-    place: { name: "Montevideo", lat: "34.90° S", lon: "56.16° W" },
+    image: {
+      src: "/images/montevideo-palacio-salvo.webp",
+      alt: "Palacio Salvo on Plaza Independencia, Montevideo, under a clear blue sky.",
+      position: "50% 32%",
+    },
   },
   {
     id: "note",
