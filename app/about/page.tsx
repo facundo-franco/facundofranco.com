@@ -20,7 +20,7 @@ export const metadata: Metadata = pageMetadata({
 const GLANCE = [
   { term: "Born", value: "Montevideo, 2001" },
   { term: "Grew up", value: "Punta del Este, Uruguay" },
-  { term: "First operating role", value: "About two years in e-commerce, on Mercado Libre" },
+  { term: "First operating role", value: "About a year and a half in e-commerce, from around 2024, on Mercado Libre" },
   { term: "Now", value: ROLE },
   { term: "Based", value: "Uruguay, with Miami next" },
 ] as const;
@@ -175,8 +175,8 @@ export default function AboutPage() {
           title="Learning how a business actually works."
         >
           <p>
-            Eventually, I moved to Montevideo and got the opportunity to work inside an
-            e-commerce business selling through Mercado Libre.
+            Eventually, around 2024, I moved to Montevideo and got the opportunity to work
+            inside an e-commerce business selling through Mercado Libre.
           </p>
           <p>
             It became my first real experience operating a business consistently. Monday through
@@ -203,7 +203,7 @@ export default function AboutPage() {
             always something that needed attention.
           </p>
           <p>
-            I spent around two years doing it. It was demanding, but I loved it. For the first
+            I spent about a year and a half doing it. It was demanding, but I loved it. For the first
             time, I was seeing how all the pieces of a business connected: pricing,
             merchandising, customers, operations, logistics, and execution.
           </p>

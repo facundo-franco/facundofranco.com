@@ -55,12 +55,14 @@ const SCOUTNYC_SLIDES: CarouselSlide[] = [
 
 // The chronology at a glance. Dates: the note itself, and the ScoutHalo
 // repository history (ScoutNYC v1 built 30 Mar 2026; rebranded ScoutHalo 28 May 2026).
-// Development dates, not public launch dates.
+// Development dates, not public launch dates. Incorporation: Delaware certificate,
+// filed 9 Sep 2026.
 const CHRONOLOGY = [
   { when: "Oct 2025", what: "The note", href: "#the-idea" },
   { when: "Mar 2026", what: "ScoutNYC built", href: "#the-first-version" },
   { when: "May 2026", what: "Rebranded ScoutHalo", href: "#all-in" },
   { when: "Winter 2026", what: "All in", href: "#all-in" },
+  { when: "Sep 2026", what: "ScoutHalo, Inc.", href: "#incorporated" },
   { when: "Today", what: "Still building", href: "#today" },
 ] as const;
 
@@ -180,9 +182,14 @@ export default function StoryPage() {
           <>
             <p>Eventually, I found a better way to build it.</p>
             <p>
-              I came across a different approach to building with AI, and the problem that had
-              made the first version impossible to scale started to look solvable. I realized I
-              could build the product differently, and this time I decided to go all in.
+              Instead of manually building a database of places, I started using AI to understand
+              what people were looking for, search for real locations, and evaluate how well those
+              places matched their needs.
+            </p>
+            <p>
+              The problem that had made the first version impossible to scale started to look
+              solvable. I realized I could build the product differently, and this time I decided
+              to go all in.
             </p>
           </>
         }
@@ -217,8 +224,37 @@ export default function StoryPage() {
       </StoryChapter>
 
       <StoryChapter
+        id="incorporated"
+        eyebrow="04 · September 2026"
+        title="Then it became a company."
+        lead={
+          <p>
+            On September 9, 2026, ScoutHalo, Inc. was incorporated in Delaware, in the United
+            States.
+          </p>
+        }
+        figure={{
+          src: "/images/scouthalo-inc-delaware-certificate-2026.webp",
+          width: 900,
+          height: 1067,
+          alt: "The State of Delaware's certification of the certificate of incorporation of ScoutHalo, Inc., filed on September 9, 2026. Administrative identifiers are hidden.",
+          caption: "Delaware certificate — 9 September 2026 · identifiers hidden",
+        }}
+      >
+        <p>
+          Two days later, I spoke on a DataCamp webinar about becoming an AI agent operator,
+          sharing lessons from building ScoutHalo with more than 700 people who joined live.
+        </p>
+        <div className="cta-row">
+          <Link href="/talks" className="cta-link cta-link-quiet">
+            The DataCamp talk →
+          </Link>
+        </div>
+      </StoryChapter>
+
+      <StoryChapter
         id="today"
-        eyebrow="04 · Today"
+        eyebrow="05 · Today"
         title="Still building."
         lead={
           <>

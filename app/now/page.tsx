@@ -9,7 +9,7 @@ import { EMAIL, NOW_UPDATED, SCOUTHALO_URL, mailto } from "@/lib/site";
 export const metadata: Metadata = pageMetadata({
   title: "Now — Facundo Franco",
   description:
-    "What Facundo Franco is working on now: building ScoutHalo, raising capital for its next stage, planning a Miami-based founding team, and preparing to relocate to Miami.",
+    "What Facundo Franco is working on now: making ScoutHalo a product people value, raising funding, building a founding team in Miami, earning a place in the market, and growing as a founder.",
   path: "/now",
 });
 
@@ -75,28 +75,38 @@ export default function NowPage() {
             Last updated — {NOW_UPDATED}
           </p>
           <p className="profile-intro reveal-load" style={d(180)}>
-            ScoutHalo is live in early access, and the company is legally established in the U.S.
-            These are my priorities for its next stage.
+            ScoutHalo is live in early access, and ScoutHalo, Inc. is incorporated in Delaware.
+            These are my priorities for what comes next.
           </p>
           <ol className="now-index reveal-load" style={d(240)} aria-label="Priorities">
             <li>
-              <a href="#building">01 · Building ScoutHalo</a>
+              <a href="#building">01 · Product</a>
             </li>
             <li>
-              <a href="#raising">02 · Raising</a>
+              <a href="#raising">02 · Funding</a>
             </li>
             <li>
               <a href="#team">03 · Founding team</a>
             </li>
             <li>
-              <a href="#miami">04 · Miami</a>
+              <a href="#market">04 · Market</a>
+            </li>
+            <li>
+              <a href="#miami">05 · Miami</a>
+            </li>
+            <li>
+              <a href="#growing">06 · As a founder</a>
             </li>
           </ol>
         </header>
 
-        <Priority id="building" index="01 · Building" title="Building ScoutHalo.">
+        <Priority id="building" index="01 · Product" title="A product people value.">
           <p>
-            Improving the product with the people we&apos;re building for — travelers, remote
+            My first priority is turning ScoutHalo into something people genuinely use and value,
+            not just something that works.
+          </p>
+          <p>
+            That means improving it with the people we&apos;re building for — travelers, remote
             workers, event planners, creators, and production teams — and learning from real
             usage.
           </p>
@@ -106,8 +116,8 @@ export default function NowPage() {
           </p>
         </Priority>
 
-        <Priority id="raising" index="02 · Raising" title="Raising.">
-          <p>Raising capital for the next stage of ScoutHalo.</p>
+        <Priority id="raising" index="02 · Funding" title="Raising.">
+          <p>I&apos;m working to secure the funding ScoutHalo needs to grow.</p>
           <p>
             It&apos;s what makes the rest of this page possible: the founding team, more time with
             the people using ScoutHalo, and the move to Miami.
@@ -116,8 +126,9 @@ export default function NowPage() {
 
         <Priority id="team" index="03 · Founding team" title="Who I'm looking for.">
           <p>
-            I want ScoutHalo to grow with a small, ambitious founding team from the beginning —
-            people who want to build the product and the company, not just a list of features.
+            I want to build a talented, ambitious founding team in Miami — people who share the
+            vision of making the physical world searchable, and who want to build the product and
+            the company, not just a list of features.
           </p>
           <p>These are the founding roles I&apos;m planning for:</p>
 
@@ -154,7 +165,15 @@ export default function NowPage() {
           </p>
         </Priority>
 
-        <Priority id="miami" index="04 · Miami" title="Building from Miami.">
+        <Priority id="market" index="04 · Market" title="Earning a place in the market.">
+          <p>
+            I want ScoutHalo to build a meaningful presence in its market: to become what people
+            reach for when they need to find the right real-world place.
+          </p>
+          <p>That kind of presence has to be earned through the product, one person at a time.</p>
+        </Priority>
+
+        <Priority id="miami" index="05 · Miami" title="Building from Miami.">
           <p>
             I&apos;m planning to relocate to Miami, specifically around Brickell, to build the
             next stage of ScoutHalo.
@@ -190,6 +209,21 @@ export default function NowPage() {
       </Reveal>
 
       <div className="profile-container">
+        <Priority id="growing" index="06 · As a founder" title="Growing as a founder.">
+          <p>
+            I&apos;m still early as a founder, and I want to keep growing into the role as
+            ScoutHalo grows.
+          </p>
+          <p>
+            Part of that is speaking more in public. The DataCamp webinar was a start; I&apos;d
+            like to do more talks, podcasts, and conversations about AI, search, and building a
+            company.
+          </p>
+          <p className="role-cta">
+            <Link href="/talks">Talks and invitations →</Link>
+          </p>
+        </Priority>
+
         <Reveal as="aside" className="profile-next">
           <p className="eyebrow">Next</p>
           <h2 className="profile-heading">This page will change.</h2>

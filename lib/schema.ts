@@ -31,6 +31,9 @@ export function organizationNode(): Node {
     "@type": "Organization",
     "@id": IDS.scouthalo,
     name: "ScoutHalo",
+    legalName: "ScoutHalo, Inc.",
+    // Delaware certificate of incorporation, filed 9 Sep 2026.
+    foundingDate: "2026-09-09",
     url: `${SCOUTHALO_URL}/`,
     slogan: SCOUTHALO_TAGLINE,
     // scouthalo.com's own Organization description, kept word for word.

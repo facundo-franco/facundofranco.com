@@ -1,7 +1,8 @@
 // The founder timeline on the homepage, oldest first. Dates are only those on
 // record: the original note, the ScoutHalo repository history (ScoutNYC v1
 // built 30 Mar 2026; rebranded ScoutHalo 28 May 2026 — development dates, not
-// public launches), the build-room photo, and the DataCamp talk. Anything undated uses neutral chronology ("Before", "Next").
+// public launches), the build-room photo, the Delaware certificate of
+// incorporation (9 Sep 2026), and the DataCamp talk. Anything undated uses neutral chronology ("Before", "Next").
 
 export type Milestone = {
   id: string;
@@ -21,7 +22,7 @@ export const JOURNEY: Milestone[] = [
     id: "operating",
     when: "Before ScoutHalo",
     title: "Learning to operate",
-    text: "About two years inside an e-commerce business on Mercado Libre, in Montevideo.",
+    text: "About a year and a half in e-commerce, from around 2024, selling on Mercado Libre in Montevideo.",
     href: "/about#operating",
     place: { name: "Montevideo", lat: "34.90° S", lon: "56.16° W" },
   },
@@ -67,6 +68,18 @@ export const JOURNEY: Milestone[] = [
       src: "/images/scouthalo-build-room-uruguay-2026.jpg",
       alt: "The small room in Uruguay where ScoutHalo was built.",
       position: "50% 45%",
+    },
+  },
+  {
+    id: "incorporated",
+    when: "9 Sep 2026",
+    title: "ScoutHalo, Inc.",
+    text: "Incorporated in Delaware, United States.",
+    href: "/building-scouthalo#incorporated",
+    image: {
+      src: "/images/scouthalo-inc-delaware-certificate-2026.webp",
+      alt: "The Delaware certificate of incorporation of ScoutHalo, Inc.",
+      position: "50% 12%",
     },
   },
   {

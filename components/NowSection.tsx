@@ -4,9 +4,9 @@ import SectionHeader from "./SectionHeader";
 
 // Current priorities in four lines; the detail lives on /now. Plans, not results.
 const PRIORITIES = [
-  { index: "01", label: "Building", value: "Improving ScoutHalo with the people using it." },
-  { index: "02", label: "Raising", value: "Raising capital for ScoutHalo's next stage." },
-  { index: "03", label: "Founding team", value: "Planning a small founding team, together in Miami." },
+  { index: "01", label: "Product", value: "Turning ScoutHalo into a product people genuinely value." },
+  { index: "02", label: "Funding", value: "Working to secure funding to grow ScoutHalo." },
+  { index: "03", label: "Founding team", value: "Building an ambitious founding team in Miami." },
   { index: "04", label: "Miami", value: "Preparing to relocate to Brickell." },
 ] as const;
 
@@ -17,7 +17,7 @@ export default function NowSection() {
         <SectionHeader eyebrow="04 · Now" title="Now." titleId="now-title">
           <p className="now-updated">Last updated · {NOW_UPDATED}</p>
           <p className="now-lead-text">
-            ScoutHalo is live in early access, and the company is legally established in the U.S.
+            ScoutHalo is live in early access, and ScoutHalo, Inc. is incorporated in Delaware.
             This is what I&apos;m working on next.
           </p>
 
