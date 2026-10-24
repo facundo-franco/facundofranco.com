@@ -82,13 +82,8 @@ export default function Header() {
                   {item.label}
                 </Link>
               ) : (
-                <a
-                  href={item.href}
-                  {...(item.kind === "external"
-                    ? { target: "_blank", rel: "noopener noreferrer" }
-                    : {})}
-                  onClick={() => setOpen(false)}
-                >
+                // Contact: a hash link to the homepage's Work with me section
+                <a href={item.href} onClick={() => setOpen(false)}>
                   {item.label}
                 </a>
               )}

@@ -10,15 +10,19 @@ type ChapterFigure = {
   height: number;
   alt: string;
   caption?: string;
+  /** Above the fold on some screens: load eagerly with high priority. */
+  priority?: boolean;
 };
 
 // One chapter of the /building-scouthalo page: copy left, optional framed figure right.
-// Chapters stack as sections, so new parts can be appended without layout work.
+// `lead` is the opening paragraph: on mobile the figure sits right after it, next to
+// the text it illustrates, instead of after the whole chapter.
 // `aside` takes a custom right-column visual (e.g. a carousel) in place of `figure`.
 export default function StoryChapter({
   id,
   eyebrow,
   title,
+  lead,
   figure,
   aside,
   children,
@@ -26,6 +30,7 @@ export default function StoryChapter({
   id: string;
   eyebrow: string;
   title: string;
+  lead?: ReactNode;
   figure?: ChapterFigure;
   aside?: ReactNode;
   children: ReactNode;
@@ -37,7 +42,7 @@ export default function StoryChapter({
       <div className="container">
         <SectionHeader eyebrow={eyebrow} title={title}>
           <div className={`chapter${hasVisual ? "" : " chapter-text-only"}`}>
-            <div className="prose chapter-copy">{children}</div>
+            {lead ? <div className="prose chapter-copy chapter-lead">{lead}</div> : null}
 
             {figure ? (
               <figure
@@ -49,13 +54,15 @@ export default function StoryChapter({
                     className="post-preview-frame chapter-figure-frame"
                     style={{ aspectRatio: `${figure.width} / ${figure.height}` }}
                   >
-                    {/* Served as-is (unoptimized) so the original screenshot is never re-encoded. */}
+                    {/* Figures are at most 360px wide: serve a matching variant. */}
                     <Image
                       src={figure.src}
                       alt={figure.alt}
                       width={figure.width}
                       height={figure.height}
-                      unoptimized
+                      sizes="(max-width: 720px) 340px, 360px"
+                      quality={90}
+                      priority={figure.priority}
                     />
                   </div>
                 </div>
@@ -66,6 +73,8 @@ export default function StoryChapter({
             ) : (
               aside
             )}
+
+            <div className="prose chapter-copy chapter-body">{children}</div>
           </div>
         </SectionHeader>
       </div>

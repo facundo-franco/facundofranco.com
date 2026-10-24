@@ -7,6 +7,9 @@ export const SITE = {
   description:
     "Facundo Franco is the Founder & CEO of ScoutHalo, an AI-powered search engine for real-world places. Making the physical world searchable. Based in Uruguay, with Miami next.",
   ogImage: "/images/facundo-franco-founder-scouthalo.png",
+  // 800px copy of the portrait for structured data and small avatars (the
+  // original PNG is ~2 MB and is only ever served through next/image).
+  personImage: "/images/facundo-franco-800.jpg",
 } as const;
 
 // Founder role, used verbatim wherever the site names it.
@@ -27,16 +30,20 @@ export const IDS = {
 export const SCOUTHALO_URL = "https://www.scouthalo.com";
 export const SCOUTHALO_LINKEDIN = "https://www.linkedin.com/company/scouthalo/";
 
-// Primary destinations, shared by the header and footer. ScoutHalo is the
-// external product site; the pages are full destinations (home sections
-// preview them); Connect jumps to the footer's contact links on any page.
+// Primary destinations, shared by the header and footer. "ScoutHalo" is the
+// founder story on this site; the product site is linked separately and
+// always marked external (↗). Contact jumps to the homepage's Work with me.
 export const NAV = [
-  { label: "ScoutHalo", href: SCOUTHALO_URL, kind: "external" },
   { label: "About", href: "/about", kind: "page" },
-  { label: "Building ScoutHalo", href: "/building-scouthalo", kind: "page" },
+  { label: "ScoutHalo", href: "/building-scouthalo", kind: "page" },
   { label: "Now", href: "/now", kind: "page" },
-  { label: "Connect", href: "#contact", kind: "connect" },
+  { label: "Talks", href: "/talks", kind: "page" },
+  { label: "Contact", href: "/#contact", kind: "connect" },
 ] as const;
+
+// Prefilled subjects so each audience's email is easy to triage.
+export const mailto = (subject?: string) =>
+  `mailto:${EMAIL}${subject ? `?subject=${encodeURIComponent(subject)}` : ""}`;
 
 export const EMAIL = "facundofn1906@gmail.com";
 
@@ -52,6 +59,10 @@ export const SOCIALS = [
 export const SAME_AS: string[] = SOCIALS.map((s) => s.href);
 
 
+// The /now page's "last updated" stamp, also shown in the homepage's Now
+// section. Update it whenever a priority moves.
+export const NOW_UPDATED = "October 2026";
+
 // Last meaningful content change per page (ISO dates). Feeds sitemap.xml and
 // structured data; update a page's date whenever its content changes.
 export const PAGE_UPDATED = {
@@ -59,6 +70,6 @@ export const PAGE_UPDATED = {
   "/about": "2026-10-24",
   "/building-scouthalo": "2026-10-24",
   "/now": "2026-10-24",
-  "/exposure": "2026-10-24",
+  "/talks": "2026-10-24",
   "/privacy": "2026-10-24",
 } as const;

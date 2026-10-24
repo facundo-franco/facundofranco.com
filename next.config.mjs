@@ -19,6 +19,8 @@ const nextConfig = {
       { source: "/about.html", destination: "/about", permanent: true },
       // The ScoutHalo build story moved from /story to its descriptive URL.
       { source: "/story", destination: "/building-scouthalo", permanent: true },
+      // Exposure was renamed Talks.
+      { source: "/exposure", destination: "/talks", permanent: true },
       // Writing is hidden for now; old writing URLs go home. Temporary, so a
       // writing index can come back later without cached redirects in the way.
       { source: "/articles", destination: "/", permanent: false },

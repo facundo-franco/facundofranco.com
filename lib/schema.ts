@@ -1,6 +1,7 @@
 // Reusable JSON-LD builders. One canonical Person, one ScoutHalo Organization,
 // referenced by @id, never duplicated by hand.
 import { IDS, ROLE, SAME_AS, SCOUTHALO_LINKEDIN, SCOUTHALO_TAGLINE, SCOUTHALO_URL, SITE } from "./site";
+import type { Talk } from "./talks";
 import type { Article } from "./writing";
 
 type Node = Record<string, unknown>;
@@ -15,7 +16,7 @@ export function personNode(): Node {
     givenName: "Facundo",
     familyName: "Franco",
     url: `${SITE.url}/`,
-    image: SITE.url + SITE.ogImage,
+    image: SITE.url + SITE.personImage,
     jobTitle: "Founder & CEO",
     description: `${ROLE}, an AI-powered search engine for real-world places.`,
     // ScoutHalo's side of the relationship is Organization.founder (below).
@@ -125,10 +126,34 @@ export function articleGraph(a: Article) {
       mainEntityOfPage: { "@type": "WebPage", "@id": `${SITE.url}/writing/${a.slug}` },
       ...(a.publishedAt ? { datePublished: a.publishedAt } : {}),
       ...(a.updatedAt || a.publishedAt ? { dateModified: a.updatedAt ?? a.publishedAt } : {}),
-      image: a.ogImage ? SITE.url + a.ogImage : SITE.url + SITE.ogImage,
+      image: a.ogImage ? SITE.url + a.ogImage : SITE.url + SITE.personImage,
       author: personRef(),
       publisher: personRef(),
       isPartOf: { "@id": IDS.website },
     },
+  ]);
+}
+
+// /talks: each appearance as an Event with the Person as performer. Only the
+// facts shown on the page; a recording becomes a VideoObject when verified.
+export function talksGraph(talks: Talk[]) {
+  const url = `${SITE.url}/talks`;
+  return graph([
+    ...talks.map((t) => ({
+      "@type": "Event",
+      "@id": `${url}#${t.id}`,
+      name: t.title.replace(/\.$/, ""),
+      description: t.summary,
+      startDate: t.isoDate,
+      url: `${url}#${t.id}`,
+      organizer: { "@type": "Organization", name: t.host },
+      performer: personRef(),
+      ...(t.location ? { location: { "@type": "Place", name: t.location } } : {}),
+      ...(t.image ? { image: SITE.url + t.image.src } : {}),
+      ...(t.recordingUrl
+        ? { recordedIn: { "@type": "VideoObject", name: t.title.replace(/\.$/, ""), url: t.recordingUrl } }
+        : {}),
+    })),
+    personNode(),
   ]);
 }

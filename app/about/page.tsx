@@ -16,6 +16,15 @@ export const metadata: Metadata = pageMetadata({
   ogType: "profile",
 });
 
+// At a glance: only facts the chapters below already tell.
+const GLANCE = [
+  { term: "Born", value: "Montevideo, 2001" },
+  { term: "Grew up", value: "Punta del Este, Uruguay" },
+  { term: "First operating role", value: "About two years in e-commerce, on Mercado Libre" },
+  { term: "Now", value: ROLE },
+  { term: "Based", value: "Uruguay, with Miami next" },
+] as const;
+
 // Above-the-fold: CSS entrance (reveal-load), same as the other page heroes.
 const d = (ms: number) => ({ "--reveal-delay": `${ms}ms` }) as CSSProperties;
 
@@ -78,6 +87,20 @@ export default function AboutPage() {
       </div>
 
       <div className="profile-container">
+        {/* The short version, before the long one: facts from the chapters below */}
+        <Reveal as="section" className="glance">
+          <p className="eyebrow">
+            At a glance
+          </p>
+          <dl className="glance-list">
+            {GLANCE.map((g) => (
+              <div key={g.term}>
+                <dt>{g.term}</dt>
+                <dd>{g.value}</dd>
+              </div>
+            ))}
+          </dl>
+        </Reveal>
 
         <Chapter id="the-beginning" eyebrow="01 · The beginning" title="Growing up in Uruguay.">
           <p>
@@ -101,6 +124,14 @@ export default function AboutPage() {
             geography. I was much more interested in understanding the world than in being good
             at school for its own sake.
           </p>
+          <aside className="profile-pullquote" aria-label="Why ScoutHalo">
+            <p>
+              I&apos;ve always wanted to understand the world: its history, its geography, and
+              the places I was lucky enough to experience. In a way, ScoutHalo is an extension of
+              that curiosity, an attempt to make the physical world easier to search and
+              understand.
+            </p>
+          </aside>
         </Chapter>
 
         <Chapter id="the-reset" eyebrow="02 · The reset" title="Three days in Buenos Aires.">
@@ -117,8 +148,10 @@ export default function AboutPage() {
             waiting for that independence, and suddenly I was back in my childhood bedroom
             taking university classes through a screen.
           </p>
-          <p>It didn&apos;t last long.</p>
-          <p>I struggled with online university and left after the first semester.</p>
+          <p>
+            It didn&apos;t last long. I struggled with online university and left after the first
+            semester.
+          </p>
           <p>
             But I wasn&apos;t interested in doing nothing. I was taking courses on my own, reading
             constantly, and becoming increasingly interested in business and entrepreneurship.
@@ -129,10 +162,10 @@ export default function AboutPage() {
             on businesses with friends, explored services, tried to patent ideas, and
             experimented with more things than I can probably remember.
           </p>
-          <p>Most of them went nowhere.</p>
-          <p>
-            But that period taught me something university hadn&apos;t: I liked building things,
-            testing ideas, and figuring out how businesses actually worked.
+          <p>Most of them went nowhere. But that period taught me something university hadn&apos;t:</p>
+          <p className="profile-emphasis">
+            I liked building things, testing ideas, and figuring out how businesses actually
+            worked.
           </p>
         </Chapter>
 
@@ -169,20 +202,21 @@ export default function AboutPage() {
             improve the business. With a large catalog and constant sales activity, there was
             always something that needed attention.
           </p>
-          <p>I spent around two years doing it.</p>
           <p>
-            It was demanding, but I loved it. For the first time, I was seeing how all the pieces
-            of a business connected: pricing, merchandising, customers, operations, logistics,
-            and execution.
+            I spent around two years doing it. It was demanding, but I loved it. For the first
+            time, I was seeing how all the pieces of a business connected: pricing,
+            merchandising, customers, operations, logistics, and execution.
           </p>
-          <p>It taught me more about running a business than anything I had done before.</p>
+          <p className="profile-emphasis">
+            It taught me more about running a business than anything I had done before.
+          </p>
         </Chapter>
 
         <Chapter id="back-home" eyebrow="04 · Back home" title="Figuring out what came next.">
           <p>
-            Eventually, I decided to leave Montevideo and return home to Punta del Este.
+            Eventually, I decided to leave Montevideo and return home to Punta del Este. That
+            transition wasn&apos;t particularly glamorous.
           </p>
-          <p>That transition wasn&apos;t particularly glamorous.</p>
           <p>
             During the following summer, I worked nights as a cashier at a friend&apos;s pub. Most
             shifts started around 8 PM and finished around 6 in the morning.
@@ -191,8 +225,23 @@ export default function AboutPage() {
             When the season ended, I found myself back at home trying to figure out what came
             next.
           </p>
-          <p>An idea I&apos;d written down months earlier was still sitting in my Notes.</p>
-          <p>I decided to give it a shot.</p>
+          <p>
+            An idea I&apos;d written down months earlier was still sitting in my Notes. I decided
+            to give it a shot.
+          </p>
+          <figure className="profile-figure">
+            <div className="profile-figure-frame">
+              <Image
+                src="/images/scouthalo-original-note-october-2025.webp"
+                alt="Screenshot of the original iPhone note, dated 9 October 2025, reading: “App para encontrar lugares especificos para cada creador de contenido.”"
+                width={924}
+                height={2000}
+                sizes="220px"
+                quality={90}
+              />
+            </div>
+            <figcaption className="profile-photo-caption">The note — 9 October 2025</figcaption>
+          </figure>
         </Chapter>
 
         {/* Hand-off to the ScoutHalo build story on /building-scouthalo */}
@@ -200,8 +249,8 @@ export default function AboutPage() {
           <p className="eyebrow">Next</p>
           <h2 className="profile-heading">Building ScoutHalo.</h2>
           <p className="profile-next-text">
-            How that idea in my Notes became ScoutNYC, and eventually ScoutHalo — an AI-powered
-            search engine for real-world places.
+            How that note became ScoutNYC, first built in March 2026, and then ScoutHalo — an
+            AI-powered search engine for real-world places.
           </p>
           <div className="cta-row">
             <Link href="/building-scouthalo" className="cta-link">

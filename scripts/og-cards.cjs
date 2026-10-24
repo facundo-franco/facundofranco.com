@@ -23,8 +23,8 @@ const CARDS = [
     photo: { src: '/images/brickell-miami.jpg', w: 390, h: 390, pos: '50% 50%' } },
   { file: 'privacy', eyebrow: 'Legal', title: 'Privacy.', size: 118,
     sub: 'No accounts, forms, or cookies —<br>just privacy-friendly analytics and email.', bottom: 'Facundo Franco' },
-  { file: 'exposure', eyebrow: 'Exposure', title: 'Exposure.', size: 118,
-    sub: 'Talks, interviews and features with Facundo Franco and ScoutHalo.', bottom: 'Facundo Franco · Founder &amp; CEO of ScoutHalo' },
+  { file: 'talks', eyebrow: 'Talks', title: 'Talks.', size: 118,
+    sub: 'Conversations about building ScoutHalo and working with AI agents.', bottom: 'Facundo Franco · Founder &amp; CEO of ScoutHalo' },
 ];
 const css = `
   html, body { margin: 0 !important; padding: 0 !important; background: #090d10 !important; }

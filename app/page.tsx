@@ -1,8 +1,10 @@
 import type { Metadata } from "next";
 import Hero from "@/components/Hero";
-import BuildingSection from "@/components/BuildingSection";
-import AboutSection from "@/components/AboutSection";
+import ShowcaseSection from "@/components/ShowcaseSection";
+import JourneySection from "@/components/JourneySection";
 import NowSection from "@/components/NowSection";
+import TalksSection from "@/components/TalksSection";
+import ContactSection from "@/components/ContactSection";
 import JsonLd from "@/components/JsonLd";
 import { homeGraph } from "@/lib/schema";
 import { pageMetadata } from "@/lib/metadata";
@@ -15,14 +17,17 @@ export const metadata: Metadata = pageMetadata({
   ogType: "profile",
 });
 
+// 01 Introduction · 02 What I'm building · 03 The journey · 04 Now · 05 Talks · 06 Work with me
 export default function HomePage() {
   return (
     <main id="main">
       <JsonLd data={homeGraph()} />
       <Hero />
-      <AboutSection />
-      <BuildingSection />
+      <ShowcaseSection />
+      <JourneySection />
       <NowSection />
+      <TalksSection />
+      <ContactSection />
     </main>
   );
 }

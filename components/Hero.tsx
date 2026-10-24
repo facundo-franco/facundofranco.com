@@ -1,6 +1,5 @@
 import type { CSSProperties } from "react";
-import Link from "next/link";
-import { ROLE, SCOUTHALO_URL } from "@/lib/site";
+import { ROLE } from "@/lib/site";
 import MagneticButton from "./MagneticButton";
 import Portrait from "./Portrait";
 
@@ -15,9 +14,9 @@ export default function Hero() {
         <div className="hero-copy">
           <p className="eyebrow hero-eyebrow reveal-load">{ROLE}</p>
 
+          {/* The space before <br> keeps the accessible name "Facundo Franco." */}
           <h1 className="reveal-load" style={d(40)}>
-            Facundo
-            <br />
+            Facundo <br />
             Franco.
           </h1>
 
@@ -28,12 +27,12 @@ export default function Hero() {
           </p>
 
           <div className="hero-actions reveal-load" style={d(160)}>
-            <MagneticButton href={SCOUTHALO_URL} className="button button-primary">
-              Explore ScoutHalo ↗
+            <MagneticButton href="#building" external={false} className="button button-primary">
+              See what I&apos;m building ↓
             </MagneticButton>
-            <Link href="/building-scouthalo" className="button button-secondary">
-              Building ScoutHalo →
-            </Link>
+            <a href="#contact" className="button button-secondary">
+              Get in touch
+            </a>
           </div>
         </div>
 

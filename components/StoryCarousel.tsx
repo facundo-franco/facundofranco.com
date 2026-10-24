@@ -80,13 +80,14 @@ export default function StoryCarousel({
               aria-label={`${i + 1} of ${slides.length}`}
               aria-hidden={i !== index}
             >
-              {/* Served as-is (unoptimized) so the original screenshots are never re-encoded. */}
+              {/* Same width as the chapter figures; high quality keeps screenshot text crisp. */}
               <Image
                 src={s.src}
                 alt={s.alt}
                 width={s.width}
                 height={s.height}
-                unoptimized
+                sizes="(max-width: 720px) 340px, 360px"
+                quality={90}
                 draggable={false}
               />
             </div>

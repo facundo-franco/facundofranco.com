@@ -11,11 +11,10 @@ import { EMAIL, NAV, SCOUTHALO_TAGLINE, SCOUTHALO_URL, SOCIALS } from "@/lib/sit
 
 type IconProps = { size?: number; stroke?: number; "aria-hidden"?: boolean };
 
-// The header's destinations, plus Exposure (footer only), placed before Connect.
+// The header's destinations, then the product site, marked external.
 const FOOTER_NAV = [
-  ...NAV.filter((n) => n.kind !== "connect"),
-  { label: "Exposure", href: "/exposure", kind: "page" },
-  ...NAV.filter((n) => n.kind === "connect"),
+  ...NAV,
+  { label: "scouthalo.com ↗", href: SCOUTHALO_URL, kind: "external" },
 ] as const;
 
 const hrefOf = (label: string) => SOCIALS.find((c) => c.label === label)?.href ?? "";
@@ -31,7 +30,7 @@ const FOOTER_SOCIALS: { label: string; href: string; Icon: ComponentType<IconPro
 
 export default function Footer() {
   return (
-    <footer className="site-footer" id="contact">
+    <footer className="site-footer">
       <div className="footer-container">
         <div className="footer-content">
           <div className="footer-brand">
@@ -55,7 +54,7 @@ export default function Footer() {
           <div className="footer-group">
             <p className="footer-label">Navigate</p>
             <nav className="footer-nav" aria-label="Site">
-              {/* Same destinations as the header, plus Exposure */}
+              {/* Same destinations as the header, plus the product site */}
               {FOOTER_NAV.map((n) =>
                 n.kind === "page" ? (
                   <Link key={n.href} href={n.href}>

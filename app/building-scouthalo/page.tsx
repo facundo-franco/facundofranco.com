@@ -53,6 +53,17 @@ const SCOUTNYC_SLIDES: CarouselSlide[] = [
   },
 ].map((s) => ({ ...s, width: 924, height: 2000 }));
 
+// The chronology at a glance. Dates: the note itself, and the ScoutHalo
+// repository history (ScoutNYC v1 built 30 Mar 2026; rebranded ScoutHalo 28 May 2026).
+// Development dates, not public launch dates.
+const CHRONOLOGY = [
+  { when: "Oct 2025", what: "The note", href: "#the-idea" },
+  { when: "Mar 2026", what: "ScoutNYC built", href: "#the-first-version" },
+  { when: "May 2026", what: "Rebranded ScoutHalo", href: "#all-in" },
+  { when: "Winter 2026", what: "All in", href: "#all-in" },
+  { when: "Today", what: "Still building", href: "#today" },
+] as const;
+
 // Above-the-fold: CSS entrance (reveal-load), same as the home hero.
 const d = (ms: number) => ({ "--reveal-delay": `${ms}ms` }) as CSSProperties;
 
@@ -69,26 +80,41 @@ export default function StoryPage() {
           <p className="story-hero-intro reveal-load" style={d(160)}>
             How an idea sitting in my Notes turned into the company I&apos;m building today.
           </p>
+          <nav className="story-chronology reveal-load" style={d(220)} aria-label="Chapters">
+            <ol>
+              {CHRONOLOGY.map((c) => (
+                <li key={c.what}>
+                  <a href={c.href}>
+                    <span className="story-chronology-when">{c.when}</span>
+                    <span className="story-chronology-what">{c.what}</span>
+                  </a>
+                </li>
+              ))}
+            </ol>
+          </nav>
         </div>
       </header>
 
       <StoryChapter
         id="the-idea"
-        eyebrow="01 · The idea"
+        eyebrow="01 · October 2025"
         title="It started with a note."
+        lead={
+          <p>
+            In October 2025, I wrote down an idea: an app for finding specific places for different
+            kinds of creators. It was one of those random ideas you capture before you forget it.
+            Then I left it there.
+          </p>
+        }
         figure={{
           src: "/images/scouthalo-original-note-october-2025.webp",
           width: 924,
           height: 2000,
           alt: "Screenshot of the original iPhone note, dated 9 October 2025, reading: “App para encontrar lugares especificos para cada creador de contenido.”",
-          caption: "Original note — October 2025",
+          caption: "Original note — 9 October 2025",
+          priority: true,
         }}
       >
-        <p>
-          In October 2025, I wrote down an idea: an app for finding specific places for different
-          kinds of creators. It was one of those random ideas you capture before you forget it.
-          Then I left it there.
-        </p>
         <p>
           That summer — Uruguay&apos;s summer of 2025–26 — I was working at a friend&apos;s pub.
           When the season ended, I wasn&apos;t entirely sure what I was going to do next.
@@ -105,29 +131,34 @@ export default function StoryPage() {
 
       <StoryChapter
         id="the-first-version"
-        eyebrow="02 · The first version"
+        eyebrow="02 · March 2026"
         title="I started small."
+        lead={
+          <>
+            <p>The idea eventually became something I wanted to test.</p>
+            <p>
+              I wasn&apos;t a software engineer, but AI gave me a way to start building it myself.
+              The first version was called ScoutNYC. The plan was simple: start with one city,
+              build a useful collection of shoot locations, then expand to Los Angeles, Miami, and
+              beyond.
+            </p>
+          </>
+        }
         aside={
           <StoryCarousel
             label="Screenshots of the original ScoutNYC website"
-            caption="ScoutNYC — the first version"
+            caption="ScoutNYC — built March 2026"
             slides={SCOUTNYC_SLIDES}
           />
         }
       >
-        <p>The idea eventually became something I wanted to test.</p>
-        <p>
-          I wasn&apos;t a software engineer, but AI gave me a way to start building it myself. The
-          first version was called ScoutNYC. The plan was simple: start with one city, build a
-          useful collection of shoot locations, then expand to Los Angeles, Miami, and beyond.
-        </p>
         <p>
           I built the first website and started adding locations manually. Each one needed the
           information I thought a creator would need to actually use it — where to shoot, how to
           frame it, when to go, and what could go wrong.
         </p>
         <p>It worked well enough to prove the concept to myself.</p>
-        <p>
+        <p className="chapter-emphasis">
           But it also exposed the problem with the way I was building it: I was the database.
         </p>
         <p>
@@ -143,8 +174,18 @@ export default function StoryPage() {
 
       <StoryChapter
         id="all-in"
-        eyebrow="03 · All in"
+        eyebrow="03 · Winter 2026"
         title="Then I went all in."
+        lead={
+          <>
+            <p>Eventually, I found a better way to build it.</p>
+            <p>
+              I came across a different approach to building with AI, and the problem that had
+              made the first version impossible to scale started to look solvable. I realized I
+              could build the product differently, and this time I decided to go all in.
+            </p>
+          </>
+        }
         figure={{
           src: "/images/scouthalo-build-room-uruguay-2026.jpg",
           width: 1500,
@@ -153,12 +194,7 @@ export default function StoryPage() {
           caption: "Where I built ScoutHalo — Uruguay, winter 2026.",
         }}
       >
-        <p>Eventually, I found a better way to build it.</p>
-        <p>
-          I came across a different approach to building with AI, and the problem that had made
-          the first version impossible to scale started to look solvable. I realized I could build
-          the product differently, and this time I decided to go all in.
-        </p>
+        <p>In May 2026, I renamed ScoutNYC to ScoutHalo.</p>
         <p>
           I spent most of that winter in Uruguay in one small room, with a bed next to my desk and
           a computer. For about three months, most days started when I woke up and ended when I
@@ -184,6 +220,18 @@ export default function StoryPage() {
         id="today"
         eyebrow="04 · Today"
         title="Still building."
+        lead={
+          <>
+            <p>
+              What started as a sentence in my Notes became ScoutNYC, and eventually ScoutHalo.
+            </p>
+            <p>
+              The product today is very different from that first version. ScoutHalo is an
+              AI-powered search engine for real-world places, built to make the physical world
+              searchable.
+            </p>
+          </>
+        }
         figure={{
           src: "/images/scouthalo-home-mobile-october-2026.webp",
           width: 924,
@@ -192,14 +240,6 @@ export default function StoryPage() {
           caption: "ScoutHalo today — scouthalo.com, October 2026.",
         }}
       >
-        <p>
-          What started as a sentence in my Notes became ScoutNYC, and eventually ScoutHalo.
-        </p>
-        <p>
-          The product today is very different from that first version. ScoutHalo is an
-          AI-powered search engine for real-world places, built to make the physical world
-          searchable.
-        </p>
         <p>
           You describe what you need in a sentence, or start from a photo. ScoutHalo finds real
           places, explains why each one fits and what to confirm before you go, and helps you
@@ -214,7 +254,7 @@ export default function StoryPage() {
           I&apos;m now working on the next part: getting it into more people&apos;s hands,
           learning from how they use it, and building the company around it.
         </p>
-        <p>This is still the beginning.</p>
+        <p className="chapter-emphasis">This is still the beginning.</p>
 
         <div className="cta-row">
           <a
@@ -223,10 +263,10 @@ export default function StoryPage() {
             rel="noopener noreferrer"
             className="cta-link"
           >
-            Visit ScoutHalo ↗
+            Visit scouthalo.com ↗
           </a>
-          <Link href="/" className="cta-link cta-link-quiet">
-            Back to home →
+          <Link href="/now" className="cta-link cta-link-quiet">
+            What I&apos;m working on now →
           </Link>
         </div>
       </StoryChapter>

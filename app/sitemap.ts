@@ -19,7 +19,7 @@ export default function sitemap(): MetadataRoute.Sitemap {
     route("/building-scouthalo", "monthly", 0.8),
     route("/about", "monthly", 0.8),
     route("/now", "monthly", 0.8),
-    route("/exposure", "monthly", 0.6),
+    route("/talks", "monthly", 0.6),
     route("/privacy", "yearly", 0.3),
   ];
 

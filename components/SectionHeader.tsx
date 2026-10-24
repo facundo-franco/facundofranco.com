@@ -5,11 +5,15 @@ import Reveal from "./Reveal";
 export default function SectionHeader({
   eyebrow,
   title,
+  titleId,
+  titleClassName,
   intro,
   children,
 }: {
   eyebrow: string;
-  title: string;
+  title: ReactNode;
+  titleId?: string;
+  titleClassName?: string;
   intro?: ReactNode;
   children?: ReactNode;
 }) {
@@ -17,7 +21,9 @@ export default function SectionHeader({
     <Reveal as="div" className="section-header">
       <p className="eyebrow">{eyebrow}</p>
       <div>
-        <h2 className="section-title">{title}</h2>
+        <h2 className={`section-title${titleClassName ? ` ${titleClassName}` : ""}`} id={titleId}>
+          {title}
+        </h2>
         {intro ? <p className="section-intro">{intro}</p> : null}
         {children}
       </div>

@@ -14,6 +14,7 @@ const DESTINATIONS = [
   { label: "About", href: "/about" },
   { label: "Building ScoutHalo", href: "/building-scouthalo" },
   { label: "Now", href: "/now" },
+  { label: "Talks", href: "/talks" },
 ] as const;
 
 export default function NotFound() {
@@ -37,7 +38,7 @@ export default function NotFound() {
             rel="noopener noreferrer"
             className="cta-link cta-link-quiet"
           >
-            ScoutHalo ↗
+            scouthalo.com ↗
           </a>
         </nav>
       </div>
