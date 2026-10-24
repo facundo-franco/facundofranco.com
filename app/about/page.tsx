@@ -2,14 +2,16 @@ import type { Metadata } from "next";
 import type { CSSProperties, ReactNode } from "react";
 import Image from "next/image";
 import Link from "next/link";
+import JsonLd from "@/components/JsonLd";
 import Reveal from "@/components/Reveal";
 import { pageMetadata } from "@/lib/metadata";
-import { SCOUTHALO_URL } from "@/lib/site";
+import { aboutGraph } from "@/lib/schema";
+import { ROLE, SCOUTHALO_URL } from "@/lib/site";
 
 export const metadata: Metadata = pageMetadata({
-  title: "About Facundo Franco — Founder of ScoutHalo",
+  title: `About Facundo Franco — ${ROLE}`,
   description:
-    "Facundo Franco's path from growing up in Punta del Este, Uruguay, through e-commerce and operations, to founding ScoutHalo.",
+    "Facundo Franco's path from growing up in Punta del Este, Uruguay, through e-commerce and operations, to founding ScoutHalo, an AI-powered search engine for real-world places.",
   path: "/about",
   ogType: "profile",
 });
@@ -42,6 +44,7 @@ function Chapter({
 export default function AboutPage() {
   return (
     <main id="main" className="profile">
+      <JsonLd data={aboutGraph()} />
       {/* Intro left, Buenos Aires portrait right; stacks on narrow screens */}
       <div className="about-hero">
         <header className="profile-hero">
@@ -50,7 +53,7 @@ export default function AboutPage() {
             Facundo Franco.
           </h1>
           <p className="profile-role reveal-load" style={d(140)}>
-            Founder of ScoutHalo.
+            {ROLE}.
           </p>
           <p className="profile-intro reveal-load" style={d(200)}>
             I grew up in Uruguay and took a fairly unconventional path into building companies.
@@ -197,7 +200,8 @@ export default function AboutPage() {
           <p className="eyebrow">Next</p>
           <h2 className="profile-heading">Building ScoutHalo.</h2>
           <p className="profile-next-text">
-            How that idea in my Notes became ScoutNYC, and eventually ScoutHalo.
+            How that idea in my Notes became ScoutNYC, and eventually ScoutHalo — an AI-powered
+            search engine for real-world places.
           </p>
           <div className="cta-row">
             <Link href="/building-scouthalo" className="cta-link">

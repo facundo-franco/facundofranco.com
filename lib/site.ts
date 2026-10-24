@@ -3,19 +3,29 @@
 export const SITE = {
   url: "https://facundofranco.com",
   name: "Facundo Franco",
-  title: "Facundo Franco — Founder of ScoutHalo",
+  title: "Facundo Franco — Founder & CEO of ScoutHalo",
   description:
-    "Facundo Franco is the founder of ScoutHalo, building location intelligence for production teams. Building from Uruguay, with Miami next.",
+    "Facundo Franco is the Founder & CEO of ScoutHalo, an AI-powered search engine for real-world places. Making the physical world searchable. Based in Uruguay, with Miami next.",
   ogImage: "/images/facundo-franco-founder-scouthalo.png",
 } as const;
 
+// Founder role, used verbatim wherever the site names it.
+export const ROLE = "Founder & CEO of ScoutHalo";
+
+// ScoutHalo's one-line positioning, as scouthalo.com states it.
+export const SCOUTHALO_TAGLINE = "Making the physical world searchable.";
+
+// The Person @id matches the founder reference published by scouthalo.com.
+// The Organization @id is the one scouthalo.com itself publishes; it is an
+// identifier, so it keeps that site's form even though links use www.
 export const IDS = {
-  person: `${SITE.url}/#person`,
+  person: `${SITE.url}/#facundo-franco`,
   website: `${SITE.url}/#website`,
   scouthalo: "https://scouthalo.com/#organization",
 } as const;
 
-export const SCOUTHALO_URL = "https://scouthalo.com";
+export const SCOUTHALO_URL = "https://www.scouthalo.com";
+export const SCOUTHALO_LINKEDIN = "https://www.linkedin.com/company/scouthalo/";
 
 // Primary destinations, shared by the header and footer. ScoutHalo is the
 // external product site; the pages are full destinations (home sections
@@ -28,7 +38,7 @@ export const NAV = [
   { label: "Connect", href: "#contact", kind: "connect" },
 ] as const;
 
-export const EMAIL = "hello@scouthalo.com";
+export const EMAIL = "facundofn1906@gmail.com";
 
 // Public profiles linked from the site (footer Connect). Also the Person's
 // sameAs in structured data — only profiles the site itself shows.
@@ -41,3 +51,14 @@ export const SOCIALS = [
 
 export const SAME_AS: string[] = SOCIALS.map((s) => s.href);
 
+
+// Last meaningful content change per page (ISO dates). Feeds sitemap.xml and
+// structured data; update a page's date whenever its content changes.
+export const PAGE_UPDATED = {
+  "/": "2026-10-24",
+  "/about": "2026-10-24",
+  "/building-scouthalo": "2026-10-24",
+  "/now": "2026-10-24",
+  "/exposure": "2026-10-24",
+  "/privacy": "2026-10-24",
+} as const;

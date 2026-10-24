@@ -7,7 +7,7 @@ import {
   IconMail,
 } from "@tabler/icons-react";
 import type { ComponentType } from "react";
-import { EMAIL, NAV, SCOUTHALO_URL, SOCIALS } from "@/lib/site";
+import { EMAIL, NAV, SCOUTHALO_TAGLINE, SCOUTHALO_URL, SOCIALS } from "@/lib/site";
 
 type IconProps = { size?: number; stroke?: number; "aria-hidden"?: boolean };
 
@@ -42,13 +42,13 @@ export default function Footer() {
               <p className="footer-name">Facundo Franco</p>
             </div>
             <p>
-              Founder of{" "}
+              Founder &amp; CEO of{" "}
               <a href={SCOUTHALO_URL} target="_blank" rel="noopener noreferrer">
                 ScoutHalo
               </a>
               .
               <br />
-              Building location intelligence for production teams.
+              {SCOUTHALO_TAGLINE}
             </p>
           </div>
 

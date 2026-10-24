@@ -9,22 +9,22 @@
 const { chromium } = require(process.env.PW || "playwright");
 const OUT = process.env.OUT || ".";
 const CARDS = [
-  { file: 'home', eyebrow: 'Founder of ScoutHalo', title: 'Facundo<br>Franco.', size: 118,
-    sub: 'Building location intelligence<br>for production teams.', bottom: '',
+  { file: 'home', eyebrow: 'Founder &amp; CEO of ScoutHalo', title: 'Facundo<br>Franco.', size: 118,
+    sub: 'Making the physical world<br>searchable.', bottom: '',
     photo: { src: '/images/facundo-franco-founder-scouthalo.png', w: 336, h: 420, pos: 'center 23%', filter: 'saturate(0.72) contrast(1.04) brightness(0.9)' } },
   { file: 'about', eyebrow: 'About', title: 'Facundo<br>Franco.', size: 108,
-    sub: 'From Punta del Este, Uruguay, to founding ScoutHalo.', bottom: 'Founder of ScoutHalo',
+    sub: 'From Punta del Este, Uruguay, to founding ScoutHalo.', bottom: 'Founder &amp; CEO of ScoutHalo',
     photo: { src: '/images/facundo-franco-about.jpg', w: 380, h: 355, pos: 'center' } },
   { file: 'building-scouthalo', eyebrow: 'Building ScoutHalo', title: 'From a note<br>to a product.', size: 88,
-    sub: 'How an idea in my Notes became ScoutNYC, and then ScoutHalo.', bottom: 'Facundo Franco · Founder of ScoutHalo',
+    sub: 'How an idea in my Notes became ScoutNYC, and then ScoutHalo.', bottom: 'Facundo Franco · Founder &amp; CEO of ScoutHalo',
     photo: { src: '/images/scouthalo-build-room-uruguay-2026.jpg', w: 318, h: 424, pos: 'center' } },
   { file: 'now', eyebrow: 'Now', title: 'Now.', size: 118,
-    sub: 'Turning ScoutHalo into a company, and building the next stage from Miami.', bottom: 'Facundo Franco · Founder of ScoutHalo',
+    sub: 'Turning ScoutHalo into a company, and building the next stage from Miami.', bottom: 'Facundo Franco · Founder &amp; CEO of ScoutHalo',
     photo: { src: '/images/brickell-miami.jpg', w: 390, h: 390, pos: '50% 50%' } },
   { file: 'privacy', eyebrow: 'Legal', title: 'Privacy.', size: 118,
     sub: 'No accounts, forms, or cookies —<br>just privacy-friendly analytics and email.', bottom: 'Facundo Franco' },
   { file: 'exposure', eyebrow: 'Exposure', title: 'Exposure.', size: 118,
-    sub: 'Talks, interviews and features with Facundo Franco and ScoutHalo.', bottom: 'Facundo Franco · Founder of ScoutHalo' },
+    sub: 'Talks, interviews and features with Facundo Franco and ScoutHalo.', bottom: 'Facundo Franco · Founder &amp; CEO of ScoutHalo' },
 ];
 const css = `
   html, body { margin: 0 !important; padding: 0 !important; background: #090d10 !important; }

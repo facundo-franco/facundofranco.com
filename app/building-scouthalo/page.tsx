@@ -4,15 +4,29 @@ import Link from "next/link";
 import StoryCarousel from "@/components/StoryCarousel";
 import type { CarouselSlide } from "@/components/StoryCarousel";
 import StoryChapter from "@/components/StoryChapter";
+import JsonLd from "@/components/JsonLd";
 import { pageMetadata } from "@/lib/metadata";
-import { SCOUTHALO_URL } from "@/lib/site";
+import { storyGraph } from "@/lib/schema";
+import { PAGE_UPDATED, SCOUTHALO_URL } from "@/lib/site";
+
+const TITLE = "Building ScoutHalo — From a Note to a Product";
+const DESCRIPTION =
+  "How a note in Facundo Franco's phone became ScoutNYC, and then ScoutHalo: an AI-powered search engine for real-world places, making the physical world searchable.";
 
 export const metadata: Metadata = pageMetadata({
-  title: "Building ScoutHalo — From an Idea to Location Intelligence",
-  description:
-    "How a note in Facundo Franco's phone became ScoutNYC, and then ScoutHalo: a location intelligence platform for production teams.",
+  title: TITLE,
+  description: DESCRIPTION,
   path: "/building-scouthalo",
   ogType: "article",
+});
+
+// First published as /story on 2026-09-23.
+const STORY_SCHEMA = storyGraph({
+  headline: TITLE,
+  description: DESCRIPTION,
+  image: "/building-scouthalo/opengraph-image.jpg",
+  datePublished: "2026-09-23",
+  dateModified: PAGE_UPDATED["/building-scouthalo"],
 });
 
 // Original ScoutNYC screenshots, in story order: landing page first.
@@ -45,6 +59,7 @@ const d = (ms: number) => ({ "--reveal-delay": `${ms}ms` }) as CSSProperties;
 export default function StoryPage() {
   return (
     <main id="main">
+      <JsonLd data={STORY_SCHEMA} />
       <header className="story-hero">
         <div className="container">
           <p className="eyebrow reveal-load">ScoutHalo</p>
@@ -75,8 +90,8 @@ export default function StoryPage() {
           Then I left it there.
         </p>
         <p>
-          That summer, I was working at a friend&apos;s pub. When the season ended, I wasn&apos;t
-          entirely sure what I was going to do next.
+          That summer — Uruguay&apos;s summer of 2025–26 — I was working at a friend&apos;s pub.
+          When the season ended, I wasn&apos;t entirely sure what I was going to do next.
         </p>
         <p>
           I started spending every day working with AI and learning what I could build with it. A
@@ -140,13 +155,9 @@ export default function StoryPage() {
       >
         <p>Eventually, I found a better way to build it.</p>
         <p>
-          I came across a different approach to building with AI that made the part I&apos;d
-          thought was impossible suddenly look solvable.
-        </p>
-        <p>
-          The problem that had made the first version impossible to scale started to look
-          solvable. I realized I could build the product differently, and this time I decided to
-          go all in.
+          I came across a different approach to building with AI, and the problem that had made
+          the first version impossible to scale started to look solvable. I realized I could build
+          the product differently, and this time I decided to go all in.
         </p>
         <p>
           I spent most of that winter in Uruguay in one small room, with a bed next to my desk and
@@ -174,23 +185,33 @@ export default function StoryPage() {
         eyebrow="04 · Today"
         title="Still building."
         figure={{
-          src: "/images/scouthalo-iphone-mockup.webp",
+          src: "/images/scouthalo-home-mobile-october-2026.webp",
           width: 924,
-          height: 1702,
-          alt: "ScoutHalo on iPhone: the Scout search screen with recent location scouts.",
-          caption: "ScoutHalo today.",
+          height: 1327,
+          alt: "ScoutHalo's homepage on a phone: “AI search for places and things to do. Describe what you need. Find the right place.” above a search box with the example “Rooftop bar with sunset views for drinks with friends in Lisbon.”",
+          caption: "ScoutHalo today — scouthalo.com, October 2026.",
         }}
       >
         <p>
           What started as a sentence in my Notes became ScoutNYC, and eventually ScoutHalo.
         </p>
         <p>
-          The product today is very different from that first version. ScoutHalo is a location
-          intelligence platform for production teams, designed to help them discover, evaluate,
-          and prepare locations before a shoot.
+          The product today is very different from that first version. ScoutHalo is an
+          AI-powered search engine for real-world places, built to make the physical world
+          searchable.
         </p>
         <p>
-          I&apos;m now working on the next part: getting it into the hands of production teams,
+          You describe what you need in a sentence, or start from a photo. ScoutHalo finds real
+          places, explains why each one fits and what to confirm before you go, and helps you
+          save, compare, and decide — whether it&apos;s a dinner, a trip, a place to work, a
+          venue, or an experience.
+        </p>
+        <p>
+          Production scouting, where ScoutNYC began, is still one of those uses, with reads built
+          for shoots.
+        </p>
+        <p>
+          I&apos;m now working on the next part: getting it into more people&apos;s hands,
           learning from how they use it, and building the company around it.
         </p>
         <p>This is still the beginning.</p>

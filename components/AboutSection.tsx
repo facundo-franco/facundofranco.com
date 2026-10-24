@@ -6,7 +6,7 @@ const JOURNEY = [
   { index: "01", step: "Start", value: "Punta del Este, Uruguay" },
   { index: "02", step: "First chapter", value: "E-commerce & operating businesses" },
   { index: "03", step: "Shift", value: "From operating → building products" },
-  { index: "04", step: "Now", value: "Founder of ScoutHalo" },
+  { index: "04", step: "Now", value: "Founder & CEO of ScoutHalo" },
 ] as const;
 
 // A short founder introduction that leads to /about: biography on the left,
@@ -20,7 +20,7 @@ export default function AboutSection() {
           <div className="about-body">
             <div className="about-bio">
               <div className="prose story">
-                <p>I&apos;m Facundo Franco, founder of ScoutHalo.</p>
+                <p>I&apos;m Facundo Franco, Founder &amp; CEO of ScoutHalo.</p>
                 <p>
                   I grew up in Punta del Este, Uruguay. I left university early and spent the next
                   few years experimenting with businesses and learning by doing.
@@ -31,14 +31,18 @@ export default function AboutSection() {
                   operating businesses toward building products myself.
                 </p>
                 <p>
-                  Today, I&apos;m building ScoutHalo, a location intelligence platform for
-                  production teams.
+                  Today, I&apos;m building ScoutHalo, an AI-powered search engine for real-world
+                  places: describe what you need, and find the right place.
                 </p>
               </div>
 
-              <div className="about-cta">
+              <div className="about-cta cta-row">
                 <Link href="/about" className="cta-link">
                   Read my story →
+                </Link>
+                {/* Surfaces the featured appearance from /exposure */}
+                <Link href="/exposure" className="cta-link cta-link-quiet">
+                  DataCamp talk · 700+ live →
                 </Link>
               </div>
             </div>

@@ -12,7 +12,7 @@ export const metadata: Metadata = pageMetadata({
 });
 
 // Update whenever the site's handling of data changes.
-const LAST_UPDATED = "September 2026";
+const LAST_UPDATED = "October 2026";
 
 // Above-the-fold: CSS entrance (reveal-load), same as the other page heroes.
 const d = (ms: number) => ({ "--reveal-delay": `${ms}ms` }) as CSSProperties;
@@ -108,7 +108,8 @@ export default function PrivacyPage() {
           <p>
             If you email me at {mail}, I receive your email address and whatever you include in
             your message. I use it only to reply and continue the conversation. I don&apos;t add
-            anyone to a mailing list, and I don&apos;t sell or share messages.
+            anyone to a mailing list, and I don&apos;t sell or share messages. Email to this
+            address is handled by Google (Gmail), under Google&apos;s own privacy policy.
           </p>
         </Section>
 

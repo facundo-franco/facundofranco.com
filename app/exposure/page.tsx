@@ -8,7 +8,8 @@ import { pageMetadata } from "@/lib/metadata";
 
 export const metadata: Metadata = pageMetadata({
   title: "Exposure — Facundo Franco",
-  description: "Talks, interviews and features with Facundo Franco and ScoutHalo.",
+  description:
+    "Talks, interviews and features with Facundo Franco, Founder & CEO of ScoutHalo — including a DataCamp session on becoming an AI agent operator, with 700+ people live.",
   path: "/exposure",
 });
 

@@ -6,11 +6,11 @@ import NowSection from "@/components/NowSection";
 import JsonLd from "@/components/JsonLd";
 import { homeGraph } from "@/lib/schema";
 import { pageMetadata } from "@/lib/metadata";
+import { SITE } from "@/lib/site";
 
 export const metadata: Metadata = pageMetadata({
-  title: "Facundo Franco — Founder of ScoutHalo",
-  description:
-    "Facundo Franco is the founder of ScoutHalo, building location intelligence for production teams. Building from Uruguay, with Miami next.",
+  title: SITE.title,
+  description: SITE.description,
   path: "/",
   ogType: "profile",
 });

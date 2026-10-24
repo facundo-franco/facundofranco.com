@@ -3,7 +3,7 @@
 import Image from "next/image";
 import { useEffect, useRef } from "react";
 import type { CSSProperties } from "react";
-import { SITE } from "@/lib/site";
+import { ROLE, SITE } from "@/lib/site";
 
 export default function Portrait({ priority = false, delay = 120 }: { priority?: boolean; delay?: number }) {
   const figureRef = useRef<HTMLElement>(null);
@@ -49,7 +49,7 @@ export default function Portrait({ priority = false, delay = 120 }: { priority?:
       <div className="portrait-frame">
         <Image
           src={SITE.ogImage}
-          alt="Facundo Franco, founder of ScoutHalo"
+          alt={`Facundo Franco, ${ROLE}`}
           fill
           priority={priority}
           // Square source in a 4:5 cover frame (plus a 1.06 parallax scale):

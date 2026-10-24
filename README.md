@@ -96,7 +96,10 @@ Unfinished drafts are also gitignored so they never reach the public repo.
   (`opengraph-image.jpg` + `twitter-image.jpg`, with `.alt.txt`), rendered in
   the site's own fonts by `scripts/og-cards.cjs`. Articles generate theirs.
 - Structured data via reusable helpers (`lib/schema.ts`): `WebSite`, one
-  canonical `#person` and the ScoutHalo `#organization` on the home page.
+  canonical `#facundo-franco` Person (the same @id scouthalo.com references)
+  and the ScoutHalo `#organization` on the home page, a `ProfilePage` on
+  `/about`, and an `Article` on `/building-scouthalo`. Sitemap dates come from
+  `PAGE_UPDATED` in `lib/site.ts`; bump a page's date when its content changes.
   `sameAs` lists only the profiles the site links to (`SOCIALS` in `lib/site.ts`).
 - `sitemap.xml` and `robots.txt` are generated (`app/sitemap.ts`, `app/robots.ts`).
 - The home page (hero, About, Building ScoutHalo, Now) plus `/about`,

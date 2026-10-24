@@ -5,7 +5,7 @@ import SectionHeader from "./SectionHeader";
 // The next stage, as a short roadmap. Plans and direction, not results.
 const ROADMAP = [
   { index: "01", label: "Raising", value: "Capital for the next stage" },
-  { index: "02", label: "Building", value: "The early ScoutHalo team" },
+  { index: "02", label: "Building", value: "The founding team" },
   { index: "03", label: "Next", value: "Miami · Brickell" },
 ] as const;
 
@@ -30,19 +30,18 @@ export default function NowSection() {
 
             <div className="prose now-copy">
               <p>
-                The first version is live. The company is established in the U.S. Now I&apos;m
-                working toward the next stage: raising capital, building the early team, and getting
-                ScoutHalo into the hands of production teams.
+                The first version is live. ScoutHalo is legally established in the U.S. Now I&apos;m
+                working toward the next stage: raising capital, building the founding team, and
+                getting ScoutHalo into the hands of more people.
               </p>
               <p className="now-emphasis">The plan is to build from Miami.</p>
               <p>
-                Not because it&apos;s the traditional place to build a technology company, but
-                because it puts us closer to the market we&apos;re building for: creators, agencies,
-                brands, and production.
+                I&apos;m planning to relocate there to build ScoutHalo, recruit talent, connect with
+                investors, and develop partnerships.
               </p>
               <p>
-                I want ScoutHalo to grow with a small, ambitious team from the beginning — and
-                hopefully build that team from Brickell.
+                I want ScoutHalo to grow with a small, ambitious founding team from the beginning —
+                and hopefully build that team from Brickell.
               </p>
             </div>
 

@@ -6,7 +6,7 @@ import { MDXRemote } from "next-mdx-remote/rsc";
 import JsonLd from "@/components/JsonLd";
 import { pageMetadata } from "@/lib/metadata";
 import { articleGraph } from "@/lib/schema";
-import { SITE } from "@/lib/site";
+import { ROLE, SCOUTHALO_URL, SITE } from "@/lib/site";
 import { getArticleBySlug, getStaticSlugs } from "@/lib/writing";
 
 // Only slugs returned by generateStaticParams are valid — a draft (or unknown)
@@ -63,7 +63,7 @@ export default async function ArticlePage({ params }: { params: Promise<{ slug: 
             </span>
             <span>
               <Link href="/">Facundo Franco</Link>
-              <span className="author-role">Founder of ScoutHalo</span>
+              <span className="author-role">{ROLE}</span>
             </span>
           </div>
 
@@ -76,7 +76,7 @@ export default async function ArticlePage({ params }: { params: Promise<{ slug: 
               ← Home
             </Link>
             <a
-              href="https://scouthalo.com"
+              href={SCOUTHALO_URL}
               target="_blank"
               rel="noopener noreferrer"
               className="cta-link"

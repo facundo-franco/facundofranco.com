@@ -19,8 +19,10 @@ export default function BuildingSection() {
                 places for different kinds of creators.
               </p>
               <p>
-                I built the first version myself from Uruguay. It became ScoutNYC, then evolved into
-                ScoutHalo — a location intelligence platform built for production teams.
+                I built the first version myself from Uruguay. It became ScoutNYC, a library of New
+                York shoot locations, then evolved into ScoutHalo — an AI-powered search engine for
+                real-world places, from restaurants and stays to venues, workspaces, and shoot
+                locations.
               </p>
             </div>
 

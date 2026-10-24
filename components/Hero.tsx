@@ -1,6 +1,6 @@
 import type { CSSProperties } from "react";
 import Link from "next/link";
-import { SCOUTHALO_URL } from "@/lib/site";
+import { ROLE, SCOUTHALO_URL } from "@/lib/site";
 import MagneticButton from "./MagneticButton";
 import Portrait from "./Portrait";
 
@@ -13,7 +13,7 @@ export default function Hero() {
     <section className="hero" id="top">
       <div className="container hero-layout">
         <div className="hero-copy">
-          <p className="eyebrow hero-eyebrow reveal-load">Founder of ScoutHalo</p>
+          <p className="eyebrow hero-eyebrow reveal-load">{ROLE}</p>
 
           <h1 className="reveal-load" style={d(40)}>
             Facundo
@@ -22,8 +22,9 @@ export default function Hero() {
           </h1>
 
           <p className="hero-description reveal-load" style={d(80)}>
-            Founder of <strong>ScoutHalo</strong>. Building location intelligence for production
-            teams from Uruguay, with Miami next.
+            I&apos;m building <strong>ScoutHalo</strong>, an AI-powered search engine for
+            real-world places. Making the physical world searchable. Based in Uruguay, with Miami
+            next.
           </p>
 
           <div className="hero-actions reveal-load" style={d(160)}>
