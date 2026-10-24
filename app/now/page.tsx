@@ -25,7 +25,7 @@ const ROLES = [
   },
   {
     title: "Founding Product Engineer",
-    focus: "The product end to end: search, results, saved places, collections, and projects.",
+    focus: "The product end to end: search, results, saved places, collections, and plans.",
   },
   {
     title: "Founding Data / Location Intelligence Engineer",

@@ -14,7 +14,7 @@ export default function NowSection() {
   return (
     <section className="section section-compact now" id="now" aria-labelledby="now-title">
       <div className="container">
-        <SectionHeader eyebrow="04 · Now" title="Now." titleId="now-title">
+        <SectionHeader eyebrow="03 · Now" title="Now." titleId="now-title">
           <p className="now-updated">Last updated · {NOW_UPDATED}</p>
           <p className="now-lead-text">
             ScoutHalo is live in early access, and ScoutHalo, Inc. is incorporated in Delaware.

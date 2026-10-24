@@ -17,7 +17,7 @@ export const metadata: Metadata = pageMetadata({
   ogType: "profile",
 });
 
-// 01 Introduction · 02 What I'm building · 03 The journey · 04 Now · 05 Talks · 06 Work with me
+// Hero, then 01 What I'm building · 02 The journey · 03 Now · 04 Talks · 05 Work with me
 export default function HomePage() {
   return (
     <main id="main">

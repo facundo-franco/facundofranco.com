@@ -11,7 +11,7 @@ export default function JourneySection() {
     <section className="section journey" id="journey" aria-labelledby="journey-title">
       <div className="container">
         <SectionHeader
-          eyebrow="03 · The journey"
+          eyebrow="02 · The journey"
           title="From a note to a company."
           titleId="journey-title"
           intro="How ScoutHalo came together, in the order it happened. Each step links to the full story."

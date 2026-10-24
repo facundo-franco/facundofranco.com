@@ -126,10 +126,8 @@ export default function AboutPage() {
           </p>
           <aside className="profile-pullquote" aria-label="Why ScoutHalo">
             <p>
-              I&apos;ve always wanted to understand the world: its history, its geography, and
-              the places I was lucky enough to experience. In a way, ScoutHalo is an extension of
-              that curiosity, an attempt to make the physical world easier to search and
-              understand.
+              In a way, ScoutHalo is an extension of that curiosity: an attempt to make the
+              physical world easier to search and understand.
             </p>
           </aside>
         </Chapter>

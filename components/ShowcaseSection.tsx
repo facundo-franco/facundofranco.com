@@ -1,6 +1,6 @@
 import Image from "next/image";
 import Link from "next/link";
-import { SCOUTHALO_TAGLINE, SCOUTHALO_URL } from "@/lib/site";
+import { SCOUTHALO_URL } from "@/lib/site";
 import SectionHeader from "./SectionHeader";
 import ShowcaseVideo from "./ShowcaseVideo";
 
@@ -41,7 +41,7 @@ export default function ShowcaseSection() {
     <section className="section showcase" id="building" aria-labelledby="showcase-title">
       <div className="container">
         <SectionHeader
-          eyebrow="02 · What I'm building"
+          eyebrow="01 · What I'm building"
           titleId="showcase-title"
           titleClassName="showcase-title"
           title={
@@ -53,10 +53,9 @@ export default function ShowcaseSection() {
             </>
           }
         >
-          <p className="showcase-tagline">{SCOUTHALO_TAGLINE}</p>
           <p className="showcase-lead">
-            An AI-powered search engine for real-world places. Describe what you need, and
-            ScoutHalo finds real places, explains why each one fits, and helps you decide.
+            Describe what you need, or start from a photo, and ScoutHalo finds real places,
+            explains why each one fits, and helps you decide.
           </p>
         </SectionHeader>
 
@@ -72,7 +71,7 @@ export default function ShowcaseSection() {
               label="ScoutHalo product preview: searching “I'm in New York, I want a good café to work from”, then browsing real cafés with their evidence, and seeing them on a map."
             />
             <figcaption className="showcase-caption">
-              New York · finding a café to work from
+              New York · a café to work from
             </figcaption>
           </figure>
 

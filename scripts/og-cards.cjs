@@ -19,7 +19,7 @@ const CARDS = [
     sub: 'How an idea in my Notes became ScoutNYC, and then ScoutHalo.', bottom: 'Facundo Franco · Founder &amp; CEO of ScoutHalo',
     photo: { src: '/images/scouthalo-build-room-uruguay-2026.jpg', w: 318, h: 424, pos: 'center' } },
   { file: 'now', eyebrow: 'Now', title: 'Now.', size: 118,
-    sub: 'Turning ScoutHalo into a company, and building the next stage from Miami.', bottom: 'Facundo Franco · Founder &amp; CEO of ScoutHalo',
+    sub: 'Building ScoutHalo, raising, and preparing to build from Miami.', bottom: 'Facundo Franco · Founder &amp; CEO of ScoutHalo',
     photo: { src: '/images/brickell-miami.jpg', w: 390, h: 390, pos: '50% 50%' } },
   { file: 'privacy', eyebrow: 'Legal', title: 'Privacy.', size: 118,
     sub: 'No accounts, forms, or cookies —<br>just privacy-friendly analytics and email.', bottom: 'Facundo Franco' },

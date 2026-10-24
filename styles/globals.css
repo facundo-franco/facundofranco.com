@@ -734,6 +734,14 @@ button {
   margin-top: 36px;
 }
 
+/* Tablets: the hero sizes to its content instead of a full, mostly empty screen */
+@media (min-width: 721px) and (max-width: 1024px) {
+  .hero {
+    min-height: auto;
+    padding: clamp(64px, 9vw, 96px) 0 clamp(72px, 10vw, 104px);
+  }
+}
+
 /* Image frame — one treatment for every photo and screenshot */
 .portrait-card,
 .post-preview,
@@ -2016,17 +2024,6 @@ button {
   mix-blend-mode: lighten;
 }
 
-.showcase-tagline {
-  margin-top: 16px;
-
-  color: var(--cyan);
-
-  font-family: var(--font-mono), monospace;
-  font-size: 12px;
-  letter-spacing: 0.12em;
-  text-transform: uppercase;
-}
-
 .showcase-lead {
   max-width: 44ch;
   margin-top: 16px;
@@ -2042,7 +2039,8 @@ button {
   display: grid;
   grid-template-columns: clamp(270px, 26vw, 360px) minmax(0, 1fr);
   gap: clamp(40px, 6vw, 96px);
-  align-items: center;
+  /* Details start level with the "Product preview" tag, not floating mid-video */
+  align-items: start;
 
   margin-top: clamp(40px, 5vw, 64px);
 }
@@ -2372,7 +2370,11 @@ button {
   letter-spacing: -0.02em;
 }
 
+/* Latitude over longitude, so neither ever breaks mid-value */
 .journey-place-coords {
+  display: flex;
+  flex-direction: column;
+
   color: var(--subtle);
 
   font-family: var(--font-mono), monospace;
@@ -2435,6 +2437,26 @@ button {
 
 .journey-ctas {
   margin-top: clamp(18px, 2vw, 26px);
+}
+
+/* Tablets and small laptops: eight stops in two rows of four, all visible
+   (one row of eight needs about 1214px of container) */
+@media (min-width: 721px) and (max-width: 1340px) {
+  .journey-track {
+    overflow: visible;
+    padding-bottom: 0;
+  }
+
+  .journey-list {
+    grid-auto-flow: row;
+    grid-template-columns: repeat(4, minmax(0, 1fr));
+    row-gap: clamp(32px, 4vw, 44px);
+  }
+
+  /* Each row's rail ends at its last stop */
+  .journey-stop:nth-child(4n)::before {
+    right: 0;
+  }
 }
 
 /* Phones: a vertical line, thumbnail beside the text */
@@ -2522,8 +2544,6 @@ button {
   }
 
   .journey-place-coords {
-    display: flex;
-    flex-direction: column;
     font-size: 8px;
   }
 }

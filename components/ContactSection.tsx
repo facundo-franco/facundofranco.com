@@ -35,7 +35,7 @@ export default function ContactSection() {
     <section className="section contact" id="contact" aria-labelledby="contact-title">
       <div className="container">
         <SectionHeader
-          eyebrow="06 · Work with me"
+          eyebrow="05 · Work with me"
           title="Work with me."
           titleId="contact-title"
           intro="I'm looking for the people who will help take ScoutHalo to its next stage. If that might be you, write to me directly."

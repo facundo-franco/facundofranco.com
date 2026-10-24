@@ -94,9 +94,9 @@ export default function PrivacyPage() {
             site and protect it from abuse.
           </p>
           <p>
-            Fonts and images are served from this site; nothing is loaded from Google Fonts or
-            other third-party services when you view a page. There are no embedded videos, social
-            widgets, or ads.
+            Fonts, images, and the one video on the homepage are served from this site; nothing
+            is loaded from Google Fonts, YouTube, or other third-party services when you view a
+            page. There are no third-party embeds, social widgets, or ads.
           </p>
           <p>
             Links to ScoutHalo, X, LinkedIn, Instagram, and YouTube take you to those services,

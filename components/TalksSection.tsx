@@ -11,7 +11,7 @@ export default function TalksSection() {
   return (
     <section className="section talks" id="talks" aria-labelledby="talks-title">
       <div className="container">
-        <SectionHeader eyebrow="05 · Talks" title="Talks." titleId="talks-title" />
+        <SectionHeader eyebrow="04 · Talks" title="Talks." titleId="talks-title" />
         <TalkCard talk={featured} headingLevel={3} />
         {TALKS.length > 1 ? (
           <div className="cta-row">

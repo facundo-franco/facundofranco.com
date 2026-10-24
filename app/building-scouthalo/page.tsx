@@ -61,7 +61,7 @@ const CHRONOLOGY = [
   { when: "Oct 2025", what: "The note", href: "#the-idea" },
   { when: "Mar 2026", what: "ScoutNYC built", href: "#the-first-version" },
   { when: "May 2026", what: "Rebranded ScoutHalo", href: "#all-in" },
-  { when: "Winter 2026", what: "All in", href: "#all-in" },
+  { when: "Jun–Aug 2026", what: "All in", href: "#all-in" },
   { when: "Sep 2026", what: "ScoutHalo, Inc.", href: "#incorporated" },
   { when: "Today", what: "Still building", href: "#today" },
 ] as const;
@@ -126,8 +126,8 @@ export default function StoryPage() {
           few weeks later, I went back to that note and decided to give the idea a shot.
         </p>
         <p>
-          I started small: a landing page, some early experiments, and eventually the first
-          version of what would become ScoutHalo.
+          It began with a landing page, some early experiments, and eventually the first version
+          of what would become ScoutHalo.
         </p>
       </StoryChapter>
 
@@ -176,20 +176,18 @@ export default function StoryPage() {
 
       <StoryChapter
         id="all-in"
-        eyebrow="03 · Winter 2026"
+        eyebrow="03 · Jun–Aug 2026"
         title="Then I went all in."
         lead={
           <>
-            <p>Eventually, I found a better way to build it.</p>
+            <p>
+              In May 2026, I renamed ScoutNYC to ScoutHalo. Around the same time, I found a better
+              way to build it.
+            </p>
             <p>
               Instead of manually building a database of places, I started using AI to understand
               what people were looking for, search for real locations, and evaluate how well those
               places matched their needs.
-            </p>
-            <p>
-              The problem that had made the first version impossible to scale started to look
-              solvable. I realized I could build the product differently, and this time I decided
-              to go all in.
             </p>
           </>
         }
@@ -198,10 +196,14 @@ export default function StoryPage() {
           width: 1500,
           height: 2000,
           alt: "The small room where ScoutHalo was built: a desk with a computer and chair beside a bed, under a window.",
-          caption: "Where I built ScoutHalo — Uruguay, winter 2026.",
+          caption: "Where I built ScoutHalo — Uruguay, Jun–Aug 2026.",
         }}
       >
-        <p>In May 2026, I renamed ScoutNYC to ScoutHalo.</p>
+        <p>
+          The problem that had made the first version impossible to scale started to look
+          solvable. I realized I could build the product differently, and this time I decided to
+          go all in.
+        </p>
         <p>
           I spent most of that winter in Uruguay in one small room, with a bed next to my desk and
           a computer. For about three months, most days started when I woke up and ended when I
