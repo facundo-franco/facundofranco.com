@@ -34,7 +34,7 @@ const USE_CASES = [
   "Creators & production",
 ] as const;
 
-// The product, presented editorially: the New York product preview video beside
+// The product, presented editorially: the London product preview video beside
 // what ScoutHalo does and who it's for.
 export default function ShowcaseSection() {
   return (
@@ -64,14 +64,14 @@ export default function ShowcaseSection() {
             <p className="showcase-preview-tag">Product preview</p>
             <ShowcaseVideo
               sources={[
-                { src: "/videos/scouthalo-new-york-cafe.mp4", type: "video/mp4" },
-                { src: "/videos/scouthalo-new-york-cafe.webm", type: "video/webm" },
+                { src: "/videos/scouthalo-london-gardens.mp4", type: "video/mp4" },
+                { src: "/videos/scouthalo-london-gardens.webm", type: "video/webm" },
               ]}
-              poster="/videos/scouthalo-new-york-cafe-poster.webp"
-              label="ScoutHalo product preview: searching “I'm in New York, I want a good café to work from”, then browsing real cafés with their evidence, and seeing them on a map."
+              poster="/videos/scouthalo-london-gardens-poster.webp"
+              label="ScoutHalo product preview: searching “Beautiful quiet gardens and hidden courtyards in central London”, then browsing matching places on a map, opening Medici Courtyard to see why it fits, and getting a route there."
             />
             <figcaption className="showcase-caption">
-              New York · a café to work from
+              London · gardens &amp; courtyards
             </figcaption>
           </figure>
 
