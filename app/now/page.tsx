@@ -1,6 +1,5 @@
 import type { Metadata } from "next";
 import type { CSSProperties, ReactNode } from "react";
-import Image from "next/image";
 import Link from "next/link";
 import Reveal from "@/components/Reveal";
 import { pageMetadata } from "@/lib/metadata";
@@ -9,34 +8,43 @@ import { EMAIL, NOW_UPDATED, SCOUTHALO_URL, mailto } from "@/lib/site";
 export const metadata: Metadata = pageMetadata({
   title: "Now — Facundo Franco",
   description:
-    "What Facundo Franco is working on now: making ScoutHalo a product people value, raising funding, building a founding team in Miami, earning a place in the market, and growing as a founder.",
+    "What Facundo Franco is focused on now: raising ScoutHalo's first round, building a founding team, improving the product, and finding its first paying customers.",
   path: "/now",
 });
 
 // Above-the-fold: CSS entrance (reveal-load), same as the other page heroes.
 const d = (ms: number) => ({ "--reveal-delay": `${ms}ms` }) as CSSProperties;
 
-// Planned founding roles. Not open positions: no start date or funding is
-// implied until both are confirmed.
+// Where things stand, in plain facts. Update with NOW_UPDATED; never round up.
+const STATUS = [
+  { term: "Product", value: "Live, with Free and Pro plans and working payments" },
+  { term: "Users", value: "A small number so far, no paying customers yet" },
+  { term: "Team", value: "Sole founder, full-time" },
+  { term: "Company", value: "ScoutHalo, Inc. · Delaware, September 2026" },
+  { term: "Based", value: "Uruguay · open to relocating" },
+] as const;
+
+// Areas where the first people would own the most. Not open positions: no
+// start date or funding is implied until both are confirmed.
 const ROLES = [
   {
-    title: "Founding AI / Backend Engineer",
+    title: "AI / Backend Engineering",
     focus: "The search pipeline, the AI reasoning behind each result, and the systems that serve it.",
   },
   {
-    title: "Founding Product Engineer",
+    title: "Product Engineering",
     focus: "The product end to end: search, results, saved places, collections, and plans.",
   },
   {
-    title: "Founding Data / Location Intelligence Engineer",
+    title: "Data / Location Intelligence",
     focus: "Place data, enrichment, and the evidence behind every recommendation.",
   },
   {
-    title: "Founding Product Designer",
+    title: "Product Design",
     focus: "How people describe what they need, understand the results, and decide.",
   },
   {
-    title: "Founding Brand / Communications Lead",
+    title: "Brand & Growth",
     focus: "How ScoutHalo is told, and how the people it's for find it.",
   },
 ] as const;
@@ -75,62 +83,60 @@ export default function NowPage() {
             Last updated — {NOW_UPDATED}
           </p>
           <p className="profile-intro reveal-load" style={d(180)}>
-            ScoutHalo is live in early access, and ScoutHalo, Inc. is incorporated in Delaware.
-            These are my priorities for what comes next.
+            ScoutHalo works, and people can pay for it. Nobody has yet. That&apos;s the honest
+            starting point for everything on this page.
           </p>
           <ol className="now-index reveal-load" style={d(240)} aria-label="Priorities">
             <li>
-              <a href="#building">01 · Product</a>
+              <a href="#raising">01 · Funding</a>
             </li>
             <li>
-              <a href="#raising">02 · Funding</a>
+              <a href="#team">02 · Founding team</a>
             </li>
             <li>
-              <a href="#team">03 · Founding team</a>
+              <a href="#building">03 · Product</a>
             </li>
             <li>
-              <a href="#market">04 · Market</a>
+              <a href="#customers">04 · Customers</a>
             </li>
             <li>
-              <a href="#miami">05 · Miami</a>
-            </li>
-            <li>
-              <a href="#growing">06 · As a founder</a>
+              <a href="#location">05 · Location</a>
             </li>
           </ol>
         </header>
 
-        <Priority id="building" index="01 · Product" title="A product people value.">
+        <Reveal as="section" className="glance">
+          <p className="eyebrow">Where things stand</p>
+          <dl className="glance-list">
+            {STATUS.map((g) => (
+              <div key={g.term}>
+                <dt>{g.term}</dt>
+                <dd>{g.value}</dd>
+              </div>
+            ))}
+          </dl>
+        </Reveal>
+
+        <Priority id="raising" index="01 · Funding" title="Raising.">
           <p>
-            My first priority is turning ScoutHalo into something people genuinely use and value,
-            not just something that works.
+            I&apos;m raising ScoutHalo&apos;s first round. Until now it has been built on my own
+            time and my family&apos;s support.
           </p>
           <p>
-            That means improving it with the people we&apos;re building for — travelers, remote
-            workers, event planners, creators, and production teams — and learning from real
-            usage.
-          </p>
-          <p>
-            The first version exists. The work now is making it part of how people actually find
-            the right real-world place and decide on it.
+            Funding is what lets me move faster on the rest of this page: bringing in the first
+            people, putting ScoutHalo in front of the people it&apos;s for, and having enough
+            runway to find out what works.
           </p>
         </Priority>
 
-        <Priority id="raising" index="02 · Funding" title="Raising.">
-          <p>I&apos;m working to secure the funding ScoutHalo needs to grow.</p>
+        <Priority id="team" index="02 · Founding team" title="Who I'm looking for.">
           <p>
-            It&apos;s what makes the rest of this page possible: the founding team, more time with
-            the people using ScoutHalo, and the move to Miami.
+            I&apos;m ScoutHalo&apos;s sole founder, and I&apos;m not looking for a cofounder. What I
+            want to build is a strong founding team: a few exceptional people who can take real
+            ownership of big parts of the product and the company, and who want that
+            responsibility.
           </p>
-        </Priority>
-
-        <Priority id="team" index="03 · Founding team" title="Who I'm looking for.">
-          <p>
-            I want to build a talented, ambitious founding team in Miami — people who share the
-            vision of making the physical world searchable, and who want to build the product and
-            the company, not just a list of features.
-          </p>
-          <p>These are the founding roles I&apos;m planning for:</p>
+          <p>These are the areas where that matters most:</p>
 
           <ul className="role-list">
             {ROLES.map((r) => (
@@ -144,83 +150,55 @@ export default function NowPage() {
           <dl className="role-terms">
             <div>
               <dt>Where</dt>
-              <dd>Miami — based there, or willing to relocate</dd>
-            </div>
-            <div>
-              <dt>How</dt>
-              <dd>Hybrid, with three days a week together in person</dd>
+              <dd>Wherever ScoutHalo is built — see Location below</dd>
             </div>
             <div>
               <dt>Status</dt>
-              <dd>Planned founding roles, not open positions yet</dd>
+              <dd>No open positions yet; I&apos;d rather meet the right people early</dd>
             </div>
           </dl>
 
           <p>
-            If one of them sounds like you, I&apos;d like to hear from you early. Tell me which
-            role, and what you&apos;ve built.
+            If one of these sounds like you, tell me which, and what you&apos;ve built.
           </p>
           <p className="role-cta">
             <a href={mailto("Founding team — ScoutHalo")}>{EMAIL}</a>
           </p>
         </Priority>
 
-        <Priority id="market" index="04 · Market" title="Earning a place in the market.">
+        <Priority id="building" index="03 · Product" title="A product people come back to.">
           <p>
-            I want ScoutHalo to build a meaningful presence in its market: to become what people
-            reach for when they need to find the right real-world place.
-          </p>
-          <p>That kind of presence has to be earned through the product, one person at a time.</p>
-        </Priority>
-
-        <Priority id="miami" index="05 · Miami" title="Building from Miami.">
-          <p>
-            I&apos;m planning to relocate to Miami, specifically around Brickell, to build the
-            next stage of ScoutHalo.
+            The first version works. Now it has to be good enough that people return to it on
+            their own: results they can trust, clear reasons why each place fits, and less
+            distance between a question and a decision.
           </p>
           <p>
-            The move has four purposes: building the company, recruiting talent for the founding
-            team, connecting with investors, and developing partnerships.
-          </p>
-          <p>
-            Miami is also becoming a larger business and technology center. The idea is to build
-            where those people are, rather than automatically defaulting to the Bay Area.
+            I want those improvements to come from how people actually use ScoutHalo, not from
+            what I assume they need.
           </p>
         </Priority>
-      </div>
 
-      {/* The destination, shown wider than the reading column */}
-      <Reveal as="figure" className="now-page-photo">
-        <div className="now-page-photo-card">
-          {/* Full frame (no crop), so width-based variants stay sharp. */}
-          <Image
-            src="/images/brickell-miami.jpg"
-            alt="Brickell, Miami at dusk: a street lined with glass towers and painted murals, traffic heading toward the skyline."
-            width={2000}
-            height={1333}
-            sizes="(max-width: 940px) 92vw, 884px"
-            quality={90}
-          />
-        </div>
-        <figcaption className="now-photo-caption">
-          <span className="now-photo-caption-title">Brickell</span>
-          <span>Miami, Florida · Next</span>
-        </figcaption>
-      </Reveal>
-
-      <div className="profile-container">
-        <Priority id="growing" index="06 · As a founder" title="Growing as a founder.">
+        <Priority id="customers" index="04 · Customers" title="Proving people want it.">
           <p>
-            I&apos;m still early as a founder, and I want to keep growing into the role as
-            ScoutHalo grows.
+            ScoutHalo has no paying customers yet. Getting the first ones is the most important
+            test in front of it.
           </p>
           <p>
-            Part of that is speaking more in public. The DataCamp webinar was a start; I&apos;d
-            like to do more talks, podcasts, and conversations about AI, search, and building a
-            company.
+            That means finding out who needs it most — travelers, people planning a night out,
+            remote workers, event planners, creators, production teams — and where it&apos;s
+            useful enough that people will pay. I&apos;d rather learn that from real usage and
+            real conversations than decide it in advance.
           </p>
-          <p className="role-cta">
-            <Link href="/talks">Talks and invitations →</Link>
+        </Priority>
+
+        <Priority id="location" index="05 · Location" title="Where I'll build.">
+          <p>
+            I&apos;m based in Uruguay today. I&apos;m open to relocating wherever gives ScoutHalo
+            the best chance to succeed: where the right people, investors, and customers are.
+          </p>
+          <p>
+            San Francisco and Miami are both real options. I haven&apos;t decided, and the
+            decision will follow what&apos;s best for the company.
           </p>
         </Priority>
 
@@ -228,12 +206,12 @@ export default function NowPage() {
           <p className="eyebrow">Next</p>
           <h2 className="profile-heading">This page will change.</h2>
           <p className="profile-next-text">
-            As things happen — capital raised, first hires, the move to Miami, more people using
-            ScoutHalo — I&apos;ll update it here.
+            As things happen — funding, the first people on the team, the first paying
+            customers, a decision on where to build — I&apos;ll update it here.
           </p>
           <div className="cta-row">
             <Link href="/#contact" className="cta-link">
-              Work with me →
+              Get in touch →
             </Link>
             <a
               href={SCOUTHALO_URL}
@@ -241,7 +219,7 @@ export default function NowPage() {
               rel="noopener noreferrer"
               className="cta-link cta-link-quiet"
             >
-              Visit scouthalo.com ↗
+              Try ScoutHalo ↗
             </a>
           </div>
         </Reveal>

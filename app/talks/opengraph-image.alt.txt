@@ -1,1 +1,1 @@
-Talks: conversations with Facundo Franco about building ScoutHalo and working with AI agents.
+Talks: Facundo Franco's first public talk, a DataCamp webinar on building ScoutHalo with AI agents.

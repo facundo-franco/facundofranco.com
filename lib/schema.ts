@@ -1,6 +1,6 @@
 // Reusable JSON-LD builders. One canonical Person, one ScoutHalo Organization,
 // referenced by @id, never duplicated by hand.
-import { IDS, ROLE, SAME_AS, SCOUTHALO_LINKEDIN, SCOUTHALO_TAGLINE, SCOUTHALO_URL, SITE } from "./site";
+import { IDS, ROLE, SAME_AS, SCOUTHALO_WHAT, SCOUTHALO_LINKEDIN, SCOUTHALO_TAGLINE, SCOUTHALO_URL, SITE } from "./site";
 import type { Talk } from "./talks";
 import type { Article } from "./writing";
 
@@ -18,10 +18,10 @@ export function personNode(): Node {
     url: `${SITE.url}/`,
     image: SITE.url + SITE.personImage,
     jobTitle: "Founder & CEO",
-    description: `${ROLE}, an AI-powered search engine for real-world places.`,
+    description: `${ROLE}, ${SCOUTHALO_WHAT}.`,
     // ScoutHalo's side of the relationship is Organization.founder (below).
     worksFor: { "@id": IDS.scouthalo },
-    knowsAbout: ["AI search", "Location intelligence", "Product development", "E-commerce operations"],
+    knowsAbout: ["AI search", "Location discovery", "Product development", "AI-assisted software development", "E-commerce operations"],
     sameAs: SAME_AS,
   };
 }
@@ -151,7 +151,14 @@ export function talksGraph(talks: Talk[]) {
       url: `${url}#${t.id}`,
       organizer: { "@type": "Organization", name: t.host },
       performer: personRef(),
-      ...(t.location ? { location: { "@type": "Place", name: t.location } } : {}),
+      ...(t.location === "Online"
+        ? {
+            eventAttendanceMode: "https://schema.org/OnlineEventAttendanceMode",
+            location: { "@type": "VirtualLocation", name: "Online" },
+          }
+        : t.location
+          ? { location: { "@type": "Place", name: t.location } }
+          : {}),
       ...(t.image ? { image: SITE.url + t.image.src } : {}),
       ...(t.recordingUrl
         ? { recordedIn: { "@type": "VideoObject", name: t.title.replace(/\.$/, ""), url: t.recordingUrl } }

@@ -11,7 +11,7 @@ import { PAGE_UPDATED, SCOUTHALO_URL } from "@/lib/site";
 
 const TITLE = "Building ScoutHalo — From a Note to a Product";
 const DESCRIPTION =
-  "How a note in Facundo Franco's phone became ScoutNYC, and then ScoutHalo: an AI-powered search engine for real-world places, making the physical world searchable.";
+  "How a note in Facundo Franco's phone became ScoutNYC, then ScoutHalo: AI search for real-world places, built by directing AI coding agents, now live and still early.";
 
 export const metadata: Metadata = pageMetadata({
   title: TITLE,
@@ -63,7 +63,8 @@ const CHRONOLOGY = [
   { when: "May 2026", what: "Rebranded ScoutHalo", href: "#all-in" },
   { when: "Jun–Aug 2026", what: "All in", href: "#all-in" },
   { when: "Sep 2026", what: "ScoutHalo, Inc.", href: "#incorporated" },
-  { when: "Today", what: "Still building", href: "#today" },
+  { when: "Today", what: "Live, and early", href: "#today" },
+  { when: "Next", what: "Where it's going", href: "#where-its-going" },
 ] as const;
 
 // Above-the-fold: CSS entrance (reveal-load), same as the home hero.
@@ -139,7 +140,8 @@ export default function StoryPage() {
           <>
             <p>The idea eventually became something I wanted to test.</p>
             <p>
-              I wasn&apos;t a software engineer, but AI gave me a way to start building it myself.
+              I&apos;m not a software engineer. I had some basic coding experience, and AI gave me
+              a way to start building it myself.
               The first version was called ScoutNYC. The plan was simple: start with one city,
               build a useful collection of shoot locations, then expand to Los Angeles, Miami, and
               beyond.
@@ -210,9 +212,15 @@ export default function StoryPage() {
           went to sleep.
         </p>
         <p>
-          I was learning as I built. AI let me move at a speed that wouldn&apos;t have been
-          possible for me otherwise. Some days I had as many as four Claude Code agents working in
-          parallel on different parts of the product.
+          I was learning as I built. Most of ScoutHalo&apos;s code was written by AI: I built it by
+          directing Claude Code and ChatGPT, and some days I had as many as four Claude Code
+          agents working in parallel on different parts of the product.
+        </p>
+        <p>
+          My job was everything around the code. Deciding what ScoutHalo should be and who it was
+          for. Breaking the work into pieces, writing the instructions, testing what came back,
+          and deciding what was good enough to ship and what had to be redone. The product, and
+          every decision behind it, is mine.
         </p>
         <p>
           I wasn&apos;t working a job during that period. My family made it possible for me to take
@@ -221,7 +229,8 @@ export default function StoryPage() {
         </p>
         <p>
           That support gave me something incredibly valuable: time. I used it to turn the rough
-          idea I&apos;d written in Notes into the first real version of ScoutHalo.
+          idea I&apos;d written in Notes into the first real version of ScoutHalo, and it&apos;s
+          why I could make the decision to work on it full-time, which I still do.
         </p>
       </StoryChapter>
 
@@ -244,29 +253,28 @@ export default function StoryPage() {
         }}
       >
         <p>
-          Two days later, I spoke on a DataCamp webinar about becoming an AI agent operator,
-          sharing lessons from building ScoutHalo with more than 700 people who joined live.
+          A small step on paper, but it made the commitment formal.
         </p>
-        <div className="cta-row">
-          <Link href="/talks" className="cta-link cta-link-quiet">
-            The DataCamp talk →
-          </Link>
-        </div>
+        <p>
+          Two days later, I joined a DataCamp webinar on becoming an AI agent operator, talking
+          about what I&apos;d learned building ScoutHalo. It was my first time speaking in
+          public.{" "}
+          <Link href="/talks">More about the webinar</Link>.
+        </p>
       </StoryChapter>
 
       <StoryChapter
         id="today"
         eyebrow="05 · Today"
-        title="Still building."
+        title="Live, and early."
         lead={
           <>
             <p>
               What started as a sentence in my Notes became ScoutNYC, and eventually ScoutHalo.
             </p>
             <p>
-              The product today is very different from that first version. ScoutHalo is an
-              AI-powered search engine for real-world places, built to make the physical world
-              searchable.
+              ScoutHalo is live. Anyone can sign up and search for free, and a Pro plan adds more
+              searches and tools for production work, and payments are working.
             </p>
           </>
         }
@@ -275,7 +283,7 @@ export default function StoryPage() {
           width: 924,
           height: 1327,
           alt: "ScoutHalo's homepage on a phone: “AI search for places and things to do. Describe what you need. Find the right place.” above a search box with the example “Rooftop bar with sunset views for drinks with friends in Lisbon.”",
-          caption: "ScoutHalo today — scouthalo.com, October 2026.",
+          caption: "ScoutHalo — scouthalo.com, October 2026.",
         }}
       >
         <p>
@@ -285,12 +293,34 @@ export default function StoryPage() {
           venue, or an experience.
         </p>
         <p>
-          Production scouting, where ScoutNYC began, is still one of those uses, with reads built
-          for shoots.
+          Production scouting, where ScoutNYC began, is still one of those uses, and it&apos;s
+          where most of the Pro tools are.
+        </p>
+        <p className="chapter-emphasis">
+          It&apos;s also early. A small number of people use it, and no one is paying yet.
         </p>
         <p>
-          I&apos;m now working on the next part: getting it into more people&apos;s hands,
-          learning from how they use it, and building the company around it.
+          A product that works isn&apos;t the same as a product people need. Closing that gap is
+          the work now: putting ScoutHalo in front of the right people, learning from how they
+          use it, and finding out where the demand is real.
+        </p>
+      </StoryChapter>
+
+      <StoryChapter id="where-its-going" eyebrow="06 · Next" title="Where it's going.">
+        <p>
+          Maps tell you where places are. Reviews tell you what other people thought. Neither
+          tells you whether a place fits what you actually need. That gap is what ScoutHalo is
+          built around.
+        </p>
+        <p>
+          The ambition is much bigger than the product as it stands. I want it to become a global
+          platform for discovering places: the first thing people reach for when they need to
+          find somewhere real, anywhere in the world, and trust that it fits.
+        </p>
+        <p>
+          I know how far that is from where ScoutHalo is today. Getting there means
+          doing the next steps well: earning the first customers, raising the money to move
+          faster, and building a founding team of people who can own big parts of it.
         </p>
         <p className="chapter-emphasis">This is still the beginning.</p>
 
@@ -301,10 +331,10 @@ export default function StoryPage() {
             rel="noopener noreferrer"
             className="cta-link"
           >
-            Visit scouthalo.com ↗
+            Try ScoutHalo ↗
           </a>
           <Link href="/now" className="cta-link cta-link-quiet">
-            What I&apos;m working on now →
+            What I&apos;m focused on now →
           </Link>
         </div>
       </StoryChapter>

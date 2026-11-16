@@ -2174,6 +2174,45 @@ button {
   letter-spacing: -0.01em;
 }
 
+/* Where ScoutHalo stands today, and where it's meant to go: two short facts
+   on thin rules, so the current stage and the ambition never blur together. */
+.showcase-status {
+  display: grid;
+  gap: 14px;
+
+  margin: 0;
+  padding: 16px 0;
+
+  border-top: 1px solid var(--border);
+  border-bottom: 1px solid var(--border);
+}
+
+.showcase-status div {
+  padding-left: 12px;
+  border-left: 1px solid var(--border);
+}
+
+.showcase-status div:first-child {
+  border-left-color: var(--cyan);
+}
+
+.showcase-status dt {
+  color: var(--subtle);
+
+  font-family: var(--font-mono), monospace;
+  font-size: 11px;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+}
+
+.showcase-status dd {
+  margin: 6px 0 0;
+
+  color: var(--soft-text);
+  font-size: 15px;
+  line-height: 1.55;
+}
+
 .showcase-uses-label {
   color: var(--subtle);
 

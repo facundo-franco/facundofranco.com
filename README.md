@@ -28,7 +28,8 @@ app/             routes: layout, pages, sitemap.ts, robots.ts, not-found
 components/      shared UI + small client components (Reveal, Portrait, Header…)
 content/writing/ articles as .mdx (drafts gitignored)
 lib/             site constants, schema (JSON-LD), metadata, writing loader,
-                 journey.ts (homepage timeline), talks.ts (talks and webinars)
+                 journey.ts (homepage timeline), talks.ts (talks; /talks is linked from
+                 the story, not the nav)
 public/images/   images (portrait)
 scripts/         og-cards.cjs — renders the social preview cards
 styles/          globals.css — the design system
@@ -103,8 +104,8 @@ Unfinished drafts are also gitignored so they never reach the public repo.
   `PAGE_UPDATED` in `lib/site.ts`; bump a page's date when its content changes.
   `sameAs` lists only the profiles the site links to (`SOCIALS` in `lib/site.ts`).
 - `sitemap.xml` and `robots.txt` are generated (`app/sitemap.ts`, `app/robots.ts`).
-- The home page (01 hero, 02 What I'm building, 03 The journey, 04 Now,
-  05 Talks, 06 Work with me) plus `/about`, `/building-scouthalo`, `/now`,
+- The home page (hero, 01 What I'm building, 02 The journey, 03 Now,
+  04 Get in touch) plus `/about`, `/building-scouthalo`, `/now`,
   `/talks`, `/privacy` and any published article pages. Old URLs redirect in
   `next.config.mjs` (`/story → /building-scouthalo`, `/exposure → /talks`,
   `/about.html → /about`; `/writing`, `/articles → /`).

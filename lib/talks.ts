@@ -1,6 +1,7 @@
 // Talks, webinars, podcasts and interviews. Newest first; the first entry is
-// featured on the homepage. Only confirmed facts: a recording link is set only
-// when one is verified.
+// listed on /talks (no longer on the homepage). Only confirmed facts: a
+// recording link is set only when one is verified; no audience figure is shown
+// until its source is confirmed.
 
 export type Talk = {
   id: string;
@@ -31,13 +32,12 @@ export const TALKS: Talk[] = [
     id: "datacamp-ai-agent-operator",
     host: "DataCamp",
     title: "Becoming an AI Agent Operator.",
-    format: "Webinar",
+    format: "Webinar · First public talk",
     summary:
-      "A conversation about building and operating AI agents in real-world workflows, including lessons from building ScoutHalo.",
+      "My first time speaking in public: a DataCamp webinar about building and operating AI agents in real-world workflows, where I shared what I'd learned building ScoutHalo by directing AI coding agents.",
     date: "September 11, 2026",
     isoDate: "2026-09-11",
-    location: "New York",
-    audience: { value: "700+", label: "People joined live" },
+    location: "Online",
     image: {
       src: "/images/datacamp-session-x-post.png",
       width: 601,

@@ -3,28 +3,28 @@ import { EMAIL, SOCIALS, mailto } from "@/lib/site";
 import SectionHeader from "./SectionHeader";
 
 // Who I want to hear from, and how. General on purpose: no round size, terms,
-// or traction until they are confirmed and public.
+// or traction beyond what the site states elsewhere.
 const AUDIENCES = [
   {
     id: "investors",
     label: "Investors",
-    title: "ScoutHalo's next stage.",
-    text: "I'm raising capital for what comes next. If making the physical world searchable interests you, I'd be glad to talk.",
+    title: "ScoutHalo's first round.",
+    text: "I'm raising to give ScoutHalo the runway to find its customers and build the team. If you invest at this stage, I'd be glad to talk.",
     cta: { label: "Email me about investing", href: mailto("Investing in ScoutHalo") },
   },
   {
     id: "founding-team",
     label: "Founding team",
-    title: "Help build ScoutHalo.",
-    text: "I'm planning a small founding team in Miami, across engineering, data, design, and brand.",
-    cta: { label: "See the planned roles", href: "/now#team", internal: true },
+    title: "Help build it.",
+    text: "I'm looking for a few exceptional early people who want to own a big part of the product and the company.",
+    cta: { label: "What I'm looking for", href: "/now#team", internal: true },
   },
   {
-    id: "partners",
-    label: "Partners",
-    title: "Build something together.",
-    text: "Technology, data, location, creative, and strategic partnerships.",
-    cta: { label: "Email me about a partnership", href: mailto("Partnership with ScoutHalo") },
+    id: "founders",
+    label: "Founders",
+    title: "Compare notes.",
+    text: "If you're building something of your own, especially with AI, or you've been where I am now, I'd like to hear from you.",
+    cta: { label: "Say hello", href: mailto("Hello") },
   },
 ] as const;
 
@@ -35,10 +35,10 @@ export default function ContactSection() {
     <section className="section contact" id="contact" aria-labelledby="contact-title">
       <div className="container">
         <SectionHeader
-          eyebrow="05 · Work with me"
-          title="Work with me."
+          eyebrow="04 · Get in touch"
+          title="Get in touch."
           titleId="contact-title"
-          intro="I'm looking for the people who will help take ScoutHalo to its next stage. If that might be you, write to me directly."
+          intro="Email reaches me directly. Tell me who you are and why you're writing."
         />
 
         <ul className="contact-grid">

@@ -4,8 +4,8 @@ import { SCOUTHALO_URL } from "@/lib/site";
 import SectionHeader from "./SectionHeader";
 import ShowcaseVideo from "./ShowcaseVideo";
 
-// What ScoutHalo does today. Every line mirrors scouthalo.com (product page,
-// October 2026); nothing here is roadmap.
+// What ScoutHalo does today. Every capability mirrors scouthalo.com (Nov 2026);
+// the only forward-looking line is the one labelled "The ambition".
 const CAPABILITIES = [
   {
     title: "Describe it",
@@ -87,6 +87,23 @@ export default function ShowcaseSection() {
                 </li>
               ))}
             </ol>
+
+            <dl className="showcase-status">
+              <div>
+                <dt>Today</dt>
+                <dd>
+                  Live, with Free and Pro plans and working payments. Still early: a small number
+                  of users, and no paying customers yet.
+                </dd>
+              </div>
+              <div>
+                <dt>The ambition</dt>
+                <dd>
+                  A global platform for discovering places: the first thing people reach for when
+                  they need to find somewhere real.
+                </dd>
+              </div>
+            </dl>
 
             <div className="showcase-uses">
               <p className="showcase-uses-label">One search for</p>

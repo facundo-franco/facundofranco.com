@@ -3,7 +3,7 @@ import Link from "next/link";
 import { JOURNEY } from "@/lib/journey";
 import SectionHeader from "./SectionHeader";
 
-// The founder timeline: one line from the first operating job to Miami.
+// The founder timeline: one line from the first operating job to what comes next.
 // A horizontal rail on desktop (it scrolls sideways if the row is too wide),
 // a vertical list on mobile. Each stop links to its full story.
 export default function JourneySection() {

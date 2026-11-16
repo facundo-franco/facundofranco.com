@@ -11,7 +11,7 @@ import { ROLE, SCOUTHALO_URL } from "@/lib/site";
 export const metadata: Metadata = pageMetadata({
   title: `About Facundo Franco — ${ROLE}`,
   description:
-    "Facundo Franco's path from growing up in Punta del Este, Uruguay, through e-commerce and operations, to founding ScoutHalo, an AI-powered search engine for real-world places.",
+    "Facundo Franco's path from Punta del Este, Uruguay, through a semester of university, years of experiments and e-commerce operations, to building ScoutHalo full-time.",
   path: "/about",
   ogType: "profile",
 });
@@ -20,9 +20,10 @@ export const metadata: Metadata = pageMetadata({
 const GLANCE = [
   { term: "Born", value: "Montevideo, 2001" },
   { term: "Grew up", value: "Punta del Este, Uruguay" },
-  { term: "First operating role", value: "About a year and a half in e-commerce, from around 2024, on Mercado Libre" },
-  { term: "Now", value: ROLE },
-  { term: "Based", value: "Uruguay, with Miami next" },
+  { term: "Studied", value: "Business at the University of Palermo, Buenos Aires · one semester" },
+  { term: "Operated", value: "E-commerce on Mercado Libre, Montevideo · about a year and a half" },
+  { term: "Now", value: `${ROLE}, full-time` },
+  { term: "Based", value: "Uruguay · open to relocating wherever is best for ScoutHalo" },
 ] as const;
 
 // Above-the-fold: CSS entrance (reveal-load), same as the other page heroes.
@@ -181,24 +182,25 @@ export default function AboutPage() {
             Saturday, full days, and plenty of work that followed me beyond normal hours.
           </p>
           <p>
-            I was responsible for pricing, publishing and maintaining a large catalog of
-            products, writing listings, managing sales, dealing with customer complaints, and
-            protecting the account&apos;s reputation on Mercado Libre.
+            On a normal day we shipped 30 to 50 orders; on busy days, close to 80. I handled
+            pricing, published and maintained a large catalog, wrote listings, managed sales, and
+            dealt with customer complaints.
           </p>
           <p>
-            That reputation mattered. A late shipment, a cancellation, or a bad customer
+            When I started, the bottleneck was physical. Finding a single product in the warehouse
+            could take up to an hour.
+          </p>
+          <p>
+            The owner gave me a lot of freedom to fix things. I helped reorganize the warehouse and
+            the way orders moved from inventory to dispatch. Later, the day&apos;s orders were
+            usually prepared for dispatch by around 10:30 or 11 in the morning.
+          </p>
+          <p>
+            That speed protected something that mattered just as much: the account&apos;s
+            reputation on Mercado Libre. A late shipment, a cancellation, or a bad customer
             experience wasn&apos;t an abstract metric. Enough mistakes affected the account&apos;s
-            standing, visibility, and ultimately its ability to sell.
-          </p>
-          <p>
-            The physical operation mattered just as much. I worked on keeping the warehouse
-            organized and improving how products moved from inventory to dispatch so we could get
-            orders out quickly.
-          </p>
-          <p>
-            The owner gave me a lot of freedom to figure things out and experiment with ways to
-            improve the business. With a large catalog and constant sales activity, there was
-            always something that needed attention.
+            standing, its visibility, and ultimately its ability to sell. Improving and protecting
+            that reputation was a big part of my job.
           </p>
           <p>
             I spent about a year and a half doing it. It was demanding, but I loved it. For the first
@@ -247,8 +249,8 @@ export default function AboutPage() {
           <p className="eyebrow">Next</p>
           <h2 className="profile-heading">Building ScoutHalo.</h2>
           <p className="profile-next-text">
-            How that note became ScoutNYC, first built in March 2026, and then ScoutHalo — an
-            AI-powered search engine for real-world places.
+            How that note became ScoutNYC in March 2026, then ScoutHalo, and why I decided to work
+            on it full-time.
           </p>
           <div className="cta-row">
             <Link href="/building-scouthalo" className="cta-link">

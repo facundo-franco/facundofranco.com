@@ -82,7 +82,7 @@ export default function Header() {
                   {item.label}
                 </Link>
               ) : (
-                // Contact: a hash link to the homepage's Work with me section
+                // Contact: a hash link to the homepage's Get in touch section
                 <a href={item.href} onClick={() => setOpen(false)}>
                   {item.label}
                 </a>

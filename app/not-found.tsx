@@ -14,7 +14,6 @@ const DESTINATIONS = [
   { label: "About", href: "/about" },
   { label: "Building ScoutHalo", href: "/building-scouthalo" },
   { label: "Now", href: "/now" },
-  { label: "Talks", href: "/talks" },
 ] as const;
 
 export default function NotFound() {

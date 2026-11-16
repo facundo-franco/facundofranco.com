@@ -10,7 +10,7 @@ const { chromium } = require(process.env.PW || "playwright");
 const OUT = process.env.OUT || ".";
 const CARDS = [
   { file: 'home', eyebrow: 'Founder &amp; CEO of ScoutHalo', title: 'Facundo<br>Franco.', size: 118,
-    sub: 'Making the physical world<br>searchable.', bottom: '',
+    sub: 'Building ScoutHalo,<br>AI search for real-world places.', bottom: '',
     photo: { src: '/images/facundo-franco-founder-scouthalo.png', w: 336, h: 420, pos: 'center 23%', filter: 'saturate(0.72) contrast(1.04) brightness(0.9)' } },
   { file: 'about', eyebrow: 'About', title: 'Facundo<br>Franco.', size: 108,
     sub: 'From Punta del Este, Uruguay, to founding ScoutHalo.', bottom: 'Founder &amp; CEO of ScoutHalo',
@@ -19,12 +19,12 @@ const CARDS = [
     sub: 'How an idea in my Notes became ScoutNYC, and then ScoutHalo.', bottom: 'Facundo Franco · Founder &amp; CEO of ScoutHalo',
     photo: { src: '/images/scouthalo-build-room-uruguay-2026.jpg', w: 318, h: 424, pos: 'center' } },
   { file: 'now', eyebrow: 'Now', title: 'Now.', size: 118,
-    sub: 'Building ScoutHalo, raising, and preparing to build from Miami.', bottom: 'Facundo Franco · Founder &amp; CEO of ScoutHalo',
-    photo: { src: '/images/brickell-miami.jpg', w: 390, h: 390, pos: '50% 50%' } },
+    sub: 'Raising, building a founding team, and finding ScoutHalo’s first customers.', bottom: 'Facundo Franco · Founder &amp; CEO of ScoutHalo',
+    photo: { src: '/images/scouthalo-home-mobile-october-2026.webp', w: 300, h: 431, pos: 'center top' } },
   { file: 'privacy', eyebrow: 'Legal', title: 'Privacy.', size: 118,
     sub: 'No accounts, forms, or cookies —<br>just privacy-friendly analytics and email.', bottom: 'Facundo Franco' },
   { file: 'talks', eyebrow: 'Talks', title: 'Talks.', size: 118,
-    sub: 'Conversations about building ScoutHalo and working with AI agents.', bottom: 'Facundo Franco · Founder &amp; CEO of ScoutHalo' },
+    sub: 'My first public talk: building ScoutHalo with AI agents, on DataCamp.', bottom: 'Facundo Franco · Founder &amp; CEO of ScoutHalo' },
 ];
 const css = `
   html, body { margin: 0 !important; padding: 0 !important; background: #090d10 !important; }

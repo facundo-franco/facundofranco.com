@@ -2,7 +2,9 @@
 // record: the original note, the ScoutHalo repository history (ScoutNYC v1
 // built 30 Mar 2026; rebranded ScoutHalo 28 May 2026 — development dates, not
 // public launches), the build-room photo, the Delaware certificate of
-// incorporation (9 Sep 2026), and the DataCamp talk. Anything undated uses neutral chronology ("Before", "Next").
+// incorporation (9 Sep 2026). Anything undated uses neutral chronology
+// ("Before", "Today", "Next"). The DataCamp webinar is told on /about and
+// /building-scouthalo, not here: this line is the company's.
 
 export type Milestone = {
   id: string;
@@ -10,7 +12,7 @@ export type Milestone = {
   title: string;
   text: string;
   href: string;
-  /** A real image, or a place tile (name + coordinates) when there is none. */
+  /** A real image, or a text tile (a name over two short mono lines) when there is none. */
   image?: { src: string; alt: string; position?: string; contain?: boolean };
   place?: { name: string; lat: string; lon: string };
   /** The forward-looking end of the line. */
@@ -22,7 +24,7 @@ export const JOURNEY: Milestone[] = [
     id: "operating",
     when: "Before ScoutHalo",
     title: "Learning to operate",
-    text: "About a year and a half in e-commerce, from around 2024, selling on Mercado Libre in Montevideo.",
+    text: "A year and a half running day-to-day operations for a Mercado Libre seller in Montevideo: 30–50 orders a day.",
     href: "/about#operating",
     image: {
       src: "/images/montevideo-palacio-salvo.webp",
@@ -46,7 +48,7 @@ export const JOURNEY: Milestone[] = [
     id: "scoutnyc",
     when: "Mar 2026",
     title: "ScoutNYC",
-    text: "Building the first version: a hand-built library of New York shoot locations.",
+    text: "The first version: a hand-built library of New York shoot locations. I was the database.",
     href: "/building-scouthalo#the-first-version",
     image: {
       src: "/images/scoutnyc-01-landing.webp",
@@ -58,7 +60,7 @@ export const JOURNEY: Milestone[] = [
     id: "scouthalo",
     when: "May 2026",
     title: "ScoutHalo",
-    text: "Rebranding ScoutNYC as ScoutHalo, ahead of the months spent building it.",
+    text: "A new name, and a better approach: let AI find and evaluate places instead of adding them by hand.",
     href: "/building-scouthalo#all-in",
     image: { src: "/images/scouthalo-mark.webp", alt: "The ScoutHalo mark.", contain: true },
   },
@@ -66,7 +68,7 @@ export const JOURNEY: Milestone[] = [
     id: "all-in",
     when: "Jun–Aug 2026",
     title: "All in",
-    text: "About three months in one small room in Uruguay, building the first real version.",
+    text: "Three months full-time in one small room in Uruguay, building the first real version.",
     href: "/building-scouthalo#all-in",
     image: {
       src: "/images/scouthalo-build-room-uruguay-2026.jpg",
@@ -87,28 +89,24 @@ export const JOURNEY: Milestone[] = [
     },
   },
   {
-    id: "datacamp",
-    when: "11 Sep 2026",
-    title: "DataCamp",
-    text: "A webinar on becoming an AI agent operator. 700+ people joined live.",
-    href: "/talks",
+    id: "live",
+    when: "Today",
+    title: "Live",
+    text: "Free and Pro plans, with working payments. Few users so far, and no paying customers yet.",
+    href: "/building-scouthalo#today",
     image: {
-      src: "/images/datacamp-session-x-post.png",
-      alt: "Screenshot of the live DataCamp session.",
-      position: "50% 78%",
+      src: "/images/scouthalo-home-mobile-october-2026.webp",
+      alt: "ScoutHalo's homepage on a phone.",
+      position: "50% 20%",
     },
   },
   {
-    id: "miami",
+    id: "next",
     when: "Next",
-    title: "Miami",
-    text: "Planning to relocate to Brickell to build the company and its founding team.",
-    href: "/now#miami",
-    image: {
-      src: "/images/brickell-miami.jpg",
-      alt: "Brickell, Miami at dusk.",
-      position: "50% 50%",
-    },
+    title: "The next stage",
+    text: "Funding, a founding team, and the first paying customers, from wherever gives ScoutHalo the best chance.",
+    href: "/now",
+    place: { name: "Wherever is best", lat: "San Francisco", lon: "Miami · elsewhere" },
     next: true,
   },
 ];
