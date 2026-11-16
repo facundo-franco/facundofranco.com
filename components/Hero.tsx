@@ -21,9 +21,9 @@ export default function Hero() {
           </h1>
 
           <p className="hero-description reveal-load" style={d(80)}>
-            I&apos;m building <strong>ScoutHalo</strong>, AI search for real-world places. You
-            describe what you need; it finds places that fit and tells you why. It&apos;s live,
-            it&apos;s early, and I&apos;m building it full-time from Uruguay.
+            I&apos;m a founder from Uruguay. After years of trying ideas and learning to run a
+            business from the inside, I&apos;m building <strong>ScoutHalo</strong> full-time: AI
+            search that finds real-world places for what you need, and tells you why they fit.
           </p>
 
           <div className="hero-actions reveal-load" style={d(160)}>

@@ -92,8 +92,8 @@ export default function ShowcaseSection() {
               <div>
                 <dt>Today</dt>
                 <dd>
-                  Live, with Free and Pro plans and working payments. Still early: a small number
-                  of users, and no paying customers yet.
+                  Live, with Free and Pro plans and working payments. Still early, with its first
+                  users.
                 </dd>
               </div>
               <div>

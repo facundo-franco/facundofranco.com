@@ -4,7 +4,7 @@ import SectionHeader from "./SectionHeader";
 
 // Current priorities in four lines; the detail lives on /now. Plans, not results.
 const PRIORITIES = [
-  { index: "01", label: "Funding", value: "Raising the first round to give ScoutHalo real runway." },
+  { index: "01", label: "Funding", value: "Preparing to raise the first round, to give ScoutHalo real runway." },
   { index: "02", label: "Founding team", value: "Finding exceptional early people who want real ownership." },
   { index: "03", label: "Product", value: "Improving ScoutHalo from how people actually use it." },
   { index: "04", label: "Customers", value: "Finding the first paying customers, and validating that the demand is real." },

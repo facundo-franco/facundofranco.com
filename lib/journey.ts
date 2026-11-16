@@ -92,7 +92,7 @@ export const JOURNEY: Milestone[] = [
     id: "live",
     when: "Today",
     title: "Live",
-    text: "Free and Pro plans, with working payments. Few users so far, and no paying customers yet.",
+    text: "Free and Pro plans, with working payments. Still early, with its first users.",
     href: "/building-scouthalo#today",
     image: {
       src: "/images/scouthalo-home-mobile-october-2026.webp",

@@ -8,7 +8,7 @@ import { EMAIL, NOW_UPDATED, SCOUTHALO_URL, mailto } from "@/lib/site";
 export const metadata: Metadata = pageMetadata({
   title: "Now — Facundo Franco",
   description:
-    "What Facundo Franco is focused on now: raising ScoutHalo's first round, building a founding team, improving the product, and finding its first paying customers.",
+    "What Facundo Franco is focused on now: preparing to raise ScoutHalo's first round, building a founding team, improving the product, and finding its first paying customers.",
   path: "/now",
 });
 
@@ -117,10 +117,10 @@ export default function NowPage() {
           </dl>
         </Reveal>
 
-        <Priority id="raising" index="01 · Funding" title="Raising.">
+        <Priority id="raising" index="01 · Funding" title="Preparing to raise.">
           <p>
-            I&apos;m raising ScoutHalo&apos;s first round. Until now it has been built on my own
-            time and my family&apos;s support.
+            I&apos;m preparing to raise ScoutHalo&apos;s first round. Until now it has been built on
+            my own time and my family&apos;s support.
           </p>
           <p>
             Funding is what lets me move faster on the rest of this page: bringing in the first

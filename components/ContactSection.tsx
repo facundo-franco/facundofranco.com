@@ -9,7 +9,7 @@ const AUDIENCES = [
     id: "investors",
     label: "Investors",
     title: "ScoutHalo's first round.",
-    text: "I'm raising to give ScoutHalo the runway to find its customers and build the team. If you invest at this stage, I'd be glad to talk.",
+    text: "I'm preparing to raise ScoutHalo's first round, to give it the runway to find its customers and build the team. If you invest at this stage, I'd be glad to talk.",
     cta: { label: "Email me about investing", href: mailto("Investing in ScoutHalo") },
   },
   {
