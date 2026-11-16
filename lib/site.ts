@@ -61,6 +61,9 @@ export const SOCIALS = [
 
 export const SAME_AS: string[] = SOCIALS.map((s) => s.href);
 
+// X handle, credited on shared links (twitter:creator).
+export const X_HANDLE = "@facundofranco_";
+
 
 // The /now page's "last updated" stamp, also shown in the homepage's Now
 // section. Update it whenever a priority moves.

@@ -86,7 +86,7 @@ export default function StoryCarousel({
                 alt={s.alt}
                 width={s.width}
                 height={s.height}
-                sizes="(max-width: 720px) 340px, 360px"
+                sizes="232px"
                 quality={90}
                 draggable={false}
               />

@@ -60,7 +60,7 @@ export default function StoryChapter({
                       alt={figure.alt}
                       width={figure.width}
                       height={figure.height}
-                      sizes="(max-width: 720px) 340px, 360px"
+                      sizes="(max-width: 720px) 82vw, 340px"
                       quality={90}
                       priority={figure.priority}
                     />

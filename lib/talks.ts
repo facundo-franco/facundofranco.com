@@ -21,7 +21,9 @@ export type Talk = {
     width: number;
     height: number;
     alt: string;
-    // The post the screenshot shows, when there is one.
+    /** Shown under the image; say when a screenshot was taken. */
+    caption?: string;
+    // The post the screenshot comes from, when there is one.
     href?: string;
     hrefLabel?: string;
   };
@@ -38,11 +40,15 @@ export const TALKS: Talk[] = [
     date: "September 11, 2026",
     isoDate: "2026-09-11",
     location: "Online",
+    // The live-session frame from Facundo's post on X, cropped to the session
+    // itself. Its on-screen counter is a moment in time, so the caption says
+    // when; the full post stays one click away.
     image: {
-      src: "/images/datacamp-session-x-post.png",
-      width: 601,
-      height: 551,
-      alt: "Facundo Franco's post on X about his DataCamp webinar on becoming an AI Agent Operator, with a screenshot of the live session.",
+      src: "/images/datacamp-session-live.png",
+      width: 552,
+      height: 295,
+      alt: "The live DataCamp webinar “How to Become an AI Agent Operator”, 27 minutes in: four speakers on video, including Facundo Franco, with the audience chat alongside.",
+      caption: "The live session, 27 minutes in.",
       href: "https://x.com/facundofranco_/status/2098448293063807117",
       hrefLabel: "View the post on X",
     },

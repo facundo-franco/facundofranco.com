@@ -52,6 +52,7 @@ export default function Portrait({ priority = false, delay = 120 }: { priority?:
           alt={`Facundo Franco, ${ROLE}`}
           fill
           priority={priority}
+          fetchPriority={priority ? "high" : undefined}
           // Square source in a 4:5 cover frame (plus a 1.06 parallax scale):
           // the variant must match the frame's height, not its width.
           sizes="(max-width: 720px) 370px, 390px"

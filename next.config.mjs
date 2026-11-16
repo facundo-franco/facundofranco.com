@@ -8,6 +8,9 @@ const nextConfig = {
     // bumped from 1200 straight to a 1920-wide photo.
     deviceSizes: [640, 750, 828, 1080, 1200, 1440, 1680, 1920, 2048, 3840],
     qualities: [75, 90],
+    // Default steps plus 480, so ~230-300px images on 2x phones aren't
+    // bumped from 384 straight to a 640-wide file.
+    imageSizes: [16, 32, 48, 64, 96, 128, 256, 384, 480],
   },
 
   // Preserve SEO equity from the previous static site's URLs.

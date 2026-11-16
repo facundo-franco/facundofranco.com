@@ -47,6 +47,11 @@
   /* Image frames, inline link underlines */
   --frame-pad: 10px;
   --link-underline: rgba(99, 217, 232, 0.4);
+
+  /* Mono uppercase labels (eyebrows, facts, captions) and the smallest
+     micro-labels. One step larger on phones, where 11px caps strain. */
+  --label-size: 11px;
+  --label-size-xs: 10px;
 }
 
 /* --------------------------------------------------------------------------
@@ -288,7 +293,7 @@ button {
   color: var(--cyan);
 
   font-family: var(--font-mono), monospace;
-  font-size: 11px;
+  font-size: var(--label-size);
   font-weight: 500;
   letter-spacing: 0.12em;
   text-transform: uppercase;
@@ -466,7 +471,7 @@ button {
   color: var(--cyan);
 
   font-family: var(--font-mono), monospace;
-  font-size: 11px;
+  font-size: var(--label-size);
   font-weight: 500;
   letter-spacing: 0.04em;
 
@@ -736,6 +741,12 @@ button {
 
 /* Tablets: the hero sizes to its content instead of a full, mostly empty screen */
 @media (min-width: 721px) and (max-width: 1024px) {
+  /* The narrow copy column stacks the buttons; give both the same width */
+  .hero-actions {
+    display: grid;
+    width: max-content;
+  }
+
   .hero {
     min-height: auto;
     padding: clamp(64px, 9vw, 96px) 0 clamp(72px, 10vw, 104px);
@@ -793,7 +804,7 @@ button {
   color: var(--cyan);
 
   font-family: var(--font-mono), monospace;
-  font-size: 12px;
+  font-size: 13px;
   font-weight: 500;
   line-height: 1.6;
   letter-spacing: 0.1em;
@@ -813,11 +824,14 @@ button {
   width: 100%;
   height: 1px;
 
-  background: currentColor;
+  /* Primary CTAs rest underlined, so the main action in each section reads
+     as a link at a glance; the line fills to full colour on hover. */
+  background: var(--link-underline);
 
-  transform: scaleX(0);
   transform-origin: 0 50%;
-  transition: transform var(--dur-move) var(--ease);
+  transition:
+    transform var(--dur-move) var(--ease),
+    background-color var(--dur) ease;
 }
 
 .cta-link:hover {
@@ -826,11 +840,22 @@ button {
 }
 
 .cta-link:hover::after {
-  transform: scaleX(1);
+  background: currentColor;
 }
 
+/* Secondary CTA: muted, the original 12px, no resting underline */
 .cta-link-quiet {
   color: var(--muted);
+  font-size: 12px;
+}
+
+.cta-link-quiet::after {
+  background: currentColor;
+  transform: scaleX(0);
+}
+
+.cta-link-quiet:hover::after {
+  transform: scaleX(1);
 }
 
 /* A row of CTAs after content: one gap above, one gap between */
@@ -1002,7 +1027,7 @@ button {
   color: var(--cyan);
 
   font-family: var(--font-mono), monospace;
-  font-size: 11px;
+  font-size: var(--label-size);
   letter-spacing: 0.12em;
   text-transform: uppercase;
 }
@@ -1049,7 +1074,7 @@ button {
   color: var(--subtle);
 
   font-family: var(--font-mono), monospace;
-  font-size: 11px;
+  font-size: var(--label-size);
   letter-spacing: 0.1em;
   text-transform: uppercase;
 }
@@ -1147,6 +1172,11 @@ button {
 }
 
 @media (max-width: 720px) {
+  :root {
+    --label-size: 12px;
+    --label-size-xs: 11px;
+  }
+
   .story-carousel-arrow {
     width: 44px;
     height: 44px;
@@ -1160,7 +1190,7 @@ button {
   color: var(--muted);
 
   font-family: var(--font-mono), monospace;
-  font-size: 11px;
+  font-size: var(--label-size);
   letter-spacing: 0.1em;
   text-align: center;
 }
@@ -1276,7 +1306,7 @@ button {
   color: var(--subtle);
 
   font-family: var(--font-mono), monospace;
-  font-size: 11px;
+  font-size: var(--label-size);
   letter-spacing: 0.12em;
   text-transform: uppercase;
 }
@@ -1349,7 +1379,7 @@ button {
   color: var(--muted);
 
   font-family: var(--font-mono), monospace;
-  font-size: 11px;
+  font-size: var(--label-size);
   letter-spacing: 0.12em;
   text-transform: uppercase;
   text-decoration: none;
@@ -1469,6 +1499,11 @@ button {
     width: min(76%, 300px);
     margin-top: clamp(32px, 6vw, 44px);
   }
+
+  /* Largest element on a phone or tablet: paint at once, like the home portrait */
+  .about-hero-photo.reveal-load {
+    animation: none;
+  }
 }
 
 /* /privacy: short numbered answers, lighter than the story chapters */
@@ -1524,7 +1559,7 @@ button {
   color: var(--subtle);
 
   font-family: var(--font-mono), monospace;
-  font-size: 11px;
+  font-size: var(--label-size);
   letter-spacing: 0.12em;
   text-transform: uppercase;
 }
@@ -1777,7 +1812,7 @@ button {
   color: var(--subtle);
 
   font-family: var(--font-mono), monospace;
-  font-size: 11px;
+  font-size: var(--label-size);
   letter-spacing: 0.12em;
   text-transform: uppercase;
 }
@@ -1863,7 +1898,7 @@ button {
 
   color: var(--subtle);
   font-family: var(--font-mono), monospace;
-  font-size: 11px;
+  font-size: var(--label-size);
   letter-spacing: 0.05em;
 }
 
@@ -2059,7 +2094,7 @@ button {
   color: var(--cyan);
 
   font-family: var(--font-mono), monospace;
-  font-size: 11px;
+  font-size: var(--label-size);
   letter-spacing: 0.12em;
   text-transform: uppercase;
 }
@@ -2102,7 +2137,7 @@ button {
   color: var(--subtle);
 
   font-family: var(--font-mono), monospace;
-  font-size: 11px;
+  font-size: var(--label-size);
   letter-spacing: 0.1em;
   text-transform: uppercase;
 }
@@ -2200,7 +2235,7 @@ button {
   color: var(--subtle);
 
   font-family: var(--font-mono), monospace;
-  font-size: 11px;
+  font-size: var(--label-size);
   letter-spacing: 0.12em;
   text-transform: uppercase;
 }
@@ -2217,7 +2252,7 @@ button {
   color: var(--subtle);
 
   font-family: var(--font-mono), monospace;
-  font-size: 11px;
+  font-size: var(--label-size);
   letter-spacing: 0.12em;
   text-transform: uppercase;
 }
@@ -2351,7 +2386,7 @@ button {
   color: var(--cyan);
 
   font-family: var(--font-mono), monospace;
-  font-size: 11px;
+  font-size: var(--label-size);
   letter-spacing: 0.12em;
   text-transform: uppercase;
   white-space: nowrap;
@@ -2417,7 +2452,7 @@ button {
   color: var(--subtle);
 
   font-family: var(--font-mono), monospace;
-  font-size: 10px;
+  font-size: var(--label-size-xs);
   letter-spacing: 0.06em;
 }
 
@@ -2578,12 +2613,14 @@ button {
   }
 
   .journey-place-name {
-    font-size: 11px;
+    font-size: 12px;
+    line-height: 1.25;
     letter-spacing: -0.01em;
   }
 
+  /* An 88px tile can't hold the name and two more lines: show the name only */
   .journey-place-coords {
-    font-size: 8px;
+    display: none;
   }
 }
 
@@ -2604,7 +2641,7 @@ button {
   color: var(--subtle);
 
   font-family: var(--font-mono), monospace;
-  font-size: 11px;
+  font-size: var(--label-size);
   letter-spacing: 0.12em;
   text-transform: uppercase;
 }
@@ -2780,7 +2817,7 @@ button {
   color: var(--subtle);
 
   font-family: var(--font-mono), monospace;
-  font-size: 11px;
+  font-size: var(--label-size);
   letter-spacing: 0.12em;
   text-transform: uppercase;
 }
@@ -2839,7 +2876,7 @@ button {
   color: var(--muted);
 
   font-family: var(--font-mono), monospace;
-  font-size: 10px;
+  font-size: var(--label-size-xs);
   letter-spacing: 0.08em;
   text-transform: uppercase;
 }
@@ -2912,7 +2949,7 @@ button {
   color: var(--subtle);
 
   font-family: var(--font-mono), monospace;
-  font-size: 11px;
+  font-size: var(--label-size);
   letter-spacing: 0.08em;
   text-transform: uppercase;
 }

@@ -11,7 +11,7 @@ import { ROLE, SCOUTHALO_URL } from "@/lib/site";
 export const metadata: Metadata = pageMetadata({
   title: `About Facundo Franco — ${ROLE}`,
   description:
-    "Facundo Franco's path from Punta del Este, Uruguay, through a semester of university, years of experiments and e-commerce operations, to building ScoutHalo full-time.",
+    "Facundo Franco's path from Punta del Este, Uruguay, through university, years of experiments and e-commerce operations, to building ScoutHalo full-time.",
   path: "/about",
   ogType: "profile",
 });
@@ -78,9 +78,11 @@ export default function AboutPage() {
               alt="Facundo Franco standing on a city street, with white apartment buildings behind him."
               width={1578}
               height={1475}
-              sizes="(max-width: 940px) 300px, 290px"
-              quality={90}
+              // Rendered ~190-280px wide; 64vw tracks it on phones.
+              sizes="(max-width: 480px) 64vw, 300px"
+              quality={75}
               priority
+              fetchPriority="high"
             />
           </div>
           <figcaption className="profile-photo-caption">Buenos Aires, Argentina — 2026</figcaption>

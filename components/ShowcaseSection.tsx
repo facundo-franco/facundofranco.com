@@ -64,8 +64,8 @@ export default function ShowcaseSection() {
             <p className="showcase-preview-tag">Product preview</p>
             <ShowcaseVideo
               sources={[
-                { src: "/videos/scouthalo-london-gardens.mp4", type: "video/mp4" },
                 { src: "/videos/scouthalo-london-gardens.webm", type: "video/webm" },
+                { src: "/videos/scouthalo-london-gardens.mp4", type: "video/mp4" },
               ]}
               poster="/videos/scouthalo-london-gardens-poster.webp"
               label="ScoutHalo product preview: searching “Beautiful quiet gardens and hidden courtyards in central London”, then browsing matching places on a map, opening Medici Courtyard to see why it fits, and getting a route there."

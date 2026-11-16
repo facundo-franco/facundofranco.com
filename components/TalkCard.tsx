@@ -66,9 +66,12 @@ export default function TalkCard({ talk, headingLevel = 2 }: { talk: Talk; headi
             alt={talk.image.alt}
             width={talk.image.width}
             height={talk.image.height}
-            sizes="(max-width: 900px) 92vw, 520px"
+            sizes="(max-width: 720px) 76vw, (max-width: 900px) 66vw, 500px"
             quality={90}
           />
+          {talk.image.caption ? (
+            <figcaption className="profile-photo-caption">{talk.image.caption}</figcaption>
+          ) : null}
         </figure>
       ) : null}
     </article>

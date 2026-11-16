@@ -1,5 +1,5 @@
 import type { Metadata } from "next";
-import { SITE } from "./site";
+import { SITE, X_HANDLE } from "./site";
 
 // Base metadata applied to every route; pages override title/description/canonical.
 export const baseMetadata: Metadata = {
@@ -27,6 +27,7 @@ export const baseMetadata: Metadata = {
   },
   twitter: {
     card: "summary_large_image",
+    creator: X_HANDLE,
     title: SITE.title,
     description: SITE.description,
   },
@@ -64,6 +65,7 @@ export function pageMetadata({ title, description, path, ogType = "website" }: P
     },
     twitter: {
       card: "summary_large_image",
+      creator: X_HANDLE,
       title: fullTitle,
       description: desc,
     },

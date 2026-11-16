@@ -9,9 +9,9 @@ import { pageMetadata } from "@/lib/metadata";
 import { storyGraph } from "@/lib/schema";
 import { PAGE_UPDATED, SCOUTHALO_URL } from "@/lib/site";
 
-const TITLE = "Building ScoutHalo — From a Note to a Product";
+const TITLE = "Building ScoutHalo — From a note to a product";
 const DESCRIPTION =
-  "How a note in Facundo Franco's phone became ScoutNYC, then ScoutHalo: AI search for real-world places, built by directing AI coding agents, now live and still early.";
+  "How a note in Facundo Franco's phone became ScoutHalo: AI search for real-world places, built by directing AI coding agents. Live, and still early.";
 
 export const metadata: Metadata = pageMetadata({
   title: TITLE,

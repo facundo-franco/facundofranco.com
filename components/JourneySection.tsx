@@ -4,8 +4,9 @@ import { JOURNEY } from "@/lib/journey";
 import SectionHeader from "./SectionHeader";
 
 // The founder timeline: one line from the first operating job to what comes next.
-// A horizontal rail on desktop (it scrolls sideways if the row is too wide),
-// a vertical list on mobile. Each stop links to its full story.
+// A horizontal rail on desktop, a vertical list on mobile. Each stop links to
+// its full story. The rail fits its container at every width, so it is not a
+// keyboard-focusable scroll region.
 export default function JourneySection() {
   return (
     <section className="section journey" id="journey" aria-labelledby="journey-title">
@@ -17,7 +18,7 @@ export default function JourneySection() {
           intro="How ScoutHalo came together, in the order it happened. Each step links to the full story."
         />
 
-        <div className="journey-track" role="region" aria-label="Founder timeline" tabIndex={0}>
+        <div className="journey-track">
           <ol className="journey-list">
             {JOURNEY.map((m) => (
               <li key={m.id} className={`journey-stop${m.next ? " journey-stop-next" : ""}`}>

@@ -8,7 +8,7 @@ import { EMAIL, NOW_UPDATED, SCOUTHALO_URL, mailto } from "@/lib/site";
 export const metadata: Metadata = pageMetadata({
   title: "Now — Facundo Franco",
   description:
-    "What Facundo Franco is focused on now: preparing to raise ScoutHalo's first round, building a founding team, improving the product, and finding its first paying customers.",
+    "Facundo Franco's current focus: preparing to raise ScoutHalo's first round, building a founding team, improving the product, and finding paying customers.",
   path: "/now",
 });
 
